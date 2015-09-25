@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Sandbox Demos and Services - DataTorrent Documentation</title>
+  <title>Sandbox - DataTorrent Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -20,7 +20,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Sandbox Demos and Services";
+    var mkdocs_page_name = "Sandbox";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -138,29 +138,22 @@
 <li>
           
             <li>
-    <ul class="subnav">
-    <li><span>Sandbox</span></li>
-
-        
-            
     <li class="toctree-l1 current">
-        <a class="current" href="./">Sandbox Demos and Services</a>
+        <a class="current" href="./">Sandbox</a>
         
             <ul>
             
                 <li class="toctree-l3"><a href="#datatorrent-rts-sandbox">DataTorrent RTS Sandbox</a></li>
                 
+                    <li><a class="toctree-l4" href="#sandbox-overview">Sandbox Overview</a></li>
+                
                     <li><a class="toctree-l4" href="#basic-demo-applications">Basic Demo Applications</a></li>
                 
                     <li><a class="toctree-l4" href="#advanced-demo-applications">Advanced Demo Applications</a></li>
                 
-                    <li><a class="toctree-l4" href="#demo-ui">Demo UI</a></li>
-                
                     <li><a class="toctree-l4" href="#stopping-applications">Stopping Applications</a></li>
                 
                     <li><a class="toctree-l4" href="#managing-services">Managing Services</a></li>
-                
-                    <li><a class="toctree-l4" href="#login-credentials">Login Credentials</a></li>
                 
                     <li><a class="toctree-l4" href="#support">Support</a></li>
                 
@@ -168,9 +161,6 @@
             </ul>
         
     </li>
-
-        
-    </ul>
 <li>
           
             <li>
@@ -201,12 +191,8 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Sandbox &raquo;</li>
-        
-      
     
-    <li>Sandbox Demos and Services</li>
+    <li>Sandbox</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -217,13 +203,17 @@
             <div class="section">
               
                 <h1 id="datatorrent-rts-sandbox">DataTorrent RTS Sandbox</h1>
-<p>The sandbox provides an interactive introduction to the DataTorrent real-time streaming platform.  For additional information about DataTorrent please visit https://www.datatorrent.com/</p>
-<p>By default, this sandbox is designed to run with 6 GB of RAM. Consider reducing this amount if it exceeds host machine capabilities.  Limited resources may cause delays during Hadoop services and DataTorrent applications startup.</p>
+<p>Welcome to the DataTorrent Sandbox, an introduction to DataTorrent RTS, the industry’s only unified stream and batch processing platform.  For additional information about DataTorrent products, please visit https://www.datatorrent.com/</p>
+<h2 id="sandbox-overview">Sandbox Overview</h2>
+<p>The DataTorrent Sandbox automatically launches Hadoop HDFS and YARN services on startup.  Depending on the host machine capabilities, these may take from several seconds to several minutes to start up.  Until Hadoop services are active and ready, it is normal to see error messages about availability of HDFS and YARN in the Issues section of the <a href="http://localhost:9090/" target="_blank">DataTorrent Console</a>.  Ensure there are no errors remaining in the Console by allowing sufficient time for Hadoop services startup prior to launching DataTorrent applications.</p>
+<p><strong>Note</strong>: By default, this sandbox is designed to run with 6 GB of RAM.  Limited resources may cause delays during Hadoop services and DataTorrent applications startup.</p>
+<p>When accessing DataTorrent Console for the first time, you will be required to log in.  Use username <strong>dtadmin</strong> and password <strong>dtadmin</strong>.  Same credentials are also valid for sandbox system access.</p>
+<p><img alt="" src="../images/sandbox/login.png" /></p>
 <h2 id="basic-demo-applications">Basic Demo Applications</h2>
 <p>These applications require minimal resources and configuration changes and can be launched with a single click.  Ensure Hadoop <a href="http://localhost:8088/cluster/cluster">YARN</a> and <a href="http://localhost:50070/dfshealth.jsp">HDFS</a> are active and ready before launching DataTorrent demo applications.</p>
 <ol>
 <li>
-<p>Navigate to <a href="#/packages">App Packages</a> tab of the DataTorrent console, and select one of the demo packages.  In this example we will use <strong>PiDemo</strong> application package.</p>
+<p>Navigate to <a href="http://localhost:9090/#/packages">App Packages</a> tab of the DataTorrent console, and select one of the demo packages.  In this example we will use <strong>PiDemo</strong> application package.</p>
 </li>
 <li>
 <p>From the list of available Applications, locate PiDemo and press the launch button.</p>
@@ -233,16 +223,16 @@
 <p>Proceed with default options on launch confirmation screen by pressing the Launch button.</p>
 </li>
 <li>
-<p>Once launched, view the running application by following the link provided in the launch confirmation dialog, or by navigating to the <a href="../#/ops">Monitor</a> section of the Console and selecting the launched application.</p>
+<p>Once launched, view the running application by following the link provided in the launch confirmation dialog, or by navigating to the <a href="http://localhost:9090/#/ops">Monitor</a> section of the Console and selecting the launched application.</p>
 <p><img alt="" src="../images/sandbox/pidemo-success.png" /></p>
 </li>
 </ol>
 <p>More information about using DataTorrent Console is available in <a href="https://www.datatorrent.com/docs/guides/ConsoleGuide.html">Console Guide</a></p>
 <h2 id="advanced-demo-applications">Advanced Demo Applications</h2>
-<p>These applications may require additional configuration changes prior to launching.  Configuration changes can be made on the launch confirmation screen or manually applied to <code>~/.dt/dt-site.xml</code> configuration file.  These typically include adding Twitter API keys for twitter demo, or changing performance settings for larger applications.  Guides for specific demo applications can be found in the <a href="https://datatorrent.com/docs">docs</a> under <strong>Malhar Demo Guides</strong>.</p>
+<p>These applications may require additional configuration changes prior to launching.  Configuration changes can be made on the launch confirmation screen or manually applied to <code>~/.dt/dt-site.xml</code> configuration file.  These typically include adding Twitter API keys for twitter demo, or changing performance settings for larger applications.  Guides for various demo applications can be found in the <a href="http://docs.datatorrent.com/">docs</a>.</p>
 <ol>
 <li>
-<p>Navigate to <a href="../#/packages">App Packages</a> tab of the DataTorrent console, and select one of the demo packages.  In this example we will use <a href="../#/packages">Twitter Demo</a> application package.</p>
+<p>Navigate to <a href="http://localhost:9090/#/packages">App Packages</a> tab of the DataTorrent console, and select one of the demo packages.  In this example we will use <a href="http://localhost:9090/#/packages">Twitter Demo</a> application package.</p>
 </li>
 <li>
 <p>From the list of Applications, select TwitterDemo and press the corresponding launch button.</p>
@@ -259,14 +249,12 @@ dt.operator.TweetSampler.consumerSecret</p>
 <p><img alt="" src="../images/sandbox/twitterdemo-launch.png" /></p>
 </li>
 <li>
-<p>Once launched, view the running application by following the link provided in the launch confirmation dialog, or by navigating to DataTorrent <a href="../#/ops">Console</a> and selecting the launched application.</p>
+<p>Once launched, view the running application by following the link provided in the launch confirmation dialog, or by navigating to DataTorrent <a href="http://localhost:9090/#/ops">Console</a> and selecting the launched application.</p>
 </li>
 <li>
-<p>View the top 10 tweeted URL's in real time on the <a href="http://localhost:3003/#/twitterUrls">Twitter Demo</a> application dashboard.</p>
+<p>View the top 10 tweeted hashtags in real time by generating and viewing the <a href="http://localhost:9090/#/dashboards">dashboards</a>.</p>
 </li>
 </ol>
-<h2 id="demo-ui">Demo UI</h2>
-<p>Some applications, like MobileDemo or TwitterDemo, produce real-time application output, which can be viewed in the <a href="http://localhost:3003/">DataTorrent Demos</a>.</p>
 <h2 id="stopping-applications">Stopping Applications</h2>
 <p>Applications can be shut down or killed from the <a href="../#ops">DataTorrent Console</a> by selecting application from the list and clicking <code>shutdown</code> or <code>kill</code> buttons.</p>
 <h2 id="managing-services">Managing Services</h2>
@@ -277,7 +265,6 @@ dt.operator.TweetSampler.consumerSecret</p>
 <li>Hadoop YARN ResourceManager</li>
 <li>Hadoop YARN NodeManager</li>
 <li>DataTorrent Gateway</li>
-<li>DataTorrent Demos Server</li>
 </ul>
 <p>All the services can be managed by right-clicking on <code>DataTorrent Services</code> desktop launcher.</p>
 <p><img alt="" src="../images/sandbox/services.png" /></p>
@@ -286,15 +273,8 @@ dt.operator.TweetSampler.consumerSecret</p>
 <li>Shut down Hadoop and DataTorrent services by right-clicking on <code>DataTorrent Services</code> icon and selecting <code>Shut down Hadoop and DataTorrent</code></li>
 <li>Delete hdfs, tmp, and log files and restart all services by right-clicking on DataTorrent Services icon and selecting <code>Rebuild HDFS and Restart Services</code></li>
 </ul>
-<h2 id="login-credentials">Login Credentials</h2>
-<p>Sandbox has authentication enabled by default, which requires initial user login when accessing <a href="../#/">Console</a>.  Same credentials are also valid for sandbox system user.</p>
-<ul>
-<li>Username: <strong>dtadmin</strong></li>
-<li>Password: <strong>dtadmin</strong></li>
-</ul>
-<p>For more information about Console security see the <a href="https://www.datatorrent.com/docs/guides/GatewaySecurity.html">Gateway Security</a> guide.</p>
 <h2 id="support">Support</h2>
-<p>If you experience issues while experimenting with the sandbox, or have any feedback and comments, please let us know at <a href="https://groups.google.com/d/forum/malhar-users">malhar-users</a> group.</p>
+<p>If you experience issues while experimenting with the sandbox, or have any feedback and comments, please let us know, and we will be happy to help!  Contact us using one of the methods listed on <a href="https://www.datatorrent.com/contact/">datatorrent.com/contact</a> page.</p>
               
             </div>
           </div>
