@@ -13,6 +13,5 @@ pages:
 - Apache Apex:
     - Apache Apex Core: apex_core.md
     - Apache Apex Malhar: apex_malhar.md
-- Sandbox: 
-    - Sandbox Demos and Services: sandbox.md
+- Sandbox: sandbox.md
 - Additinal Docs: additional_docs.md

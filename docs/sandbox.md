@@ -1,9 +1,18 @@
 DataTorrent RTS Sandbox
 ================================================================================
 
-The sandbox provides an interactive introduction to the DataTorrent real-time streaming platform.  For additional information about DataTorrent please visit https://www.datatorrent.com/
+Welcome to the DataTorrent Sandbox, an introduction to DataTorrent RTS, the industry’s only unified stream and batch processing platform.  For additional information about DataTorrent products, please visit https://www.datatorrent.com/
 
-By default, this sandbox is designed to run with 6 GB of RAM. Consider reducing this amount if it exceeds host machine capabilities.  Limited resources may cause delays during Hadoop services and DataTorrent applications startup.
+Sandbox Overview
+--------------------------------------------------------------------------------
+
+The DataTorrent Sandbox automatically launches Hadoop HDFS and YARN services on startup.  Depending on the host machine capabilities, these may take from several seconds to several minutes to start up.  Until Hadoop services are active and ready, it is normal to see error messages about availability of HDFS and YARN in the Issues section of the <a href="http://localhost:9090/" target="_blank">DataTorrent Console</a>.  Ensure there are no errors remaining in the Console by allowing sufficient time for Hadoop services startup prior to launching DataTorrent applications.
+
+**Note**: By default, this sandbox is designed to run with 6 GB of RAM.  Limited resources may cause delays during Hadoop services and DataTorrent applications startup.
+
+When accessing DataTorrent Console for the first time, you will be required to log in.  Use username **dtadmin** and password **dtadmin**.  Same credentials are also valid for sandbox system access.
+
+![](images/sandbox/login.png)
 
 
 Basic Demo Applications
@@ -11,7 +20,7 @@ Basic Demo Applications
 
 These applications require minimal resources and configuration changes and can be launched with a single click.  Ensure Hadoop [YARN](http://localhost:8088/cluster/cluster) and [HDFS](http://localhost:50070/dfshealth.jsp) are active and ready before launching DataTorrent demo applications.
 
-1.  Navigate to [App Packages](#/packages) tab of the DataTorrent console, and select one of the demo packages.  In this example we will use **PiDemo** application package.
+1.  Navigate to [App Packages](http://localhost:9090/#/packages) tab of the DataTorrent console, and select one of the demo packages.  In this example we will use **PiDemo** application package.
 
 2.  From the list of available Applications, locate PiDemo and press the launch button.
     
@@ -19,7 +28,7 @@ These applications require minimal resources and configuration changes and can b
 
 3.  Proceed with default options on launch confirmation screen by pressing the Launch button.
 
-4.  Once launched, view the running application by following the link provided in the launch confirmation dialog, or by navigating to the [Monitor](/#/ops) section of the Console and selecting the launched application.
+4.  Once launched, view the running application by following the link provided in the launch confirmation dialog, or by navigating to the [Monitor](http://localhost:9090/#/ops) section of the Console and selecting the launched application.
 
     ![](images/sandbox/pidemo-success.png)
 
@@ -30,9 +39,9 @@ More information about using DataTorrent Console is available in [Console Guide]
 Advanced Demo Applications
 --------------------------------------------------------------------------------
 
-These applications may require additional configuration changes prior to launching.  Configuration changes can be made on the launch confirmation screen or manually applied to `~/.dt/dt-site.xml` configuration file.  These typically include adding Twitter API keys for twitter demo, or changing performance settings for larger applications.  Guides for specific demo applications can be found in the [docs](https://datatorrent.com/docs) under **Malhar Demo Guides**.
+These applications may require additional configuration changes prior to launching.  Configuration changes can be made on the launch confirmation screen or manually applied to `~/.dt/dt-site.xml` configuration file.  These typically include adding Twitter API keys for twitter demo, or changing performance settings for larger applications.  Guides for various demo applications can be found in the [docs](http://docs.datatorrent.com/).
 
-1.  Navigate to [App Packages](/#/packages) tab of the DataTorrent console, and select one of the demo packages.  In this example we will use [Twitter Demo](/#/packages) application package.
+1.  Navigate to [App Packages](http://localhost:9090/#/packages) tab of the DataTorrent console, and select one of the demo packages.  In this example we will use [Twitter Demo](http://localhost:9090/#/packages) application package.
 
 2.  From the list of Applications, select TwitterDemo and press the corresponding launch button.
 
@@ -47,15 +56,9 @@ These applications may require additional configuration changes prior to launchi
 
     ![](images/sandbox/twitterdemo-launch.png)
 
-5.  Once launched, view the running application by following the link provided in the launch confirmation dialog, or by navigating to DataTorrent [Console](/#/ops) and selecting the launched application.
+5.  Once launched, view the running application by following the link provided in the launch confirmation dialog, or by navigating to DataTorrent [Console](http://localhost:9090/#/ops) and selecting the launched application.
 
-6.  View the top 10 tweeted URL's in real time on the [Twitter Demo](http://localhost:3003/#/twitterUrls) application dashboard.
-
-
-Demo UI
---------------------------------------------------------------------------------
-
-Some applications, like MobileDemo or TwitterDemo, produce real-time application output, which can be viewed in the [DataTorrent Demos](http://localhost:3003/).
+6.  View the top 10 tweeted hashtags in real time by generating and viewing the [dashboards](http://localhost:9090/#/dashboards).
 
 
 
@@ -76,7 +79,6 @@ DataTorrent Sandbox automatically launches following services on startup.
 * Hadoop YARN ResourceManager
 * Hadoop YARN NodeManager
 * DataTorrent Gateway
-* DataTorrent Demos Server
 
 
 All the services can be managed by right-clicking on `DataTorrent Services` desktop launcher.
@@ -88,18 +90,9 @@ All the services can be managed by right-clicking on `DataTorrent Services` desk
 *  Delete hdfs, tmp, and log files and restart all services by right-clicking on DataTorrent Services icon and selecting `Rebuild HDFS and Restart Services`
 
 
-Login Credentials
---------------------------------------------------------------------------------
-
-Sandbox has authentication enabled by default, which requires initial user login when accessing [Console](/#/).  Same credentials are also valid for sandbox system user.
-
-* Username: **dtadmin**
-* Password: **dtadmin**
-
-For more information about Console security see the [Gateway Security](https://www.datatorrent.com/docs/guides/GatewaySecurity.html) guide.
-
 
 Support
 --------------------------------------------------------------------------------
 
-If you experience issues while experimenting with the sandbox, or have any feedback and comments, please let us know at [malhar-users](https://groups.google.com/d/forum/malhar-users) group.
+If you experience issues while experimenting with the sandbox, or have any feedback and comments, please let us know, and we will be happy to help!  Contact us using one of the methods listed on [datatorrent.com/contact](https://www.datatorrent.com/contact/) page.
+
