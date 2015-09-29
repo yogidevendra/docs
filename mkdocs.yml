@@ -3,15 +3,22 @@ theme: readthedocs
 pages:
 - DataTorrent RTS: index.md
 - Demos: 
+    - Running Demo Applications: demos.md
     - Videos: demo_videos.md
-- Writing Applications:
-    - Sales Dimensions: demo_sales.md
 - Platform:
+    - Architecture: architecture.md
     - dtAssemble - Graphical Application Builder: dtassemble.md
     - dtDashboard - Application Data Visualization: dtdashboard.md
     - dtIngest - Unified Batch and Streaming Ingestion: dtingest.md
+- Creating Applications:
+    - Creating Applications: 'create_apps.md'
+    - Creating with dtAssemble: 'create_sales_app.md'
+    - Creating with Java: 'create_wordcount_app.md'
 - Apache Apex:
     - Apache Apex Core: apex_core.md
     - Apache Apex Malhar: apex_malhar.md
-- Sandbox: sandbox.md
-- Additinal Docs: additional_docs.md
+- Sandbox:
+    - Welcome to the Sandbox: sandbox.md
+    - Running Sandbox Demos: sandbox_demos.md
+    - Managing Sandbox Services: sandbox_services.md
+- Additional Docs: additional_docs.md
