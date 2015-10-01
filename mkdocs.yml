@@ -6,16 +6,16 @@ pages:
     - Running Demo Applications: demos.md
     - Videos: demo_videos.md
 - Platform:
-    - Architecture: architecture.md
+    - RTS Overview: rts.md
     - dtAssemble - Graphical Application Builder: dtassemble.md
     - dtDashboard - Application Data Visualization: dtdashboard.md
     - dtIngest - Unified Batch and Streaming Ingestion: dtingest.md
 - Creating Applications:
-    - Creating Applications: 'create_apps.md'
-    - Creating with dtAssemble: 'create_sales_app.md'
+    - Creating Applications: create.md
+    - Creating with dtAssemble: create_sales_app.md
     - Creating with Java: 'create_wordcount_app.md'
 - Apache Apex:
-    - Apache Apex Core: apex_core.md
+    - Apache Apex Core: apex.md
     - Apache Apex Malhar: apex_malhar.md
 - Sandbox:
     - Welcome to the Sandbox: sandbox.md
