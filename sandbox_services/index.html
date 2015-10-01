@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Videos - DataTorrent Documentation</title>
+  <title>Managing Sandbox Services - DataTorrent Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -20,7 +20,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Videos";
+    var mkdocs_page_name = "Managing Sandbox Services";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -69,23 +69,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Videos</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#datatorrent-rts-recorded-demos">DataTorrent RTS Recorded Demos</a></li>
-                
-                    <li><a class="toctree-l4" href="#datatorrent-rts-elastic-scalability-demo">DataTorrent RTS Elastic Scalability Demo</a></li>
-                
-                    <li><a class="toctree-l4" href="#datatorrent-rts-dimensional-computing-demo">DataTorrent RTS Dimensional Computing Demo</a></li>
-                
-                    <li><a class="toctree-l4" href="#datatorrent-rts-application-builder-demo">DataTorrent RTS Application Builder Demo</a></li>
-                
-                    <li><a class="toctree-l4" href="#datatorrent-rts-fault-tolerance-demo">DataTorrent RTS Fault Tolerance Demo</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../demo_videos/">Videos</a>
         
     </li>
 
@@ -200,8 +185,17 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../sandbox_services/">Managing Sandbox Services</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Managing Sandbox Services</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#managing-datatorrent-rts-sandbox-services">Managing DataTorrent RTS Sandbox Services</a></li>
+                
+                    <li><a class="toctree-l4" href="#support">Support</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -238,11 +232,11 @@
     
       
         
-          <li>Demos &raquo;</li>
+          <li>Sandbox &raquo;</li>
         
       
     
-    <li>Videos</li>
+    <li>Managing Sandbox Services</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -252,18 +246,24 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="datatorrent-rts-recorded-demos">DataTorrent RTS Recorded Demos</h1>
-<h3 id="datatorrent-rts-elastic-scalability-demo">DataTorrent RTS Elastic Scalability Demo</h3>
-<iframe width="640" height="360" src="https://www.youtube.com/embed/QmkZFOg-tZA" frameborder="0" allowfullscreen></iframe>
-
-<h3 id="datatorrent-rts-dimensional-computing-demo">DataTorrent RTS Dimensional Computing Demo</h3>
-<iframe width="640" height="360" src="https://www.youtube.com/embed/8R1L29l7x-U" frameborder="0" allowfullscreen></iframe>
-
-<h3 id="datatorrent-rts-application-builder-demo">DataTorrent RTS Application Builder Demo</h3>
-<iframe width="640" height="360" src="https://www.youtube.com/embed/WW0BwBKdPDk" frameborder="0" allowfullscreen></iframe>
-
-<h3 id="datatorrent-rts-fault-tolerance-demo">DataTorrent RTS Fault Tolerance Demo</h3>
-<iframe width="640" height="360" src="https://www.youtube.com/embed/XJtVo6pUv8I" frameborder="0" allowfullscreen></iframe>
+                <h1 id="managing-datatorrent-rts-sandbox-services">Managing DataTorrent RTS Sandbox Services</h1>
+<p>DataTorrent Sandbox automatically launches following services on startup.</p>
+<ul>
+<li>Hadoop HDFS NameNode</li>
+<li>Hadoop HDFS DataNode</li>
+<li>Hadoop YARN ResourceManager</li>
+<li>Hadoop YARN NodeManager</li>
+<li>DataTorrent Gateway</li>
+</ul>
+<p>All the services can be managed by right-clicking on <code>DataTorrent Services</code> desktop launcher.</p>
+<p><img alt="" src="../images/sandbox/services.png" /></p>
+<ul>
+<li>Start Hadoop and DataTorrent services by right-clicking on <code>DataTorrent Services</code> desktop launcher and selecting <code>Start Hadoop and DataTorrent</code></li>
+<li>Shut down Hadoop and DataTorrent services by right-clicking on <code>DataTorrent Services</code> icon and selecting <code>Shut down Hadoop and DataTorrent</code></li>
+<li>Delete hdfs, tmp, and log files and restart all services by right-clicking on DataTorrent Services icon and selecting <code>Rebuild HDFS and Restart Services</code></li>
+</ul>
+<h2 id="support">Support</h2>
+<p>If you experience issues while experimenting with the sandbox, or have any feedback and comments, please let us know, and we will be happy to help!  Contact us using one of the methods listed on <a href="https://www.datatorrent.com/contact/">datatorrent.com/contact</a> page.</p>
               
             </div>
           </div>
@@ -271,10 +271,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../rts/" class="btn btn-neutral float-right" title="RTS Overview"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../additional_docs/" class="btn btn-neutral float-right" title="Additional Docs"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../demos/" class="btn btn-neutral" title="Running Demo Applications"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../sandbox_demos/" class="btn btn-neutral" title="Running Sandbox Demos"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -300,10 +300,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../demos/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../sandbox_demos/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../rts/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../additional_docs/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

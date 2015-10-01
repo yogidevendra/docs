@@ -55,7 +55,7 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#welcome-to-the-datatorrent-rts">Welcome to the DataTorrent RTS!</a></li>
+                <li class="toctree-l3"><a href="#welcome-to-datatorrent-rts">Welcome to DataTorrent RTS!</a></li>
                 
             
             </ul>
@@ -70,6 +70,13 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="demos/">Running Demo Applications</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="demo_videos/">Videos</a>
         
     </li>
@@ -80,22 +87,14 @@
           
             <li>
     <ul class="subnav">
-    <li><span>Writing Applications</span></li>
+    <li><span>Platform</span></li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="demo_sales/">Sales Dimensions</a>
+        <a class="" href="rts/">RTS Overview</a>
         
     </li>
-
-        
-    </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Platform</span></li>
 
         
             
@@ -124,12 +123,41 @@
           
             <li>
     <ul class="subnav">
+    <li><span>Creating Applications</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="create/">Creating Applications</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="create_sales_app/">Creating with dtAssemble</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="create_wordcount_app/">Creating with Java</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
     <li><span>Apache Apex</span></li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="apex_core/">Apache Apex Core</a>
+        <a class="" href="apex/">Apache Apex Core</a>
         
     </li>
 
@@ -145,15 +173,37 @@
 <li>
           
             <li>
+    <ul class="subnav">
+    <li><span>Sandbox</span></li>
+
+        
+            
     <li class="toctree-l1 ">
-        <a class="" href="sandbox/">Sandbox</a>
+        <a class="" href="sandbox/">Welcome to the Sandbox</a>
         
     </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="sandbox_demos/">Running Sandbox Demos</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="sandbox_services/">Managing Sandbox Services</a>
+        
+    </li>
+
+        
+    </ul>
 <li>
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="additional_docs/">Additinal Docs</a>
+        <a class="" href="additional_docs/">Additional Docs</a>
         
     </li>
 <li>
@@ -190,19 +240,113 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="welcome-to-the-datatorrent-rts">Welcome to the DataTorrent RTS!</h1>
-<p>DataTorrent RTS is an enterprise product built around Apache Apex, a Hadoop-native unified stream and batch processing platform.  DataTorrent RTS combines Apache Apex engine with a set of enterprise-grade management, monitoring, development, and visualization tools.  </p>
-<p><img alt="DataTorrent RTS Architecture Layers Diagram" src="./images/architecture.svg" /></p>
-<p>DataTorrent RTS platform enables creation and management of real-time big data applications in a way that is</p>
-<ul>
-<li><strong>highly scalable and performant</strong> - millions of events per second per node with linear scalability</li>
-<li><strong>fault tolerant</strong> - automatic recovery with no data or state loss</li>
-<li><strong>Hadoop native</strong> - installs in seconds and works with all existing Hadoop distributions</li>
-<li><strong>easily developed</strong> - write and re-use generic Java code</li>
-<li><strong>easily integrated</strong> - customizable connectors to file, database, and messaging systems</li>
-<li><strong>easily operable</strong> - full suite of management, monitoring, development, and visualization tools</li>
-</ul>
-<p>The system is capable of processing billions of events per second, while automatically recovering without any state or data loss when individual nodes fail.  A simple API enables developers to write new and re-use existing generic Java code, lowering the expertise needed to write big data applications.  A library of existing demos and re-usable operators allows applications to be developed quickly.  Native Hadoop support allows DataTorrent RTS to be installed in seconds on any existing Hadoop cluster.  Application adiminstration can be done from a browser with dtManage, a full suite of management, monitoring, and visualization tools.  New applications can be visually built from existing components using <a href="dtassemble/">dtAssemble</a>, a graphical application assembly tool.  Application data can be easily visualized with <a href="dtdashboard/">dtDashboard</a> real-time data visualizations.</p>
+                <h1 id="welcome-to-datatorrent-rts">Welcome to DataTorrent RTS!</h1>
+<p>DataTorrent RTS, built on Apache Apex, provides a high-performing, fault-tolerant, scalable, easy to use data processing platform for both batch and streaming workloads. DataTorrent RTS includes advanced management, monitoring, development, visualization, and data ingestion and distribution features.  </p>
+<style>
+  #docs-jumbotron {
+    margin-top: 40px;
+    font-size: 0;
+    background: rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .jumbotron {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .jumbotron-section-space {
+    flex: .07;
+    background-color: transparent;
+  }
+
+  .jumbotron-section {
+    flex: 1;
+    padding-top: 20px;
+    width: 33.3%;
+    display: inline-block;
+    font-size: 18px;
+    vertical-align: top;
+    text-align: center;
+    color: #444 !important;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    border-radius: 4px;
+    box-shadow: inset 0 0 4px -1px rgba(0,0,0,0.3);
+    background-color: #e3e0eb;
+  }
+  .jumbotron-section:visited {
+    color: #444;
+  }
+  .jumbotron-section img {
+    height: 100px !important;
+    display: block;
+    margin: 10px auto 0;
+  }
+  .jumbotron-section h2 {
+    margin: 0;
+  }
+
+  .jumbotron-section:hover{
+    background-color: #bcb3ce;
+    cursor: pointer;
+  }
+  .jumbotron-section p {
+    padding: 0 1em;
+    margin: 0 auto;
+    max-width: 300px;
+    font-size: 80%;
+  }
+
+  @media all and (max-width: 1032px) and (min-width: 769px){
+    .jumbotron {
+      display: block;
+    }
+    .jumbotron-section {
+      width: 100%;
+      display: block;
+    }
+  }
+  @media all and (max-width: 569px){
+    .jumbotron {
+      display: block;
+    }
+    .jumbotron-section {
+      width: 100%;
+      display: block;
+    }
+  }
+
+
+</style>
+
+<div id="docs-jumbotron" class="jumbotron">
+  <a href="/demos/" class="jumbotron-section">
+    <img src="images/welcome/dt_assemble.svg">
+    <h2>Run Demos</h2>
+    <p>Experience the power of DataTorrent RTS quickly. Import, launch, manage and visualize applications in minutes.</p>
+  </a>
+
+  <div class="jumbotron-section-space"></div>
+
+  <a href="/rts/" class="jumbotron-section">
+    <img src="images/welcome/dt_visualize.svg">
+    <h2>Discover RTS</h2>
+    <p>Learn about the architecture and the rich feature set of the DataTorrent RTS platform and applications.</p>
+  </a>  
+
+  <div class="jumbotron-section-space"></div>
+
+  <a href="/create/" class="jumbotron-section">
+    <img src="images/welcome/dt_toolbox.svg">
+    <h2>Create Apps</h2>
+    <p>Tutorials and code samples to rapidly create DataTorrent applications using Java or dtAssemble.</p>
+  </a>
+</div>
               
             </div>
           </div>
@@ -210,7 +354,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="demo_videos/" class="btn btn-neutral float-right" title="Videos"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="demos/" class="btn btn-neutral float-right" title="Running Demo Applications"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
     </div>
@@ -238,7 +382,7 @@
       
       
       
-        <span style="margin-left: 15px"><a href="demo_videos/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="demos/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
@@ -248,5 +392,5 @@
 
 <!--
 MkDocs version : 0.14.0
-Build Date UTC : 2015-09-25 21:53:40.252573
+Build Date UTC : 2015-10-01 03:07:51.762563
 -->

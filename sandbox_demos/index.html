@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Videos - DataTorrent Documentation</title>
+  <title>Running Sandbox Demos - DataTorrent Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -20,7 +20,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Videos";
+    var mkdocs_page_name = "Running Sandbox Demos";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -69,23 +69,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Videos</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#datatorrent-rts-recorded-demos">DataTorrent RTS Recorded Demos</a></li>
-                
-                    <li><a class="toctree-l4" href="#datatorrent-rts-elastic-scalability-demo">DataTorrent RTS Elastic Scalability Demo</a></li>
-                
-                    <li><a class="toctree-l4" href="#datatorrent-rts-dimensional-computing-demo">DataTorrent RTS Dimensional Computing Demo</a></li>
-                
-                    <li><a class="toctree-l4" href="#datatorrent-rts-application-builder-demo">DataTorrent RTS Application Builder Demo</a></li>
-                
-                    <li><a class="toctree-l4" href="#datatorrent-rts-fault-tolerance-demo">DataTorrent RTS Fault Tolerance Demo</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../demo_videos/">Videos</a>
         
     </li>
 
@@ -193,8 +178,21 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../sandbox_demos/">Running Sandbox Demos</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Running Sandbox Demos</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#datatorrent-rts-sandbox-demo-applications">DataTorrent RTS Sandbox Demo Applications</a></li>
+                
+                    <li><a class="toctree-l4" href="#basic-demo-applications">Basic Demo Applications</a></li>
+                
+                    <li><a class="toctree-l4" href="#advanced-demo-applications">Advanced Demo Applications</a></li>
+                
+                    <li><a class="toctree-l4" href="#stopping-applications">Stopping Applications</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -238,11 +236,11 @@
     
       
         
-          <li>Demos &raquo;</li>
+          <li>Sandbox &raquo;</li>
         
       
     
-    <li>Videos</li>
+    <li>Running Sandbox Demos</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -252,18 +250,56 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="datatorrent-rts-recorded-demos">DataTorrent RTS Recorded Demos</h1>
-<h3 id="datatorrent-rts-elastic-scalability-demo">DataTorrent RTS Elastic Scalability Demo</h3>
-<iframe width="640" height="360" src="https://www.youtube.com/embed/QmkZFOg-tZA" frameborder="0" allowfullscreen></iframe>
-
-<h3 id="datatorrent-rts-dimensional-computing-demo">DataTorrent RTS Dimensional Computing Demo</h3>
-<iframe width="640" height="360" src="https://www.youtube.com/embed/8R1L29l7x-U" frameborder="0" allowfullscreen></iframe>
-
-<h3 id="datatorrent-rts-application-builder-demo">DataTorrent RTS Application Builder Demo</h3>
-<iframe width="640" height="360" src="https://www.youtube.com/embed/WW0BwBKdPDk" frameborder="0" allowfullscreen></iframe>
-
-<h3 id="datatorrent-rts-fault-tolerance-demo">DataTorrent RTS Fault Tolerance Demo</h3>
-<iframe width="640" height="360" src="https://www.youtube.com/embed/XJtVo6pUv8I" frameborder="0" allowfullscreen></iframe>
+                <h1 id="datatorrent-rts-sandbox-demo-applications">DataTorrent RTS Sandbox Demo Applications</h1>
+<p>DataTorrent RTS includes a number of pre-loaded demo applications, which help demonstrate the features of the RTS platform.</p>
+<h2 id="basic-demo-applications">Basic Demo Applications</h2>
+<p>These applications require minimal resources and configuration changes and can be launched with a single click.  Ensure Hadoop <a href="http://localhost:8088/cluster/cluster">YARN</a> and <a href="http://localhost:50070/dfshealth.jsp">HDFS</a> are active and ready before launching DataTorrent demo applications.</p>
+<ol>
+<li>
+<p>Navigate to <a href="http://localhost:9090/#/packages" target="_blank">App Packages</a> under Develop tab of the DataTorrent console, and select one of the demo packages.  In this example we will use <strong>PiDemo</strong> application package.</p>
+</li>
+<li>
+<p>From the list of available Applications, locate PiDemo and press the launch button.</p>
+<p><img alt="" src="../images/sandbox/pidemo-list.png" /></p>
+</li>
+<li>
+<p>Proceed with default options on launch confirmation screen by pressing the Launch button.</p>
+</li>
+<li>
+<p>Once launched, view the running application by following the link provided in the launch confirmation dialog, or by navigating to the <a href="http://localhost:9090/#/ops" target="_blank">Monitor</a> section of the Console and selecting the launched application.</p>
+<p><img alt="" src="../images/sandbox/pidemo-success.png" /></p>
+</li>
+</ol>
+<p>More information about using DataTorrent Console is available in <a href="https://www.datatorrent.com/docs/guides/ConsoleGuide.html">Console Guide</a></p>
+<h2 id="advanced-demo-applications">Advanced Demo Applications</h2>
+<p>These applications may require additional configuration changes prior to launching.  Configuration changes can be made on the launch confirmation screen or manually applied to <code>~/.dt/dt-site.xml</code> configuration file.  These typically include adding Twitter API keys for twitter demo, or changing performance settings for larger applications.  Guides for various demo applications can be found in the <a href="http://docs.datatorrent.com/">docs</a>.</p>
+<ol>
+<li>
+<p>Navigate to <a href="http://localhost:9090/#/packages">App Packages</a> tab of the DataTorrent console, and select one of the demo packages.  In this example we will use <a href="http://localhost:9090/#/packages">Twitter Demo</a> application package.</p>
+</li>
+<li>
+<p>From the list of Applications, select TwitterDemo and press the corresponding launch button.</p>
+</li>
+<li>
+<p>Retrieve Twitter API access information by registering for <a href="https://dev.twitter.com/">Twitter Developer</a> account, creating a new <a href="https://apps.twitter.com/app/new">Twitter Application</a>, and navigating to Keys and Access Tokens tab.  Twitter Demo application requires the following to be specified by the user:</p>
+<p>dt.operator.TweetSampler.accessToken
+dt.operator.TweetSampler.accessTokenSecret
+dt.operator.TweetSampler.consumerKey
+dt.operator.TweetSampler.consumerSecret</p>
+</li>
+<li>
+<p>Select <em>Specify custom properties</em> on the launch confirmation screen, click <em>add required properties</em> button, and provide Twitter API access values.  Choose to save this configuration as <code>twitter.xml</code> file and proceed to Launch the application.</p>
+<p><img alt="" src="../images/sandbox/twitterdemo-launch.png" /></p>
+</li>
+<li>
+<p>Once launched, view the running application by following the link provided in the launch confirmation dialog, or by navigating to DataTorrent <a href="http://localhost:9090/#/ops">Console</a> and selecting the launched application.</p>
+</li>
+<li>
+<p>View the top 10 tweeted hashtags in real time by generating and viewing the <a href="http://localhost:9090/#/dashboards">dashboards</a>.</p>
+</li>
+</ol>
+<h2 id="stopping-applications">Stopping Applications</h2>
+<p>Applications can be shut down or killed from the <a href="../#ops">DataTorrent Console</a> by selecting application from the list and clicking <code>shutdown</code> or <code>kill</code> buttons.</p>
               
             </div>
           </div>
@@ -271,10 +307,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../rts/" class="btn btn-neutral float-right" title="RTS Overview"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../sandbox_services/" class="btn btn-neutral float-right" title="Managing Sandbox Services"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../demos/" class="btn btn-neutral" title="Running Demo Applications"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../sandbox/" class="btn btn-neutral" title="Welcome to the Sandbox"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -300,10 +336,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../demos/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../sandbox/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../rts/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../sandbox_services/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
