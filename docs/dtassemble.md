@@ -1,8 +1,6 @@
 dtAssemble - Graphical Application Builder
 ================================================================================
 
-## Overview
-
 The dtAssemble Graphical Application  Builder is a UI tool that allows users to drag-and-drop operators onto a canvas and connect them together to build a DataTorrent application. 
 
 ![](images/dtassemble/image03.png)

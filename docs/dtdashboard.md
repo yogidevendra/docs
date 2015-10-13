@@ -1,9 +1,6 @@
 dtDashboard - Application Data Visualization
 ================================================================================
 
-## Overview
-
-
 The App Data Framework collection of UI tools and operator APIs that allows DataTorrent developers to visualize the data flowing through their applications.  This guide assumes the reader’s basic knowledge on the DataTorrent RTS platform and the Console, and the concept of operators in streaming applications.
 
 
