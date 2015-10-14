@@ -11,8 +11,7 @@ pages:
     - dtDashboard: dtdashboard.md
     - dtIngest: dtingest.md
 - Creating Applications:
-    - Creating Apps: create.md
-    - Creating with dtAssemble: create_sales_app.md
+    - Creating with dtAssemble: create.md
     - Creating with Java: 'create_wordcount_app.md'
 - Apache Apex:
     - Apex: apex.md
