@@ -3,8 +3,8 @@ theme: readthedocs
 pages:
 - DataTorrent RTS: index.md
 - Demos: 
-    - Applications: demos.md
     - Videos: demo_videos.md
+    - Applications: demos.md
 - Platform:
     - RTS: rts.md
     - dtAssemble: dtassemble.md
