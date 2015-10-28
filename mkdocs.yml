@@ -5,19 +5,50 @@ pages:
 - Demos: 
     - Videos: demo_videos.md
     - Applications: demos.md
-- Platform:
-    - RTS: rts.md
-    - dtAssemble: dtassemble.md
-    - dtDashboard: dtdashboard.md
-    - dtIngest: dtingest.md
-- Creating Applications:
-    - Creating with dtAssemble: create.md
-    - Creating with Java: 'create_wordcount_app.md'
-- Apache Apex:
-    - Apex: apex.md
-    - Apex-Malhar: apex_malhar.md
 - Sandbox:
     - Welcome to the Sandbox: sandbox.md
     - Sandbox Demos: sandbox_demos.md
     - Sandbox Services: sandbox_services.md
-- Additional Docs: additional_docs.md
+- Platform:
+    - RTS: rts.md
+    - dtManage: coming_soon.md
+    - dtAssemble: dtassemble.md
+    - dtDashboard: dtdashboard.md
+    - dtGateway: coming_soon.md
+    - Apache Apex: apex.md
+    - Apache Apex Deep Dive: coming_soon.md
+    - Apache Apex-Malhar: apex_malhar.md
+- Applications:
+    - dtIngest: dtingest.md
+- Deployment and Operations:
+    - Quick Start: coming_soon.md
+    - Installation: coming_soon.md
+    - Security: coming_soon.md
+    - dtCli: coming_soon.md
+    - Troubleshooting: coming_soon.md
+- Development:    
+    - Tutorials:
+        - Top N Words: 'create_wordcount_app.md'
+        - Twitter Top Hashtags: coming_soon.md
+        - Sales Dimenions: create.md
+    - Applications: coming_soon.md 
+    - Application Packages: ApexPackage.md
+    - Configuration Packages: AppConfPackage.md
+    - Operators: coming_soon.md
+    - Library Operators:
+        - File splitter: coming_soon.md
+        - Block reader: coming_soon.md
+        - File Input, S3, NFS: coming_soon.md
+        - File Output: coming_soon.md
+        - Deduper: coming_soon.md
+        - HDHT: coming_soon.md
+        - DimensionsStore: coming_soon.md
+        - DimenstionComputation: coming_soon.md
+        - KafkaInput: coming_soon.md
+        - KafkaOutput: coming_soon.md
+        - Solace: coming_soon.md
+        - JMS: coming_soon.md
+        - HBase: coming_soon.md
+    - REST API: coming_soon.md
+    - Scalable Design: coming_soon.md
+- Glossary: additional_docs.md
