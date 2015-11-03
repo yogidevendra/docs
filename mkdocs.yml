@@ -30,7 +30,13 @@ pages:
 - Development:    
     - Apex Development Setup: apex_development_setup.md
     - Tutorials:
-        - Top N Words: 'create_wordcount_app.md'
+        - Top N Words:
+            - Chapter 1 Development Environment: tutorial-topNwords/TopNWords-c1.md
+            - Chapter 2 Building in Java: tutorial-topNwords/TopNWords-c2.md
+            - Chapter 3 Building with dtAssemble: tutorial-topNwords/TopNWords-c3.md
+            - Chapter 4 Monitoring with dtManage: tutorial-topNwords/TopNWords-c4.md
+            - Chapter 5 Visualizing with dtDashboard: tutorial-topNwords/TopNWords-c5.md
+            - Appendix: tutorial-topNwords/TopNWords-c6.md
         - Twitter Top Hashtags: coming_soon.md
         - Sales Dimenions: create.md
     - Applications: coming_soon.md 
