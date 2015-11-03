@@ -22,18 +22,20 @@ pages:
     - dtIngest: dtingest.md
 - Deployment and Operations:
     - Quick Start: coming_soon.md
-    - Installation: coming_soon.md
+    - Installation: installation.md
+    - Configuration: coming_soon.md
     - Security: coming_soon.md
     - dtCli: coming_soon.md
     - Troubleshooting: coming_soon.md
 - Development:    
+    - Apex Development Setup: apex_development_setup.md
     - Tutorials:
         - Top N Words: 'create_wordcount_app.md'
         - Twitter Top Hashtags: coming_soon.md
         - Sales Dimenions: create.md
     - Applications: coming_soon.md 
-    - Application Packages: ApexPackage.md
-    - Configuration Packages: AppConfPackage.md
+    - Application Packages: application_packages.md
+    - Configuration Packages: configuration_packages.md
     - Operators: coming_soon.md
     - Library Operators:
         - File splitter: coming_soon.md
@@ -49,6 +51,6 @@ pages:
         - Solace: coming_soon.md
         - JMS: coming_soon.md
         - HBase: coming_soon.md
-    - REST API: coming_soon.md
+    - REST API: dtgateway_api.md
     - Scalable Design: coming_soon.md
 - Glossary: additional_docs.md
