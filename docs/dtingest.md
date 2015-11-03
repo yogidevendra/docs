@@ -73,13 +73,13 @@ Console](https://www.datatorrent.com/docs/guides/ConsoleGuide.html).
     If you want to specify all the options from scratch without using any pre-saved configuration; then unselect a checkbox 'Use a config file'
 
 1.  Configure input source, refer to [Configuring input
-    source](#h.pafr8c33lvo) section for details.
+    source](#configuring-input-source) section for details.
 
 1.  Configure output destination, refer to [Configuring output
-    destination](#h.628tlip12v4y) section for details.
+    destination](#configuring-output-destination) section for details.
 
 1.  Configure processing steps, refer to [Configuring processing
-    steps](#h.4uf7uxen8s0n) section for details.
+    steps](#configuring-processing-steps) section for details.
 
 1.  Under 'Save Configuration file' give name for configuration; if
     you wish to save this combination of values for future use.
@@ -256,6 +256,7 @@ ingest files/directories from S3 using dtIngest.  
 
     Input url for S3 needs to be provided in following format,  
     `s3n://ukey:upass@bucketName/path`
+
     where,
     - `s3n`:  protocol name
     - `ukey`: access key
@@ -291,6 +292,7 @@ from kafka using dtIngest.
     `hostname1:port1,hostname2:port2,hostname3:port3`
 
     where,
+    
     - `hostname1,hostname2,hostname3` are hosts
     - `port1,port2,port3` are ports of zookeeper server
 
