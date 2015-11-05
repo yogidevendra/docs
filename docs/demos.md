@@ -1,7 +1,7 @@
 Running Demo Applications
 =================================
 
-DataTorrent RTS includes a number of demo applications, which help demonstrate the features of the platform.  These demos are available for import from the **Development > App Packages** section of the DataTorrent management console.
+DataTorrent RTS includes a number of demo applications and they are available for import from the **Development > App Packages** section of the DataTorrent management console.
 
 Importing Demo Applications
 --------------------------------------------------------------------------------
@@ -14,15 +14,15 @@ Importing Demo Applications
 Launching Demo Applications
 --------------------------------------------------------------------------------
 
-After the right application packages have been imported, many demo applications can be launched with a single click.  *Note*: Ensure Hadoop YARN and HDFS services are active and ready by making sure there are no errors in the DataTorrent console before launching demo applications.
+Once imported, applications can be launched with a single click.  *Note*: Ensure Hadoop YARN and HDFS services are active and ready by checking for errors in the DataTorrent console before launching demo applications.
 
 1.  Navigate to **App Packages** under **Develop** tab of the DataTorrent console, and select one of the imported demo packages.  In this example we will use **PiDemo** application package.
 
-2.  From the list of available Applications, locate PiDemo and press the launch button.
+2.  From the list of available Applications, locate PiDemo and click the launch button.
 
     ![](images/sandbox/pidemo-list.png)
 
-3.  Proceed with default options on launch confirmation screen by pressing the Launch button.
+3.  Proceed with default options on launch confirmation screen by clicking the Launch button.
 
 4.  Once launched, view the running application by following the link provided in the launch confirmation dialog, or by navigating to the **Monitor** section of the console and selecting the launched application.
 
