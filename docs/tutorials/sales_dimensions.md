@@ -18,7 +18,7 @@ Application setup will require following steps:
 
 ## Create New Application
 
-DataTorrent platforms supports building new applications with [Graphical Application Builder](dtassemble.md), which will be used for Sales Dimensions demo.  App Builder is an easy and intuitive way to construct your applications, which provides a great visualization of the logical operator connectivity and application data flow.
+DataTorrent platforms supports building new applications with [Graphical Application Builder](../dtassemble.md), which will be used for Sales Dimensions demo.  App Builder is an easy and intuitive way to construct your applications, which provides a great visualization of the logical operator connectivity and application data flow.
 
 Go to App Packages section of the Console and make sure DataTorrent Dimensions Demos package is imported.  Use Import Demos button to add it, if not already present.
 Click create new application, and name the application “Sales Dimensions”.
@@ -81,7 +81,7 @@ By clicking on the individual operators or streams connecting them, and using Op
 
 ## Launch Application
 
-Once application is constructed, and validation checks are satisfied, a launch button will become available at the top left of the Application Canvas screen.  Clicking it will bring up the application launch dialog, which allows you to further configure the application by changing its name and configuration settings prior to starting it. 
+Once application is constructed, and validation checks are satisfied, a launch button will become available at the top left of the Application Canvas screen.  Clicking it will bring up the application launch dialog, which allows you to further configure the application by changing its name and configuration settings prior to starting it.
 
 ![](images/sales_dimensions/image04.png)
 
@@ -96,7 +96,7 @@ Confirm that the application is launched successfully by looking for *Running* s
 
 ## Visualize Data
 
-DataTorrent includes powerful data visualization tools, which allow you to visualize streaming data from multiple sources in real time.  For additional details see [Data Visualization](dtdashboard.md) tutorial.
+DataTorrent includes powerful data visualization tools, which allow you to visualize streaming data from multiple sources in real time.  For additional details see [Data Visualization](../dtdashboard.md) tutorial.
 
 After application is started, a **visualize** button, available in the **Application Overview** section, can be used to quickly generate a new dashboard for the Sales Dimensions application.
 
@@ -105,7 +105,3 @@ After application is started, a **visualize** button, available in the **Applica
 Once dashboard is created, additional widgets can be added to display various dimensions and combinations of the sales data.  Below is an example of multiple sales combinations displayed in real time.
 
 ![](images/sales_dimensions/image03.png)
-
-
-
-
