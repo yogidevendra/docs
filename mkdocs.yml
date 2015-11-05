@@ -40,6 +40,7 @@ pages:
         - JMS: coming_soon.md
         - HBase: coming_soon.md
     - REST API: dtgateway_api.md
+    - AutoMetric API: autometrics.md 
     - Scalable Design: coming_soon.md
 - Applications:
     - dtIngest: dtingest.md
@@ -52,7 +53,6 @@ pages:
     - Apache Apex: apex.md
     - Apache Apex-Malhar: apex_malhar.md
 - Deployment and Operations:
-    - Quick Start: coming_soon.md
     - Installation: installation.md
     - Configuration: coming_soon.md
     - Security: dtgateway_security.md
