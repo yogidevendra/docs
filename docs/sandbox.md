@@ -4,7 +4,10 @@ DataTorrent RTS Sandbox
 Welcome to the DataTorrent Sandbox, an introduction to DataTorrent RTS, the industry’s only unified stream and batch processing platform.  The Sandbox provides a quick an simple way to experience DataTorrent RTS without setting up and managing a complete Hadoop cluster.  The Sandbox contains pre-installed DataTorrent RTS Enterprise Edition along with all the Hadoop services required to launch and run the included demo applications.
 
 
-**Installation**: If you have not already, sandbox can be downloaded by visiting [datatorrent.com/download](https://www.datatorrent.com/download/).  To run the DataTorrent Sandbox, ensure you have downloaded and installed [VirtualBox](https://www.virtualbox.org/) 4.3 or greater.
+Installation
+--------------------------------------------------------------------------------
+
+If you have not already, sandbox can be downloaded by visiting [datatorrent.com/download](https://www.datatorrent.com/download/).  To run the DataTorrent Sandbox, ensure you have downloaded and installed [VirtualBox](https://www.virtualbox.org/) 4.3 or greater.
 
 
 Accessing Console

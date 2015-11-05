@@ -24,7 +24,7 @@ pages:
     - Applications: coming_soon.md
     - Application Packages: application_packages.md
     - Configuration Packages: configuration_packages.md
-    - Operators: coming_soon.md
+    - Operators: operator_development.md
     - Library Operators:
         - File splitter: operators/io/file_splitter.md
         - Block reader: operators/io/block_reader.md

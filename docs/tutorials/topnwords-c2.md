@@ -145,7 +145,7 @@ in Step I to the appropriate subdirectory of the new project.
 
         incubator-apex-malhar/demos/wordcount/src/main/java/com/datatorrent/demos/wordcount/
 
-    to 
+    to
 
         src/main/java/com/example/topnwordcount
 
@@ -157,16 +157,16 @@ in Step I to the appropriate subdirectory of the new project.
     - WordCountWriter.java
     - WordReader.java
 
-4.  Copy the file `WordDataSchema.json` from 
+4.  Copy the file `WordDataSchema.json` from
 
         incubator-apex-malhar/demos/wordcount/src/main/resources/
 
-    to 
+    to
 
         src/main/resources/
 
     in the new project.
-    
+
     _Note_: This file defines the format of data sent to the visualization widgets within **dtDashboard**.
 
 Step IV: Customize the application and operators
@@ -213,7 +213,7 @@ To make these changes, edit the file `ApplicationWithQuerySupport.java`:
 2.  Add streams to connect the two query operators to the DAG by adding these
     lines before the four existing `addstream()` calls:
 
-        dag.addStream("QueryFileStream", wsQueryFile.outputPort, snapshotServerFile.query,
+        dag.addStream("QueryFileStream", wsQueryFile.outputPort, snapshotServerFile.query);
         dag.addStream("QueryGlobalStream", wsQueryGlobal.outputPort, snapshotServerGlobal.query);
 
 3.  Save the file.
