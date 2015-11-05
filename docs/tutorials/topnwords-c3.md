@@ -33,9 +33,9 @@ Step I: Create top N words using dtAssemble
 3. Make sure that the top N words package that you built following the
    instructions of the previous chapter is uploaded.
 4. Click _TopNWordCount_ in the name column to see the application details.
-  ![TopNWordCount](images/image38.png "TopNWordCount")
+  ![TopNWordCount](images/topnwords/image38.png "TopNWordCount")
 5. Click _create new application_ button.
-  ![New Application](images/image37.png "New Application")
+  ![New Application](images/topnwords/image37.png "New Application")
 6. Type a name for your application, for example, _Top N words_, and click
    _Create_. The **Application Canvas** should open.
 
@@ -44,13 +44,13 @@ using dtAssemble are JSON applications. For each JSON application, there are
 three additional buttons that allow editing, deleting, and cloning operations.
 These operations are not supported for JAVA applications.
 
-![JSON Application](images/image40.png "JSON Application")
+![JSON Application](images/topnwords/image40.png "JSON Application")
 
 Step II: Drag operators to the application canvas
 ---
 
 1. Wait till the Application Canvas opens.
-  ![Application Canvas](images/image39.png "Application Canvas")
+  ![Application Canvas](images/topnwords/image39.png "Application Canvas")
 2. From the Operator Library list on the left, locate the desired
    operators by either:
 3. Exploring the categories.
@@ -61,7 +61,7 @@ Step II: Drag operators to the application canvas
    the implementing class or related terms in the search box. For example, to
    find the file reader, type _file_  into the search box to see a list of
    matching operators. For example, the first operator is _LineReader_.
-    ![Operator Library](images/image43.png "Operator Library")
+    ![Operator Library](images/topnwords/image43.png "Operator Library")
 4. Drag the operator onto the canvas.
 5. Repeat this process for all the operators described in Appendix entitled
     _Operators in Top N words application_, and arrange them on the canvas.
@@ -97,7 +97,7 @@ After you connect all the operators, the canvas looks like this.
 Although presented differently, it is the same as the logical DAG for
 the Java application.
 
-![Connections](images/image41.png "Connections")
+![Connections](images/topnwords/image41.png "Connections")
 
 Step IV: Configure the operator properties
 ---
@@ -109,7 +109,7 @@ properties of the operators.
 2. Locate the property labelled _Directory_ and enter the path to the input
    directory: `/tmp/test/input-dir`:
 
-    ![Properties](images/image42.png "Properties")
+    ![Properties](images/topnwords/image42.png "Properties")
 
 3. Configure the properties of the remaining operators using this table for
    reference. The table contains the same values that we set in the properties
@@ -187,10 +187,10 @@ properties of the operators.
 7. Click _launch_ in the top-left corner. _Note_: Before launching the
    application, shut down the IDE; if it is running at the time of a launch,
    the sandbox might hang due to resource exhaustion.
-  ![launch](images/image44.png "launch")
+  ![launch](images/topnwords/image44.png "launch")
 
 8. On the launch application dialog window, type a name for your application.
-  ![Name](images/image45.png "Name")
+  ![Name](images/topnwords/image45.png "Name")
 
 9. (Optional) To configure the application using a configuration file, select
     _Use a config file_ checkbox. To specify individual properties, select
@@ -199,7 +199,7 @@ properties of the operators.
 
 A transient pop-up at the top-right indicating that the launch was successful
 should appear.
-![Launched](images/image46.png "Launched")
+![Launched](images/topnwords/image46.png "Launched")
 
 After a successful launch, monitor the application following
 instructions in the Chapter entitled _Monitoring with dtManage_.

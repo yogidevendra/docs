@@ -1,27 +1,25 @@
 site_name: DataTorrent Documentation
+google_analytics: ['UA-44586211-1', 'docs.datatorrent.com']
+site_favicon: favicon.ico
 theme: readthedocs
 pages:
 - DataTorrent RTS: index.md
 - Demos:
     - Videos: demo_videos.md
-    - Applications: demos.md
-- Sandbox:
-    - Welcome to the Sandbox: sandbox.md
-    - Sandbox Demos: sandbox_demos.md
-    - Sandbox Services: sandbox_services.md
-- Applications:
-    - dtIngest: dtingest.md
-- Development and Tutorials:
+    - Running Apps: demos.md
+- Sandbox: sandbox.md
+- Development:
+    - Creating Applications: create.md
     - Tutorials:
         - Top N Words:
-            - Introduction: create.md
-            - Development Environment: tutorial-topNwords/TopNWords-c1.md
-            - Building in Java: tutorial-topNwords/TopNWords-c2.md
-            - Building with dtAssemble: tutorial-topNwords/TopNWords-c3.md
-            - Monitoring with dtManage: tutorial-topNwords/TopNWords-c4.md
-            - Visualizing with dtDashboard: tutorial-topNwords/TopNWords-c5.md
-            - Appendix: tutorial-topNwords/TopNWords-c6.md
-        - Sales Dimenions: sales_dimensions.md
+            - Introduction: tutorials/topnwords.md
+            - Development Environment: tutorials/topnwords-c1.md
+            - Building in Java: tutorials/topnwords-c2.md
+            - Building with dtAssemble: tutorials/topnwords-c3.md
+            - Monitoring with dtManage: tutorials/topnwords-c4.md
+            - Visualizing with dtDashboard: tutorials/topnwords-c5.md
+            - Appendix: tutorials/topnwords-c6.md
+        - Sales Dimenions: tutorials/sales_dimensions.md
     - Apex Development Setup: apex_development_setup.md
     - Applications: coming_soon.md
     - Application Packages: application_packages.md
@@ -43,9 +41,11 @@ pages:
         - HBase: coming_soon.md
     - REST API: dtgateway_api.md
     - Scalable Design: coming_soon.md
+- Applications:
+    - dtIngest: dtingest.md
 - Platform:
     - RTS: rts.md
-    - dtManage: coming_soon.md
+    - dtManage: dtmanage.md
     - dtAssemble: dtassemble.md
     - dtDashboard: dtdashboard.md
     - dtGateway: coming_soon.md

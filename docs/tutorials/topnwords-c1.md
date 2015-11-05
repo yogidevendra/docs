@@ -109,7 +109,7 @@ These steps describe how to download, import, and start the sandbox.
 
     1. Type the username and password (dtadmin/dtadmin), and click **Login**.
 
-![Login dialog](images/image32.png "Login dialog")
+![Login dialog](images/topnwords//image32.png "Login dialog")
 
 You should see a welcome page with a diagram illustrating the components in the
 platform stack; each block of the diagram is a clickable link for exploring

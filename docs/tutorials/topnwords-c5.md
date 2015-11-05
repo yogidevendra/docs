@@ -69,16 +69,16 @@ To generate dashboards
 1. Perform step I above.
 2. Make sure that the logical tab is selected and the _Application Overview_
   panel is visible.  
-    ![Application Overview](images/image24.png "Application Overview")
+    ![Application Overview](images/topnwords/image24.png "Application Overview")
 3. Click _visualize_ to see a dropdown containing previously created dashboards
  (if any), as well as the _generate new dashboard_ entry.  
-    ![new dashboard](images/image25.png "new dashboard")
+    ![new dashboard](images/topnwords/image25.png "new dashboard")
 4. Select the _generate new dashboard_ entry.
 
     You should now see panels with charts where one chart displays the data for
     the current file and a second chart displays the cumulative global data
     across all files processed so far.
-    ![charts](images/image26.png "charts")
+    ![charts](images/topnwords/image26.png "charts")
 
 5. Add more files, one at a time, to the input directory as described in
   step I above.
@@ -100,7 +100,7 @@ To add a widget
 3. In the _Data Source_ list, select a data source for your widget.
 4. Select a widget type under _Available Widgets_.
 
-    ![AddWidget.png](images/image27.png)
+    ![AddWidget.png](images/topnwords/image27.png)
 
 5. Click _add widget_.
 
@@ -120,7 +120,7 @@ To configure a widget
   position.
 3. To change the title and other properties, click the _edit_ button in the
   top-right corner of the widget.
-    ![Widget options](images/image28.png "Widget options")
+    ![Widget options](images/topnwords/image28.png "Widget options")
   You can now enter a new title in the _Title_ box or configure the rest of the
   options in any suitable way.
 4.  Click _OK_.
@@ -137,7 +137,7 @@ To perform additional tasks
    select it.
 2.  Click _settings_ button (next to buttons named _add widget_,
    _auto generate_, and _save settings_), below the name of the dashboard to see the _Dashboard Settings_ dialog:
-    ![Dashboard settings](images/image30.png "Dashboard settings")
+    ![Dashboard settings](images/topnwords/image30.png "Dashboard settings")
 3.  Type a new name for the dashboard in the _Name of dashboard_ box.
 4.  Type a suitable description in the box below.
 5.  Make sure that _TopNWordsWithQueries_ is selected under _Choose apps to
@@ -154,10 +154,10 @@ You can delete a dashboard at any time.
 2. On the top navigation bar, click _Visualize_.
 3. Select a dashboard.
 
-    ![visualize](images/image11.png "visualize")
+    ![visualize](images/topnwords/image11.png "visualize")
 
 4.  Click delete.
 
-    ![delete](images/image12.png "delete")
+    ![delete](images/topnwords/image12.png "delete")
 
   Note: The delete button becomes visible only if one or more rows are selected.

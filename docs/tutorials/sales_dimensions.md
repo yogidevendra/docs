@@ -25,7 +25,7 @@ Click create new application, and name the application “Sales Dimensions”.
 
 This will bring up the Application Builder interface
 
-![](images/create/image00.png)
+![](images/sales_dimensions/image00.png)
 
 
 
@@ -43,7 +43,7 @@ From the Operator Library section on the App Builder screen, select the followin
 
 Connect all the operators together by clicking on the output port of the upstream operator, dragging connection, and connecting to the input port of the downstream operator.  Use the example below for layout and connectivity reference.
 
-![](images/create/image01.png)
+![](images/sales_dimensions/image01.png)
 
 ## Customize Application and Operator Settings
 
@@ -74,7 +74,7 @@ By clicking on the individual operators or streams connecting them, and using Op
 2.  Set the *Topic* property for **Query** and **Result** operators to ```SalesDimensionsQuery``` and ```SalesDimensionsResult``` respectively.
 3.  Select the **Store** operator, and edit the *File Store* property.  Set the *Base Path* to ```SalesDimensionsDemoStore``` value.  This sets the HDHT storage path to write dimensions computation results to the ```/user/<username>/SalesDimensionsDemoStore``` on HDFS.
 
-    ![](images/create/image05.png)
+    ![](images/sales_dimensions/image05.png)
 
 4.  Click on the stream and set the *Stream Locality* to ```CONTAINER_LOCAL``` for all the streams between **Input** and **Compute** operators.  Changing stream locality controls which container operators get deployed to, and can lead to significant performance improvements for an application.  Once set, connection will be represented by a dashed line to indicate the new locality setting.
 
@@ -83,15 +83,15 @@ By clicking on the individual operators or streams connecting them, and using Op
 
 Once application is constructed, and validation checks are satisfied, a launch button will become available at the top left of the Application Canvas screen.  Clicking it will bring up the application launch dialog, which allows you to further configure the application by changing its name and configuration settings prior to starting it. 
 
-![](images/create/image04.png)
+![](images/sales_dimensions/image04.png)
 
 After launching, go to *Sales Dimensions* application operations page in the [Monitor](/#/ops) section.
 
-![](images/create/image06.png)
+![](images/sales_dimensions/image06.png)
 
 Confirm that the application is launched successfully by looking for *Running* state in the **Application Overview** section, and all confirming all the operators are successfully started under **Stram Events** section.  By navigating to **Physical** view tab, and looking at **Input**, **Parse**, **Enrich**, or **Compute** operators, notice that they are all deployed to the single container, thanks to the stream locality setting of ```CONTAINER_LOCAL``` we applied earlier.  This represents one of the many performance improvement techniques available with the DataTorrent platform, in this case eliminating data serialization and networking stack overhead between a group of adjacent operators.
 
-![](images/create/image07.png)
+![](images/sales_dimensions/image07.png)
 
 
 ## Visualize Data
@@ -100,11 +100,11 @@ DataTorrent includes powerful data visualization tools, which allow you to visua
 
 After application is started, a **visualize** button, available in the **Application Overview** section, can be used to quickly generate a new dashboard for the Sales Dimensions application.
 
-![](images/create/image02.png)
+![](images/sales_dimensions/image02.png)
 
 Once dashboard is created, additional widgets can be added to display various dimensions and combinations of the sales data.  Below is an example of multiple sales combinations displayed in real time.
 
-![](images/create/image03.png)
+![](images/sales_dimensions/image03.png)
 
 
 

@@ -15,7 +15,7 @@ To monitor the top N words application
 4. Click _TopNWordsWithQueries_ to see a page with four tabs: _logical_,
    _physical_, _physical-dag-view_, and _metric-view_.
 5.  Under _StramEvents_, ensure that all the operators have started.
-    ![Stram Events](images/image14.png "Stram Events")
+    ![Stram Events](images/topnwords/image14.png "Stram Events")
 
 DAGs and widgets
 ---
@@ -44,7 +44,7 @@ This panel displays application properties such as state, number of operators,
 allocated memory, and the number of tuples processed. You can use the kill
 button to terminate the application. The _visualize_ button allows you to
 create one or more custom dashboards to visualize the application output.
-![Application Overview](images/image24.png "Application Overview")
+![Application Overview](images/topnwords/image24.png "Application Overview")
 
 **Logical DAG**
 
@@ -60,7 +60,7 @@ To customize these properties
 3. To display a detail at the bottom of this operator, click the Bottom list
    and select a metric.
 
-![DAG](images/image47.png "DAG")
+![DAG](images/topnwords/image47.png "DAG")
 
 **Logical Operators**
 
@@ -68,14 +68,14 @@ This panel displays a table with detailed information about each operator such
 as its name, the associated JAVA class, the number of tuples processed, and
 the number of tuples emitted.
 
-![Logical Operators](images/image48.png "Logical Operators")
+![Logical Operators](images/topnwords/image48.png "Logical Operators")
 
 **Streams**
 
 This panel displays details of each stream such as the name, locality, source,
 and sinks.
 
-![Streams](images/image49.png "Streams")
+![Streams](images/topnwords/image49.png "Streams")
 
 **Metrics Chart**
 
@@ -84,7 +84,7 @@ processed by some internal components. Since this application has not processed
 any tuples so far (no input file was provided), the green and blue lines
 coincide with the horizontal axis:
 
-![Metrics](images/image20.png "Metrics")
+![Metrics](images/topnwords/image20.png "Metrics")
 
 Physical view and associated widgets
 
@@ -97,7 +97,7 @@ logical operator may correspond to multiple physical operators.
 
 **Physical Operators**
 
-![Physical Operators](images/image21.png "Physical Operators")
+![Physical Operators](images/topnwords/image21.png "Physical Operators")
 
 **Containers**
 
@@ -107,7 +107,7 @@ container, and shown in a column with that name. Additional information about
 the container (such as the host on which it is running) can be gleaned from the
 matching row in the _Containers_ table.
 
-![Containers](images/image22.png "Containers")
+![Containers](images/topnwords/image22.png "Containers")
 
 If the state of all the physical operators and containers is **ACTIVE**
 and green   this is a healthy state. If the memory requirements for all the
@@ -143,7 +143,7 @@ In the _Container Overview_ panel, you should see a blue _logs_ dropdown
 button; click on it to see a menu containing three entries: `dt.log`, `stderr`,
 and `stdout`.
 
-![logs](images/image23.png "logs")
+![logs](images/topnwords/image23.png "logs")
 
 All messages output using **log4j** classes will appear in `dt.log`
 whereas messages written directly to the standard error or standard

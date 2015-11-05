@@ -1,5 +1,6 @@
 Building top N words using JAVA
-===
+===============================
+
 This chapter describes the steps to build the application in Java using some
 source files from the Malhar repository, suitably modified and customized to
 run on the sandbox. We will use the **dtManage** GUI tool to launch the
@@ -41,11 +42,11 @@ Generate a new Maven archetype project as follows:
   * Open NetBeans.
   * Click File &#x21e8; New Project.
   * From the projects list, select _Project from Archetype_, and click _Next_.
-    ![Project from ArcheType](images/image34.png "Project from Archetype")
+    ![Project from ArcheType](images/topnwords//image34.png "Project from Archetype")
 
   * On the Maven Archetype window, type `apex` in the _Search_ box, and
      from the list of _Known Archetypes_, select `apex-app-archetype`.
-     ![apex archetype](images/image33.png "apex archetype")
+     ![apex archetype](images/topnwords//image33.png "apex archetype")
   * Make sure that the values for the fields match the values shown in this
      table:
 
@@ -91,7 +92,7 @@ Generate a new Maven archetype project as follows:
       5. Enter the package name in the _Package_ box, for example,
           `com.example.topnwordcount`.
 
-    ![Name and Location](images/image36.png "Name and Location")
+    ![Name and Location](images/topnwords//image36.png "Name and Location")
 
   * Click Finish.
 
@@ -314,7 +315,7 @@ To upload the top N words application package
    (both are `dtadmin`).
 2. On the top navigation bar, click _Develop_.
 3. Under _App Packages_, click _upload a package_.  
-  ![Upload](images/image35.png "Upload")
+  ![Upload](images/topnwords//image35.png "Upload")
 4. Navigate to the location of the `topNwordcount-1.0-SNAPSHOT.apa`
    application package file is stored.
 5. Wait till the package is successfully uploaded.
