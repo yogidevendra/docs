@@ -1,7 +1,7 @@
 # dtIngest Tutorial
 
-"dtIngest" is a datatorrent application that can read data from various
-sources and store the processed data to various sinks. The data movement
+"dtIngest" is a DataTorrent application that ingest data from various
+sources and egress the processed data to various sinks. The data movement
 happens at scale and in parallel. To know more about dtIngest please
 refer the [dtIngest
 blog](https://www.datatorrent.com/dtingest-unified-streaming-batch-data-ingestion-hadoop/).
@@ -10,26 +10,26 @@ This tutorial refers to dtIngest version 1.0.0
 
 ## Pre-requisites
 
--   Datatorrent RTS should be installed on your hadoop cluster. Please
-    refer [Installation
-    guide](https://www.datatorrent.com/docs/README.html) for
-    installation steps.
+-   Datatorrent RTS on a Hadoop cluster. Please
+    refer to [Installation
+    guide](http://docs.datatorrent.com/installation/) for
+    details.
 
--   Source and destination file systems should be accessible from all
-    nodes of the cluster running DataTorrent RTS. It can be any of HDFS,
+-   Source and destination file systems must be accessible from all
+    DataTorrent RTS nodes. It can be any of HDFS,
     NFS, S3, FTP. For sandbox image or single node hadoop cluster you can also use local
     files as source. But, for multi-node cluster local files cannot be used as source.
 
--   In case your source or destination file system is NFS; then NFS
-    should be mounted on all the nodes within the hadoop cluster at a
+-   If source or destination file system is NFS; then NFS
+    should be mounted on all the nodes within the Hadoop cluster at a
     common mount point and should have read/write permission to the user
     running dtIngest application.
 
-## Launching ingestion application
+## Launching dtIngest
 
 dtIngest application can be configured and launched from [Datatorrent
 Management
-Console](https://www.datatorrent.com/docs/guides/ConsoleGuide.html).
+Console](http://docs.datatorrent.com/dtmanage/).
 
 1.  Navigate to 'Develop' tab.
     ![Screenshot from 2015-09-24 16:33:45.png](images/dtingest/image45.png)
@@ -37,40 +37,32 @@ Console](https://www.datatorrent.com/docs/guides/ConsoleGuide.html).
 1.  The dtIngest application package is already uploaded and available
     to use under 'Application Packages' section. 
 
-1.  Select 'Ingestion Application' from list of App packages. And click
+1.  Select 'Ingestion Application' from the list of App packages. And click
     on ‘launch application’ button.
     ![Screenshot from 2015-09-24 16:37:23.png](images/dtingest/image13.png)
 
 1.  Configuration page for dtingest is displayed after the 'launch'.
-    Just provide desired values for the configuration and click
+    Enter the configuration values and click
     'Launch' to ingest your data.
 
-## Configuring dtingest instance properties
+## Configuring dtIngest Instance Properties
 
-1.  In the 'Name this application' textbox; enter suitable name of
-    your choice for this ingestion instance. For example, 'Ingestion
+1.  In the 'Name this application' textbox; name the application instance. For example, 'Ingestion
     test'
     ![Screenshot from 2015-10-15 13:58:10.png](images/dtingest/image33.png)
 
-1.  Under 'Specify a queue' option; keep the 'Specify a queue'
-    checkbox unselected if you want to use default queue.
+1.  Leave 'Specify a queue' unchecked to use default queue.
 
-    If you want to specify some specific queue to launch this application; then
-    select the 'Specify a queue' checkbox and select desired queue from the
-    dropdown. To know more about this read [Hadoop Capacity Scheduler Docs](https://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
+    If you want to specify a queue to launch this application, check 'Specify a queue' checkbox and select queue from the
+    dropdown. For more information, go to [Hadoop Capacity Scheduler Docs](https://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
     ![Screenshot from 2015-10-15 15:20:19.png](images/dtingest/image10.png)
 
-1.  Under 'Use config a file' option; select the checkbox if you wish
-    to use some configuration which is already saved. In the drop down
-    select the desired configuration.
-    After selection, all the input options will load the values saved in the configuration.
+1.  Under 'Use config a file' option, check the box to use existing configuration file. Select file from drop down to load the configuration file.
     ![Screenshot from 2015-10-15 16:10:03.png](images/dtingest/image32.png)
 
-    After values are loaded you can modify the values of any option to the
-    desired value. You can also save this new combination of values as a
-    configuration under the same name or different name.
+    Once it is loaded, you can modify the values. You can save the new configuration as a new file or overwrite the existing one. 
 
-    If you want to specify all the options from scratch without using any pre-saved configuration; then unselect a checkbox 'Use a config file'
+    Leave 'Use a config file' unchecked to create a new one. 
 
 1.  Configure input source, refer to [Configuring input
     source](#configuring-input-source) section for details.
@@ -85,7 +77,7 @@ Console](https://www.datatorrent.com/docs/guides/ConsoleGuide.html).
     you wish to save this combination of values for future use.
     You may keep this blank if you do not want to save this for future use. 
 
-## Configuring input source
+## Configuring Input Source
 
 ### Configuring HDFS input
 
@@ -108,14 +100,14 @@ Console](https://www.datatorrent.com/docs/guides/ConsoleGuide.html).
 
     ![](images/dtingest/image14.png)
 
-    If there are more than one directories/file to be ingested; click on
-    'Add directory' button. Then specify complete URL for the file path to be
-    ingested as specified above
+    If there are more than one directories/file to be ingested, click on
+    'Add directory' button and specify complete URL file path to be
+    ingested.
 
-1.  In the 'Filtering criteria' field; specify regular expression for
+1.  In the 'Filtering criteria' field, specify regular expression for
     files to be copied.  For regular expression syntax, please refer to
     [Java regular expression  documentation](http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html).
-    For example, if only `.log` files need to be ingested; then use `.*\.log` as regular expression.  
+     For example, if only `.log` files need to be ingested, then use `.*\.log` as regular expression.  
 
     ![Screenshot from 2015-09-24 19:36:18.png](images/dtingest/image02.png)
 
@@ -127,16 +119,14 @@ Console](https://www.datatorrent.com/docs/guides/ConsoleGuide.html).
     In this case, dtingest ingests only '.log' files from the source
 directories.
 
-1.  Under 'Runs' field, select 'Single run' if you expect
-    application to shutdown after ingesting files currently present in
-    the directory.
+1.  Under 'Runs' field, select 'Single run' if you want
+    application to shutdown after completing files ingestion.
 
     Select 'Polling' if you expect application to periodically poll the
-    directory/file for the changes. Change of file is detected based on
-    'modification timestamp'. Entire file will be ingested again in case of
+    directory/file for changes. File change is based on timestamp difference. Entire file will be ingested again in case of
     any change.
 
-    If 'Polling' mode is selected; then 'Polling interval' should be specified.
+    If 'Polling' mode is selected, then 'Polling interval' should be specified.
     This is the time interval between sub-sequent scans for detecting
     new/modified files.  
 
@@ -147,8 +137,7 @@ directories.
 1.  For 'Input data source' field; select 'File/NFS' option from the
     drop-down. ![Screenshot from 2015-09-24 15:23:24.png](images/dtingest/image31.png)
 
-1.  Under 'Source directories'; specify complete URL for the file path
-    to be ingested.
+1.  Under 'Source directories'; specify complete URL file path.
 
     For example, if the NFS mount is located at '/disk5/nfsmount' and
     'path/to/data/directory' is the directory under this mount which needs
@@ -164,19 +153,19 @@ directories.
     Note that, for the above example, there should be `///` (triple slash)
     after `file:`.
 
-1.  If there are more than one directories to be ingested; click on
-    'Add directory' button. Then specify complete URL for the file
-    path to be ingested as specified in point 3.
+1.  If there are more than one directories to be ingested, click on
+    'Add directory' button and specify complete URL file
+    path.
 
-1.  If there are specific files to be ingested; then specify complete
-    URL for the file path to be ingested.
+1.  If there are specific files, as opposed to a directory,specify complete
+    URL file path.
 
     For example,  if some other NFS mount is located at '/disk6/nfsmount2' and 'path/to/file/to/copy/datafile.txt' is a file under this mount which needs
     to be ingested; then complete URL in this case will be `file:///disk6/nfsmount2/path/to/file/to/copy/datafile.txt`.
 
     ![Screenshot from 2015-09-24 17:36:06.png](images/dtingest/image39.png)
 
-1.  In the 'Filtering criteria' field; specify regular expression for
+1.  In the 'Filtering criteria' field, specify regular expression for
     files to be copied.
     For example, if only `.log` files need to be ingested; then use `.*\.log` as regular expression.
 
@@ -187,14 +176,13 @@ directories.
     -   `\\.` indicates dot escaped with backslash '\\'
     -   `log` indicates desired extension which is 'log'
 
-    In this case, dtingest ingests only `.log` files from the source directories.
+    Therefore, dtingest ingests only `.log` files from the source directories.
 
-1.  Under 'Runs' field, select 'Single run' if you expect application
+1.  Under 'Runs' field, select 'Single run' if you want application
     to shutdown after ingesting files currently present in the directory.
 
     Select 'Polling' if you expect application to periodically poll the
-    directory/file for the changes. Change of file is detected based
-    on 'modification timestamp'. Entire file will be ingested again in case
+    directory/file for changes. File change detection is based on timestamp. Entire file will be ingested again in case
     of any change.
 
     If 'Polling' mode is selected; then 'Polling interval' should be specified.
@@ -205,18 +193,14 @@ directories.
 
 ### Configuring FTP input
 
-FTP is most widely used transfer protocol, used for transfer files from
-one host to another. Use dtIngest, to copy files/directory from ftp
-source location to some destination. This section gives details about
-how to ingest files/directories from FTP using dtIngest.  
+This section gives details about how to ingest files/directories from FTP using dtIngest.  
 
 1.  Select  FTP as input type
     ![FTPInput.png](images/dtingest/image19.png)
 
 1.  After selecting the FTP as input type, snapshot of UI as below:     ![FTP1.png](images/dtingest/image15.png)
 
-1.  Configure FTP input url
-    Input url for FTP needs to be provided in following format,  `ftp://username:password@host:port/path`
+1.  The format for FTP URL input is as follows:  `ftp://username:password@host:port/path`
     where,
     - `ftp` :  protocol name
     - `username` :  username for ftp server
@@ -227,23 +211,16 @@ how to ingest files/directories from FTP using dtIngest.  
 
     ![FTP2.png](images/dtingest/image05.png)
 
-    If you want to copy multiple files/directories, click on (+) button. If
-you are copying multiple files, then UI would be as follows:
+    To copy multiple files/directories, see below: 
     ![ftp2.png](images/dtingest/image03.png)
 
-    If you are copying multiple directories, then UI would be as follows:
+    To copy multiple directories, see below:
     ![ftp3.png](images/dtingest/image24.png)
 
 ### Configuring Amazon S3 input
 
-S3 is clustered storage service of Amazon. Amazon s3 provides a web
-services interface that can be used to store and retrieve any amount of
-data, at any time, from anywhere on web. For more details about Amazon
-S3, please refer to [Amazon S3
-Documentation](https://aws.amazon.com/documentation/s3/).
-
-Use dtIngest, you can copy files/directory efficiently from S3 source
-location to some destination. This section gives details about how to
+For details on Amazon Simple Storage Service (S3), please go to [Amazon S3
+Documentation](https://aws.amazon.com/documentation/s3/). This section gives details about how to
 ingest files/directories from S3 using dtIngest.  
 
 1.  Select  S3 as input type
@@ -271,24 +248,19 @@ specify the url’s, UI would be as below:
 
 ### Configuring Kafka input
 
-Kafka is a distributed publish subscribe messaging system. Since kafka
-is distributed system, topics are partitioned and replicated across
-nodes. Messages in kafka are expired after some time. For more details
-about Kafka, please refer to [Apache Kafka
+For more details on Kafka, please refer to [Apache Kafka
 Documentation](http://kafka.apache.org/documentation.html).
 
-We need to copy messages from multiple partitions to one destination
-before expiry. This section gives details about how to ingest messages
-from kafka using dtIngest.
+This section gives details about how to ingest messages from Kafka using dtIngest.
 
-1.  Select kafka as input type
+1.  Select Kafka as input type
     ![kafkaInput1.png](images/dtingest/image46.png)
 
-1.  After selecting kafka as input type then UI looks like as below:
+1.  After selecting Kafka as input type then UI looks like as below:
     ![Kafka1.png](images/dtingest/image23.png)
 
-1.  Configure topic name and zookeeper quorum.
-    zookeeper quorum  is a string in the form of
+1.  Configure topic name and Zookeeper quorum.
+    Zookeeper quorum  is a string in the form of
     `hostname1:port1,hostname2:port2,hostname3:port3`
 
     where,
@@ -299,12 +271,12 @@ from kafka using dtIngest.
     e.g. localhost:2181,localhost:2182
     ![Kafka.png](images/dtingest/image44.png)
 
-1.  Select the offset type. By default, “Latest” offset is enabled. If
-    you want to consume messages from beginning of kafka queue, then
+1.  Select the offset type (default is “Latest”). If
+    you want to consume messages from beginning of Kafka queue, then
     select “Earliest” offset option.
 
-1.  If the topic name is same across the kafka clusters and want to
-    ingest data from these clusters, then configure the zookeeper quorum
+1.  If the topic name is same across the Kafka clusters and want to
+    ingest data from these clusters, then configure the Zookeeper quorum
     as follows:
 
     `c1::hs1:p1,hs2:p2,hs3:p3;c2::hs4:p4,hs5:p5,c3::hs6:p6`
@@ -314,16 +286,14 @@ from kafka using dtIngest.
     - `hs1,hs2,hs3,hs4,hs5,hs6` are zookeeper host names
     - `p1,p2,p3,p4,p5,p6` are corresponding ports.
 
-    For example, ClusterA and ClusterB are 2 kafka clusters as below, then
-    zookeeper quorum would be as `ClusterA::node3.example.com:2181,node4.example.com:2181;ClusterB::node8.example.com:2181`
+    For example, ClusterA and ClusterB are 2 Kafka clusters as below, then
+    Zookeeper quorum would be as `ClusterA::node3.example.com:2181,node4.example.com:2181;ClusterB::node8.example.com:2181`
 
     ![KafkaCluster.png](images/dtingest/image04.png)
 
 ### Configuring JMS input
 
-JMS provides the facility to create, send and read messages. You can
-copy messages from JMS source location to some destination using
-dtIngest. This section gives details about how to ingest messages from
+This section gives details about how to ingest messages from
 JMS using dtIngest.  
 
 1.  Select JMS as input type.
@@ -332,22 +302,19 @@ JMS using dtIngest.  
 1.  After selecting the JMS as source type then UI looks like as below:
     ![jms1.png](images/dtingest/image25.png)
 
-1.  Configure Broker URL and topic name.
-    Broker url would be in the form of tcp://hostName:port
+1.  Configure Broker URL and topic name as tcp://hostName:port
     ![JMS2.png](images/dtingest/image38.png)
 
-## Configuring output destination
+## Configuring Output Destination
 
 ### Configuring HDFS output
 
-1.  For 'Output Location' field; select 'HDFS' option from the
+1.  For 'Output Location' field, select 'HDFS' option from the
     drop-down.
 
     ![Screenshot from 2015-09-24 20:08:49.png](images/dtingest/image08.png)
 
-1.  Under 'Target directory' specify complete URL for the HDFS path
-    for the destination directory. For example, URL should be like
-`hdfs://namenode1.cluster.company.org:8020/user/username/path/to/destination/directory`
+1.  Under 'Target directory' specify complete HDFS path URL of the destination directory. For example,   `hdfs://namenode1.cluster.company.org:8020/user/username/path/to/destination/directory`
 
     ![Screenshot from 2015-09-24 20:51:55.png](images/dtingest/image47.png)
 
@@ -369,16 +336,15 @@ JMS using dtIngest.  
 
 #### Compact files
 
-If you want to copy the data to the HDFS and partition the data into
-partitions of fixed size; use 'Compact files' feature to do this. This
+Use 'Compact files' feature if you want to partition data into fix size. This
 can be used to combine large number of small files into partitions of
-manageable size. Additionally, you may also use this to breakdown very
+manageable size. Vice versa, you can break down a very
 large file into partitions of manageable size.
 
   ![Screenshot from 2015-10-16 11:04:39.png](images/dtingest/image28.png)
 
 1.  Select 'yes' for radio button under 'Compact files' option. This
-    will display other additional options for compaction. If you do not
+    will display additional options for compaction. If you do not
     want to compact files but copy them as they are; then select 'no'
     for 'Compact files' option. If you select 'no' ; additional
     options for compaction will be hidden.
@@ -407,8 +373,7 @@ incoming data will be spilled to the next partition.
 
     ![](images/dtingest/image00.png)
 
-1.  Under ‘Target directory’ specify complete URL for NFS path for
-    destination directory.  
+1.  Under ‘Target directory’ specify complete NFS path URL of the destination directory.  
     For example,  if the NFS mount is located at '/disk5/nfsmount' and
     'path/to/data/directory' is the directory under this mount which
     needs to be ingested; then complete URL in this case will be
@@ -433,8 +398,8 @@ incoming data will be spilled to the next partition.
 
 1.  After selecting FTP as output type then UI looks like as below:   ![FTPOUtput3.png](images/dtingest/image42.png)
 
-1.  Specify the destination url below the “Output directory” label.
-    Output url for FTP needs to be provided in following format,  `ftp://username:password@host:port/path`
+1.  Specify the destination URL below the “Output directory” label.
+    The FTP Output URL is as follows: `ftp://username:password@host:port/path`
 
     Where,
     - `ftp` :  protocol name
@@ -454,9 +419,8 @@ incoming data will be spilled to the next partition.
 1.  After selecting S3 as output then UI looks like as below:
     ![H2S3\_12.png](images/dtingest/image36.png)
 
-1.  Specify the destination url below the 'Output directory' label.
-output url for S3 needs to be provided in following format,  
-`s3n://ukey:upass@bucketName/path`
+1.  Specify URL destination below the 'Output directory' label.
+The S3 output URL is as follows: `s3n://ukey:upass@bucketName/path`
     Where,
     - `s3n` : protocol name
     - `ukey` : access key
@@ -466,10 +430,10 @@ output url for S3 needs to be provided in following format,
 
 ### Configuring Kafka output
 
-1.  Select kafka as output type.
+1.  Select Kafka as output type.
     ![KafkaOutput1.png](images/dtingest/image35.png)
 
-1.  After Selecting kafka as output then UI looks like as below:
+1.  After selecting Kafka as output then UI looks like as below:
     ![K2K2.png](images/dtingest/image22.png)
 
 1.  Configure broker list and topic name.
@@ -482,10 +446,10 @@ output url for S3 needs to be provided in following format,
 1.  After selecting JMS as output type then UI looks like as below:
 ![K2J1.png](images/dtingest/image21.png)
 
-1.  Configure Broker URL and topic name. Broker URL would be in the form of tcp://host:port
+1.  Configure Broker URL and topic name as tcp://host:port
 ![K2J2.png](images/dtingest/image40.png)
 
-## Configuring processing steps
+## Configuring Processing Steps
 
 ### Configuring compression
 
@@ -506,7 +470,7 @@ https://oss.sonatype.org/content/repositories/releases/com/datatorrent/dtIngest-
 
 ### Configuring encryption
 
-Select type of encryption on configuration page.
+Select encryption type on configuration page.
 ![](images/dtingest/image27.png)
 
 1.  Apply AES encryption:
