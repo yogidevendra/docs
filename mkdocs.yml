@@ -1,5 +1,5 @@
 site_name: DataTorrent Documentation
-google_analytics: ['UA-44586211-1', 'docs.datatorrent.com']
+google_analytics: ['UA-44586211-2', 'docs.datatorrent.com']
 site_favicon: favicon.ico
 theme: readthedocs
 pages:
@@ -40,7 +40,7 @@ pages:
         - JMS: coming_soon.md
         - HBase: coming_soon.md
     - REST API: dtgateway_api.md
-    - AutoMetric API: autometrics.md 
+    - AutoMetric API: autometrics.md
     - Scalable Design: coming_soon.md
 - Applications:
     - dtIngest: dtingest.md
