@@ -19,7 +19,7 @@ pages:
             - Monitoring with dtManage: tutorials/topnwords-c4.md
             - Visualizing with dtDashboard: tutorials/topnwords-c5.md
             - Appendix: tutorials/topnwords-c6.md
-        - Sales Dimenions: tutorials/sales_dimensions.md
+        - Sales Dimensions: tutorials/sales_dimensions.md
     - Apex Development Setup: apex_development_setup.md
     - Applications: coming_soon.md
     - Application Packages: application_packages.md
