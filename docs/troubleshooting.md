@@ -3,328 +3,280 @@ Troubleshooting DataTorrent RTS
 
 ## Download
 
-1.  Where can I get DataTorrent RTS software OR package for Community /
-    Enterprise edition?
+###  Where can I get DataTorrent RTS software?
 
-    DataTorrent products are available for download from [https://www.datatorrent.com/download/](https://www.datatorrent.com/download)
+DataTorrent products are available for download from [https://www.datatorrent.com/download/](https://www.datatorrent.com/download)
 
-    DataTorrent RTS has two editions for download:
+-  **Community Edition**:  It is a packaged version of Apache Apex and enables developers to quickly develop their big data streaming and batch projects.
+-  **Enterprise Edition**:  Designed for enterprise production deployment and includes security, advanced monitoring and troubleshooting, graphical application assembly, and application data visualization.
+-  **Sandbox Edition**:  Enterprise Edition and demo applications pre-installed and configured with a single-node Hadoop cluster running in a virtual machine.  Optimized for evaluation and training purposes.
+-  **dtIngest Application**: simplifies the collection, aggregation and movement of large amounts of data to and from Hadoop and is available for production use at no cost.
 
-    -   Community Edition:  It is a packaged version of Apache Apex and enables developers to
-        quickly develop their big data streaming and batch projects.
+###  What is the difference between DataTorrent RTS editions?
 
-        [http://web.datatorrent.com/DataTorrent-RTS-Community-Edition-Download.html](http://web.datatorrent.com/DataTorrent-RTS-Community-Edition-Download.html)
+Please refer to [DataTorrent RTS editions overview](https://www.datatorrent.com/product/edition-overview/)
 
-    -   Enterprise Edition:  This edition is designed for enterprise production deployment and
-        includes data analytics, GUI-based app assembly and data visualization.
+###  Where can I find the Standard edition installer?
 
-        [http://web.datatorrent.com/DataTorrent-RTS-Enteprise-Edition-Download.html](http://web.datatorrent.com/DataTorrent-RTS-Enteprise-Edition-Download.html)
+You can use the download link for Enterprise edition as the package is
+same for both editions. But, you have to apply the license to enable the
+Standard edition. You can upgrade the license by using dtManage.
+Licenses are available in 2 types : evaluation and production.
 
-2.  What are DataTorrent RTS package contents of Community / Enterprise
-    edition ?
+###  What are DataTorrent RTS package contents of Community vs Enterprise edition?
 
-    Package contents for Community edition:
+Package contents for Community edition:
 
-    -   Apache Apex (incubating)
-    -   DataTorrent Demo Applications
-    -   DataTorrent dtManage
-    -   DataTorrent dtIngest
+-   Apache Apex (incubating)
+-   DataTorrent Demo Applications
+-   DataTorrent dtManage
+-   DataTorrent dtIngest
 
-    Package contents for Enterprise edition:
+Package contents for Enterprise edition:
 
-    -   Apache Apex (incubating)
-    -   DataTorrent Demo Applications
-    -   DataTorrent Operator Library
-    -   DataTorrent Enterprise Security
-    -   DataTorrent dtManage
-    -   DataTorrent dtIngest
-    -   DataTorrent dtAssemble
-    -   DataTorrent dtDashboard
+-   Apache Apex (incubating)
+-   DataTorrent Demo Applications
+-   DataTorrent Operator Library
+-   DataTorrent Enterprise Security
+-   DataTorrent dtManage
+-   DataTorrent dtIngest
+-   DataTorrent dtAssemble
+-   DataTorrent dtDashboard
 
-3.  Where can I find the Standard edition installer?
+###  How do I confirm the package downloaded correctly?
 
-    You can use the download link for Enterprise edition as the package is
-    same for both editions. But, you have to apply the license to enable the
-    Standard edition. You can upgrade the license by using dtManage.
-    Licenses are available in 2 types : evaluation and production.
+You can verify the downloaded DataTorrent RTS package by comparing with
+MD5 sum. The command to get md5 sum of downloaded package:
 
-4.  What is the difference between DataTorrent RTS editions?
+    # md5sum <DT_RTS_Package>
 
-    Please refer to [DataTorrent RTS editions
-    overview](https://www.datatorrent.com/product/edition-overview/)
+Compare the result with MD5 sum posted on the product download page.
 
-5.  How do I confirm the package downloaded correctly?
+###  How do I download the DataTorrent RTS package using CLI?
 
-    You can verify the downloaded DataTorrent RTS package by comparing with
-    MD5 sum. The command to get md5 sum of downloaded package:
+Use following curl command to download DataTorrent RTS package:
 
-        # md5sum <DT_RTS_Package>
+    curl -LSO <DT_RTS_download_link>
 
-    Compare the result with \<TODO\> Not available on website
-    ([WEB-243](https://datatorrent.atlassian.net/browse/WEB-243))
+We recommend using ‘curl’ instead of ‘wget’, which lacks chunked transfer encoding support, potentially resulting in corrupted downloads.
 
-6.  How do I download the DataTorrent RTS package using CLI?
+###  What are the prerequisites of DataTorrent RTS ?
 
-    Use following curl command to download DataTorrent RTS package:
+DataTorrent RTS platform has following Hadoop cluster requirements:
 
-        # curl -LSO <DT_RTS_download_link>
+-   Operating system supported by Hadoop distribution
+-   Hadoop (2.2 or above) cluster with HDFS, YARN configured. Make sure
+    hadoop executable available in PATH variable
+-   Java 7 or 8 as supported by Hadoop distribution
+-   Minimum of 8G RAM available on the Hadoop cluster
+-   Permissions to create HDFS directory for DataTorrent user
+-   Google Chrome, Firefox, or Safari to access dtManage (DataTorrent UI
+    console)
 
-    We recommend to use ‘curl’ instead of ‘wget’ to get the package
-    downloaded without corruption
+###  Where can I start from after downloading DataTorrent RTS?
 
-7.  What are the prerequisites of DataTorrent RTS ?
+-   After successful download of DataTorrent RTS, make sure all prerequisites are satisfied.
+-   You will need to install DataTorrent RTS on Hadoop cluster using the downloaded installer. Refer to [installation guide](installation.md)
+-   Once installed, you will be prompted to proceed to dtManage, the DataTorrent management console, where you will be able to launch and manage applications.
 
-    DataTorrent RTS platform has following Hadoop cluster
-    requirements:
+###  What are the supported Hadoop distribution by DataTorrent RTS?
 
-    -   Operating system supported by Hadoop distribution
-    -   Hadoop (2.2 or above) cluster with HDFS, YARN configured. Make sure
-        hadoop executable available in PATH variable
-    -   Java 7 or 8 as supported by Hadoop distribution
-    -   Minimum of 8G RAM available on the Hadoop cluster
-    -   Permissions to create HDFS directory for DataTorrent user
-    -   Google Chrome, Firefox, or Safari to access dtManage (DataTorrent UI
-        console)
+DataTorrent RTS is a Hadoop 2.x native application and is fully
+integrated with YARN and HDFS providing tight integration with any
+Apache Hadoop 2.x based distribution.
 
-8.  Where can I start from after downloading DataTorrent RTS?
+<table>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr class="odd">
+<td align="left"><p>Hadoop Distribution</p></td>
+<td align="left"><p>Supported Version</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Amazon EMR</p></td>
+<td align="left"><p>Hadoop 2.4 and higher</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Apache Hadoop</p></td>
+<td align="left"><p>Hadoop 2.2 and higher</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Cloudera</p></td>
+<td align="left"><p>CDH 5.0 and higher</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Hortonworks</p></td>
+<td align="left"><p>HDP 2.0 and higher</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>MapR</p></td>
+<td align="left"><p>4.0 and higher</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Microsoft</p></td>
+<td align="left"><p>HDInsight</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Pivotal</p></td>
+<td align="left"><p>2.1 and higher</p></td>
+</tr>
+</tbody>
+</table>
 
-  -   After successful download of DataTorrent RTS, make sure all
-      prerequisites are satisfied.
-  -   You will need to install DataTorrent RTS on Hadoop cluster using the
-      downloaded installer. For more details, you can refer to
-      [installation guide](installation.md)
-  -   Once installation done, you can configure and monitor applications
-      by using dtManage(DataTorrent console)
+###  What is the Datatorrent Sandbox?
 
-9.  What are the supported Hadoop distribution by DataTorrent RTS?
+The Sandbox provides a quick and simple way to experience DataTorrent RTS without setting up and managing a complete Hadoop cluster. The Sandbox contains pre-installed DataTorrent RTS Enterprise Edition along with all the Hadoop services required to launch and run the included demo applications.
 
-  DataTorrent RTS is a Hadoop 2.x native application and is fully
-  integrated with YARN and HDFS providing tight integration with any
-  Apache Hadoop 2.x based distribution.
+###  Where do I get DataTorrent Sandbox download link?
 
-    <table>
-    <col width="50%" />
-    <col width="50%" />
-    <tbody>
-    <tr class="odd">
-    <td align="left"><p>Hadoop Distribution</p></td>
-    <td align="left"><p>Supported Version</p></td>
-    </tr>
-    <tr class="even">
-    <td align="left"><p>Amazon EMR</p></td>
-    <td align="left"><p>Hadoop 2.4 and higher</p></td>
-    </tr>
-    <tr class="odd">
-    <td align="left"><p>Apache Hadoop</p></td>
-    <td align="left"><p>Hadoop 2.2 and higher</p></td>
-    </tr>
-    <tr class="even">
-    <td align="left"><p>Cloudera</p></td>
-    <td align="left"><p>CDH 5.0 and higher</p></td>
-    </tr>
-    <tr class="odd">
-    <td align="left"><p>Hortonworks</p></td>
-    <td align="left"><p>HDP 2.0 and higher</p></td>
-    </tr>
-    <tr class="even">
-    <td align="left"><p>MapR</p></td>
-    <td align="left"><p>4.0 and higher</p></td>
-    </tr>
-    <tr class="odd">
-    <td align="left"><p>Microsoft</p></td>
-    <td align="left"><p>HDInsight</p></td>
-    </tr>
-    <tr class="even">
-    <td align="left"><p>Pivotal</p></td>
-    <td align="left"><p>2.1 and higher</p></td>
-    </tr>
-    </tbody>
-    </table>
+Sandbox can be downloaded by visiting [datatorrent.com/download](https://www.datatorrent.com/download/)
 
-10.  What is Datatorrent Sandbox?
+###  What are the system requirements for sandbox deployment?
 
-    DataTorrent Sandbox is a ready to use appliance provides tutorials, demo
-    applications and dtManage (Web console) to let new user get started
-    quickly with DataTorrent RTS. It is fully functional single node Hadoop
-    cluster running in a virtual machine. It is freely available as a
-    VirtualBox VM.
+The DataTorrent RTS Sandbox is a complete, stand-alone, instance of the
+Enterprise Edition as a single-node Hadoop cluster on your local
+machine. Following are prerequisites for DataTorrent RTS:
 
-11.  Where do I get sandbox download link?
+-  [VirtualBox](https://www.virtualbox.org/) 4.3 or greater installed.
+-  6GB RAM or greater available for Sandbox VM.
 
-    You can get download link after filling information at the below location:
+###  What are the DataTorrent RTS package content details in sandbox?
 
-    [http://web.datatorrent.com/DataTorrent-RTS-Sandbox-Edition-Download.html](http://web.datatorrent.com/DataTorrent-RTS-Sandbox-Edition-Download.html)
+-  Ubuntu 12.04 LTS + Apache Hadoop 2.2 (DataTorrent RTS 3.1 or earlier)
+-  Lubuntu 14.04 LTS + Apache Hadoop 2.7 (DataTorrent RTS 3.2 or later)
+-  Apache Apex (incubating), Apache Apex-Malhar (incubating)
+-  DataTorrent Operator Library
+-  DataTorrent Enterprise Security
+-  DataTorrent dtManage
+-  DataTorrent dtIngest
+-  DataTorrent dtAssemble
+-  DataTorrent dtDashboard
+-  Demo Applications
 
-12.  What are the system requirements for sandbox deployment?
 
-    The DataTorrent RTS Sandbox is a complete, stand-alone, instance of the
-    Enterprise Edition as a single-node Hadoop cluster on your local
-    machine. Following are prerequisites for DataTorrent RTS:
+### What is dtIngest applicaiton?
 
-    -   Oracle VirtualBox 4.3 or later; Oracle VirtualBox is
-        available[ ](https://www.virtualbox.org/)[here](https://www.virtualbox.org/)
-    -   Memory size should be greater than 6 GB
-    -   VT-x/AMD-V hardware acceleration (Hardware Virtualization) should be
-        enabled in your machine. You can verify this in BIOS settings
+DataTorrent dtIngest simplifies the collection, aggregation and movement of large amounts of data to and from Hadoop and is available for production use at no cost.
 
-13.  What are the DataTorrent RTS package content details in sandbox?
+###  Where do I get dtingest application?
 
-    -   Ubuntu+Apache Hadoop 2.2
-    -   Apache Apex (incubating)
-    -   Apache Apex-Malhar (incubating) Operator Library
-    -   DataTorrent Demo Applications
-    -   DataTorrent Operator Library
-    -   DataTorrent Enterprise Security
-    -   DataTorrent dtManage
-    -   DataTorrent dtIngest
-    -   DataTorrent dtAssemble
-    -   DataTorrent dtDashboard
+Application can be downloaded by visiting [datatorrent.com/download](https://www.datatorrent.com/download/)
 
-14.  What is expected time for sandbox ova?
+###  What are the dtingest package contents?
 
-    DataTorrent sandbox’s size is more than 1.5 GB so download time depends
-    on the network bandwidth availability.  
+Package comprises of DataTorrent RTS and dtIngest application.
 
-15.  Where do I get dtingest app?
+###  What are the prerequisites of dtIngest?
 
-    You can get download link after filling information at the below location:
+DataTorrent RTS 3.x and above. Please refer [dtIngest tutorial](dtingest.md) for more details.
 
-    [http://web.datatorrent.com/DataTorrent-dtIngest-Download.html](http://web.datatorrent.com/DataTorrent-dtIngest-Download.html)
+###  Where can I start from after downloading dtingest?
 
-16.  What are the dtingest package contents?
+-   Make sure all DataTorrent RTS prerequisites are satisfied before dtIngest installation.
+-   Run the downloaded installer installer. Refer to DataTorrent RTS [installation guide](installation.md).
+-   After DataTorrent RTS installation and configuration, you can configure and launch the
+    dtIngest application from dtManage, the DataTorrent console. Refer to [dtIngest tutorial](dtingest.md) for more details.
 
-    dtIngest package comprises of DataTorrent RTS bits. The contents are same as DataTorrent RTS package.
+###  How do I get specific DT version ?
 
-17.  What are the prerequisites of dtIngest?
+You can find archive list of various DataTorrent RTS versions at the bottom of each product download page.
 
-    DataTorrent RTS 3.x and above. Please refer [dtIngest tutorial](http://docs.datatorrent.com/dtingest/) for more details
+###  Where can I request new / upgrade current license?
 
-18.  Where can I start from after downloading dtingest?
+Please follow the instructions at [License Upgrade](https://www.datatorrent.com/license-upgrade/)
 
-    -   dtIngest package is a complete set of DataTorrent RTS platform,
-        hence no separate RTS package is required to download.
-    -   Make sure all prerequisites are satisfied before dtIngest
-        installation.
-    -   You need to install DataTorrent RTS platform on hadoop cluster using
-        the downloaded installer. Please refer to DT RTS [installation
-        guide](https://www.datatorrent.com/docs/README.html)
-    -   DT RTS serves dtIngest as an application. So after DT RTS
-        installation and configuration, you can configure and launch the
-        ingestion application from dtManage (DataTorrent console). Please
-        refer to [dtIngest tutorial](http://docs.datatorrent.com/dtingest/) for
-        more details.
+###  Where do I find product documentation?
 
-19.  How do I get specific DT version ?
+Please refer to: [DataTorrent Documentation](http://docs.datatorrent.com/)
 
-    You can find archive list of various DT RTS versions at the end of the
-    page on the download link forwarded over mail by DataTorrent.
-20.  Where can I make request for new license?
+###  Where can I learn more about Apache Apex?
 
-    Please follow the instructions mentioned at [License Upgrade](https://www.datatorrent.com/license-upgrade/)
+You can refer Apex page for more details: [Apache Apex](http://apex.apache.org)
 
-21.  Where do I find documentation links?
+###  Do you need help?
 
-    Please refer to online documentation:  [DataTorrent Documentation](http://docs.datatorrent.com/)
+You can contact us at [https://www.datatorrent.com/contact](https://www.datatorrent.com/contact)
 
-22.  Where can I get Apache Apex related information?
 
-    You can refer Apex page for more details: [Apache Apex](http://apex.apache.org)
-
-23.  Do you need help?
-
-    You can contact us at [https://www.datatorrent.com/contact](https://www.datatorrent.com/contact)
 
 # Installation
 
-  There are multiple installations available e.g. Sandbox Edition,
-  Community Edition, Enterprise Edition, dtIngest. Supported operating
-  systems are which support Hadoop platform (tested on CentOS 6.x and
-  Ubuntu 12.04).
+There are multiple installations available e.g. Sandbox Edition, Community Edition, Enterprise Edition, dtIngest. Supported operating systems are which support Hadoop platform (tested on CentOS 6.x and Ubuntu 12.04).
 
-  Following document focuses mainly on Enterprise Edition on Ubuntu 12.04.
+### Minimum hardware requirements, what happens if certain minimum configuration requirement has not been met?
 
-## Prerequisites:
+Minimum of 8G RAM is required on the Hadoop cluster.
 
-1. Minimum hardware requirements, what happens if certain minimum configuration requirement has not been met?
+### What happens if java is not installed?
 
-    a.  What happens if minimum RAM requirement is not met?
+Following message can be seen when Java is not abilable on the system
 
-      * *Symptoms & errors*: ...
-      * *Resolution*: ...
+    Error: java executable not found. Please ensure java
+    or hadoop are installed and available in PATH environment variable
+    before proceeding with this installation.
 
-2. Minimum software requirements, what happens if certain minimum configuration requirement has not been met?
+Install Java 7 from package manager of Linux Distribution and try running installer again.
 
-    a.  What happens if java is not installed?
+### What happens if Hadoop is not installed?
 
-      * *Symptoms & errors*: “Error: java executable not found. Please ensure java
-          or hadoop are installed and available in PATH environment variable
-          before proceeding with this installation.”
+Installation will be successful, however Hadoop Configuration page in dtManage (e.g. http://localhost:9090) will expect hadoop binary (/usr/bin/hadoop) & DFS location.
 
-      * *Resolution*: Install java (6 or 7) from package manager of Linux Distribution and try running installer again.
+![HadoopConfiguration.png](images/troubleshooting/image02.png)
 
-    b.  What happens if Hadoop is not installed?
+Install Hadoop \> 2.2.0 and update the configuration parameters above.
 
-      * *Symptoms & errors*: Installation will be successful, however Hadoop
-          Configuration page in UI (e.g. http://localhost:9090) will expect hadoop
-          binary (/usr/bin/hadoop) & DFS location.
+### How do I check if Hadoop is installed and running correctly?
 
-          ![HadoopConfiguration.png](images/troubleshooting/image02.png)
+Following commands can be used to confirm installed Hadoop version and if Hadoop services are running.
 
-      * *Troubleshooting*: Install Hadoop \> 2.2.0 and set these configuration parameters.
+    $ hadoop version
 
-    c.  How do I check if Hadoop is installed and running correctly?
+    Hadoop 2.4.0
+    Subversion [http://svn.apache.org/repos/asf/hadoop/common](http://svn.apache.org/repos/asf/hadoop/common) -r
+    1583262
+    Compiled by jenkins on 2014-03-31T08:29Z
+    Compiled with protoc 2.5.0
+    From source with checksum 375b2832a6641759c6eaf6e3e998147
+    This command was run using
+    /usr/local/hadoop/share/hadoop/common/hadoop-common-2.4.0.jar
 
-            $ hadoop version
+    $ jps
 
-            Hadoop 2.4.0
-            Subversion [http://svn.apache.org/repos/asf/hadoop/common](http://svn.apache.org/repos/asf/hadoop/common) -r
-            1583262
-            Compiled by jenkins on 2014-03-31T08:29Z
-            Compiled with protoc 2.5.0
-            From source with checksum 375b2832a6641759c6eaf6e3e998147
-            This command was run using
-            /usr/local/hadoop/share/hadoop/common/hadoop-common-2.4.0.jar
-
-            $ jps
-
-            10211 NameNode
-            10772 ResourceManager
-            10427 DataNode
-            14691 Jps
-            10995 NodeManager
-
-### Installation:
+    10211 NameNode
+    10772 ResourceManager
+    10427 DataNode
+    14691 Jps
+    10995 NodeManager
 
 
-1.  What happens if the downloaded file is corrupted?
+### What happens if the downloaded file is corrupted?
 
-  **Symptoms & errors**: MD5 checksum mismatch error should be seen on
-    console: “Verifying archive integrity...Error in MD5 checksums: \<MD5
-    checksum\> is different from \<MD5 checksum\>”.
+MD5 checksum will result in the following error:
 
-    **Troubleshooting**: Downloaded installer could be corrupt, please download
-    the installer binary again and try installing.
+    “Verifying archive integrity...Error in MD5 checksums: <MD5 checksum> is different from <MD5 checksum>”.
 
-1.  Why do I see following permissions errors?
+Downloaded installer could be corrupted.  Try downloading the installer again.  If using command line, use `curl` instead of `wget`.
 
-    **Symptoms & errors**: Following error message will be seen on screen
 
-    ![Permissions\_error.png](images/troubleshooting/image01.png)
 
-    **Troubleshooting**: There are different possibilities here:
+### Why do I see the following permissions errors?
 
-    - Specified directory does not exist on DFS
-    - Specified directory does not have permissions to user with which DataTorrent is installed or dtGateway is running.
+During installation following error message will be seen on screen
 
-            $ hadoop dfs -ls /user/<USER>/datatorrent
+![Permissions Error](images/troubleshooting/image01.png)
 
-            $ hadoop dfs -mkdir /user/<USER>/datatorrent  
+These typically happen when specified directory does not exist, and the installation user does not have permissions to create it.  Following commands can be executed by user with sufficient privileges to resolve this issue:
 
-            $ hadoop dfs -chown <USER> /user/<USER>/datatorrent
+    $ hadoop dfs -ls /user/<USER>/datatorrent
+    $ hadoop dfs -mkdir /user/<USER>/datatorrent  
+    $ hadoop dfs -chown <USER> /user/<USER>/datatorrent
 
 # Upgrade
 
-1.  License agent behavior on upgrade from 2.0 to 3.0 (Some one had faced issue, his application was getting launched continuously because of license agent)
+###  License agent errors cause problems during upgrade from DataTorrent RTS 2.0 to 3.0.
+
+If your applications are being launched continuously, or you are unable to launch apps due to licensing errors, try running complete uninstall and re-installation of DataTorrent RTS.  See [installation guide](installation.md) for details.
 
 
 # Configuration
@@ -333,48 +285,49 @@ Coming soon.
 
 # Development
 
-  1.  Scope of hadoop dependencies (use provided scope, don’t bundle any hadoop jar)
-  2.  I am getting this message in STRAM logs. Is anything wrong in my code?
+### Hadoop dependencies conflicts
 
-          2015-10-09 04:31:06,749 INFO
-          com.datatorrent.stram.StreamingContainerManager: Heartbeat for unknown
-          operator 3 (container container\_1443694550865\_0150\_01\_000007)
+Coming soon.  (Use provided scope, don’t bundle any Hadoop jars.)
+
+### Getting this message in STRAM logs. Is anything wrong in my code?
+
+    2015-10-09 04:31:06,749 INFO com.datatorrent.stram.StreamingContainerManager: Heartbeat for unknown operator 3 (container container_1443694550865_0150_01_000007)
+
+Coming soon.
+
 
 # Debugging
 
+###  How to remote debug gateway service?
 
-1.  How to remote debug gateway service?
+Update hadoop OPTS variable by running,
 
-    Update hadoop OPTS variable by running,
+    export HADOOP_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5432 $HADOOP_OPTS
 
-        export HADOOP_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5432 $HADOOP_OPTS
+### How to setup DEBUG level while running an application?
 
-2.  How to setup DEBUG level while running an application?
+Add the property :
 
-    Add the property :
+    <property>
+      <name>dt.application.<APP-NAME>.attr.DEBUG</name>
+      <value>true</value>
+    </property>
 
-        <property>
-          <name>dt.application.<APP-NAME>.attr.DEBUG</name>
-          <value>true</value>
-        </property>
 
-3.  My gateway is throwing following exception. How should I solve it.
+### My gateway is throwing the following exception.
 
-          ERROR YARN Resource Manager has problem: java.net.ConnectException: Call
-          From myexample.com/192.168.3.21 to 0.0.0.0:8032 failed on connection
-          exception: java.net.ConnectException: Connection refused; For more
-          details
-          see:[http://wiki.apache.org/hadoop/ConnectionRefused](http://wiki.apache.org/hadoop/ConnectionRefused) at
-          sun.reflect.GeneratedConstructorAccessor27.newInstance(Unknown Source)
-          at
-          sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-          at
+      ERROR YARN Resource Manager has problem: java.net.ConnectException: Call From myexample.com/192.168.3.21 to 0.0.0.0:8032 failed on connection
+      exception: java.net.ConnectException: Connection refused; For more  details see:[http://wiki.apache.org/hadoop/ConnectionRefused](http://wiki.apache.org/hadoop/ConnectionRefused) at
+      sun.reflect.GeneratedConstructorAccessor27.newInstance(Unknown Source)
+      at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+      ...
 
-    Check if the host where gateway is running has yarn-site.xml file. You
-    need to have all hadoop configuration files accessible to dtgateway for
-    it to run successfully.
+Check if the host where gateway is running has yarn-site.xml file. You need to have all Hadoop configuration files accessible to dtGateway for it to run successfully.
 
-# How to set custom log4j properties for an app package
+
+# Log analysis
+
+### How to set custom log4j properties for an app package
 
 There are two ways of setting custom log4j.properties in Apex
 
@@ -391,7 +344,6 @@ There are two ways of setting custom log4j.properties in Apex
           <name>dt.operator.<OPERATOR_NAME>.attr.JVM_OPTIONS</name>
           <value> -Dlog4j.configuration=custom_log4j.properties</value>
         </property>
-
 
 Make sure that custom_log4j.properties is part of your application jar and is located under `src/main/resources`.  Following are examples of custom log4j properties files
 
@@ -411,18 +363,15 @@ Make sure that custom_log4j.properties is part of your application jar and is lo
         log4j.appender.RFA.layout=org.apache.log4j.PatternLayout
 
 
-# Log analysis
+### How to check STRAM logs
 
-### How to check stram logs
+You can get STRAM logs by retrieving YARN logs from command line, or by using dtManage web interface.  
 
-  You can get stram logs from yarn logs or from DT Console.  
-  1. use command ```yarn logs -applicationId <applicationId>```, first
-  container logs  are stram logs.  
+In dtManage console, select first container from the Containers List in Physical application view.  The first container is numbered 000001. Then click the logs dropdown and select the log you want to look at.  
 
-  2. On dt console, select first container from the Containers List
-  widget (default location of this widget is in the “physical” dashboard).
-  The first container is numbered 000001. Then click the logs dropdown and
-  select the log you want to look at.  
+Alternatively, the following command can retrieve all application logs, where the first container includes the STRAM log.
+
+    yarn logs -applicationId <applicationId>
 
 ### How to check application logs
 
@@ -430,7 +379,7 @@ On dt console, select a container from the Containers List widget
 (default location of this widget is in the “physical” dashboard). Then
 click the logs dropdown and select the log you want to look at.
 
-  ![console-log-viewing.gif](images/troubleshooting/image00.gif)
+![console-log-viewing.gif](images/troubleshooting/image00.gif)
 
 ### How to check killed operator’s state
 
@@ -439,67 +388,42 @@ Containers List widget’s default location is on the “physical”
 dashboard. Then select the appropriate container of killed operator and
 check the state.
 
-  ![RetrieveKilled.gif](images/troubleshooting/image03.gif)
+![RetrieveKilled.gif](images/troubleshooting/image03.gif)
 
 ### How to search for particular any application or container?
 
-  In applications or containers table there is search text box. You can
-  type in application name or container number to locate particular
-  application or container.
-
-### Difference between stdout vs stderr vs dt.log files
-
-###  I am unable to see logs what should I do?  
-
-  - Check license?
+In applications or containers table there is search text box. You can
+type in application name or container number to locate particular
+application or container.
 
 ### How do I search within logs?
 
-Once you navigate to logs page,  
+Once you navigate to the logs page,  
 
 1. Download log file to search using your preferred editor  
 2. use “grep” option and provide the search range “within specified range” or “over entire log”
 
-# Application Launch
 
-1.  Connection Refused Exception
-2.  ClassNotFound Exception
-3. Application goes from accepted state to Finished(FAILED) state
+# Launching Applications
 
-  Check if your application name conflicts with any of the already running
-  applications in your cluster. Apex do not allow two application with
-  same names run simultaneously.  
-  Your STRAM logs will have following error:  
-  “Forced shutdown due to Application master failed due to application
-  \<appId\> with duplicate application name \<appName\> by the same user
-  \<user name\> is already started.”  
+### Application goes from accepted state to Finished(FAILED) state
 
-1. ConstraintViolationException while application launch
+Check if your application name conflicts with any of the already running
+applications in your cluster. Apex do not allow two application with
+same names run simultaneously.  
+Your STRAM logs will have following error:  
+“Forced shutdown due to Application master failed due to application
+\<appId\> with duplicate application name \<appName\> by the same user
+\<user name\> is already started.”  
 
-  Check if all @NotNull properties of application are set. Apex operator
-  properties are meant to configure parameter to operators. Some of the
-  properties are must have, marked as @NotNull, to use an operator. If you
-  don’t set any of such @NotNull properties application launch will fail
-  and stram will throw ConstraintViolationException.    
+### ConstraintViolationException while application launch
 
-1. Launching apa vs jar
+Check if all @NotNull properties of application are set. Apex operator
+properties are meant to configure parameter to operators. Some of the
+properties are must have, marked as @NotNull, to use an operator. If you
+don’t set any of such @NotNull properties application launch will fail
+and stram will throw ConstraintViolationException.    
 
-2. DAG validation failed
-
-3. Multiple gateways running simultaneously, app not launched.
-
-4. HDFS in safe mode
-
-
-#  Application State
-
-1. Application stays in accepted state
-
-2. Some containers do not get resources (specially in case of repartition)
-
-3. Small memory set to operator causes operator kill continuously.
-
-4. Why is the number of events same/different at input and output port of each operator?
 
 #  Events
 
@@ -508,8 +432,6 @@ Once you navigate to logs page,
 In StramEvents list (default location of this widget is in the “logical”
 dashboard), look for event “StopContainer”. Click on “details” button in
 front of event to get details of container failure.
-
-### How to debug
 
 ### How to search within events
 
@@ -527,60 +449,61 @@ allows you to search for events by time range.
 When we enable “following” button the stram events list will
 automatically scroll to bottom when new events come in.
 
-# Stop an application
+### Coming Soon
 
-1.  Shutdown vs kill option
-2.  Why shutdown doesn’t work? (if some containers are not running)
-3.  Can I kill multiple applications at same time?
-4.  Killing containers vs killing application
-5.  Stram failures (during define partitions)
-6.  Thread local + partition parallel configuration
-7.  What to do when downstream operators are slow than the input
-    operators.
-8.  I am seeing high latency, what to do?
-9.  appConf in ADT (inside apa file) vs conf option in dtcli
-10. Application keeps restarting (has happened once due to license agent
-    during upgrade)
-11. Operator getting killed after every 60 secs (Timeout issue)
-12. How to change commit frequency
-13. Difference between exactly once, at least once and at most once
-14. Thread local vs container local vs node local
-15. Setting operator memory
-    a.  Bufferserver memory
-    b.  Stram memory
+* Connection Refused Exception
+* ClassNotFound Exception
+* Launching apa vs jar
+* DAG validation failed
+* Multiple gateways running simultaneously, app not launched.
+* HDFS in safe mode
+* Application stays in accepted state
+* Some containers do not get resources (specially in case of repartition)
+* Insufficient memory set to operator causes operator kill continuously.
+* Why is the number of events same/different at input and output port of each operator?
 
+*  Shutdown vs kill option
+*  Why shutdown doesn’t work? (if some containers are not running)
+*  Can I kill multiple applications at same time?
+*  Killing containers vs killing application
+*  STRAM failures (during define partitions)
+*  Thread local + partition parallel configuration
+*  What to do when downstream operators are slow than the input  operators.
+*  I am seeing high latency, what to do?
+*  appConf in ADT (inside apa file) vs conf option in dtcli
+*  Application keeps restarting (has happened once due to license agent during upgrade)
+*  Operator getting killed after every 60 secs (Timeout issue)
+*  How to change commit frequency
+*  Difference between exactly once, at least once and at most once
+*  Thread local vs container local vs node local
+*  Setting operator memory
+*  Turning Bufferserver memory
+*  Turning STRAM memory
+*  Cluster nodes not able to access edge node where Gateway is running
+*  Developers not sure when to process incoming tuples in end window or when to do it in process function of operator
 
-a.  Cluster nodes not able to access edge node where Gateway is running
-b.  Developers not sure when to process incoming tuples in end window or
-    when to do it in process function of operator
-c.  How partitioning works
+*  How partitioning works
 
-  1.  How the data is partitioned between different partitions.
+    *  How the data is partitioned between different partitions.
+    *  How to use stream-codec
+    *  Data on which ports is partitioned? By default default partitioner partitions data on first port.
+    *  How to enable stream-codec on multiple ports. (Join operator?? where both input-ports needs to receive same set of keys).
 
-  2.  How to use stream-codec
-
-  3.  Data on which ports is partitioned? By default default partitioner partitions data on first port.
-
-  4.  How to enable stream-codec on multiple ports. (Join operator?? where both input-ports needs to receive same set of keys).
-
-d.  pom dependency management, exclusions etc. eg: Malhar library and
+*   pom dependency management, exclusions etc. eg: Malhar library and
     contrib, Hive (includes hadoop dependencies, we need to explicitly
     exclude), Jersey(we work only with 1.9 version) etc
 
-e.  All non-transient members of the operator object need to be
+*  All non-transient members of the operator object need to be
     serializable. All members that are not serializable cannot be saved
     during checkpoint and must be declared transient (e.g. connection
     objects). This is such a common problem that we need to dedicate a
     section to it.
 
-f.  Exactly once processing mode. Commit operation is supposed to be
+*   Exactly once processing mode. Commit operation is supposed to be
     done at endWindow. This is only best-effort exactly once and not
     100% guaranteed exactly once because operators may go down after
     endWindow and before checkpointing finishes.
 
-g.  How to check checkpoint size. (large checkpoint size cause
-    instability in the DAG).
-
-h.  How to add custom metrics and metric aggregator.
-
-i.  Example of how to implement dynamic partitioning.
+*  How to check checkpoint size. (large checkpoint size cause instability in the DAG).
+*  How to add custom metrics and metric aggregator.
+*  Example of how to implement dynamic partitioning.
