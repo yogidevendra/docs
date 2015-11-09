@@ -1,7 +1,7 @@
 DataTorrent RTS Recorded Demos
 ==============================
 
-The following videos provide an introduction to DataTorrent RTS. Application Builder shows how you can an application and the next 3 videos show how the platform provides built-in dimension computing, elastic scalability and fault tolerance. 
+The following videos provide an introduction to DataTorrent RTS. Application Builder shows how you can develop an application and the next 3 videos show how the platform provides built-in dimension computing, elastic scalability and fault tolerance. 
 
 ### Application Builder
 

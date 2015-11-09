@@ -1,5 +1,5 @@
 site_name: DataTorrent Documentation
-google_analytics: ['UA-44586211-1', 'docs.datatorrent.com']
+google_analytics: ['UA-44586211-2', 'docs.datatorrent.com']
 site_favicon: favicon.ico
 theme: readthedocs
 pages:
@@ -19,7 +19,7 @@ pages:
             - Monitoring with dtManage: tutorials/topnwords-c4.md
             - Visualizing with dtDashboard: tutorials/topnwords-c5.md
             - Appendix: tutorials/topnwords-c6.md
-        - Sales Dimenions: tutorials/sales_dimensions.md
+        - Sales Dimensions: tutorials/sales_dimensions.md
     - Apex Development Setup: apex_development_setup.md
     - Applications: coming_soon.md
     - Application Packages: application_packages.md
@@ -40,7 +40,7 @@ pages:
         - JMS: coming_soon.md
         - HBase: coming_soon.md
     - REST API: dtgateway_api.md
-    - AutoMetric API: autometrics.md 
+    - AutoMetric API: autometrics.md
     - Scalable Design: coming_soon.md
 - Applications:
     - dtIngest: dtingest.md
@@ -57,6 +57,6 @@ pages:
     - Configuration: coming_soon.md
     - Security: dtgateway_security.md
     - dtCli: coming_soon.md
-    - Troubleshooting: coming_soon.md
+    - Troubleshooting: troubleshooting.md
 - Glossary: glossary.md
 - Resources: additional_docs.md
