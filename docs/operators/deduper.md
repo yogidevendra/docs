@@ -1,14 +1,8 @@
-# Dedup - Operator Documentation
-
-
-About this document
-===================
+# Dedup Operator
 
 This document is intended as a guide for understanding and using the
 Dedup operator/module.
 
-Overview
-========
 
 Dedup - “What” in a Nutshell
 ----------------------------
@@ -21,7 +15,7 @@ operator is to de-duplicate data. In other words, when data passes
 through this operator, it will be segregated into two different data
 sets, one containing all unique tuples, and the other containing duplicates.
 
-![](images/image00.png)
+![](images/dedup/image00.png)
 
 Dedup - “How” in a Nutshell
 ---------------------------
@@ -35,7 +29,7 @@ identify if a particular tuple is duplicate or unique. Each time it
 identifies a tuple as a unique tuple, it also stores it into a
 persistent store called the Bucket Store for lookup in the future.
 
-![](images/image02.png)
+![](images/dedup/image02.png)
 -----------------------
 
 Following are the different components of the Deduper Operator
@@ -54,7 +48,7 @@ This was a very small introduction to the functioning of the Deduper.
 Following sections will go into more detail on each of the components.
 
 Use case - Basic Dedup
-==============================================================================================================================================
+================================================================================
 
 Dedup Key
 ---------
@@ -220,7 +214,7 @@ Technical Architecture
 Block Diagram
 -------------
 
-![](images/image04.png)
+![](images/dedup/image04.png)
 -----------------------
 
 The deduper has a single input port and multiple output ports.
@@ -435,7 +429,7 @@ around to 0, once it has reached value (Number of Buckets - 1).
 
 ### Example - Buckets
 
-![](images/image01.png)
+![](images/dedup/image01.png)
 
 Assumptions
 -----------
@@ -620,7 +614,7 @@ i.e. new unique records generated per window (or per checkpoint window)
 is written into a new file on HDFS. The format of the file is given
 below.
 
-![](images/image03.png)
+![](images/dedup/image03.png)
 
 All the unique records (actually, just keys, since dedup requires just
 storage of keys) that are received in a window, are collected in a set
