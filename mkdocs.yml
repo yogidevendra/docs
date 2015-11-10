@@ -53,9 +53,9 @@ pages:
     - Apache Apex-Malhar: apex_malhar.md
 - Deployment and Operations:
     - Installation: installation.md
-    - Configuration: coming_soon.md
+    - Configuration: configuration.md
     - Security: dtgateway_security.md
-    - dtCli: coming_soon.md
+    - dtCli: dtcli.md
     - Troubleshooting: troubleshooting.md
 - Glossary: glossary.md
 - Resources: additional_docs.md
