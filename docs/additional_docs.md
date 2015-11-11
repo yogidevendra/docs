@@ -1,26 +1,12 @@
-Additional Resources
-================================================================================
-
 ### Apache Apex
 
-To find out more about Apache Apex visit
-
-* Apache Apex (incubating): [http://apex.incubator.apache.org/](http://apex.incubator.apache.org/)
-* Apex Mailing List: <a href="mailto:dev@apex.incubator.apache.org">dev@apex.incubator.apache.org</a>
-* [Apex Overview and Comparison](https://www.datatorrent.com/project-apex/)
-
+For more information, please go to [Apache Apex](http://apex.incubator.apache.org/community.html).  You can find information on how to subscribe to mailing list, contribute, or attend meetup in your area. 
 
 ### DataTorrent RTS
 
-For more DataTorrent documentation visit
-
+* [Apex Comparison](https://www.datatorrent.com/project-apex/)
+* [Architecture](https://www.datatorrent.com/product/architecture/)
+* [Features Overview](https://www.datatorrent.com/product/datatorrent-rts/)
 * [Blogs](https://www.datatorrent.com/blog/)
 * [Featured Resources](https://www.datatorrent.com/resources/)
-* [Product Features](https://www.datatorrent.com/product/datatorrent-rts/)
-* [Architecture Overview](https://www.datatorrent.com/product/architecture/)
-* [Documentation and Guides](https://www.datatorrent.com/product-documentation/)
-
-For webinars and videos check out
-
 * [Webinars](https://www.datatorrent.com/webinar/)
-* [Solution Demos](https://www.datatorrent.com/solution-demos/)
