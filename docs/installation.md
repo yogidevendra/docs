@@ -3,6 +3,20 @@ DataTorrent RTS Installation Guide
 
 This guide covers installation of the DataTorrent RTS platform.
 
+Planning
+--------------------------------------------------------------------------------
+
+Installation will extract library files and executables into an installation directory, as
+well as start a process called dtGateway, which used to configure the
+system, communicate with running applications, and serve the dtManage dashboard UI.  Installation
+is typically performed on one of the Hadoop cluster edge nodes, meeting the following criteria:
+
+* Accessible by users who will launch and manage applications
+* Accessible by all YARN nodes running Apache Apex applications
+
+*Note*: With [dtGatway security](dtgateway_security.md) configuration disabled, the applications launched
+through dtManage interface will appear as started by dtGateway user.
+
 
 Requirements
 --------------------------------------------------------------------------------
@@ -79,7 +93,7 @@ Customizing Installation
 Various options are available to customize the DataTorrent installation.  List of available options be displayed by running installer with -h flag.
 
     ./datatorrent-rts*.bin -h
-    
+
     Options:
 
     -h             Help menu

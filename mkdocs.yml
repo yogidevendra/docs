@@ -28,19 +28,11 @@ pages:
     - Library Operators:
         - File splitter: operators/file_splitter.md
         - Block reader: operators/block_reader.md
-        - File Input, S3, NFS: coming_soon.md
         - File Output: operators/file_output.md
         - Deduper: operators/deduper.md
-        - HDHT: coming_soon.md
         - DimenstionComputation: operators/dimensions_computation.md
-        - KafkaInput: coming_soon.md
-        - KafkaOutput: coming_soon.md
-        - Solace: coming_soon.md
-        - JMS: coming_soon.md
-        - HBase: coming_soon.md
     - REST API: dtgateway_api.md
     - AutoMetric API: autometrics.md
-    - Scalable Design: coming_soon.md
 - Applications:
     - dtIngest: dtingest.md
 - Platform:
@@ -48,7 +40,7 @@ pages:
     - dtManage: dtmanage.md
     - dtAssemble: dtassemble.md
     - dtDashboard: dtdashboard.md
-    - dtGateway: coming_soon.md
+    - dtGateway: dtgateway.md
     - Apache Apex: apex.md
     - Apache Apex-Malhar: apex_malhar.md
 - Deployment and Operations:

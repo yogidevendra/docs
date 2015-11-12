@@ -327,41 +327,7 @@ Check if the host where gateway is running has yarn-site.xml file. You need to h
 
 # Log analysis
 
-### How to set custom log4j properties for an app package
-
-There are two ways of setting custom log4j.properties in Apex
-
-1. Setting custom log4j.properties at the Application level.  This will ensure that custom log4j properties is used for all containers including Application Master.  Following attribute should be set at application level:
-
-        <property>
-          <name>dt.attr.CONTAINER_JVM_OPTIONS</name>
-          <value>-Dlog4j.configuration=custom_log4j.properties</value>
-        </property>
-
-2. Setting custom log4j.properties at an individual operator level.  This sets the custom log4j properties only on the container that is hosting the operator.  Following attribute should be set at an operator level:
-
-        <property>
-          <name>dt.operator.<OPERATOR_NAME>.attr.JVM_OPTIONS</name>
-          <value> -Dlog4j.configuration=custom_log4j.properties</value>
-        </property>
-
-Make sure that custom_log4j.properties is part of your application jar and is located under `src/main/resources`.  Following are examples of custom log4j properties files
-
-1. Writing to a file
-
-        log4j.rootLogger=${hadoop.root.logger} // this is set to INFO / DEBUG, RFA
-        log4j.appender.RFA=org.apache.log4j.RollingFileAppender
-        log4j.appender.RFA.layout=org.apache.log4j.PatternLayout
-        log4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} [%t] %-5p %c{2} %M - %m%n
-        log4j.appender.RFA.File=${hadoop.log.dir}/${hadoop.log.file}
-
-2. Writing to Console
-
-        log4j.rootLogger=${hadoop.root.logger} // this is set to INFO / DEBUG, RFA
-        log4j.appender.RFA=org.apache.log4j.ConsoleAppender
-        log4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} [%t] %-5p %c{2} %M - %m%n
-        log4j.appender.RFA.layout=org.apache.log4j.PatternLayout
-
+There are multiple ways to adjust logging levels.  For details see [configuraiton guide](configuration.md#logging).
 
 ### How to check STRAM logs
 
