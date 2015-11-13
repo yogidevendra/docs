@@ -1,11 +1,12 @@
 Building the Sales Dimension application in JAVA
 ===
 The Sales Dimensions application demonstrates multiple
-features of the DataTorrent RTS platform, including the ability to
-transform, analyze, and take actions on data in real time. The
-application also demonstrates how DataTorrent RTS can be used to build
-scalable applications for high-volume, multi-dimensional computations
-with very low latency using existing library operators.
+features of the DataTorrent RTS platform including the ability to:
+- transform data
+- analyze data
+- act, based on analysis, in real time
+- support scalable applications for high-volume, multi-dimensional computations
+  with very low latency using existing library operators.
 
 Example scenario
 ---
