@@ -324,6 +324,50 @@ Add the property :
 
 Check if the host where gateway is running has yarn-site.xml file. You need to have all Hadoop configuration files accessible to dtGateway for it to run successfully.
 
+### Application throws following Kryo exception.
+
+      com.esotericsoftware.kryo.KryoException: Class cannot be created (missing no-arg constructor): 
+
+This means that Kryo is not able to deserialize the object because the type is missing default constructor. There are couple of ways to address this exception
+
+1. Add default constructor to the type in question. 
+2. Using [custom serializer](https://github.com/EsotericSoftware/kryo#serializers) for the type in question. Some existing alternative serializers can be found at [https://github.com/magro/kryo-serializers](https://github.com/magro/kryo-serializers). A custom serializer can be used as follows:
+
+    2.1 Using Kryo's @FieldSerializer.Bind annotation for the field causing the exception. Here is how to bind custom serializer.
+    ```java
+    @FieldSerializer.Bind(CustomSerializer.class)
+    SomeType someType
+    ```
+    Kryo will use this CustomSerializer to serialize and deserialize type SomeType.
+
+    2.2 Using custom serializer with stream codec. You need to define custom stream codec and attach this custome codec to the input port that is expecting the type in question. Following is an example of creating custom stream codec:
+    ```java
+    import java.io.IOException;
+    import java.io.ObjectInputStream;
+    import java.util.UUID;
+
+    import com.esotericsoftware.kryo.Kryo;
+
+    public class CustomSerializableStreamCodec<T> extends com.datatorrent.lib.codec.KryoSerializableStreamCodec<T>
+    {
+        private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException
+        {
+            in.defaultReadObject();
+            this.kryo = new Kryo();
+            this.kryo.setClassLoader(Thread.currentThread().getContextClassLoader());
+            this.kryo.register(SomeType.class, new CustomSerializer()); // Register the types along with custom serializers
+        }
+
+        private static final long serialVersionUID = 201411031405L;
+    }
+    ``` 
+    Let's say there is an Operator `CustomOperator` with an input port `input` that expects type SomeType. Following is how to use above defined custom stream codec
+    ```java
+    CustomOperator op = dag.addOperator("CustomOperator", new CustomOperator());
+    CustomSerializableStreamCodec<SomeType> codec = new CustomSerializableStreamCodec<SomeType>();
+    dag.setInputPortAttribute(op.input, Context.PortContext.STREAM_CODEC, codec);
+    ```
+    This works only when the type is passed between different operators. If the type is part of the operator state, please use one of the above two ways. 
 
 # Log analysis
 
