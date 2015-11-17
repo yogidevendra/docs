@@ -11,9 +11,9 @@ Get started quickly by following one of these tutorials, and create your first A
 
 ## Sales Dimensions
 
-[Sales Dimensions](tutorials/sales_dimensions.md) is an introduction to assembling and visualizing sales analytics applicaiton with *dtAssemble*
+[Sales Dimensions](tutorials/salesdimensions.md) is an introduction to assembling and visualizing sales analytics applicaiton with *dtAssemble*
 
-[![Sales Dimensions Preview](tutorials/images/sales_dimensions/preview.png)](tutorials/sales_dimensions.md)
+[![Sales Dimensions Preview](tutorials/images/sales_dimensions/preview.png)](tutorials/salesdimensions.md)
 
 ----
 
