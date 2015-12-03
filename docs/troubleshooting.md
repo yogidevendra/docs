@@ -281,13 +281,93 @@ If your applications are being launched continuously, or you are unable to launc
 
 # Configuration
 
-Coming soon.
+### Configuring Memory
+#####Configuring Operator Memory: 
+Operator memory for an operator can be configured in one of the following two ways:
+
+  1 Using the same default values for all the operators: 
+
+    <property>
+      <name>dt.application.<APPLICATION_NAME>.operator.*.attr.MEMORY_MB</name>
+      <value>2048</value>
+    </property>
+  This would set 2GB as size of all the operators in the given application.
+
+  2 Setting specific value for a particular operator: Following example will set 8GB as the operator memory for operator `Op`.
+
+    <property>
+      <name>dt.application.<APPLICATION_NAME>.operator.Op.attr.MEMORY_MB</name>
+      <value>8192</value>
+    </property>
+  The amount of memory required by an operator should be based on maximum amount of data that operator will be storing in-memory for all the fields -- both transient and non-transient. Default value for this attribute is 1024 MB.
+
+#####Configuring Buffer Server Memory: 
+There is a buffer server in each container hosting an operator with an output port connected to an input port outside the container. The buffer server memory of a container can be controlled by BUFFER_MEMORY_MB. This can be configured in one of the following ways:
+
+  1 Using the same default values for all the output ports of all the operators
+
+    <property>
+      <name>dt.application.<APPLICATION_NAME>.operator.*.port.*.attr.BUFFER_MEMORY_MB</name>
+      <value>128</value>
+    </property>
+  This sets 128Mb as buffer memory for all the output ports of all the operators.
+
+  2 Setting specific value for a particular output port of particular operator: Following example sets 1GB as buffer memory for output port `p` of an operator `Op`:
+
+    <property>
+      <name>dt.application.<APPLICATION_NAME>.operator.Op.port.p.attr.BUFFER_MEMORY_MB</name>
+      <value>1024</value>
+    </property>
+Default value for this attribute is 512 MB
+
+#####Calculating Container memory: 
+Following formula is used to calculate the container memory.
+
+    Container Memory = Sum of MEMORY_MB of All the operators in the container+ Sum of BUFFER_MEMORY_MB of all the output ports that have a sink in a different container.
+
+Sometimes the memory allocated to the container is not same as calculated by the above formula, it is because actual container memory allocated by RM has to lie between
+
+    [yarn.scheduler.minimum-allocation-mb, yarn.scheduler.maximum-allocation-mb]
+  These values can be found in yarn configuration
+
+#####Configuring Application Master Memory: 
+Application Master memory can be configured using MASTER_MEMORY_MB attribute. Following example sets 4GB as the memory for Application Master:
+
+    <property>
+      <name>dt.application.<APPLICATION_NAME>.attr.MASTER_MEMORY_MB</name>
+      <value>4096</value>
+    </property>
+Default value for this attribute is 1024 MB. You may need to increase this value if you are running a big application that has large number of containers
 
 # Development
 
 ### Hadoop dependencies conflicts
 
-Coming soon.  (Use provided scope, don’t bundle any Hadoop jars.)
+You have to make sure that the hadoop jars are not bundled with the application package o/w they may conflict with the versions available in hadoop classpath. Here are some of the ways to exclude hadoop dependencies from the application package
+
+1. If your application is directly dependent on the hadoop jars, make sure that the scope of the dependency is `provided`. For eg if your application is dependent on hadoop-common, this is how you should add the dependency in pom.xml
+
+        <dependency>
+          <groupId>org.apache.hadoop</groupId>
+          <artifactId>hadoop-common</artifactId>
+          <version>2.2.0</version>
+          <scope>provided</scope>
+        </dependency>
+
+2. If your application has trasitive dependency on hadoop jars, make sure that hadoop jars are excluded from the transitive dependency and added back as application depedency with provided scope as mentioned above. Exclusions in pom.xml can be set as follows
+
+        <dependency>
+          <groupId></groupId>
+          <artifactId></artifactId>
+          <version></version>
+          <exclusions>
+            <exclusion>
+              <groupId>org.apache.hadoop</groupId>
+              <artifactId>*</artifactId>
+            </exclusion>
+          </exclusions>
+        </dependency>
+
 
 ### Getting this message in STRAM logs. Is anything wrong in my code?
 
@@ -485,9 +565,6 @@ automatically scroll to bottom when new events come in.
 *  How to change commit frequency
 *  Difference between exactly once, at least once and at most once
 *  Thread local vs container local vs node local
-*  Setting operator memory
-*  Turning Bufferserver memory
-*  Turning STRAM memory
 *  Cluster nodes not able to access edge node where Gateway is running
 *  Developers not sure when to process incoming tuples in end window or when to do it in process function of operator
 
