@@ -35,6 +35,7 @@ pages:
         - File Output: operators/file_output.md
         - Deduper: operators/deduper.md
         - Dimension Computation: operators/dimensions_computation.md
+        - Kafka Input: operators/kafkaInputOperator.md
     - REST API: dtgateway_api.md
     - AutoMetric API: autometrics.md
 - Applications:
