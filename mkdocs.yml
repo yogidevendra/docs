@@ -18,6 +18,7 @@ pages:
             - Building with dtAssemble: tutorials/topnwords-c3.md
             - Monitoring with dtManage: tutorials/topnwords-c4.md
             - Visualizing with dtDashboard: tutorials/topnwords-c5.md
+            - Advanced Features: tutorials/topnwords-c7.md
             - Appendix: tutorials/topnwords-c6.md
         - Sales Dimensions:
             - Building in Java: tutorials/salesdimensions.md
