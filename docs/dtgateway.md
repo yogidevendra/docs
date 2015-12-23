@@ -77,3 +77,5 @@ $ curl http://localhost:9090/ws/v2/applications/application_1442448722264_14891/
 ```
 
 For the complete spec of the REST API, please refer to dtGateway [REST API](dtgateway_api.md).
+
+For information on configuring dtGateway in general, see [DataTorrent RTS Configuration](configuration.md#configuration-files)
