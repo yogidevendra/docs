@@ -10,6 +10,7 @@ For more information, please go to [Apache Apex](http://apex.incubator.apache.or
 * [Blogs](https://www.datatorrent.com/blog/)
 * [Featured Resources](https://www.datatorrent.com/resources/)
 * [Webinars](https://www.datatorrent.com/webinar/)
+* [Release Notes](release_notes.md)
 
 ### Documentation Archive
 
