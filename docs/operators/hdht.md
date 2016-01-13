@@ -78,18 +78,27 @@ It has following methods
  of the operator.
 
 
- ## Configuration
- 1. **fileStore** This setting determines the format in which files are written. Default is DTFileImpl.
-   - **basePath** Location in HDFS where data files are stored. This is required configuration parameter.
+## Configuration
 
-      Property File Syntax
+### fileStore
+
+This setting determines the format in which files are written. Default is DTFileImpl.
+
+### basePath 
+
+Location in HDFS where data files are stored. This is required configuration parameter.
+
+Property File Syntax
+
 ```xml
    <property>
      <name>dt.operator.{name}.store.basePath</name>
      <value>/home/hdhtdatadir</value>
   </property>
 ```
+
 Java API.
+
 ```java
 /* select DTFile backend with basePath set to HDHTdata */
 TFileImpl.DTFileImpl hdsFile = new TFileImpl.DTFileImpl();
@@ -97,23 +106,26 @@ hdsFile.setBasePath("HDHTdata");
 store.setFileStore(hdsFile);
 ```
 
- 2. **maxFileSize** Size of each file. Default value is 134217728134217728 (i.e 128MB).
+### maxFileSize
 
- Property File Syntax
- ```xml
+Size of each file. Default value is 134217728134217728 (i.e 128MB).
+
+Property File Syntax
+```xml
  <property>
    <name>dt.operator.{name}.maxFileSize</name>
    <value>{value in bytes}</value>
  </property>
- ```
+```
 Java API.
 ```java
 store.setMaxFileSize(64 * 1024 * 1024);
 ```
- 3. **flushSize** HDHT will flush data to files after number of unwritten tuples crosses
-    this limit. Default value is 1000000.
+### flushSize 
 
- Property File Syntax
+HDHT will flush data to files after number of unwritten tuples crosses this limit. Default value is 1000000.
+
+Property File Syntax
 ```xml
 <property>
   <name>dt.operator.{name}.flushSize</name>
@@ -125,21 +137,24 @@ Java API.
 store.setFlushSize(1000000);
 ```
 
- 4. **flushIntervalCount** This setting will force data flush even if number of tuples
- are below *flushSize*. Default value is 120 windows.
+### flushIntervalCount
 
- Property File Syntax
- ```xml
+This setting will force data flush even if number of tuples are below *flushSize*. Default value is 120 windows.
+
+  Property File Syntax
+```xml
  <property>
    <name>dt.operator.{name}.flushIntervalCount</name>
    <value>{number of windows}</value>
  </property>
- ```
+```
  Java API.
 ```java
 store.setFlushIntervalCount(120);
 ```
- 5. **maxWalFileSize** Write Ahead Log segment size. Older segments are deleted once data is written to the data files. Default value is 67108864 (i.1 64MB)
+### maxWalFileSize
+
+Write Ahead Log segment size. Older segments are deleted once data is written to the data files. Default value is 67108864 (64MB)
 
  Property File Syntax
 ```xml
@@ -200,7 +215,7 @@ The store operator is implemented as shown below, we will need to provide an imp
 `getCodec`, and override `processEvent` to change default behavior of storing data in HDHT
 directly.
 
- ```java
+```java
 public class HDHTWordCounter extends AbstractSinglePortHDHTWriter<String>
 {
   public transient DefaultOutputPort<Pair<String, Long>> out = new DefaultOutputPort<>();
@@ -273,7 +288,7 @@ public class HDHTWordCounter extends AbstractSinglePortHDHTWriter<String>
     }
   }
 }
- ```
+```
 
 Sample Application.
 ```java
