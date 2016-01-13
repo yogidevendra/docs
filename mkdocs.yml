@@ -33,7 +33,7 @@ pages:
     - Library Operators:
         - Kafka Input: operators/kafkaInputOperator.md
         - Dimension Computation: operators/dimensions_computation.md
-        - HDHT: operators/htht.md
+        - HDHT: operators/hdht.md
         - Deduper: operators/deduper.md
         - File Splitter: operators/file_splitter.md
         - Block Reader: operators/block_reader.md
