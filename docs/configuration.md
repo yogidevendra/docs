@@ -88,7 +88,7 @@ For a complete list of configurable application properties see the Attributes s
 
 ------------------------------------------------------------------------
 
-# Resources Management and Performance Turning
+# Resources Management and Performance Tuning
 
 The platform provides continuous information about CPU, Memory, and Network
 usage for the system as a whole, individual running applications,
