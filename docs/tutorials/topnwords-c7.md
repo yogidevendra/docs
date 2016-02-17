@@ -228,8 +228,8 @@ network bandwidth) to support all the replicas.
 Without partitioning, the DAG shown in the `logical` and `physical-dag-view` tabs
 will be the same.
 However, once partitioning is triggered, the latter will show multiple copies of the
-partitioned operator, as well as a new, operator immediately
-downstream of all the copies, called a _unifier_. The job of the unifier is the join the
+partitioned operator, as well as a new operator immediately
+downstream of all the copies, called a _unifier_. The job of the unifier is to join the
 results emitted by all the copies, collate them in some application-specific way and
 emit the result just as it would have been emitted if no partitioning were involved.
 The unifier can either be one that is custom-written for the needs of the application
@@ -254,7 +254,7 @@ physical-dag-view tab should show the following DAG:
 ![DAG Simple Partition](images/topnwords/image52.png "DAG Simple Partition")
 
 Notice the two copies of `wordReader` and the generated unifier. The `physical` tab will
-also show the containers for these additional operators and their characteristica as well.
+also show the containers for these additional operators and their characteristics as well.
 
 A slight variation of the above theme occurs often in practice: We would like an entire
 linear sequence of operators (i.e. a fragment of the DAG) replicated in the same way.
