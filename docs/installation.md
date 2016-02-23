@@ -14,7 +14,7 @@ is typically performed on one of the Hadoop cluster edge nodes, meeting the foll
 * Accessible by users who will launch and manage applications
 * Accessible by all YARN nodes running Apache Apex applications
 
-*Note*: With [dtGatway security](dtgateway_security.md) configuration disabled, the applications launched
+*Note*: With [dtGateway security](dtgateway_security.md) configuration disabled, the applications launched
 through dtManage interface will appear as started by dtGateway user.
 
 

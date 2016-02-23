@@ -73,11 +73,11 @@ Example of a single property configuration in dt-site.xml:
 
 * **dt.gateway.listenAddress** - The address and port DT Gateway listens to.  Defaults to 0.0.0.0:9090
 * **dt.gateway.autoPublishInterval** - The interval in milliseconds DT Gateway should publish application information on the websocket channel.  Default is 1000.
-* **dt.gateway.sslKeystorePath** - Specifying of the SSL Key store path enables HTTPS on the DT Gateway (See the [dtGatway Security](dtgateway_security.md) document)
-* **dt.gateway.sslKeystorePassword** - The password of the SSL key store (See the [dtGatway Security](dtgateway_security.md) document)
+* **dt.gateway.sslKeystorePath** - Specifying of the SSL Key store path enables HTTPS on the DT Gateway (See the [dtGateway Security](dtgateway_security.md) document)
+* **dt.gateway.sslKeystorePassword** - The password of the SSL key store (See the [dtGateway Security](dtgateway_security.md) document)
 * **dt.gateway.allowCrossOrigin** - Setting it to true allows cross origin HTTP access to the DT Gateway.  Default is false.
-* **dt.gateway.authentication.(OPTION)** - Determines the scheme of Hadoop security authentication (See the [dtGatway Security](dtgateway_security.md) document).
-* **dt.gateway.http.authentication** - Determines the scheme of DT Gateway HTTP security authentication (See the [dtGatway Security](dtgateway_security.md) document).
+* **dt.gateway.authentication.(OPTION)** - Determines the scheme of Hadoop security authentication (See the [dtGateway Security](dtgateway_security.md) document).
+* **dt.gateway.http.authentication** - Determines the scheme of DT Gateway HTTP security authentication (See the [dtGateway Security](dtgateway_security.md) document).
 * **dt.gateway.staticResourceDirectory** - The document root directory where the DT Gateway should serve from for the /static HTTP path.
 
 
@@ -595,7 +595,7 @@ properties files follow.
         log4j.appender.RFA.layout=org.apache.log4j.PatternLayout
 
 
-## dtGatway Logging
+## dtGateway Logging
 
 DT Gateway log level can be changed to DEBUG by settings following
 environment variable before launching DT Gateway (as of version
