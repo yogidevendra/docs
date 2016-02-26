@@ -538,6 +538,68 @@ allows you to search for events by time range.
 When we enable “following” button the stram events list will
 automatically scroll to bottom when new events come in.
 
+### How do I get a heap dump when a container gets an OutOfMemoryError ?
+
+The JVM has a special option for triggering a heap dump when an Out Of Memory error
+occurs, as well an associated option for specifying the name of the file to contain
+the dump namely `-XX:+HeapDumpOnOutOfMemoryError` and `-XX:HeapDumpPath=/tmp/op.heapdump`.
+To add them to a specific operator, use this stanza in your configuration file
+with `<OPERATOR_NAME>` replaced by the actual name of an operator:
+
+        <property>
+          <name>dt.operator.<OPERATOR_NAME>.attr.JVM_OPTIONS</name>
+          <value>-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/op.heapdump</value>
+        </property>
+
+To add them to all your containers, add this stanza to your configuration file:
+
+        <property>
+          <name>dt.attr.CONTAINER_JVM_OPTIONS</name>
+          <value>-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/op.heapdump</value>
+        </property>
+
+With these options, when an __OutOfMemoryError__ occurs, the JVM writes the heap dump to the
+file `/tmp/op.heapdump`; you'll then need to retrieve the file from the node on which the
+operator was running.
+
+You can use the tool `jmap` (bundled with the JDK) to get a heap dump from a running
+container. Depending on the environment, you might need to run it as root and/or use
+the `-F` option; here is a sample invocation on the sandbox:
+
+    dtadmin@dtbox:~$ sudo jmap -dump:format=b,file=dump.bin -F 15557
+    Attaching to process ID 15557, please wait...
+    Debugger attached successfully.
+    Server compiler detected.
+    JVM version is 24.79-b02
+    Dumping heap to dump.bin ...
+    Heap dump file created
+
+The heap dump shows the content of the entire heap in binary form and, as such, is
+not human readable and needs special tools such as
+[jhat](http://docs.oracle.com/javase/7/docs/technotes/tools/share/jhat.html) or
+[MAT](http://www.eclipse.org/mat/downloads.php) to analyze it.
+
+The former (`jhat`) is bundled as part of the JDK distribution, so it is very convenient
+to use. When run on a file containing a heap dump, it parses the file and makes the data
+viewable via a browser on port 7000 of the local host. Here is a typical run:
+
+    tmp: jhat op.heapdump 
+    Reading from op.heapdump...
+    Dump file created Fri Feb 26 14:06:48 PST 2016
+    Snapshot read, resolving...
+    Resolving 70966 objects...
+    Chasing references, expect 14 dots..............
+    Eliminating duplicate references..............
+    Snapshot resolved.
+    Started HTTP server on port 7000
+    Server is ready.
+
+It is important to remember that a heap dump is different from a thread dump. The
+latter shows the stack trace of every thread running in the container and is useful
+when threads are deadlocked.
+Additional information on tools related to both types of dumps is available
+[here](http://www.oracle.com/technetwork/java/javase/matrix6-unix-137789.html).
+
 ### Coming Soon
 
 * Connection Refused Exception
