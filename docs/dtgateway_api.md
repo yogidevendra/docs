@@ -1581,6 +1581,11 @@ Function: Gets the list of appPackages the user can view in the system
 Since: 1.0.4
 
 Function: Uploads an appPackage file, merge with existing app package if exists. Default is replace.
+merge parameter:
+  replace - replace existing app package with the new app package without merging
+  fail - return error if there is an existing app package already with the same owner and name and version
+  ours - merge, for files existing in both existing and new app packages, use the file in the new package
+  theirs - merge, for files existing in both existing and new app packages, use the file in the existing package
 
 Payload: the raw zip file
 
