@@ -1814,6 +1814,9 @@ Examples include
         = true)
     -   Output Port Connectivity: Similar. The annotation here is:    
         @OutputPortFieldAnnotation(name = "...", optional = true)
+    -   @Valid: For nested property validation &mdash; a property should have this
+        annotation if its value  is itself an object whose properties
+        need to be validated.
 
 -   Unique names in application scope: Operators, streams, must have
     unique names.
