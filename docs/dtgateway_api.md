@@ -2186,6 +2186,10 @@ Return:
 Publisher-Subscriber WebSocket Protocol
 =======================================
 
+dtGateway provides a light-weight pubsub websocket service.
+The URL of dtGateway's pubsub websocket service is: \<dtGateway-host-port\>/pubsub.
+For example: http://localhost:9090/pubsub
+
 ## Input
 
 ### Publishing
