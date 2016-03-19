@@ -19,11 +19,16 @@ Return:
 
 ```json
 {
-    "buildVersion": "{buildVersion}",
-    "buildDate": "{date and time}",
-    "buildRevision": "{revision}",
-    "buildUser": "{user}",
-    "version": "{version}",
+    "buildVersion": "{Apex build version}",
+    "buildDate": "{Apex build date and time}",
+    "buildRevision": "{Apex revision}",
+    "buildUser": "{Apex build user}",
+    "version": "{Apex version}",
+    "rtsBuildVersion": "{RTS build version}",
+    "rtsBuildDate": "{RTS build date and time}",
+    "rtsBuildRevision": "{RTS revision}",
+    "rtsBuildUser": "{RTS build user}",
+    "rtsVersion": "{RTS version}",
     "gatewayUser": "{user}",
     "javaVersion": "{java_version}",
     "hadoopLocation": "{hadoop_location}",
@@ -2180,6 +2185,10 @@ Return:
 
 Publisher-Subscriber WebSocket Protocol
 =======================================
+
+dtGateway provides a light-weight pubsub websocket service.
+The URL of dtGateway's pubsub websocket service is: \<dtGateway-host-port\>/pubsub.
+For example: http://localhost:9090/pubsub
 
 ## Input
 
