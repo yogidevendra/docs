@@ -218,8 +218,8 @@ as name value pairs, in XML format, like the following.
 
 Application attributes are used to specify the platform behavior for the
 application. They can be specified using the parameter
-```dt.attr.<attribute>```. The prefix “dt” is a constant, “attr” is a
-constant denoting an attribute is being specified and ```<attribute>```
+`dt.attr.<attribute>`. The prefix `dt` is a constant, `attr` is a
+constant denoting an attribute is being specified and `<attribute>`
 specifies the name of the attribute. Below is an example snippet setting
 the streaming windows size of the application to be 1000 milliseconds.
 
@@ -233,22 +233,22 @@ the streaming windows size of the application to be 1000 milliseconds.
 The name tag specifies the attribute and value tag specifies the
 attribute value. The name of the attribute is a JAVA constant name
 identifying the attribute. The constants are defined in
-com.datatorrent.api.Context.DAGContext and the different attributes can
+`com.datatorrent.api.Context.DAGContext` and the different attributes can
 be specified in the format described above.
 
 ## Operator attributes
 
 Operator attributes are used to specify the platform behavior for the
 operator. They can be specified using the parameter
-```dt.operator.<operator-name>.attr.<attribute>```. The prefix “dt” is a
-constant, “operator” is a constant denoting that an operator is being
-specified, ```<operator-name>``` denotes the name of the operator, “attr” is
+```dt.operator.<operator-name>.attr.<attribute>```. The prefix `dt` is a
+constant, `operator` is a constant denoting that an operator is being
+specified, `<operator-name>` denotes the name of the operator, `attr` is
 the constant denoting that an attribute is being specified and
 ```<attribute>``` is the name of the attribute. The operator name is the
 same name that is specified when the operator is added to the DAG using
 the addOperator method. An example illustrating the specification is
 shown below. It specifies the number of streaming windows for one
-application window of an operator named “input” to be 10
+application window of an operator named `input` to be 10
 
 ```
 <property>
@@ -260,7 +260,7 @@ application window of an operator named “input” to be 10
 The name tag specifies the attribute and value tag specifies the
 attribute value. The name of the attribute is a JAVA constant name
 identifying the attribute. The constants are defined in
-com.datatorrent.api.Context.OperatorContext and the different attributes
+`com.datatorrent.api.Context.OperatorContext` and the different attributes
 can be specified in the format described above.
 
 ## Operator properties
@@ -269,10 +269,10 @@ Operators can be configured using operator specific properties. The
 properties can be specified using the parameter
 ```dt.operator.<operator-name>.prop.<property-name>```. The difference
 between this and the operator attribute specification described above is
-that the keyword “prop” is used to denote that it is a property and
-```<property-name>``` specifies the property name.  An example illustrating
-this is specified below. It specifies the property “hostname” of the
-redis server for a “redis” output operator.
+that the keyword `prop` is used to denote that it is a property and
+`<property-name>` specifies the property name.  An example illustrating
+this is specified below. It specifies the property `host` of the
+redis server for a `redis` output operator.
 
 ```
   <property>
@@ -284,22 +284,77 @@ redis server for a “redis” output operator.
 The name tag specifies the property and the value specifies the property
 value. The property name is converted to a setter method which is called
 on the actual operator. The method name is composed by appending the
-word “set” and the property name with the first character of the name
+word `set` and the property name with the first character of the name
 capitalized. In the above example the setter method would become
-setHost. The method is called using JAVA reflection and the property
-value is passed as an argument. In the above example the method setHost
-will be called on the “redis” operator with “127.0.0.1” as the argument.
+`setHost`. The method is called using JAVA reflection and the property
+value is passed as an argument. In the above example the method `setHost`
+will be called on the `redis` operator with `127.0.0.1` as the argument.
+
+A property that is a simple collection like a list or a map can also be initialized
+in this way but it needs a couple of additional steps: (a) The property
+must be initialized with an empty collection of the appropriate type.
+(b) An additional setter method for initializing items of the collection
+must be present. For example, suppose we have properties named `list`
+and `map` in an operator named `opA` initialized with empty collections:
+```java
+  private List<String> list = new ArrayList<>();
+  private Map<String, String> map = new HashMap<>();
+
+  public List<String> getList() { return list; }
+  public void setList(List<String> v) { list = v; }
+
+  public Map<String, String> getMap() { return map; }
+  public void setMap(Map<String, String> v) { map = v; }
+```
+
+You can add items to those empty collections by using fragments like this in
+your properties file provided you also add the setters shown below:
+```
+  <property>
+    <name>dt.operator.opA.mapItem(abc)</name>
+    <value>123</value>
+  </property>
+  <property>
+    <name>dt.operator.opA.mapItem(pqr)</name>
+    <value>567</value>
+  </property>
+  <property>
+    <name>dt.operator.opA.listItem[0]</name>
+    <value>1000</value>
+  </property>
+  <property>
+    <name>dt.operator.opA.listItem[1]</name>
+    <value>2000</value>
+  </property>
+  <property>
+    <name>dt.operator.opA.listItem[3]</name>
+    <value>3000</value>
+  </property>
+```
+
+The required additional setter methods in operator `opA`:
+```java
+  public void setListItem(int index, String value) {
+    final int need = index - list.size() + 1;
+    for (int i = 0; i < need; i++) list.add(null);
+    list.set(index, value);
+  }
+
+  public void setMapItem(String key, String value) {
+    map.put(key, value);
+  }
+```
 
 ## Port attributes
 Port attributes are used to specify the platform behavior for input and
-output ports. They can be specified using the parameter ```dt.operator.<operator-name>.inputport.<port-name>.attr.<attribute>```
-for input port and ```dt.operator.<operator-name>.outputport.<port-name>.attr.<attribute>```
-for output port. The keyword “inputport” is used to denote an input port
-and “outputport” to denote an output port. The rest of the specification
+output ports. They can be specified using the parameter `dt.operator.<operator-name>.inputport.<port-name>.attr.<attribute>`
+for input port and `dt.operator.<operator-name>.outputport.<port-name>.attr.<attribute>`
+for output port. The keyword `inputport` is used to denote an input port
+and `outputport` to denote an output port. The rest of the specification
 follows the conventions described in other specifications above. An
 example illustrating this is specified below. It specifies the queue
-capacity for an input port named “input” of an operator named “range” to
-be 4k.
+capacity for an input port named `input` of an operator named `range` to
+be 4000.
 
 ```
 <property>
