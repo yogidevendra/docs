@@ -183,11 +183,11 @@ App Data Tracker is enabled by having these properties in dt-site.xml:
 </property>
 <property>
   <name>dt.appDataTracker.transport</name>
-  <value>builtin:AppDataTrackerFeed</value>
+  <value>com.datatorrent.common.metric.AutoMetricBuiltInTransport:AppDataTrackerFeed</value>
 </property>
 <property>
   <name>dt.attr.METRICS_TRANSPORT</name>
-  <value>builtin:AppDataTrackerFeed</value>
+  <value>com.datatorrent.common.metric.AutoMetricBuiltInTransport:AppDataTrackerFeed</value>
 </property>
 ```
 
