@@ -323,13 +323,14 @@ A different JAAS login module that supports the system identity is needed as the
 -  For step 3, the configuration for the Jetty module is specified in the ```.java.login.config``` file. A sample configuration for this module is shown below
 
         ad {
-		    org.eclipse.jetty.plus.jaas.spi.LdapLoginModule required
+		org.eclipse.jetty.plus.jaas.spi.LdapLoginModule required
     		contextFactory="com.sun.jndi.ldap.LdapCtxFactory"
     		hostname="ad.server.com"
+		port="389"
     		bindDn="serviceId@my.domain.com"
     	 	bindPassword="Password1"
     		forceBindingLogin="true"
-		    userBaseDn="DC=my,DC=domain,DC=com"
+		userBaseDn="DC=my,DC=domain,DC=com"
     		userIdAttribute="samAccountName"
     		userObjectClass="person";
         };
@@ -675,11 +676,12 @@ When using LDAP with JAAS, to utilize the LDAP roles, a LDAP login module suppor
 	
         ldap {
 	    	com.datatorrent.auth.jetty.JettyLdapLoginModule required
-        	hostname="ldap-server-hostname" authenticationMethod="simple"
-        	userBaseDn="ou=users,dc=domain,dc=com" userIdAttribute="uid"
+        	hostname="ldap-server-hostname" port="389"
+		authenticationMethod="simple" 
+		userBaseDn="ou=users,dc=domain,dc=com" userIdAttribute="uid"
         	userRdnAttribute="uid" roleBaseDn="ou=groups,dc=domain,dc=com"
-        	roleNameAttribute=”cn”
-        	contextFactory=”com.sun.jndi.ldap.LdapCtxFactory”;
+        	roleNameAttribute="cn"
+        	contextFactory="com.sun.jndi.ldap.LdapCtxFactory";
         };
         
     The ```roleNameAttribute``` and ```roleBaseDn``` settings are used to identify the role and the ```userRdnAttribute``` setting is used the identify the users that belong to the role. The values for these settings are dependent on attributes names are being used in your LDAP directory server.
