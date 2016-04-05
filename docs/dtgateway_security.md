@@ -275,7 +275,7 @@ Follow the JAAS configuration steps described above with the following specific 
     Below is an example showing a sample configuration for active directory authentication with the Sun LdapLoginModule
 
         ad {
-          com.sun.security.auth.module.LdapLoginModule required
+        	com.sun.security.auth.module.LdapLoginModule required
         	userProvider="ldap://ad.server.com/cn=users,dc=domain,dc=com"
         	userFilter="samAccountName={USERNAME}"
         	authIdentity="{USERNAME}@my.domain.com";
@@ -323,14 +323,14 @@ A different JAAS login module that supports the system identity is needed as the
 -  For step 3, the configuration for the Jetty module is specified in the ```.java.login.config``` file. A sample configuration for this module is shown below
 
         ad {
-		org.eclipse.jetty.plus.jaas.spi.LdapLoginModule required
+			org.eclipse.jetty.plus.jaas.spi.LdapLoginModule required
     		contextFactory="com.sun.jndi.ldap.LdapCtxFactory"
     		hostname="ad.server.com"
-		port="389"
+			port="389"
     		bindDn="serviceId@my.domain.com"
     	 	bindPassword="Password1"
     		forceBindingLogin="true"
-		userBaseDn="DC=my,DC=domain,DC=com"
+			userBaseDn="DC=my,DC=domain,DC=com"
     		userIdAttribute="samAccountName"
     		userObjectClass="person";
         };
@@ -677,8 +677,8 @@ When using LDAP with JAAS, to utilize the LDAP roles, a LDAP login module suppor
         ldap {
 	    	com.datatorrent.auth.jetty.JettyLdapLoginModule required
         	hostname="ldap-server-hostname" port="389"
-		authenticationMethod="simple" 
-		userBaseDn="ou=users,dc=domain,dc=com" userIdAttribute="uid"
+			authenticationMethod="simple" 
+			userBaseDn="ou=users,dc=domain,dc=com" userIdAttribute="uid"
         	userRdnAttribute="uid" roleBaseDn="ou=groups,dc=domain,dc=com"
         	roleNameAttribute="cn"
         	contextFactory="com.sun.jndi.ldap.LdapCtxFactory";
