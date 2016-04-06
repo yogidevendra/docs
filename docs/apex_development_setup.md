@@ -22,7 +22,7 @@ There are a few tools that will be helpful when developing Apache Apex applicati
 6.  (Optional) If you prefer to use an IDE (Integrated Development Environment) such as *NetBeans*, *Eclipse* or *IntelliJ*, install that as well.
 
 
-After installing these tools, make sure that the directories containing the executable files are in your PATH environment; for example, for the JDK executables like _java_ and _javac_, the directory might be something like `C:\\Program Files\\Java\\jdk1.7.0\_80\\bin`; for _git_ it might be `C:\\Program Files\\Git\\bin`; and for maven it might be `C:\\Users\\user\\Software\\apache-maven-3.3.3\\bin`. Open a console window and enter the command:
+After installing these tools, make sure that the directories containing the executable files are in your PATH environment; for example, for the JDK executables like _java_ and _javac_, the directory might be something like `C:\Program Files\Java\jdk1.7.0\_80\bin`; for _git_ it might be `C:\Program Files\Git\bin`; and for maven it might be `C:\Users\user\Software\apache-maven-3.3.3\bin`. Open a console window and enter the command:
 
     echo %PATH%
 
@@ -68,6 +68,33 @@ Now run the following commands and ensure that the output is something similar t
 </tbody>
 </table>
 
+To run the unit tests on Windows, an additional file, `winutils.exe`, is also
+required; download it from
+<https://github.com/srccodes/hadoop-common-2.2.0-bin/archive/master.zip>
+and unpack the archive to, say, `C:\hadoop`; this file should be present under
+`hadoop-common-2.2.0-bin-master\bin` within it.
+
+Now, to run unit tests from within your IDE, set the `HADOOP_HOME` environment
+variable to the path to the root of the unpacked archive; for example, with NetBeans,
+you can add:
+
+    Env.HADOOP_HOME=c:/hadoop/hadoop-common-2.2.0-bin-master
+
+at _Properties &#8658; Actions &#8658; Run project &#8658; Set Properties_
+
+Similarly, in Eclipse (Mars) add the HADOOP_HOME environment variable to the
+project properties at _Properties &#8658; Run/Debug Settings &#8658; ApplicationTest
+&#8658; Environment_ tab.
+
+You can also run unit tests from the command line by specifying the maven
+property `hadoop.home.dir`, for example:
+
+    mvn -Dhadoop.home.dir=c:\hadoop\Software\hadoop-common-2.2.0-bin-master test
+
+or set the environment variable separately:
+
+    set HADOOP_HOME=c:\hadoop\Software\hadoop-common-2.2.0-bin-master
+    mvn test
 
 To install the sandbox, first download it from <https://www.datatorrent.com/download> and import the downloaded file into VirtualBox. Once the import completes, you can select it and click the  Start button to start the sandbox.
 
