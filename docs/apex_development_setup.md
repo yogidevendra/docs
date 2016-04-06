@@ -79,6 +79,8 @@ The sandbox is configured with 6GB RAM; if your development machine has 16GB or 
 You can choose to develop either directly on the sandbox or on your development machine. The advantage of the former is that most of the tools (e.g. _jdk_, _git_, _maven_) are pre-installed and also the package files created by your project are directly available to the Data Torrent tools such as  **dtManage** and **dtcli**. The disadvantage is that the sandbox is a memory-limited environment so running a memory-hungry tool like a Java IDE on it may starve other applications of memory.
 
 
+Creating a new Project
+----
 You can now use the maven archetype to create a basic Apache Apex project as follows: Put these lines in a Windows command file called, for example, `newapp.cmd` and run it:
 
     @echo off
