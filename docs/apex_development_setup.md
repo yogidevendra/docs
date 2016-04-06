@@ -59,7 +59,7 @@ Now run the following commands and ensure that the output is something similar t
 <tr class="odd">
 <td align="left"><p><tt>mvn --version</tt></p></td>
 <td align="left"><p>Apache Maven 3.3.3 (7994120775791599e205a5524ec3e0dfe41d4a06; 2015-04-22T06:57:37-05:00)</p>
-<p>Maven home: C:\Users\ram\Software\apache-maven-3.3.3\bin\..</p>
+<p>Maven home: C:\Users\user\Software\apache-maven-3.3.3\bin\..</p>
 <p>Java version: 1.7.0_80, vendor: Oracle Corporation</p>
 <p>Java home: C:\Program Files\Java\jdk1.7.0_80\jre</p>
 <p>Default locale: en_US, platform encoding: Cp1252</p>
@@ -68,34 +68,8 @@ Now run the following commands and ensure that the output is something similar t
 </tbody>
 </table>
 
-To run the unit tests on Windows, an additional file, `winutils.exe`, is also
-required; download it from
-<https://github.com/srccodes/hadoop-common-2.2.0-bin/archive/master.zip>
-and unpack the archive to, say, `C:\hadoop`; this file should be present under
-`hadoop-common-2.2.0-bin-master\bin` within it.
-
-Now, to run unit tests from within your IDE, set the `HADOOP_HOME` environment
-variable to the path to the root of the unpacked archive; for example, with NetBeans,
-you can add:
-
-    Env.HADOOP_HOME=c:/hadoop/hadoop-common-2.2.0-bin-master
-
-at _Properties &#8658; Actions &#8658; Run project &#8658; Set Properties_
-
-Similarly, in Eclipse (Mars) add the HADOOP_HOME environment variable to the
-project properties at _Properties &#8658; Run/Debug Settings &#8658; ApplicationTest
-&#8658; Environment_ tab.
-
-You can also run unit tests from the command line by specifying the maven
-property `hadoop.home.dir`, for example:
-
-    mvn -Dhadoop.home.dir=c:\hadoop\Software\hadoop-common-2.2.0-bin-master test
-
-or set the environment variable separately:
-
-    set HADOOP_HOME=c:\hadoop\Software\hadoop-common-2.2.0-bin-master
-    mvn test
-
+Installing the Sandbox
+----
 To install the sandbox, first download it from <https://www.datatorrent.com/download> and import the downloaded file into VirtualBox. Once the import completes, you can select it and click the  Start button to start the sandbox.
 
 
@@ -122,7 +96,6 @@ You can now use the maven archetype to create a basic Apache Apex project as fol
     endlocal
 
 
-
 The caret (^) at the end of some lines indicates that a continuation line follows. When you run this file, the properties will be displayed and you will be prompted with `` Y: :``; just press **Enter** to complete the project generation.
 
 
@@ -142,7 +115,43 @@ When the run completes successfully, you should see a new directory named `myape
 
 The build should create the application package file `myapexapp\target\myapexapp-1.0-SNAPSHOT.apa`. This file can then be uploaded to the Data Torrent GUI tool on the sandbox (called **dtManage**) and launched  from there. It generates a stream of random numbers and prints them out, each prefixed by the string  `hello world: `.  If you built this package on the host, you can transfer it to the sandbox using the `pscp` tool bundled with **PuTTY** mentioned earlier.
 
+Running Unit Tests
+----
+To run unit tests on Linux or OSX, simply run the usual maven command, for example: `mvn test`.
 
+On Windows, an additional file, `winutils.exe`, is required; download it from
+<https://github.com/srccodes/hadoop-common-2.2.0-bin/archive/master.zip>
+and unpack the archive to, say, `C:\hadoop`; this file should be present under
+`hadoop-common-2.2.0-bin-master\bin` within it.
+
+Set the `HADOOP_HOME` environment variable system-wide to
+`c:\hadoop\hadoop-common-2.2.0-bin-master` as described at:
+<https://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/sysdm_advancd_environmnt_addchange_variable.mspx?mfr=true>. You should now be able to run unit tests normally.
+
+If you prefer not to set the variable globally, you can set it on the command line or within
+your IDE. For example, on the command line, specify the maven
+property `hadoop.home.dir`:
+
+    mvn -Dhadoop.home.dir=c:\hadoop\hadoop-common-2.2.0-bin-master test
+
+or set the environment variable separately:
+
+    set HADOOP_HOME=c:\hadoop\hadoop-common-2.2.0-bin-master
+    mvn test
+
+Within your IDE, set the environment variable and then run the desired
+unit test in the usual way. For example, with NetBeans you can add:
+
+    Env.HADOOP_HOME=c:/hadoop/hadoop-common-2.2.0-bin-master
+
+at _Properties &#8658; Actions &#8658; Run project &#8658; Set Properties_.
+
+Similarly, in Eclipse (Mars) add it to the
+project properties at _Properties &#8658; Run/Debug Settings &#8658; ApplicationTest
+&#8658; Environment_ tab.
+
+Building the Sources
+----
 If you want to checkout the Apache Apex source repositories and build them, you can do so by running the script `build-apex.cmd` located in the same place in the examples repository described above. The source repositories contain more substantial demo applications and the associated source code. Alternatively, if you do not want to use the script, you can follow these simple manual steps:
 
 
