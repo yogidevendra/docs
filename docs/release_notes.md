@@ -1,6 +1,227 @@
 DataTorrent RTS Release Notes
 ========================================================================================================================
 
+Version 3.3.0 
+------------------------------------------------------------------------------------------------------------------------
+### Summary
+
+#### dtHub
+DataTorrent RTS allows companies to quickly build low latency real time Big Data application that can scale and fault tolerant. With the introduction of dtHub, DataTorrent now host and maintain an application distributor. You can access it through dtManage and easily install or update application without having to upgrade the whole RTS platform. Prior to dtHub, RTS installer packaged both platform and applications. In 3.3, they are decoupled with significantly reduced installer size. You can independently choose when to upgrade the platform and when to install/upgrade applications.
+
+#### dtManage
+* Troubleshooting is made easier now that user can view the containers where physical operators have lived
+* RTS Community Edition user can now view container logs and set log levels via dtManage. API for runtime DAG and property change are also available
+* RTS Enterprise Edition is changed from 30 days to 60 days
+* When an application is killed, RTS will delete the app directory according to policy  in dt-site.xml
+
+#### dtDasbhoard
+* New widgets for the dashboard: Geo coordinates with circles, Geo regions with gradient fill and single Value 
+
+#### dtAssemble (beta)
+* Top level “Develop” takes users directly to Application Page
+* Navigation changes on how user get to Tuple Schema. User goes to It is now "Edit Application" then "Tuple Schema"
+* Development (breadcrumb link)
+
+#### Documentation 
+* FileSplitter: http://docs.datatorrent.com/operators/file_splitter/
+* Block Reader: http://docs.datatorrent.com/operators/block_reader/
+
+#### Apache Apex 3.3 
+* Support for iterative processing. It is a building block to support machine learning
+* Ability to populate DAG at application launch time
+* Pre checkpoint operator callback so that it can execute a logic before the operator gets checkpointed (e.g. flush file to HDFS)
+* Provide the option for operator to do checkpointing in a distribute in-memory store. It is faster than HDFS due to disk i/o latency
+* Add group ID information in an applicatin package.  It is visible for application grouping in dtHub.
+
+#### Known Issues in 3.3 
+* [SPOI-7696] - Community edition (which gets activated after expired license) does not have newly added community features
+* [SPOI-7471] - Temp directories/files not cleaned up in Gateway
+* [SPOI-7697] - "Set Logging Levels" option on application details page does not show initial target/loglevel fields
+* [SPOI-7668] - If AppDataTracker is disabled, changing the YARN queue does not restart it
+* [SPOI-7652] - AppDataTracker does not show up under "Choose apps to visualize" in dashboard settings
+* [SPOI-7678] - On configuration complete, summary page should populate RTS version
+* [SPOI-7479] - dtHub "check for updates" option says 'no updated versions' and then displays updated packages
+* [SPOI-7626] - Stacked Area Chart widget shows NaN values on Firefox
+
+### Appendix
+
+#### dtHub
+* [SPOI-6787] - dtHub UI - explore, import, download
+* [SPOI-7023] - dtHub UI - check for updates
+* [SPOI-3643] - Remove import default packages from Application Packages page
+* [SPOI-7451] - Add options summary to Application Packages screen
+* [SPOI-6968] - Please make API return a new property that indicates whether gateway has internet access or not (for dtHub feature)
+* [SPOI-7059] - add "tags" to import list
+
+#### dtManage
+* [SPOI-3549] - dtManage - Ability to view container history where physical operator has lived
+* [SPOI-7382] - UI evaluation license expiration message colour update
+* [SPOI-7418] - Visualize AppDataTracker data
+* [SPOI-7129] - Add countdown and links to enterprise evaluation in dtManage
+* [SPOI-7226] - Remove choice of community edition and enterprise evaluation in install wizard
+
+#### dtDashboard
+* [SPOI-6522] - Geo coordinates with weighted circles widget
+* [SPOI-6523] - Geo regions with gradient fill widget
+* [SPOI-7247] - Create dimensional single value widget
+* [SPOI-7258] - Persist label changes in trend and single value widgets
+* [SPOI-6023] - dtDashboard - Widgets that support dimension schema can support multi-value keys 
+* [SPOI-6021] - Support tag for  snapshot server and dimension store
+* [SPOI-6331] - Notify user when widget is unable to automatically load data
+* [SPOI-6658] - UI says "no rows testing" when no data available to display in tables
+* [SPOI-6887] - Changing choropleth map class does not remove previously selected map
+* [SPOI-7246] - Change default widget colors to be websafe
+* [SPOI-7257] - add tags-based dimension query settings in trend widget 
+
+#### dtAssemble (beta)
+* [SPOI-7133] - Tuple Schemas change and Develop on top navigation bar change
+
+#### Megh
+* [SPOI-7665] - Megh enhancements for TelecomDemo
+* [SPOI-7230] - Add group id information to all megh app packages
+* [SPOI-7251] - Add directory structure for modules in megh
+* [SPOI-7693] - Add Telecom Demo To Megh
+
+#### Docs
+* [SPOI-6471] - Documentation: FileSplitter
+* [SPOI-6472] - Documentation: BlockReader
+
+#### RTS Community Edition
+* [SPOI-7670] - Removing dtManage restrictions from community edition
+* [SPOI-7682] - Lock down all auth/security features in community edition
+* [SPOI-7130] - Community edition to have an upgrade button to Enterprise eval
+* [SPOI-7243] - make all locked-feature places(e.g. Visualize link, logs button, new application button) to have the same effect of "upgrade to enterprise                " link in community edition, and to have a key icon instead of being crossing out
+
+#### RTS Enterprise Edition
+* [SPOI-7127] - Change enterprise evaluation days from 30 days to 60 days
+
+#### Bug Fixes
+* [SPOI-5622] - dtcli: Command 'show-physical-plan' fails with "Failed web service request" error
+* [SPOI-6352] - Gateway's RM Proxy REST calls don't work with HA-enabled
+* [SPOI-6424] - Gateway cannot determine its own local address to the cluster when RM HA is enabled
+* [SPOI-6555] - Add Missing datatorrent.apppackage.classpath property to dt-demos
+* [SPOI-6624] - ADT issues impacting dtingest Dashboard
+* [SPOI-6674] - AbstractFileOuptutOperator refactoring and fixes
+* [SPOI-6834] - fixing scope of jars in Megh
+* [SPOI-6837] - Gateway has a lot of blocked threads under heavy load
+* [SPOI-6886] - Selected map feature / object should be persisted
+* [SPOI-6949] - Collation in BucketManager incurs a performance hit while writing to HDFS and is not an optimization
+* [SPOI-6999] - Gateway stops updating application information after problems with YARN or HDFS
+* [SPOI-7026] - only lists the ones that have different versions in update section
+* [SPOI-7027] - fix a bug that loading is forever when there is no updates in check for updates
+* [SPOI-7028] - compare version number and only list packages whose dtHub version is higher than installed version in update section
+* [SPOI-7037] - support sorting, filter in string-type columns in import pkgs, update pkgs
+* [SPOI-7040] - optimize visual layout of import pkgs page
+* [SPOI-7042] - only shows packages that are compatible with the APEX version in check for update list
+* [SPOI-7080] - remove bar chart widget that is not in use
+* [SPOI-7106] - Update Megh japi version and fix the broken build because of semantic version
+* [SPOI-7138] - Dimension unifier return empty results 
+* [SPOI-7236] - Console build fails due to jsHint issues after updating version
+* [SPOI-7293] - Post installation links no longer available on datatorrent.com
+* [SPOI-7296] - gateway spills out error trying to write to /var/log/datatorrent/ in local install
+* [SPOI-7297] - Local install fails in secure mode
+* [SPOI-7309] - HDHT Broken and Hangs After Wall And Purge Changes
+* [SPOI-7338] - After changing configuration "dt.appDataTracker.queue" (e.g. to "root.ashwin") and kill system application AppDataTracker, AppDataTracker                 incorrectly starts with the default queue ("root.dtadmin").
+* [SPOI-7350] - Installation wizard final step refers to invalid developers URL
+* [SPOI-7361] - get-operator-attributes fails on CDH
+* [SPOI-7383] - Update invalid links in UI console info section
+* [SPOI-7447] - dtHub UI - check for updates - when there is no newer version for any installed package, loading image will be hanging forever
+* [SPOI-7460] - On Visualize tab, link for documentation does not work
+* [SPOI-7469] - Remove "in HDHT" from System Configuration page
+* [SPOI-7471] - Temp directories/files not cleaned up in Gateway
+* [SPOI-7474] - "Disable App Data Tracker" option does not work
+* [SPOI-7481] - Launch macros for demo apps should be removed in dtcli
+* [SPOI-7482] - Cloning/deleting application under Application package does not refresh the list
+* [SPOI-7498] - Verify dtingest download link change on datatorrent website
+* [SPOI-7502] - Lock mishandling in App Package local cache code
+* [SPOI-7503] - Changing "dt.appDataTracker.enable=true/false" using REST API calls doesn't take effect unless gateway restarts
+* [SPOI-7510] - Application launch notifications no longer show up
+* [SPOI-7523] - Kill only AppDataTracker whose user is the current login user when App Data Tracker queue is changed.
+* [SPOI-7542] - Unable to import app package from dtHub
+* [SPOI-7574] - dtcli command 'dump-properties-file' does not work when connected to an app
+* [SPOI-7577] - For 3.3.0 release, RTS version is shown as 3.3.1 in System Configuration
+* [SPOI-7604] - HDHT bucket meta class is obfuscated incorrectly
+* [SPOI-7615] - dtHub intermittently throws error as "Failed to import" while importing multiple pkgs at the same time 
+* [SPOI-7619] - specify bower link malhar-angular-dashboard to version 1.0.1
+* [SPOI-7644] - Need to update installer script
+* [SPOI-7679] - Unable to access newly added features for Community edition.
+
+### Apache Apex 3.3 Change Logs
+https://github.com/apache/incubator-apex-core/blob/v3.3.0-incubating/CHANGELOG.md
+
+* [SPOI-7061] - Implement retention policy for terminated apps
+* [SPOI-7492] - DT_GATEWAY_CLIENT_OPTS overrides all JVM options and there is no way to supply additional options to the default options
+* [SPOI-5735] - Create local file cache for app package
+* [SPOI-6981] - Move orderedOutput feature to AbstractDeduper. Rename AbstractDeduperOptimized to AbstractBloomFilterDeduper
+* [SPOI-7448] - Work around the attribute bug detailed in APEXCORE-349 so that ADT still works
+* [SPOI-7470] - Work around namenode NPE bug in hadoop 2.7.x to avoid throwing NPE to the user. https://issues.apache.org/jira/browse/APEXCORE-45 and https://issues.apache.org/jira/browse/HDFS-9851
+* [SPOI-6381] - Support Dynamically Updating Enum Values For Keys In The Dimensions Store
+* [SPOI-6545] - Allow Gateway to directly contact dtHub to install app packages
+
+
+### New Feature
+* [APEXCORE-3] - Ability for an operator to populate DAG at launch time
+* [APEXCORE-60] - Iterative processing support
+* [APEXCORE-78] - Pre-Checkpoint Operator Callback
+* [APEXCORE-276] - Make App Data Push transport pluggable and configurable
+* [APEXCORE-283] - Operator checkpointing in distributed in-memory store
+* [APEXCORE-288] - Add group id information to apex app package
+
+### Improvement
+* [APEXCORE-40] - Semver dependencies should be in Maven Central
+* [APEXCORE-162] - Enhance StramTestSupport.TestMeta API
+* [APEXCORE-181] - Expose methods in StramWSFilterInitializer to get the RM webapp address
+* [APEXCORE-188] - Make type graph lazy load
+* [APEXCORE-199] - CLI should check for version compatibility when launching app package
+* [APEXCORE-228] - Add maven 3.0.5 as prerequisites to the Apex parent pom
+* [APEXCORE-229] - Upgrade checkstyle maven plugin (2.17) and checkstyle dependency (6.11.2)
+* [APEXCORE-291] - Provide a way for an operator to specify its metric aggregator instance
+* [APEXCORE-305] - Enable checkstyle violations logging to console during maven build
+
+### Bug
+* [APEXCORE-58] - endWindow is being called even when the operator is being undeployed
+* [APEXCORE-83] - beginWindow not called on recovery
+* [APEXCORE-193] - apex-app-archetype has extraneous entry that generates a warning when running it
+* [APEXCORE-204] - Update checkstyle and codestyle to be the same
+* [APEXCORE-211] - Brace placement after static blocks in checkstyle configuration
+* [APEXCORE-263] - Checkpoint can be performed twice for same window
+* [APEXCORE-274] - removeTerminatedPartition fails for Unifier operator
+* [APEXCORE-275] - Two threads can try to reconnect to websocket server upon disconnection
+* [APEXCORE-278] - GenericNodeTest clutters test logs with unnecessary statement
+* [APEXCORE-296] - Memory leak in operator stats processing
+* [APEXCORE-300] - Fix checkstyle regular expression
+* [APEXCORE-303] - Launch properties not evaluated
+
+### Task
+* [APEXCORE-24] - Takes out usage of Rhino as it is GPL 2.0
+* [APEXCORE-186] - Enable license check in Travis CI
+* [APEXCORE-253] - Apex archetype includes dependencies which do not belong to org.apache.apex
+* [APEXCORE-298] - Reduce the severity of  line length check
+* [APEXCORE-301] - Add "io" as a separate import to checkstyle rules
+* [APEXCORE-302] - Update NOTICE copyright year
+* [APEXCORE-308] - Implement findbugs plugin reporting
+* [APEXCORE-317] - Run performance benchmark for the Apex Core 3.3.0 release
+
+### Sub-task
+* [APEXCORE-104] - Expand Module DAG
+* [APEXCORE-105] - Support injecting properties through xml file on modules.
+* [APEXCORE-144] - Provide REST api for listing information about module.
+* [APEXCORE-151] - Provide code style templates for major IDEs (Eclipse, IntelliJ and NetBeans)
+* [APEXCORE-182] - Add Apache copyright to IntelliJ
+* [APEXCORE-194] - Add support for ProxyPorts in Modules
+* [APEXCORE-226] - Strictly enforce wrapping indentation in checkstyle
+* [APEXCORE-227] - Enforce left brace placement for anonymous class on the next line
+* [APEXCORE-230] - Limit line lengths to be 120
+* [APEXCORE-239] - Upgrade checkstyle to 6.12 from 6.11.2
+* [APEXCORE-248] - Increase wrapping indentation from 2 to 4.
+* [APEXCORE-249] - Enforce class, method, constructor annotations on a separate line
+* [APEXCORE-250] - Exclude DtCli from System.out checks
+* [APEXCORE-267] - Fix existing checkstyle violations in api
+* [APEXCORE-270] - Enforce checkstyle validations on test classes
+* [APEXCORE-272] - Attributes added to operator inside Module is not preserved.
+* [APEXCORE-273] - Fix existing checkstyle violations in bufferserver module
+* [APEXCORE-306] - Recovery checkpoint handing in iteration loops
+
 Version 3.2.0
 ------------------------------------------------------------------------------------------------------------------------
 
