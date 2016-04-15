@@ -1765,13 +1765,16 @@ Returns:
 
 ### POST /ws/v2/appPackages/{user}/{appPackageName}/{appPackageVersion}/merge
 
-Function: Merge the configuration, json apps, and resources files from the version specified from the payload to the specified app package in the url, without overwriting any existing file in the specified app package
+Function: Merge the configuration, json apps, and resources files from the app package specified by user/name/version from the payload to the specified app package in the url, without overwriting any existing file in the specified app package. If replaceExisting is true, the files in the app, conf and resources directory of the app package will be replaced by the ones in the app package specified in the payload. Otherwise, they will not be replaced. The fields user, name and replaceExisting in the payload are optional. If user and name are not specified, they are default to be the same as in the URI path. replaceExisting's default is false.
 
 Payload:
 
 ```json
 {
- "version": "{versionToMergeFrom}"
+ "user": "{user}",
+ "name": "{name}",
+ "version": "{versionToMergeFrom}",
+ "replaceExisting": "{true/false}"
 }
 ```
 
