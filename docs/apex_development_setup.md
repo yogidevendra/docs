@@ -15,9 +15,9 @@ There are a few tools that will be helpful when developing Apache Apex applicati
 
 3.  *maven* -- Apache Maven is a build system for Java projects (version 3.0.5 or later). It can be downloaded from <https://maven.apache.org/download.cgi>.
 
-4.  *VirtualBox* -- Oracle VirtualBox is a virtual machine manager (version 4.3 or later) and can be downloaded from <https://www.virtualbox.org/wiki/Downloads>. It is needed to run the Data Torrent Sandbox.
+4.  *VirtualBox* -- Oracle VirtualBox is a virtual machine manager (version 4.3 or later) and can be downloaded from <https://www.virtualbox.org/wiki/Downloads>. It is needed to run the DataTorrent Sandbox.
 
-5.  *DataTorrent Sandbox* -- The sandbox can be downloaded from <https://www.datatorrent.com/download>. It is useful for testing simple applications since it contains Apache Hadoop and Data Torrent RTS pre-installed with a time-limited Enterprise License. If you already installed the RTS Enterprise Edition (evaluation or production license) on a cluster, you can use that setup for deployment and testing instead of the sandbox.
+5.  *DataTorrent Sandbox* -- The sandbox can be downloaded from <https://www.datatorrent.com/download>. It is useful for testing simple applications since it contains Apache Hadoop and DataTorrent RTS pre-installed with a time-limited Enterprise License. If you already installed the RTS Enterprise Edition (evaluation or production license) on a cluster, you can use that setup for deployment and testing instead of the sandbox.
 
 6.  (Optional) If you prefer to use an IDE (Integrated Development Environment) such as *NetBeans*, *Eclipse* or *IntelliJ*, install that as well.
 
@@ -74,7 +74,7 @@ The sandbox includes, as noted above, a complete, stand-alone, instance of the
 Datatorrent RTS Enterprise Edition configured as a single-node Hadoop cluster. Please
 see [DataTorrent RTS Sandbox](sandbox.md) for details on setting up the sandbox.
 
-You can choose to develop either directly on the sandbox or on your development machine. The advantage of the former is that most of the tools (e.g. _jdk_, _git_, _maven_) are pre-installed and also the package files created by your project are directly available to the Data Torrent tools such as  **dtManage** and **dtcli**. The disadvantage is that the sandbox is a memory-limited environment so running a memory-hungry tool like a Java IDE on it may starve other applications of memory.
+You can choose to develop either directly on the sandbox or on your development machine. The advantage of the former is that most of the tools (e.g. _jdk_, _git_, _maven_) are pre-installed and also the package files created by your project are directly available to the DataTorrent tools such as  **dtManage** and **dtcli**. The disadvantage is that the sandbox is a memory-limited environment so running a memory-hungry tool like a Java IDE on it may starve other applications of memory.
 
 
 Creating a new Project
@@ -98,7 +98,7 @@ value for `archetypeVersion` can be a more recent version if available):
 
 The caret (^) at the end of some lines indicates that a continuation line follows.
 
-This command file also exists in the Data Torrent _examples_ repository which you can check out with:
+This command file also exists in the DataTorrent _examples_ repository which you can check out with:
 
     git clone https://github.com/DataTorrent/examples
 
@@ -112,7 +112,7 @@ When the run completes successfully, you should see a new directory named `myape
     cd myapexapp
     mvn clean package -DskipTests
 
-The build should create the application package file `myapexapp\target\myapexapp-1.0-SNAPSHOT.apa`. This file can then be uploaded to the Data Torrent GUI tool (**dtManage**) on your cluster if you have Datatorrent RTS installed there, or on the sandbox and launched  from there. It generates a stream of random numbers and prints them out, each prefixed by the string  `hello world: `.
+The build should create the application package file `myapexapp\target\myapexapp-1.0-SNAPSHOT.apa`. This file can then be uploaded to the DataTorrent GUI tool (**dtManage**) on your cluster if you have DataTorrent RTS installed there, or on the sandbox and launched  from there. It generates a stream of random numbers and prints them out, each prefixed by the string  `hello world: `.
 
 If you built this package on the host, you can transfer it to the sandbox using either a shared folder or the `pscp` tool bundled with `PuTTY` mentioned earlier.
 
