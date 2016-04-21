@@ -45,56 +45,27 @@ The application setup for this retailer requires:
 
 Step I: Build the Sales Dimension application
 ---
-This topic contains steps for creating a new maven project using
-an archetype, adding the source and data files to the project, and
-finally, building and deploying the Sales Dimension application. The
-application sources are available online. You can use them with
-appropriate modifications to save time.
+To save time we will use some source and data files that are available online.
+We will create a new maven project using the maven archetype, add the source
+and data files to the project, modify them suitable and finally build and
+deploy application.
 
 To build an application
 
-1.  Open a file in a simple text editor.
-2.  Copy the following script to this file.
+1. Create a new application project named, say `salesapp`, as described in:
+   [Apache Apex Development Environment Setup](apex_development_setup.md)
 
-        #!/bin/bash
-        name=salesapp
-        mvn archetype:generate \
-        -DarchetypeRepository=https://www.datatorrent.com/maven/content/repositories/releases \
-         -DarchetypeGroupId=com.datatorrent \
-         -DarchetypeArtifactId=apex-app-archetype \
-         -DarchetypeVersion=3.1.1 \
-         -DgroupId=com.example \
-         -Dpackage=com.example.$name \
-         -DartifactId=$name \
-         -Dversion=1.0-SNAPSHOT
-
-3.  Save the file as, for example, `newapp.sh`.
-
-4.  Run the file using the `bash` command to generate a new Maven project:
-
-    `bash` _Name of file_`.sh`
-
-    For example, the command might look like this: `bash newapp.sh`
-
-5.  At the prompt, press _Enter_ to create a new project under a new directory
-    named `salesapp`.
-
-6.  Delete the following generated JAVA files: `Application.java` and
+2.  Delete the following generated JAVA files: `Application.java` and
     `RandomNumberGenerator.java` under `src/main/java/com/example/salesapp`
     and `ApplicationTest.java` under `src/test/java/com/example/salesapp`.
 
-7.  Create a new directory named, say `sources`, step into it, retrieve
-    the JAR file containing the source files using `wget`, and expand it:
+3.  Checkout the `examples` git repository in a suitable location, for example:
 
-        mkdir -p salesapp/sources; cd salesapp/sources
-        repo="https://www.datatorrent.com/maven/content/repositories/releases"
-        wget $repo/com/datatorrent/dimensions-demo/3.1.1/dimensions-demo-3.1.1-sources.jar"
-        jar xvf dimensions-demo-3.1.1-sources.jar
+        cd; git checkout https://github.com/datatorrent/examples
 
-
-8.  Copy the following files from the expanded JAR file at
-    `com/datatorrent/demos/dimensions/sales/generic` to the main source directory
-    of the new project at `src/main/java/com/example/salesapp`.
+4.  Copy the following files from that repository at
+    `examples/dt-demo/dimensions/src/main/java/com/datatorrent/demos/dimensions/sales/generic`
+    to the main source directory of the new project at `src/main/java/com/example/salesapp`.
 
     <table>
     <colgroup>
@@ -117,13 +88,14 @@ To build an application
     </tbody>
     </table>
 
-9.  Also copy these text files from the expanded jar to
-    `src/main/resources` in the new project: `salesGenericDataSchema.json`,
-    `salesGenericEventSchema.json`, `products.txt` . The first two files
+5.  Also copy these text files from the examples repository at
+    `examples/dt-demo/dimensions/src/main/resources`:
+    `salesGenericDataSchema.json`, `salesGenericEventSchema.json`,
+    `products.txt` to the new project at `src/main/resources`. The first two files
     define the format of data for visualization queries and the last has
     data used by the enrichment operator discussed below.
 
-10. Change the package location in each file to reflect
+6. Change the package location in each Java file to reflect
     its current location by changing the line
 
         package com.datatorrent.demos.dimensions.sales.generic;
@@ -132,9 +104,8 @@ To build an application
 
         package com.example.salesapp;
 
-11. Add a new file called `InputGenerator.java` to the same location
-    containing this block of
-    code:
+7. Add a new file called `InputGenerator.java` to the same location
+    containing this block of code:
 
         package com.example.salesapp;
         import com.datatorrent.api.InputOperator;
@@ -142,30 +113,60 @@ To build an application
             public OutputPort<T> getOutputPort();
         }
 
-
-12. Remove these lines from `JsonSalesGenerator.java` (the first is
+8. Remove these lines from `JsonSalesGenerator.java` (the first is
     unused, while the second is now package local):
 
-        import com.datatorrent.demos.dimensions.ads.AdInfo;
         import com.datatorrent.demos.dimensions.InputGenerator;
+        import com.datatorrent.demos.dimensions.ads.AdInfo;
 
+    Also remove the first import from `SalesDemo.java`.
 
-13. Add these lines to the dependencies section at the end of the `pom.xml`
-    file:
+9. Make the following changes to pom.xml:
+    1. Change the artifactId to something that is likely to be unique to
+       this application, for example: `<artifactId>salesapp</artifactId>`.
+       This step is optional but is recommended since uploading a second
+       package with the same artifact id will overwrite the first. Similarly,
+       change the `name` and `description` elements to something meaningful
+       for this application.
 
+    2. Add the following `repositories` element at the top level (i.e. as a
+       child of the `project` element):
+
+        ```
+        <!-- repository to provide the DataTorrent artifacts -->
+        <repositories>
+          <repository>
+            <id>datatorrent</id>
+            <name>DataTorrent Release Repository</name>
+            <url>https://www.datatorrent.com/maven/content/repositories/releases/</url>
+            <snapshots>
+              <enabled>false</enabled>
+            </snapshots>
+          </repository>
+        </repositories>
+        ```
+
+    3. Add these lines to the dependencies section at the end of the `pom.xml`
+    file (the version number might need to change as new releases come out):
+
+        ```
         <dependency>
             <groupId>com.datatorrent</groupId>
             <artifactId>dt-contrib</artifactId>
-            <version>${datatorrent.version}</version>
+            <version>3.3.0</version>
         </dependency>
         <dependency>
             <groupId>com.datatorrent</groupId>
             <artifactId>dt-library</artifactId>
-            <version>${datatorrent.version}</version>
-        <dependency>
+            <version>3.3.0</version>
+        </dependency>
+        ```
 
+    4. Finally change `apex.version` to 3.2.0-incubating. To recapitulate, we are
+       using versions `3.3.0` for `dt-contrib` and `dt-library`, `3.3.0-incubating`
+       for `malhar-library` and `3.2.0-incubating` for Apex.
 
-14. Build the project using the following command:
+10. Build the project as usual:
 
         mvn clean package -DskipTests
 
@@ -189,9 +190,9 @@ To upload the Sales Dimension application package
 
 Step III: Launch the Sales Dimension application
 ---
-_Note_: Before launching the Sales Dimension application, shut down the IDE. If
-your IDE is running at the time of a launch, the sandbox might hang due to
-resource exhaustion.
+_Note_: If you are launching the application on the sandbox, make sure that
+an IDE is not running on it at the same time; otherwise, the sandbox might
+hang due to resource exhaustion.
 
 1. Log on to the DataTorrent Console (the default username and password
    are both `dtadmin`).

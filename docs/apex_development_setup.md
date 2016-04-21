@@ -17,7 +17,7 @@ There are a few tools that will be helpful when developing Apache Apex applicati
 
 4.  *VirtualBox* -- Oracle VirtualBox is a virtual machine manager (version 4.3 or later) and can be downloaded from <https://www.virtualbox.org/wiki/Downloads>. It is needed to run the Data Torrent Sandbox.
 
-5.  *DataTorrent Sandbox* -- The sandbox can be downloaded from <https://www.datatorrent.com/download>. It is useful for testing simple applications since it contains Apache Hadoop and Data Torrent RTS 3.1.1 pre-installed with a time-limited Enterprise License. If you already installed the RTS Enterprise Edition (evaluation or production license) on a cluster, you can use that setup for deployment and testing instead of the sandbox.
+5.  *DataTorrent Sandbox* -- The sandbox can be downloaded from <https://www.datatorrent.com/download>. It is useful for testing simple applications since it contains Apache Hadoop and Data Torrent RTS pre-installed with a time-limited Enterprise License. If you already installed the RTS Enterprise Edition (evaluation or production license) on a cluster, you can use that setup for deployment and testing instead of the sandbox.
 
 6.  (Optional) If you prefer to use an IDE (Integrated Development Environment) such as *NetBeans*, *Eclipse* or *IntelliJ*, install that as well.
 
@@ -70,27 +70,25 @@ Now run the following commands and ensure that the output is something similar t
 
 Installing the Sandbox
 ----
-To install the sandbox, first download it from <https://www.datatorrent.com/download> and import the downloaded file into VirtualBox. Once the import completes, you can select it and click the  Start button to start the sandbox.
-
-
-The sandbox is configured with 6GB RAM; if your development machine has 16GB or more, you can increase the sandbox RAM to 8GB or more using the VirtualBox console. This will yield better performance and support larger applications. Additionally, you can change the network adapter from **NAT** to **Bridged Adapter**; this will allow you to login to the sandbox from your host machine using an _ssh_ tool like **PuTTY** and also to transfer files to and from the host using `pscp` on Windows. Of course all such configuration must be done when when the sandbox is not running.
-
+The sandbox includes, as noted above, a complete, stand-alone, instance of the
+Datatorrent RTS Enterprise Edition configured as a single-node Hadoop cluster. Please
+see [DataTorrent RTS Sandbox](sandbox.md) for details on setting up the sandbox.
 
 You can choose to develop either directly on the sandbox or on your development machine. The advantage of the former is that most of the tools (e.g. _jdk_, _git_, _maven_) are pre-installed and also the package files created by your project are directly available to the Data Torrent tools such as  **dtManage** and **dtcli**. The disadvantage is that the sandbox is a memory-limited environment so running a memory-hungry tool like a Java IDE on it may starve other applications of memory.
 
 
 Creating a new Project
 ----
-You can now use the maven archetype to create a basic Apache Apex project as follows: Put these lines in a Windows command file called, for example, `newapp.cmd` and run it:
+You can now use the maven archetype to create a basic Apache Apex project as follows: Put these lines in a Windows command file called, for example, `newapp.cmd` and run it (the
+value for `archetypeVersion` can be a more recent version if available):
 
     @echo off
     @rem Script for creating a new application
     setlocal
-    mvn archetype:generate ^
-    -DarchetypeRepository=https://www.datatorrent.com/maven/content/repositories/releases ^
-      -DarchetypeGroupId=com.datatorrent ^
+    mvn -B archetype:generate ^
+      -DarchetypeGroupId=org.apache.apex ^
       -DarchetypeArtifactId=apex-app-archetype ^
-      -DarchetypeVersion=3.1.1 ^
+      -DarchetypeVersion=3.3.0-incubating ^
       -DgroupId=com.example ^
       -Dpackage=com.example.myapexapp ^
       -DartifactId=myapexapp ^
@@ -98,8 +96,7 @@ You can now use the maven archetype to create a basic Apache Apex project as fol
     endlocal
 
 
-The caret (^) at the end of some lines indicates that a continuation line follows. When you run this file, the properties will be displayed and you will be prompted with `` Y: :``; just press **Enter** to complete the project generation.
-
+The caret (^) at the end of some lines indicates that a continuation line follows.
 
 This command file also exists in the Data Torrent _examples_ repository which you can check out with:
 
@@ -107,19 +104,46 @@ This command file also exists in the Data Torrent _examples_ repository which yo
 
 You will find the script under `examples\tutorials\topnwords\scripts\newapp.cmd`.
 
-You can also, if you prefer, use an IDE to generate the project as described in Section 3 of [Application Packages](application_packages.md) but use the archetype version 3.1.1 instead of 3.0.0.
-
+You can also, if you prefer, use an IDE to generate the project as described in
+[Creating a New Apache Apex Project with your IDE](configure_IDE.md).
 
 When the run completes successfully, you should see a new directory named `myapexapp` containing a maven project for building a basic Apache Apex application. It includes 3 source files:**Application.java**,  **RandomNumberGenerator.java** and **ApplicationTest.java**. You can now build the application by stepping into the new directory and running the appropriate maven command:
 
     cd myapexapp
     mvn clean package -DskipTests
 
-The build should create the application package file `myapexapp\target\myapexapp-1.0-SNAPSHOT.apa`. This file can then be uploaded to the Data Torrent GUI tool on the sandbox (called **dtManage**) and launched  from there. It generates a stream of random numbers and prints them out, each prefixed by the string  `hello world: `.  If you built this package on the host, you can transfer it to the sandbox using the `pscp` tool bundled with **PuTTY** mentioned earlier.
+The build should create the application package file `myapexapp\target\myapexapp-1.0-SNAPSHOT.apa`. This file can then be uploaded to the Data Torrent GUI tool (**dtManage**) on your cluster if you have Datatorrent RTS installed there, or on the sandbox and launched  from there. It generates a stream of random numbers and prints them out, each prefixed by the string  `hello world: `.
+
+If you built this package on the host, you can transfer it to the sandbox using either a shared folder or the `pscp` tool bundled with `PuTTY` mentioned earlier.
+
+You can also run this application from the generated unit test file as described in the
+next section.
 
 Running Unit Tests
 ----
-To run unit tests on Linux or OSX, simply run the usual maven command, for example: `mvn test`.
+To run unit tests on Linux or OSX, simply run the usual maven command, for example: `mvn test`
+to run all tests or `mvn -Dcom.example.myapexapp.ApplicationTest#testApplication test` to run
+a selected test. For the default application generated from the archetype, it should
+print output like this:
+
+     -------------------------------------------------------
+      TESTS
+     -------------------------------------------------------
+
+     Running com.example.mydtapp.ApplicationTest
+     hello world: 0.8015370953286478
+     hello world: 0.9785359225545481
+     hello world: 0.6322611586644047
+     hello world: 0.8460953663451775
+     hello world: 0.5719372906929072
+     ...
+
+     Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.863
+     sec
+
+     Results :
+
+     Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 
 On Windows, an additional file, `winutils.exe`, is required; download it from
 <https://github.com/srccodes/hadoop-common-2.2.0-bin/archive/master.zip>
@@ -146,15 +170,26 @@ unit test in the usual way. For example, with NetBeans you can add:
 
     Env.HADOOP_HOME=c:/hadoop/hadoop-common-2.2.0-bin-master
 
-at _Properties &#8658; Actions &#8658; Run project &#8658; Set Properties_.
+at _Properties &#x21e8; Actions &#x21e8; Run project &#x21e8; Set Properties_.
 
 Similarly, in Eclipse (Mars) add it to the
-project properties at _Properties &#8658; Run/Debug Settings &#8658; ApplicationTest
-&#8658; Environment_ tab.
+project properties at _Properties_ &#x21e8; _Run/Debug Settings_ &#x21e8; _ApplicationTest_
+&#x21e8; _Environment_ tab.
 
 Building the Sources
 ----
-If you want to checkout the Apache Apex source repositories and build them, you can do so by running the script `build-apex.cmd` located in the same place in the examples repository described above. The source repositories contain more substantial demo applications and the associated source code. Alternatively, if you do not want to use the script, you can follow these simple manual steps:
+The Apache Apex source code is useful to have locally for a variety of reasons:
+- It has more substantial demo applications which can serve as models for new
+  applications in the same or similar domain.
+- When extending a class, it is helpful to refer to the base class implementation
+  of overrideable methods.
+- The maven build file `pom.xml` can be a useful model when you need to add or delete
+  plugins, dependencies, profiles, etc.
+- Browsing the code is a good way to gain a deeper understanding of the platform.
+
+You can download and build the source repositories by running the script `build-apex.cmd`
+located in the same place in the examples repository described above. Alternatively, if
+you do not want to use the script, you can follow these simple manual steps:
 
 
 1.  Check out the source code repositories:
@@ -165,17 +200,21 @@ If you want to checkout the Apache Apex source repositories and build them, you 
 2.  Switch to the appropriate release branch and build each repository:
 
         pushd incubator-apex-core
-        git checkout release-3.1
         mvn clean install -DskipTests
         popd
         pushd incubator-apex-malhar
-        git checkout release-3.1
         mvn clean install -DskipTests
         popd
 
-The `install` argument to the `mvn` command installs resources from each project to your local maven repository (typically `.m2/repository` under your home directory), and **not** to the system directories, so Administrator privileges are not required. The  `-DskipTests` argument skips running unit tests since they take a long time. If this is a first-time installation, it might take several minutes to complete because maven will download a number of associated plugins.
+The `install` argument to the `mvn` command installs resources from each project to your
+local maven repository (typically `.m2/repository` under your home directory), and
+**not** to the system directories, so _Administrator_ privileges are not required.
+The  `-DskipTests` argument skips running unit tests since they take a long time. If this is a first-time installation, it might take several minutes to complete because maven will download a number of associated plugins.
 
-After the build completes, you should see the demo application package files in the target directory under each demo subdirectory in `incubator-apex-malhar\demos\`.
+After the build completes, you should see application package files in the `target`
+directories under each module; for example, the `Pi Demo` package file
+`pi-demo-3.2.1-incubating-SNAPSHOT.apa` should be under
+`incubator-apex-malhar\demos\pi\target`.
 
 Linux
 ------------------
@@ -186,4 +225,4 @@ Most of the instructions for Linux (and other Unix-like systems) are similar to 
 The pre-requisites (such as _git_, _maven_, etc.) are the same as for Windows described above; please run the commands in the table and ensure that appropriate versions are present in your PATH environment variable (the command to display that variable is: `echo $PATH`).
 
 
-The maven archetype command is the same except that continuation lines use a backslash (``\``) instead of caret (``^``); the script for it is available in the same location and is named `newapp` (without the `.cmd` extension). The script to checkout and build the Apache Apex repositories is named `build-apex`.
+The maven archetype command is the same except that continuation lines use a backslash (`\`) instead of caret (`^`); the script for it is available in the same location and is named `newapp` (without the `.cmd` extension). The script to checkout and build the Apache Apex repositories is named `build-apex`.
