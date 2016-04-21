@@ -42,7 +42,7 @@ In the context of such an application, a number of questions arise:
 
 The answers to these and other questions are explored in the sections below.
 
-For this tutorial, use the Data Torrent RTS Sandbox; it comes pre-installed
+For this tutorial, use the DataTorrent RTS Sandbox; it comes pre-installed
 with Apache Hadoop and the latest version of DataTorrent RTS configured as a single-node
 cluster and includes a time-limited enterprise license. If you've already installed the RTS Enterprise Edition (evaluation or production license), you
 can use that setup instead.
