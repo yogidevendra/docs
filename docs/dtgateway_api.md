@@ -1562,6 +1562,22 @@ Return:
 }
 ```
 
+### POST /ws/v2/applications/{appid}/restart[?queue={queue}]
+Since: 3.4.0
+Function: Restart the terminated application. Payload is optional.
+Payload:
+```json
+{
+  "{propertyName}" : "{propertyValue}", ...
+}
+```
+Return:
+```json
+{
+  "appId": "{appId}"
+}
+```
+
 ### GET /ws/v2/appPackages
 
 Since: 1.0.4
