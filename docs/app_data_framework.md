@@ -951,5 +951,5 @@ Coming soon
 
 ### App Data Tracker
 
-Coming soon
+App Data Tracker is discussed [here](http://docs.datatorrent.com/app_data_tracker/).
 
