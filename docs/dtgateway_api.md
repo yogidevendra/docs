@@ -2227,7 +2227,7 @@ For example: `ws://localhost:9090/pubsub`
 
     {"type":"subscribeNumSubscribers", "topic":"{topic}"}
 
-### Subscribing to the number of subscribers of a topic
+### Unsubscribing from the number of subscribers of a topic
 
     {"type":"unsubscribeNumSubscribers", "topic":"{topic}"}
 
