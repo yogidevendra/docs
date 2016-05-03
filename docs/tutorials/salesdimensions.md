@@ -53,7 +53,7 @@ deploy application.
 To build an application
 
 1. Create a new application project named, say `salesapp`, as described in:
-   [Apache Apex Development Environment Setup](apex_development_setup.md)
+   [Apache Apex Development Environment Setup](../apex_development_setup.md)
 
 2.  Delete the following generated JAVA files: `Application.java` and
     `RandomNumberGenerator.java` under `src/main/java/com/example/salesapp`

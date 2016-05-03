@@ -2,7 +2,7 @@ Setting up your development environment
 =======================================
 
 To begin with, please follow the steps outlined in:
-[Apache Apex Development Environment Setup](apex_development_setup.md)
+[Apache Apex Development Environment Setup](../apex_development_setup.md)
 to setup your development environment; you can skip the sandbox download
 and installation if you already have a Hadoop cluster with Datatorrent
 RTS installed where you can deploy applications.

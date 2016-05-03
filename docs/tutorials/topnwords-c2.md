@@ -24,7 +24,7 @@ Step II: Create a new application project
 ---
 Create a new application project as described in (you can use either an IDE
 or the command line):
-[Apache Apex Development Environment Setup](apex_development_setup.md)
+[Apache Apex Development Environment Setup](../apex_development_setup.md)
 
 Step III: Copy application files to the new project
 ---
