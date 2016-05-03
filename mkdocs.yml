@@ -26,6 +26,7 @@ pages:
             - Visualizing with dtDashboard: tutorials/salesdimensions-c3.md
             - Monitoring with dtManage: tutorials/salesdimensions-c4.md
     - Apex Development Setup: apex_development_setup.md
+    - Generate New Project in IDE: configure_IDE.md
     - Applications: application_development.md
     - Application Packages: application_packages.md
     - Configuration Packages: configuration_packages.md

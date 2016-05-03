@@ -11,10 +11,10 @@ Note: Before you begin, ensure that you have internet connectivity
 because, in order to complete this tutorial, you will need to download
 the Apex and Malhar code.
 
-The Top N words application monitors an input directory for new
+The Top N Words application monitors an input directory for new
 files. When the application detects a new file, it reads its lines,
-splits them into words, and computes the word-frequency for that specific file,
-as well as across all files that are processed. The top N words (by
+splits them into words and computes word frequencies for both that specific file
+as well as across all files processed so far. The top N words (by
 frequency) and their frequencies are output to a corresponding file in
 an output directory. Simultaneously, the word-frequency pairs are also
 updated on **dtDashboard**, the browser-based dashboard of DataTorrent RTS.
@@ -42,7 +42,7 @@ In the context of such an application, a number of questions arise:
 
 The answers to these and other questions are explored in the sections below.
 
-For this tutorial, use the Data Torrent RTS Sandbox; it comes pre-installed
-with Apache Hadoop and DataTorrent RTS 3.1.1 configured as a single-node
+For this tutorial, use the DataTorrent RTS Sandbox; it comes pre-installed
+with Apache Hadoop and the latest version of DataTorrent RTS configured as a single-node
 cluster and includes a time-limited enterprise license. If you've already installed the RTS Enterprise Edition (evaluation or production license), you
 can use that setup instead.
