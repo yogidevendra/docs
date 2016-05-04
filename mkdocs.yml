@@ -42,6 +42,7 @@ pages:
     - App Data Framework: app_data_framework.md
     - REST API: dtgateway_api.md
 - Applications:
+    - App Data Tracker: app_data_tracker.md
     - dtIngest: dtingest.md
 - Platform:
     - RTS: rts.md
