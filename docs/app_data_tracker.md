@@ -65,7 +65,7 @@ following methods is needed:
 
 Let’s consider the case where we want to perform the following rolling average:
 
-Y_n = ½ * X_n + ½ * X_n-1 + ¼ * X_n-2 + ⅛ * X_n-3 +...
+Y_n = (1/2) * X_n + (1/4) * X_n-1 + (1/8) * X_n-2 + (1/16) * X_n-3 +...
 
 This aggregation could be performed by the following Custom Aggregator:
 
