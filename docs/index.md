@@ -1,7 +1,7 @@
 Welcome to DataTorrent RTS!
 ================================================================================
 
-DataTorrent RTS, built on Apache Apex, provides a high-performing, fault-tolerant, scalable, easy to use data processing platform for both batch and streaming workloads. DataTorrent RTS includes advanced management, monitoring, development, visualization, and data ingestion and distribution features.  
+DataTorrent RTS, built on Apache Apex, provides a high-performing, fault-tolerant, scalable, easy to use data processing platform for both batch and streaming workloads. DataTorrent RTS includes advanced management, monitoring, development, visualization, data ingestion and distribution features.  
 
 
 
