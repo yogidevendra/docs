@@ -55,10 +55,7 @@ Kerberos Authentication
 ------------------------
 
 Kerberos authentication can optionally be enabled for Hadoop web access.
-If this is configured then all web browser access to the Hadoop
-management consoles is Kerberos authenticated. Access to all the web
-services is also Kerberos authenticated. This Kerberos authentication is
-performed using a protocol called SPNEGO which is Kerberos over HTTP.
+When configured, all web browser access to Hadoop management consoles are Kerberos authenticated. Web services are also Kerberos authenticated. This authentication is performed using a protocol called SPNEGO which is Kerberos over HTTP.
 Please refer to the administration guide of your Hadoop distribution on
 how to enable this. The web browsers must also support SPNEGO, most
 modern browsers do and should be configured to use SPNEGO for the
@@ -70,9 +67,7 @@ Kerberos authentication is enabled for Hadoop web access.
 Kerberos authentication can be enabled for UI Console as well. When it
 is enabled access to the Gateway web-services is Kerberos authenticated.
 The browser should be configured for SPNEGO authentication when
-accessing the Console. A user typically obtains a master ticket first by
-logging in to kerberos system in a terminal emulator using kinit. Then
-the user launches a browser and accesses the Console URL. The browser
+accessing the Console. A user typically obtains a master ticket first by logging in to kerberos system in a terminal emulator using kinit. Then, user launches a browser to access the Console URL. The browser
 will use the master ticket obtained by kinit earlier to obtain the
 necessary security tokens to authenticate with the Gateway.
 
@@ -259,7 +254,7 @@ settings are only provided as a reference example.
 
 ## Active Directory
 
-Active directory is used when authenting users in Microsoft Windows domains. The authentication protocol includes Microsoft's implementation of Keberos as well as LDAP. In this section we will look into the configuration needed for LDAP authentication with Active Directory.
+Active Directory is used when authenting users in Microsoft Windows domains. The authentication protocol includes Microsoft's implementation of Keberos as well as LDAP. In this section we will look into the configuration needed for LDAP authentication with Active Directory.
 
 Follow the JAAS configuration steps described above with the following specific details.
 
@@ -352,12 +347,12 @@ the actual JAAS plugin implementation class providing the LDAP authentication. T
 		
 # PAM
 
-PAM is Pluggable Authentication Module. It is a Linux system equivalent
+PAM (Pluggable Authentication Module) is a Linux system equivalent
 of JAAS where applications call the generic PAM interface and the actual
 authentication implementations called PAM modules are specified using
 configuration files. PAM is the login authentication mechanism in Linux
 so it can be used for example to authenticate and use local Linux user
-accounts in Gateway. If organizations have configured other PAM modules
+accounts in Gateway. If organizations have configured other PAM modules, 
 they can be used in Gateway as well.
 
 PAM is implemented in C language and has a C API. JPam is a Java PAM bridge
