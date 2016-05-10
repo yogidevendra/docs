@@ -102,7 +102,7 @@ Various options are available to customize the DataTorrent installation.  List o
     -G <group>     Use <group> group for installation.  Default: dtadmin ( based on value of <user> )
     -H <path>      Use <path> for location for hadoop executable.  Overrides defaults of HADOOP_PREFIX and PATH.
     -E <expr>      Adds export <expr> to custom-env.sh file.  Used to set an environment variable.  Examples include:
-                     -E JAVA_HOME=/my/java                 Java used by dtgateway  and dtcli
+                     -E JAVA_HOME=/my/java                 Java used by dtgateway and Apex CLI
                      -E DT_LOG_DIR=/var/log/datatorrent    Directory for dtgateway logs
                      -E DT_RUN_DIR=/var/run/datatorrent    Directory for dtgateway pid files
     -s <file>      Use <file> DataTorrent dt-site.xml file to configure new installation. Overrides default and previous dt-site.xml

@@ -4,7 +4,7 @@ Apache Apex Configuration Packages
 An Apache Apex Application Configuration Package is a zip file that contains
 configuration files and additional files to be launched with an
 [Application Package](application_packages.md) using 
-DTCLI or REST API.  This guide assumes the reader’s familiarity of
+Apex CLI or REST API.  This guide assumes the reader’s familiarity of
 Application Package.  Please read the Application Package document to
 get yourself familiar with the concept first if you have not done so.
 
@@ -13,7 +13,7 @@ get yourself familiar with the concept first if you have not done so.
 You will need have the following installed:
 
 1. Apache Maven 3.0 or later (for assembling the Config Package)
-2. Apex 3.0.0 or later (for launching the App Package with the Config
+2. Apex 3.4.0 or later (for launching the App Package with the Config
     Package in your cluster)
 
 #Creating Your First Configuration Package 
@@ -30,7 +30,7 @@ appropriate values:
 
     $ mvn archetype:generate \
      -DarchetypeGroupId=org.apache.apex \
-     -DarchetypeArtifactId=apex-conf-archetype -DarchetypeVersion=3.2.0-incubating \
+     -DarchetypeArtifactId=apex-conf-archetype -DarchetypeVersion=3.4.0 \
      -DgroupId=com.example -Dpackage=com.example.mydtconfig -DartifactId=mydtconfig \
      -Dversion=1.0-SNAPSHOT
 
@@ -49,7 +49,7 @@ Configuration Package file to launch an Apache Apex application.
 ## Using IDE 
 
 Alternatively, you can do the above steps all within your IDE.  For
-example, in NetBeans, select File -\> New Project.  Then choose “Maven”
+example, in NetBeans, select File->New Project.  Then choose “Maven”
 and “Project from Archetype” in the dialog box, as shown.
 
 ![](images/AppConfig/ApplicationConfigurationPackages.html-image01.png)
@@ -61,7 +61,7 @@ shown below.
 
 Group ID: org.apache.apex
 Artifact ID: apex-conf-archetype
-Version: 3.2.0-incubating (or any later version)
+Version: 3.4.0 (or any later version)
 
 Press Next and fill out the rest of the required information. For
 example:
@@ -182,11 +182,11 @@ files
 
 
 
-#Launching with CLI 
+# Launching with CLI
 
 `-conf` option of the launch command in CLI supports specifying configuration package in the local filesystem.  Example:
 
-    dt\> launch DTApp-mydtapp-1.0.0.jar -conf DTConfig-mydtconfig-1.0.0.jar
+    apex> launch mydtapp-1.0.0.apa -conf mydtconfig.apc
 
 This command expects both the application package and the configuration package to be in the local file system.
 
@@ -202,7 +202,7 @@ Function: Creates or replace a configuration package zip file in HDFS
 
 Curl example:
 
-    $ curl -XPOST -T DTConfig-{name}.jar http://{yourhost:port}/ws/v2/configPackages
+    $ curl -XPOST -T {name}.apc http://{yourhost:port}/ws/v2/configPackages
 
 ### GET /ws/v2/configPackages?appPackageName=...&appPackageVersion=... 
 
@@ -227,8 +227,8 @@ Function: Returns the raw config package file
 Curl example:
 
 ```sh
-$ curl http://{yourhost:port}/ws/v2/configPackages/{user}/{name}/download \> DTConfig-xyz.jar
-$ unzip -t DTConfig-xyz.jar
+$ curl http://{yourhost:port}/ws/v2/configPackages/{user}/{name}/download > xyz.apc
+$ unzip -t xyz.apc
 ```
 
 ### POST /ws/v2/appPackages/```<user>```/```<app-pkg-name>```/```<app-pkg-version>```/applications/{app-name}/launch?configPackage=```<user>```/```<confpkgname>```

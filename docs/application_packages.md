@@ -61,7 +61,7 @@ the default pom.xml:
 ```
 
 By default, as shown above, the default dependencies include
-malhar-library in compile scope, dt-engine in provided scope, and junit
+malhar-library in compile scope, apex-engine in provided scope, and junit
 in test scope.  Do not remove these three dependencies since they are
 necessary for any Apex application.  You can, however, exclude
 transitive dependencies from malhar-library to reduce the size of your
@@ -594,7 +594,7 @@ Please refer to the [Gateway API reference](https://www.google.com/url?q=https:/
 # Examining and Launching Application Packages Through Apex CLI
 
 If you are working with Application Packages in the local filesystem and
-do not want to deal with dtGateway, you can use the Apex Command Line Interface (dtcli).  Please refer to the [Gateway API](dtgateway_api.md)
+do not want to deal with dtGateway, you can use the Apex Command Line Interface (apex).  Please refer to the [Gateway API](dtgateway_api.md)
 to see samples for these commands.
 
 ## Getting Application Package Meta Information
@@ -603,7 +603,7 @@ You can get the meta information about the Application Package using
 this Apex CLI command.
 
 ```
- dt> get-app-package-info <app-package-file>
+ apex> get-app-package-info <app-package-file>
 ```
 
 ## Getting Available Operators In Application Package
@@ -612,7 +612,7 @@ You can get the list of available operators in the Application Package
 using this command.
 
 ```
- dt> get-app-package-operators <app-package-file> <package-prefix>
+ apex> get-app-package-operators <app-package-file> <package-prefix>
  [parent-class]
 ```
 
@@ -621,14 +621,14 @@ using this command.
 You can get the list of properties of any operator in the Application
 Package using this command.
 
- dt> get-app-package-operator-properties <app-package-file> <operator-class>
+ apex> get-app-package-operator-properties <app-package-file> <operator-class>
 
 
 ## Launching an Application Package
 
 You can launch an application within an Application Package.
 ```
-dt> launch [-D property-name=property-value, ...] [-conf config-name]
+ apex> launch [-D property-name=property-value, ...] [-conf config-name]
  [-apconf config-file-within-app-package] <app-package-file>
  [matching-app-name]
 ```

@@ -26,8 +26,8 @@ Depending on the installation type, these may be located under `/opt/datatorrent
 ### (install dir)/conf/custom-env.sh
 
 This file can be used to configure behavior of DT Gateway service,
-as well as `dtcli` command line utility.  After adding custom properties
-to this file, dtgateway and dtcli utilities need to be restarted for
+as well as `apex` command line utility.  After adding custom properties
+to this file, dtgateway and Apex CLI utilities need to be restarted for
 changes to take effect.
 
 Example custom-env.sh configuration:
@@ -42,7 +42,7 @@ Environment variables available for configuration
 
 * *DT_GATEWAY_HEAP_MEM* &ndash; Maximum heap size allocated to DT Gateway service.  Default is 1024m.
 * *DT_GATEWAY_DEBUG* &ndash; Set to 1 to enable additional debug information in the dtgateway.log
-* *DT_CLASSPATH* &ndash; Classpath used to load additional jars or properties for dtcli and dtgateway
+* *DT_CLASSPATH* &ndash; Classpath used to load additional jars or properties for Apex CLI and dtgateway
 * *DT_LOG_DIR* &ndash; Directory for log files
 * *DT_RUN_DIR* &ndash; Directory for process id and other temporary files
 created at run time
@@ -93,7 +93,7 @@ For a complete list of configurable application properties see the Attributes s
 The platform provides continuous information about CPU, Memory, and Network
 usage for the system as a whole, individual running applications,
 operators, streams, and various internal components.  These statistics
-are available via [REST API](dtgateway_api.md), [dtCli](dtcli.md), and [dtManage](dtmanage.md).
+are available via [REST API](dtgateway_api.md), [Apex CLI](apexcli.md), and [dtManage](dtmanage.md).
 
 The platform is also responsible for
 
@@ -300,7 +300,7 @@ The DataTorrent command line interface is used to launch
 applications along with performing various other operations on
 applications.  When Kerberos security is enabled in Hadoop, a Kerberos
 ticket granting ticket or the Kerberos credentials of the user is needed
-by the CLI program `dtcli` to authenticate with Hadoop for any
+by the CLI program `apex` to authenticate with Hadoop for any
 operation. Kerberos credentials are composed of a principal and either a
 _keytab_ or a password. For security and operational reasons only keytabs
 are supported in Hadoop and by extension in DataTorrent platform. When
@@ -316,14 +316,14 @@ found online or in man pages. An sample usage of this command is
     kinit -k -t path-tokeytab-file kerberos-principal
 
 If this command is successful, the TGT is obtained, cached and available for
-other programs. The CLI program `dtcli` can then be started to launch
+other programs. The CLI program `apex` can then be started to launch
 applications and perform other operations.
 
 ### Using Kerberos credentials
 
-The CLI program `dtcli` can also use the Kerberos credentials directly without
+The CLI program `apex` can also use the Kerberos credentials directly without
 requiring a TGT to be obtained separately. This can be useful in batch mode
-where `dtcli` is not launched manually and also in scenarios where running a
+where `apex` is not launched manually and also in scenarios where running a
 separate program like `kinit` is not feasible.
 
 The credentials can be specified in the `dt-site.xml` configuration
@@ -416,7 +416,7 @@ Dynamic Functional Modifications
 Platform supports changes to an application at multiple stages.
 Application design parameters (attributes and properties) can be
 changed at launch time via the job configuration file and during runtime via
-the `dtcli` tool or using the REST webservice calls. Support for runtime
+the `apex` tool or using the REST webservice calls. Support for runtime
 changes is critical for operability as it enables changes to a running
 application without being forced to kill it. This is a critical need for
 streaming applications and a significant difference from map-reduce/batch

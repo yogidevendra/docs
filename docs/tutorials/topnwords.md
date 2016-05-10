@@ -25,7 +25,7 @@ A simple word counting exercise was chosen because the goal of this tutorial is 
 -   The operator library
 -   The tools required for developing and deploying
     applications on a cluster
--   **dtcli** &ndash; the command-line tool for managing
+-   **apex** &ndash; the command-line tool for managing
     application packages and the constituent applications
 -   **dtManage** &ndash; for monitoring the applications
 -   **dtDashboard** &ndash; for visualizing the output

@@ -74,7 +74,7 @@ The sandbox includes, as noted above, a complete, stand-alone, instance of the
 Datatorrent RTS Enterprise Edition configured as a single-node Hadoop cluster. Please
 see [DataTorrent RTS Sandbox](sandbox.md) for details on setting up the sandbox.
 
-You can choose to develop either directly on the sandbox or on your development machine. The advantage of the former is that most of the tools (e.g. _jdk_, _git_, _maven_) are pre-installed and also the package files created by your project are directly available to the DataTorrent tools such as  **dtManage** and **dtcli**. The disadvantage is that the sandbox is a memory-limited environment so running a memory-hungry tool like a Java IDE on it may starve other applications of memory.
+You can choose to develop either directly on the sandbox or on your development machine. The advantage of the former is that most of the tools (e.g. _jdk_, _git_, _maven_) are pre-installed and also the package files created by your project are directly available to the DataTorrent tools such as  **dtManage** and **Apex CLI**. The disadvantage is that the sandbox is a memory-limited environment so running a memory-hungry tool like a Java IDE on it may starve other applications of memory.
 
 
 Creating a new Project

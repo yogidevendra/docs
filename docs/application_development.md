@@ -649,25 +649,25 @@ be used to launch the demo application. An application can be run in
 
 
 
-To start the dtCli run
+To start the Apex CLI run
 
-    <INSTALL_DIR>/bin/dtcli
+    <INSTALL_DIR>/bin/apex
 
 The command line prompt appears.  To start the application in local mode (the actual version number in the file name may differ)
 
-    dt> launch -local <INSTALL_DIR>/yahoo-finance-demo-3.2.0-SNAPSHOT.apa
+    apex> launch -local <INSTALL_DIR>/yahoo-finance-demo-3.4.0.apa
 
 To terminate the application in local mode, enter Ctrl-C
 
 Tu run the application on the Hadoop cluster (the actual version
 number in the file name may differ)
 
-    dt> launch <INSTALL_DIR>/yahoo-finance-demo-3.2.0-SNAPSHOT.apa
+    apex> launch <INSTALL_DIR>/yahoo-finance-demo-3.4.0.apa
 
 
-To stop the application running in Hadoop, terminate it in the dtCli:
+To stop the application running in Hadoop, terminate it in the Apex CLI:
 
-    dt> kill-app
+    apex> kill-app
 
 
 
@@ -1121,7 +1121,7 @@ libraries, version of the platform etc.)
 
 #### Running an application
 
-The platform provides a commandline tool called dtcli for managing applications (launching,
+The platform provides a command line tool called Apex CLI (apex) for managing applications (launching,
 killing, viewing, etc.). This tool was already discussed above briefly
 in the section entitled Running the Test Application. It will introspect
 the jar file specified with the launch command for applications (classes
@@ -1131,7 +1131,7 @@ application package to the cluster.
 
 
 
-Dtcli can run the application in local mode (i.e. outside a
+Apex CLI can run the application in local mode (i.e. outside a
 cluster). It is recommended to first run the application in local mode
 in the development environment before launching on the Hadoop cluster.
 This way some of the external system integration and correct
@@ -1140,7 +1140,7 @@ environment before testing distributed mode.
 
 
 
-For more details on CLI please refer to the [dtCli Guide](dtcli.md).
+For more details on CLI please refer to the [Apex CLI Guide](apexcli.md).
 
 Application API
 ----------------------------
@@ -1334,7 +1334,7 @@ an id. This id along with the Hadoop container name uniquely identifies
 the operator in the execution plan of the DAG. The logical names and the
 physical names are required for web service support. Operators can be
 accessed via both names. These same names are used while interacting
-with  dtcli to access an operator.
+with Apex CLI to access an operator.
 Ideally these names should be self-descriptive. For example in Figure 1,
 the node named “Daily volume” has a physical identifier of 2.
 
