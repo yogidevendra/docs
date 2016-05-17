@@ -1,14 +1,39 @@
-DataTorrent Gateway Security
-============================
+# DataTorrent Gateway Security
 
-DataTorrent Gateway supports various authentication mechanisms to secure access to the Console. This provides the flexibility to reuse the existing authentication mechanism already being used in the enterprise and extend it to Gateway. It also supports roles, mapping of groups or roles from the external authentication mechanism to roles and supports role based authorization.
+DataTorrent Gateway is a service that provides the backend functionality
+for the DataTorrent UI Console and processes the web service requests from it. The service provides real-time information about running applications, allows changes to applications, launches new applications among various other operations. Refer to [dtGateway](dtgateway.md) for details on the Gateway service and [dtManage](dtmanage.md) for the UI Console.
 
-After installation of DataTorrent RTS, authentication and authorization can be enabled to secure the DataTorrent Gateway.
+Broadly security in Gateway can be classified into two categories, frontend security and backend security. Frontend security deals with access to Gateway service which mainly involves securing the web service calls. This includes aspects such as user authentication and authorization. The backend security deals with security aspects when Gateway is communicating with a secure Hadoop infrastructure.
 
-Authentication
-================
+After installation of DataTorrent RTS both these aspects can be configured manually as described in the following sections although work is being done to enable this configuration in the UI Console during installation itself and post installation.
 
-Gateway supports different authentication mechanisms. They are
+## Kerberos Secure Mode
+
+Kerberos is the de-facto authentication mechanism supported in Hadoop. When secure mode is enabled in Hadoop, requests from clients to Hadoop are authenticated using Kerberos. In this mode Gateway service needs Kerberos credentials to communicate with Hadoop. The credentials should match the user that the DT Gateway service is running under.
+
+In a multi-user installation DT Gateway is typically running as
+user `dtadmin` and the Kerberos credentials specified should be for this
+user. They are specified in the `dt-site.xml` configuration file located in the config folder under the installation which is typically `/opt/datatorrent/current/conf` ( or `~/datatorrent/current/conf` for local install). For a single user installation where gateway is running as the user, the Kerberos credentials will be the user’s credentials.
+
+The snippet below shows how the credentials can be specified in the
+configuration file.
+
+```xml
+<property>
+        <name>dt.gateway.authentication.principal</name>
+        <value>kerberos-principal-of-gateway-user</value>
+</property>
+<property>
+        <name>dt.gateway.authentication.keytab</name>
+        <value>absolute-path-to-keytab-file</value>
+</property>
+```
+
+## Authentication
+
+DataTorrent Gateway has support for authentication and when it is configured users have to authenticate before they can access the UI Console. Various authentication mechanisms are supported and this gives enterprises the flexibility to extend their existing authentication mechanism already in use within the enterprise to Gateway. It also supports roles, mapping of groups or roles from the external authentication mechanism to roles and supports role based authorization.
+
+The different authentication mechanisms supported by Gateway are
 
 -   Password
 -   Kerberos
@@ -16,8 +41,7 @@ Gateway supports different authentication mechanisms. They are
 
 JAAS is a extensible authentication framework that supports different types of authentication mechanisms by plugging in an appropriate module.
 
-Password Authentication
-------------------------
+### Password Authentication
 
 This is the only authentication mechanism presented here that does
 not depend on any external systems. The users will be managed locally by Gateway. When enabled, all users will be presented with the login prompt before being able to use the DT Console. Password authentication can be enabled by performing following two steps.
@@ -51,8 +75,7 @@ presented in the top right corner of the DT Console screen.
 
 ![](images/GatewaySecurity/image00.png)
 
-Kerberos Authentication
-------------------------
+### Kerberos Authentication
 
 Kerberos authentication can optionally be enabled for Hadoop web access.
 When configured, all web browser access to Hadoop management consoles are Kerberos authenticated. Web services are also Kerberos authenticated. This authentication is performed using a protocol called SPNEGO which is Kerberos over HTTP.
@@ -130,8 +153,7 @@ authentication can be set up using the following steps.
 	```sudo service dtgateway restart```
 	( when running Gateway in local mode use  `dtgateway restart` command)
 
-JAAS Authentication
---------------------
+### JAAS Authentication
 
 JAAS or Java Authentication and Authorization Service is a pluggable
 and extensible mechanism for authentication. It is an authentication framework
@@ -198,7 +220,7 @@ authenticated user that access the system starts with no roles. The
 admin user can then assign roles to these users. This behavior can be
 changed by configuring an external role mapping. Please refer to the
 [External Role Mapping](#ExternalRoleMapping) in the [Authorization using external roles](#authorization-using-external-roles) section below for that.	
-# Callback Handlers
+#### Callback Handlers
 
 In JAAS authentication, a login module may need a custom callback to be
 handled by the caller. These callbacks are typically used to provide
@@ -220,7 +242,7 @@ RTS also supports specification of a custom callback handler to handle custom ca
 
 Custom callback handlers can be implemented by extending the default callback handler so they get the support for the common callbacks or they can be implemented from scratch. The Jetty callback handler described below also extends the default callback handler. The default callback handler implementation is implemented in the ```com.datatorrent.lib.security.auth.callback.DefaultCallbackHandler``` class available in ```com.datatorrent:dt-library``` artifact.
 
-# LDAP
+#### LDAP
 
 LDAP is a directory based authentication mechanism used in many enterprises. To enable LDAP authentication follow the JAAS configuration steps described above with the following specific details for the individual steps.
 
@@ -252,7 +274,7 @@ settings are only provided as a reference example.
 
 -  Restart the gateway as described in step 5
 
-## Active Directory
+#### Active Directory
 
 Active Directory is used when authenting users in Microsoft Windows domains. The authentication protocol includes Microsoft's implementation of Keberos as well as LDAP. In this section we will look into the configuration needed for LDAP authentication with Active Directory.
 
@@ -288,7 +310,7 @@ Follow the JAAS configuration steps described above with the following specific 
 
 -  Restart the gateway as described in step 5
 	
-### Jetty module & binding
+#### Jetty module & binding
 	
 Sometimes a single ```authIdentity``` pattern like the one used above cannot be used to identity the users because of the way they are configured in the Active Directory, for an enterprise. An example is the case where multiple domains are being used and a single domain name cannot be specified in the ```authIdentity```. 
 
@@ -345,7 +367,7 @@ the actual JAAS plugin implementation class providing the LDAP authentication. T
 
 -  Restart the gateway as described in step 5
 		
-# PAM
+### PAM
 
 PAM (Pluggable Authentication Module) is a Linux system equivalent
 of JAAS where applications call the generic PAM interface and the actual
@@ -390,15 +412,13 @@ authentication. The next settings are JPAM related settings. The setting ```serv
         
 -  Restart the gateway as described in step 5 above    
 
-Group Support
----------------
+### Group Support
 
 For group support such as using LDAP groups for authorization refer to
 the [Authorization using external roles](#authorization-using-external-roles) section below.
 
 
-Authorization
-===============
+## Authorization
 
 When any authentication method is enabled, authorization will also be
 enabled.  DT Gateway uses roles and permissions for authorization.
@@ -407,89 +427,89 @@ e.g. to launch apps, or to add users.  Roles have a collection of
 permissions and individual users are assigned to one or more roles.
  What roles the user is in dictates what permissions the user has.
 
-## Permissions
+### Permissions
 
 The list of all possible permissions in the DT Gateway is as follow:
 
-### ACCESS_RM_PROXY
+#### ACCESS_RM_PROXY
 
 Allow HTTP proxying requests to YARN’s Resource Manager REST API
 
-### EDIT_GLOBAL_CONFIG
+#### EDIT_GLOBAL_CONFIG
 
 Edit global settings
 
-### EDIT_OTHER_USERS_CONFIG
+#### EDIT_OTHER_USERS_CONFIG
 
 Edit other users’ settings
 
-### LAUNCH_APPS
+#### LAUNCH_APPS
 
 Launch Apps
-### MANAGE_LICENSES
+#### MANAGE_LICENSES
 
 Manage DataTorrent RTS licenses
 
-### MANAGE_OTHER_USERS_APPS
+#### MANAGE_OTHER_USERS_APPS
 
 Manage (e.g. edit, kill, etc) applications launched by other users
 
-### MANAGE_OTHER_USERS_APP_PACKAGES
+#### MANAGE_OTHER_USERS_APP_PACKAGES
 
 Manage App Packages uploaded by other users  
 
-### MANAGE_ROLES
+#### MANAGE_ROLES
 
 Manage roles (create/delete roles, or assign permissions to roles)
 
-### MANAGE_SYSTEM_ALERTS
+#### MANAGE_SYSTEM_ALERTS
 
 Manage system alerts
 
-### MANAGE_USERS
+#### MANAGE_USERS
 
 Manage users (create/delete users, change password)
 
-### UPLOAD_APP_PACKAGES
+#### UPLOAD_APP_PACKAGES
 
 Upload App Packages and use the app builder
 
-### VIEW_GLOBAL_CONFIG
+#### VIEW_GLOBAL_CONFIG
 
 View global settings   
 
-### VIEW_LICENSES
+#### VIEW_LICENSES
 
 View DataTorrent RTS licenses
 
-### VIEW_OTHER_USERS_APPS
+#### VIEW_OTHER_USERS_APPS
 
 View applications launched by others
 
-### VIEW_OTHER_USERS_APP_PACKAGES
+#### VIEW_OTHER_USERS_APP_PACKAGES
 
 View App Packages uploaded by other users
 
-### VIEW_OTHER_USERS_CONFIG
+#### VIEW_OTHER_USERS_CONFIG
 
 Edit other users’ settings
 
-### VIEW_SYSTEM_ALERTS
+#### VIEW_SYSTEM_ALERTS
 
 View system alerts
 
-## Default Roles
+### Default Roles
 
 DataTorrent RTS ships with three roles by default. The permissions for
 these roles have been set accordingly but can be customized if needed.
 
-### Admin
+#### Admin
 
 An administrator of DataTorrent RTS is intended to be able to install,
 manage & modify DataTorrent RTS as well as all the applications running
 on it. They have ALL the permissions.
 
-### Operator
+#### Operator
 
 Operators are intended to ensure DataTorrent RTS and the applications
 running on top of it are always up and running optimally. The default
@@ -520,7 +540,7 @@ read access to all apps and all app packages in the system.  You can
 remove those permissions from the “operator” role using the Console if
 this is not desirable.  
 
-### Developer
+#### Developer
 Developers need to have to ability to develop, manage and run
 applications on DataTorrent RTS. They are not allowed to change any
 system settings or manage licenses.
@@ -539,8 +559,8 @@ Here is the list of default permissions given to developers
 
 [VIEW_SYSTEM_ALERTS](#ViewSystemAlerts)
 
-App Permissions and App Package Permissions
--------------------------------------------
+### App Permissions and App Package Permissions
+
 Users can share their running application instances and their
 application packages with certain roles or certain users on a
 per-instance or per-package basis.  Users can specify which users or
@@ -559,19 +579,18 @@ URI’s /ws/v2/apps/{appid}/permissions and
 to the [DT Gateway REST API document](https://www.datatorrent.com/docs/guides/DTGatewayAPISpecification.html) and [here](#AdministeringUsingCommandLine) for examples on how to use the REST API.
 
 
-Viewing and Managing Auth in the Console
-========================================
+## Viewing and Managing Auth in the Console
 
-Viewing User Profile
---------------------
+### Viewing User Profile
+
 After you are logged in on the Console, click on the Configuration tab
 on the left, and select “User Profile”.  This gives you the information
 of the logged in user, including what roles the user is in, and what
 permissions the user has.
 ![](images/GatewaySecurity/image01.png)
 
-Administering Auth
-------------------
+### Administering Auth
+
 From the Configuration tab, click on “Auth Management”.  On this page,
 you can perform the following tasks:
 
@@ -588,8 +607,8 @@ DataTorrent RTS installation comes with three preset roles (admin,
 operator, and developer).  You can edit the permissions for those roles
 except for admin.
 
-Authorization using external roles 
-==================================
+## Authorization using external roles 
+
 When using an external authentication mechanism such as Kerberos or
 JAAS, roles defined in these external systems can be used to control
 authorization in DataTorrent RTS. There are two steps involved. First
@@ -603,14 +622,14 @@ When this mapping is setup only users with roles that have a mapping are
 allowed to login the rest are not. The next sections describe how to
 configure the system for handling external roles.
 
-# Kerberos roles
+### Kerberos roles
 
 When Kerberos authentication is used the role for the user is derived
 from the principal. If the principal is of the form *user/group@DOMAIN*
 the group portion is used as the external role and no additional
 configuration is necessary.
 
-# JAAS roles
+### JAAS roles
 
 To use JAAS roles the system should be configured first to recognize
 these roles. When a user is authenticated with JAAS a list of principals
@@ -628,7 +647,7 @@ this and it is specific to the login module implementation. Specifically the Jav
 </configuration>
 ```
 
-## LDAP Groups
+#### LDAP Groups
 
 When using LDAP with JAAS, to utilize the LDAP roles, a LDAP login module supporting roles should be used. Any LDAP module that supports roles can be used. Jetty login module has support for roles. Refer to [Jetty module & binding](#jetty-module-binding) section above for more details about this module. The configuration steps are as follows.
 
@@ -695,7 +714,7 @@ When using LDAP with JAAS, to utilize the LDAP roles, a LDAP login module suppor
 
 - Restart the Gateway as described earlier
 
-## External Role Mapping
+### External Role Mapping
 
 External role mapping is specified to map the external roles to the
 DataTorrent roles. For example users from an LDAP group called admins
@@ -717,63 +736,54 @@ by doing the following steps
 
 2. Restart the Gateway as described earlier
 
-Administering Using Command Line <a name="AdministeringUsingCommandLine"></a>
-================================
+## Administering Using Command Line 
 
 You can also utilize the [dtGateway REST API](dtgateway_api.md) (under /ws/v2/auth) to add or remove users and to change roles and passwords.
  Here are the examples with password authentication.
 
-Log in as admin:
-----------------
+### Log in as admin:
 
     % curl -c ~/cookie-jar -XPOST -H "Content-Type: application/json" -d '{"userName":"admin","password":"admin"}' http://localhost:9090/ws/v2/login
 
 This curl command logs in as user “admin” (with the default password
 “admin”) and stores the cookie in ~/cookie-jar
 
-Changing the admin password:
-----------------------------
+### Changing the admin password:
 
     % curl -b ~/cookie-jar -XPOST -H "Content-Type: application/json" -d '{"newPassword":"xyz"}' http://localhost:9090/ws/v2/auth/users/admin
 
 This uses the “admin” credential from the cookie jar to change the password to “xyz” for user “admin”.
 
-Adding a second admin user:
----------------------------
+### Adding a second admin user:
 
     % curl -b ~/cookie-jar -XPUT -H "Content-Type: application/json" -d '{"password":"abc","roles": [ "admin" ] }' http://localhost:9090/ws/v2/auth/users/john
 
 This command adds a user “john” with password “abc” with admin access.
 
-Adding a user in the developer role:
-------------------------------------
+### Adding a user in the developer role:
 
     % curl -b \~/cookie-jar -XPUT -H "Content-Type: application/json" -d '{"password":"abc","roles": ["developer"] (http://localhost:9090/ws/v1/login) }' http://localhost:9090/ws/v2/auth/users/jane
 
 This command adds a user “jane” with password “abc” with the developer role.
 
-Listing all users:
-------------------
+### Listing all users:
 
     % curl -b ~/cookie-jar http://localhost:9090/ws/v2/auth/users
 
-Getting info for a specific user:
----------------------------------
+### Getting info for a specific user:
 
     % curl -b ~/cookie-jar http://localhost:9090/ws/v2/auth/users/john
 
 This command returns the information about the user “john”.
 
-Removing a user:
-----------------
+### Removing a user:
 
     % curl -b ~/cookie-jar -XDELETE http://localhost:9090/ws/v2/auth/users/jane
 
 This command removes the user “jane”.
 
 
-Enabling HTTPS in Gateway
-=========================
+## Enabling HTTPS in Gateway
 
 HTTPS in the Gateway can be enabled by performing following two steps.
 

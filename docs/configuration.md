@@ -355,43 +355,13 @@ DT Gateway Configuration
 -------------------------------------
 
 DT Gateway is a service that provides the backend functionality
-for the DataTorrent UI console. Refer to [dtManage](dtmanage.md) for
-details on the UI console. The DT Gateway provides real-time information
-about running applications, allows changes to applications, launching
-new applications among various other operations. In Kerberos secure
-mode, Kerberos credentials are required for DT Gateway to operate. The
-credentials should match the user that the DT Gateway service is running
-as.
+for the DataTorrent UI console. In a Hadoop cluster with Kerberos security enabled additional configuration is needed for this service to communicate with Hadoop. This is described in [Gateway Security](dtgateway_security.md).
 
-In a multi-user installation DT Gateway is typically running as
-user `dtadmin` and the Kerberos credentials specified should be for this
-user. They are specified in the `dt-site.xml` configuration file in the
-installation folder. For a single user installation where gateway is
-running as the user, the Kerberos credentials will be the user’s and
-they will be specified in the `dt-site.xml` in the home directory location
-`$HOME/.dt/dt-site.xml`.
-
-The snippet below shows how the credentials are specified in the
-configuration file as properties.
-
-```xml
-<property>
-        <name>dt.gateway.authentication.principal</name>
-        <value>kerberos-principal-of-gateway-user</value>
-</property>
-<property>
-        <name>dt.gateway.authentication.keytab</name>
-        <value>absolute-path-to-keytab-file</value>
-</property>
-```
-
-dtManage Authentication
+Console Authentication
 -------------------------------
 
-Access to the UI console can be protected by having users authenticate before they can access the contents of the console.
-Different authentication mechanisms are supported including local password,
-Kerberos and LDAP. Please refer to [Gateway Security](dtgateway_security.md)
-for details of how to configure this.
+Access to the UI console can be secured by having users authenticate before they can access the contents of the console. Different authentication mechanisms are supported including local password,
+Kerberos and LDAP. Please refer to [Gateway Security](dtgateway_security.md) for details of how to configure this.
 
 Run-Time Management
 ===================================
