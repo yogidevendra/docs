@@ -382,11 +382,11 @@ Coming soon.
 
 Update hadoop OPTS variable by running,
 
-    export HADOOP_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5432 $HADOOP_OPTS
+    export HADOOP_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5432 $HADOOP_OPTS"
 
 ### How to setup DEBUG level while running an application?
 
-Add the property :
+Add the following property to your properties file:
 
     <property>
       <name>dt.application.<APP-NAME>.attr.DEBUG</name>
@@ -404,24 +404,34 @@ Add the property :
 
 Check if the host where gateway is running has yarn-site.xml file. You need to have all Hadoop configuration files accessible to dtGateway for it to run successfully.
 
+### When Apex is running in secure mode, YARN logs get flooded with several thousand messages per second.
+
+Please make sure that the kerberos principal user name has an account with the
+same user id on the cluster nodes.
+
 ### Application throwing following Kryo exception.
 
-      com.esotericsoftware.kryo.KryoException: Class cannot be created (missing no-arg constructor): 
+      com.esotericsoftware.kryo.KryoException: Class cannot be created (missing no-arg constructor):
 
 This means that Kryo is not able to deserialize the object because the type is missing default constructor. There are couple of ways to address this exception
 
-1. Add default constructor to the type in question. 
+1. Add default constructor to the type in question.
 2. Using [custom serializer](https://github.com/EsotericSoftware/kryo#serializers) for the type in question. Some existing alternative serializers can be found at [https://github.com/magro/kryo-serializers](https://github.com/magro/kryo-serializers). A custom serializer can be used as follows:
 
     2.1 Using Kryo's @FieldSerializer.Bind annotation for the field causing the exception. Here is how to bind custom serializer.
-    
+
         @FieldSerializer.Bind(CustomSerializer.class)
         SomeType someType
-    
+
     Kryo will use this CustomSerializer to serialize and deserialize type SomeType.
 
-    2.2 Using custom serializer with stream codec. You need to define custom stream codec and attach this custome codec to the input port that is expecting the type in question. Following is an example of creating custom stream codec:
-    
+    2.2 Using the @DefaultSerializer annotation on the class, for example:
+
+        @DefaultSerializer(JavaSerializer.class)
+        public class SomeClass ...
+
+    2.3 Using custom serializer with stream codec. You need to define custom stream codec and attach this custome codec to the input port that is expecting the type in question. Following is an example of creating custom stream codec:
+
         import java.io.IOException;
         import java.io.ObjectInputStream;
         import java.util.UUID;
@@ -498,14 +508,14 @@ Once you navigate to the logs page,
 ### Application goes from accepted state to Finished(FAILED) state
 
 Check if your application name conflicts with any of the already running
-applications in your cluster. Apex do not allow two application with
-same names run simultaneously.  
+applications in your cluster. Apex does not allow two applications with
+the same name to run simultaneously.
 Your STRAM logs will have following error:  
 “Forced shutdown due to Application master failed due to application
 \<appId\> with duplicate application name \<appName\> by the same user
 \<user name\> is already started.”  
 
-### ConstraintViolationException while application launch
+### ConstraintViolationException during application launch
 
 Check if all @NotNull properties of application are set. Apex operator
 properties are meant to configure parameter to operators. Some of the
