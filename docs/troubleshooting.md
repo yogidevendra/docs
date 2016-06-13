@@ -154,6 +154,30 @@ machine. Following are prerequisites for DataTorrent RTS:
 -  DataTorrent dtDashboard
 -  Demo Applications
 
+###  Why does the browser console on the sandbox say `HDFS Not Ready` ?
+
+The Hadoop HDFS services take a few minutes to start; the console needs all of
+those services to be up and running and until that occurs, it displays this
+warning. If the normal console does not appear after a few minutes, please run
+the `jps` command to see which services may _not_ be running, for example:
+```shell
+dtadmin@dtbox:~/tmp$ jps
+1407 DTGateway
+4145 Jps
+2830 NodeManager
+3059 ResourceManager
+2650 NameNode
+```
+Here we see that the `DataNode` is not running. In this case, stop all
+HDFS services (using, for example the script shown in the
+[sandbox page](http://docs.datatorrent.com/sandbox/). Then, remove everything
+under these directories:
+
+    /sfw/hadoop/shared/data/hdfs/datanode/current
+    /sfw/hadoop/shared/data/hdfs/namenode/current
+
+Now reformat HDFS with `hdfs namenode -format`
+and finally, restart all HDFS services.
 
 ### What is dtIngest applicaiton?
 
