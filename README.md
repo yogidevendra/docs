@@ -26,6 +26,12 @@ Currently docs.datatorrent.com is hosted on Github Pages.  The deployment requir
 
 ## Deployment
 
+*NOTE* Fix to replace "Sorry, page not found" by "Searching..." text while search is running was added with https://github.com/mkdocs/mkdocs/pull/860.  This was already merged into master of mkdocs on March 4th, but latest available version is 0.15.3, which was built on Feb 8th.  Until this fix is available in the next official release following steps should be used to create a custom build of mkdocs:
+
+```bash
+sudo pip install --upgrade git+https://github.com/mkdocs/mkdocs.git
+```
+
 Deployment is done from master branch of the repository by executing the following command:
 
 ```bash
