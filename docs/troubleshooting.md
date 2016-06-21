@@ -484,7 +484,7 @@ This means that Kryo is not able to deserialize the object because the type is m
 
 # Log analysis
 
-There are multiple ways to adjust logging levels.  For details see [configuraiton guide](configuration.md#logging).
+There are multiple ways to adjust logging levels.  For details see [configuration guide](configuration.md#logging).
 
 ### How to check STRAM logs
 
