@@ -9,7 +9,7 @@ In these cases, throughput can be increased if instances of the partitioned oper
 The downstream partitions can read/parse the block without the need of interacting with other partitions.
 
 ## Class Diagram
-![FileSplitter class dierarchy](images/filesplitter/classdiagram.png)
+![FileSplitter class hierarchy](images/filesplitter/classdiagram.png)
 
 ## AbstractFileSplitter
 The abstract implementation defines the logic of processing `FileInfo`. This comprises the following tasks -  

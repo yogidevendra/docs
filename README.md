@@ -6,7 +6,7 @@ Documentation is written in [Markdown](https://guides.github.com/features/master
 
 ## Authoring
 
-New pages can be added under [docs](docs) or related sub-category, and a reference to the new page must be added to the [mkdocs.yml](mkdocs.yml) file to make it availabe in the navigation.  Embedded images are typically added to images folder at the same level as the new page.
+New pages can be added under [docs](docs) or related sub-category, and a reference to the new page must be added to the [mkdocs.yml](mkdocs.yml) file to make it available in the navigation.  Embedded images are typically added to images folder at the same level as the new page.
 
 When creating or editing pages, it can be useful to see the live results, and how the documents will appear when published.  Live preview feature is available by running the following command at the root of the repository:
 

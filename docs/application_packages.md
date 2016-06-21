@@ -273,7 +273,7 @@ be specified in the format described above.
 
 The attributes for an output port can also be specified in a similar way
 as described above with a change that keyword “outputport” is used
-instead of “intputport”. A generic keyword “port” can be used to specify
+instead of “inputport”. A generic keyword “port” can be used to specify
 either an input or an output port. It is useful in the wildcard
 specification described below.
 
@@ -585,8 +585,7 @@ Here is an example of launching an application through curl:
 
 ```
  $ curl -XPOST -d'{"dt.operator.console.prop.stringFormat":"xyz %s"}'
- http://localhost:9090/ws/v2/appPackages/dtadmin/mydtapp/1.0-SNAPSHOT/app
- lications/MyFirstApplication/launch
+ http://localhost:9090/ws/v2/appPackages/dtadmin/mydtapp/1.0-SNAPSHOT/applications/MyFirstApplication/launch
 ```
 
 Please refer to the [Gateway API reference](https://www.google.com/url?q=https://www.datatorrent.com/docs/guides/DTGatewayAPISpecification.html&sa=D&usg=AFQjCNEWfN7-e7fd6MoWZjmJUE3GW7UwdQ) for the complete specification of the REST API.

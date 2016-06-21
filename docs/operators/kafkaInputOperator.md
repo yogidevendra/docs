@@ -143,7 +143,7 @@ This operator referred the Kafka Consumer API of version
     offset status.
 3.  resetPartitionsAndOffset(Set &lt;KafkaPartition&gt; partitionIds,
     Map &lt;KafkaPartition, Long&gt; startOffset): Reset the partitions with
-    parittionIds and offsets with startOffset.
+    partitionIds and offsets with startOffset.
 
 #### Configuration Parameters for SimpleKafkaConsumer
 

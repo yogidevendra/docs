@@ -188,7 +188,7 @@ There are pros and cons of each.
     communication mechanism.
     This mode has very high throughput and can easily do more than
     million tuples/sec. However, since there is no bufferserver, features that
-    it provides (spooling, presistence) are not available, so memory needs
+    it provides (spooling, persistence) are not available, so memory needs
     may grow.
     This mode relies on the downstream operators consuming tuples, on average,
     at least as fast as they are emitted by the upstream operator. As with the
@@ -309,7 +309,7 @@ application are performed as that user.
 
 ### Using kinit
 
-A Keberos ticket granting ticket (TGT) can be obtained by using the
+A Kerberos ticket granting ticket (TGT) can be obtained by using the
 Kerberos command `kinit`. Detailed documentation for the command can be
 found online or in man pages. An sample usage of this command is
 

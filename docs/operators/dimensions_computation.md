@@ -229,7 +229,7 @@ public class AdEventDemo implements StreamingApplication
     String eventSchema = SchemaUtils.jarResourceFileToString("eventSchema.json");
 
     // Operator that receives Ad Events
-    // This can be coming from any source as long as the operator can convert the data into AdEventReceiver oject.
+    // This can be coming from any source as long as the operator can convert the data into AdEventReceiver object.
     AdEventReceiver receiver = dag.addOperator("Event Receiver", AdEventReceiver.class);
 
     //Adding Dimensions Computation operator into DAG.

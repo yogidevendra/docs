@@ -1065,7 +1065,7 @@ for the different phases of application development.
     the operators on that stream cannot fit in one container,
     try NODE_LOCAL locality. Both THREAD_LOCAL and
     NODE_LOCAL streams avoid the Network Interface Card (NIC)
-    completly. The former uses intra-process communication to also avoid
+    completely. The former uses intra-process communication to also avoid
     serialization-deserialization overhead.
 -   The overall throughput and latencies are are not necessarily
     correlated to the number of operators in a simple way -- the
@@ -2316,7 +2316,7 @@ low load.
 
 
 Figure 7 shows an example of skew balancing partition. An example
-of 3x1 paritition is shown. Let's say that skew balance is kept at “no
+of 3x1 partition is shown. Let's say that skew balance is kept at “no
 partition to take up more than 50% load. If in runtime the load type
 changes to create a skew. For example, consider an application in the US
 that is processing a website clickstream. At night in the US, the

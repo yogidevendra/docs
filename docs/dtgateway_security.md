@@ -276,7 +276,7 @@ settings are only provided as a reference example.
 
 #### Active Directory
 
-Active Directory is used when authenting users in Microsoft Windows domains. The authentication protocol includes Microsoft's implementation of Keberos as well as LDAP. In this section we will look into the configuration needed for LDAP authentication with Active Directory.
+Active Directory is used when authenting users in Microsoft Windows domains. The authentication protocol includes Microsoft's implementation of Kerberos as well as LDAP. In this section we will look into the configuration needed for LDAP authentication with Active Directory.
 
 Follow the JAAS configuration steps described above with the following specific details.
 

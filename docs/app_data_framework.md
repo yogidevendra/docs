@@ -943,7 +943,7 @@ For the Dimensions Schema supported by the DimensionsStore operator, there can b
 ```
 Here you can see that a combination can also have `additionalValues` specified. Additional values are values which are only available for a specific combination of keys.
 
-The code for the ads example is availble [here](https://github.com/DataTorrent/examples/tree/master/dt-demo/dimensions/src/main/java/com/datatorrent/demos/dimensions/ads/generic).
+The code for the ads example is available [here](https://github.com/DataTorrent/examples/tree/master/dt-demo/dimensions/src/main/java/com/datatorrent/demos/dimensions/ads/generic).
 
 ### UI Widgets
 
