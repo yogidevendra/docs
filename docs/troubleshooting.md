@@ -447,7 +447,9 @@ This means that Kryo is not able to deserialize the object because the type is m
         @FieldSerializer.Bind(CustomSerializer.class)
         SomeType someType
 
-    Kryo will use this CustomSerializer to serialize and deserialize type SomeType.
+    Kryo will use this CustomSerializer to serialize and deserialize type SomeType. If
+    SomeType is a Map or Collection, there are some special annotations @BindMap and
+    @BindCollection; please see [here](https://github.com/EsotericSoftware/kryo).
 
     2.2 Using the @DefaultSerializer annotation on the class, for example:
 
