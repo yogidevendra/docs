@@ -1865,7 +1865,7 @@ Function: Get the properties of the operator given the classname in the jar
 
 ### PUT /ws/v2/appPackages/{owner}/{packageName}/{packageVersion}/applications/{applicationName}[?errorIfExists={true/false}]
 
-Function: Creates or Replaces an application using json. Note that "ports" are only needed if you need to specify port attributes.  If errorIfExists is true, it returns an error if the application with the same name already exists in the app ackage
+Function: Creates or Replaces an application using json. Note that "ports" are only needed if you need to specify port attributes.  If errorIfExists is true, it returns an error if the application with the same name already exists in the app package
 
 Payload:
 
