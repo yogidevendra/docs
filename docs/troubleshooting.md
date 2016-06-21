@@ -234,7 +234,7 @@ Minimum of 8G RAM is required on the Hadoop cluster.
 
 ### What happens if java is not installed?
 
-Following message can be seen when Java is not abilable on the system
+Following message can be seen when Java is not available on the system
 
     Error: java executable not found. Please ensure java
     or hadoop are installed and available in PATH environment variable
