@@ -25,7 +25,7 @@ mvn clean package -DskipTests
 mvn test
 ```
 
-Some of the applications are discussed in the _Applications_ section below.
+Some of the applications are discussed in the _Sample Applications_ section below.
 The rest of this document provides a more leisurely introduction to Apex.
 
 ## Preliminaries
@@ -345,8 +345,39 @@ dt.log  stderr  stdout
 
 The Application Master container id always has the suffix `_000001`.
 
-## Operators and Streams
-[TBD]
+## Operators, Ports and Streams
+An _operator_ is, simply put, a class that
+implements the `Operator` interface. Though the class could be written to directly
+implement that interface, a more common and easier method is to extend `BaseOperator`
+since it provides default empty implementations of all the required methods.
+We've already seen an example above, namely `RandomNumberGenerator`.
+
+A _port_ is a class that can either emit (output port) or ingest (input port) data.
+Input and output ports implement the `InputPort` and `OutputPort` interfaces
+respectively. More commonly, output ports are simply defined as instances of
+`DefaultOutputPort`, for example:
+
+```java
+public final transient DefaultOutputPort<Double> out = new DefaultOutputPort<Double>();
+```
+
+and input ports are defined as anonymous inner classes that extend `DefaultInputPort`:
+
+```java
+public final transient DefaultInputPort<Double> input = new DefaultInputPort<Double>()
+{
+  @Override
+  public void process(Double v) {
+    out.emit(v);
+  }
+}
+```
+
+A _stream_ is the set of links connecting a single port of an upstream operator to
+one or more input ports of downstream operators.
+We've already seen an example of a stream above, namely `randomData`.
+For a more detailed explanation of these concepts, please
+look [here](http://docs.datatorrent.com/operator_development/).
 
 ## Annotations
 Annotations are an important tool for expressing desired guarantees which are then
@@ -389,7 +420,8 @@ For additional information about annotations, please see:
 [here](http://docs.datatorrent.com/application_development/#initializationinstantiation-time) and
 [here](http://docs.oracle.com/javaee/6/tutorial/doc/gircz.html)
 
-## Partitioners and Unifiers
+## Partitioners, Unifiers and StreamCodecs
+
 Partitioning is a mechanism for load balancing; it involves replicating one or more
 operators so that the load can be shared by all the replicas. Partitioning is
 accomplished by the `definePartitions` method of the `Partitioner` interface.
@@ -399,15 +431,22 @@ These can be used by setting the `PARTITIONER`
 attribute on the operator by including a stanza like the following in your
 configuration file (where _{appName}_ and _{opName}_ are the
 appropriate application and operator names):
+
 ```xml
 <property>
   <name>dt.application.{appName}.operator.{opName}.attr.PARTITIONER</name>
   <value>com.datatorrent.common.partitioner.StatelessPartitioner:2</value>
 </property>
 ```
+
 The number after the colon specifies the number of desired partitions. This can be
 done for any operator that is not a connector (i.e. input or output operator) and is not
 annotated with `@OperatorAnnotation(partitionable = false)`. No code changes are necessary.
+Incoming tuples entering input ports of the operator are automatically distributed among the
+partitions based on their hash code by default. You can get greater control of how tuples
+are distributed to partitions by using a `StreamCodec`; further discussion of stream
+codecs is deferred to the Advanced Guide. A samall sample program illustrating use of
+stream codecs is  [here](https://github.com/DataTorrent/examples/tree/master/tutorials/partition).
 
 Connectors need special care since they interact with external systems. Many connectors
 (e.g. Kafka input, file input and output operators) implement the `Partitioner`
@@ -581,14 +620,59 @@ Output files are created with temporary names like `myfile_p2.0.1465929407447.tm
 renamed to `myfile_p2.0` when they reach the maximum configured size.
 
 ### Application -- database to file
-[TBD]
+The `jdbcIngest` application reads rows from a table in `MySQL`, creates Java objects
+(_POJO_s) and writes them to a file in the user specified directory in HDFS.
+
+Application configuration values are specified in 2 files: 
+`META_INF/properties.xml` and `src/site/conf/example.xml`. The former uses the in-memory
+database `HSQLDB` and is used by the unit test in JdbcInputAppTest; this test can be
+run, as described earlier, either in your IDE or using maven on the commentline.
+The latter uses _MySql_ and is intended for use on a cluster. To run on a cluster you'll
+need a couple of preparatory steps:
+
+- Make sure _MySql_ is installed on the cluster.
+- Change `example.xml` to reflect proper values for `databaseUrl`, `userName`, `password` and `filePath`.
+- Create the required table and rows by running the SQL queries in the file `src/test/resources/example.sql`.
+- Create the HDFS output directory if necessary.
+- Build the project to create the `.apa` package
+- Launch the application, selecting `example.xml` as the configuration file during launch.
+- Verify that the expected output file is present.
+
+Further details on these steps are in the project `README.md` file.
+
+The application uses two operators: The first is `FileLineOutputOperator` which extends
+`AbstractFileOutputOperator` and provides implementations for two methods:
+`getFileName` and `getBytesForTuple`. The former creates a file name using the operator
+id -- this is important if this operator has multiple partitions and prevents the
+partitions from writing to the same file (which could cause garbled data). The latter
+simply converts the incoming object to an array of bytes and returns it.
+
+The second is `JdbcPOJOInputOperator` which comes from Malhar; it reads records from
+a table and outputs them on the output port; they type of object that is emitted is
+specified by the value of the  `TUPLE_CLASS` attribute in the configuration file
+namely `PojoEvent` in this case. This operator also needs a couple of additional
+properties: (a) a list of `FieldInfo` objects that describe the mapping from table
+columns to fields of the Pojo; and (b) a `store` object that deals with the details
+of establishing a connection to the database server.
+
+The application itself is then created in the usual way in `JdbcHDFSApp.populateDAG`:
+
+```java
+JdbcPOJOInputOperator jdbcInputOperator = dag.addOperator("JdbcInput", new JdbcPOJOInputOperator());
+jdbcInputOperator.setFieldInfos(addFieldInfos());
+
+jdbcInputOperator.setStore(new JdbcStore());
+
+FileLineOutputOperator fileOutput = dag.addOperator("FileOutputOperator", new FileLineOutputOperator());
+
+dag.addStream("POJO's", jdbcInputOperator.outputPort, fileOutput.input).setLocality(Locality.CONTAINER_LOCAL);
+```
 
 ### Application -- database to database
-[TBD]
+[Coming soon]
 
 ### Application -- file to database
-[TBD]
-
+[Coming soon]
 
 ## Additional Resources
 
