@@ -114,7 +114,7 @@ creation.
 Two operators are created: `randomGenerator` and `console`. The first is
 defined in `RandomNumberGenerator.java`; it generates random
 floating point values and emits them on its output port. The second is an instance
-of `ConsoleOutputOperator` class defined in **Malhar** -- the library of pre-built
+of `ConsoleOutputOperator` class defined in **Malhar** &ndash; the library of pre-built
 operators. The first argument to `addOperator()` is the name of this operator instance
 (there can be multiple instances of the same class, so we need a unique name to
 distinguish them); the second can be either a class object that needs to be instantiated
@@ -254,7 +254,7 @@ objects, please look
 
 ## Local Mode Testing
 As noted above, the `LocalMode` class is used for testing the application locally in
-your development environment. A common use looks like this:
+your development environment. A common, though suboptimal, use looks like this:
 
 ```java
 try {
@@ -272,11 +272,11 @@ try {
 Here, a _Configuration_ object containing all the appropriate settings of properties and
 attributes for the application is created by parsing the default `properties.xml` file,
 a new _Application_ object is created and configured and finally a controller used for
-timed execution of the application. This approach, though useful to uncover shallow
-bugs, has one glaring deficiency -- it does not check the results in any way as most
-unit tests do.
+timed execution of the application. This approach, though occasionally useful to uncover
+shallow bugs, has one glaring deficiency &ndash; it does not check the results in any way
+as most unit tests do. We strongly recommend avoiding this usage pattern.
 
-One way of remedying the situation is to write data to some storage system
+A far better (and recommended) approach is to write data to some storage system
 that can then be queried for verification. An example of this approach is
 [here](https://github.com/DataTorrent/examples/blob/master/tutorials/fileOutput/src/test/java/com/example/fileOutput/ApplicationTest.java) and looks like this:
 
@@ -307,8 +307,8 @@ teardown upon test termination; these functions are annotated with `@Before` and
 ### Checking logs
 Logs for the Application Master and the various containers can be retrieved and viewed
 on the UI console by navigating to the `Physical` tab, clicking on the specific container
-in question, clicking on the blue `logs` button and then selecting the appropirate file
-from the dropdown. If you don't have access to the UI, you'll need log in to the
+in question, clicking on the blue `logs` button and then selecting the appropriate file
+from the dropdown. If you don't have access to the UI, you'll need to log in to the
 appropriate node on the cluster and check the logs there.
 
 A good starting point is the
@@ -445,8 +445,9 @@ annotated with `@OperatorAnnotation(partitionable = false)`. No code changes are
 Incoming tuples entering input ports of the operator are automatically distributed among the
 partitions based on their hash code by default. You can get greater control of how tuples
 are distributed to partitions by using a `StreamCodec`; further discussion of stream
-codecs is deferred to the Advanced Guide. A samall sample program illustrating use of
-stream codecs is  [here](https://github.com/DataTorrent/examples/tree/master/tutorials/partition).
+codecs is deferred to the Advanced Guide [_coming soon_].
+A small sample program illustrating use of stream codecs is
+[here](https://github.com/DataTorrent/examples/tree/master/tutorials/partition).
 
 Connectors need special care since they interact with external systems. Many connectors
 (e.g. Kafka input, file input and output operators) implement the `Partitioner`
@@ -508,7 +509,7 @@ this limit.
 The `Buffer Server` is a separate thread within a container which implements a tuple
 queue with a publish-subscribe model. It is present whenever the container hosts an
 operator with an output port connected to another operator outside the container; each
-such port has a separate buffer server.
+such port has a separate queue.
 
 The output port is the publisher and the connected input ports of downstream operators
 are the subscribers. It buffers tuples so that they can be replayed when a
@@ -570,7 +571,7 @@ application does. In most cases, the unit tests function as full application tes
 can be run locally in your development environment without the need for a cluster as
 described above.
 
-### Application -- file copy
+### Application &mdash; file copy
 The `fileIO-simple` application copies all data verbatim from files added to an input
 directory to rolling files in an output directory. The input and output directories,
 the output file base name and maximum size are configured in `META_INF/properties.xml`:
@@ -619,7 +620,7 @@ and extends the `AbstractFileOutputOperator` and overrides 3 methods:
 Output files are created with temporary names like `myfile_p2.0.1465929407447.tmp` and
 renamed to `myfile_p2.0` when they reach the maximum configured size.
 
-### Application -- database to file
+### Application &mdash; database to file
 The `jdbcIngest` application reads rows from a table in `MySQL`, creates Java objects
 (_POJO_s) and writes them to a file in the user specified directory in HDFS.
 
@@ -643,7 +644,7 @@ Further details on these steps are in the project `README.md` file.
 The application uses two operators: The first is `FileLineOutputOperator` which extends
 `AbstractFileOutputOperator` and provides implementations for two methods:
 `getFileName` and `getBytesForTuple`. The former creates a file name using the operator
-id -- this is important if this operator has multiple partitions and prevents the
+id &dash; this is important if this operator has multiple partitions and prevents the
 partitions from writing to the same file (which could cause garbled data). The latter
 simply converts the incoming object to an array of bytes and returns it.
 
@@ -668,10 +669,10 @@ FileLineOutputOperator fileOutput = dag.addOperator("FileOutputOperator", new Fi
 dag.addStream("POJO's", jdbcInputOperator.outputPort, fileOutput.input).setLocality(Locality.CONTAINER_LOCAL);
 ```
 
-### Application -- database to database
+### Application &mdash; database to database
 [Coming soon]
 
-### Application -- file to database
+### Application &mdash; file to database
 [Coming soon]
 
 ## Additional Resources
