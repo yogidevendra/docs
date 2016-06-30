@@ -47,7 +47,7 @@ An important point to note here is that the guava cache does not perform cleanup
 
 This process gets complicated when fault-tolerance (writing to temporary files)  and rotation is added.
 
-Following are few configuration items used for opening the streams:
+Following are a few configuration items used for opening the streams:
 
 - **replication**: specifies the replication factor of the output files. *Default*: `fs.getDefaultReplication(new Path(filePath))`
 - **filePermission**: specifies the permission of the output files. The permission is an octal number similar to that used by the Unix chmod command. *Default*: 0777
