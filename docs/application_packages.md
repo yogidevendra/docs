@@ -18,7 +18,7 @@ for detailed instructions on:
 
 # Writing Your Own App Package
 
-Please refer to the [Creating Apps](create.md) on the basics on how to write an Apache Apex application.  In your AppPackage project, you can add custom operators (refer to [Operator Development Guide](https://www.datatorrent.com/docs/guides/OperatorDeveloperGuide.html)), project dependencies, default and required configuration properties, pre-set configurations and other metadata.
+Please refer to the [Beginner's Guide](beginner.md) on the basics on how to write an Apache Apex application.  In your AppPackage project, you can add custom operators (refer to [Operator Development Guide](https://www.datatorrent.com/docs/guides/OperatorDeveloperGuide.html)), project dependencies, default and required configuration properties, pre-set configurations and other metadata.
 
 ## Adding (and removing) project dependencies
 

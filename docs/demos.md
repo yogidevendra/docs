@@ -35,7 +35,7 @@ More information about using DataTorrent console is available in [dtManage Guide
 Configuring Launch Parameters
 --------------------------------------------------------------------------------
 
-Some applications may require additional configuration changes prior to launching.  Configuration changes can be made on the launch confirmation screen or manually applied to `~/.dt/dt-site.xml` configuration file.  These typically include adding Twitter API keys for twitter demo, or changing performance settings for larger applications.  Guides for various demo applications can be found in the [Creating Applications](create.md) guide.
+Some applications may require additional configuration changes prior to launching.  Configuration changes can be made on the launch confirmation screen or manually applied to `~/.dt/dt-site.xml` configuration file.  These typically include adding Twitter API keys for twitter demo, or changing performance settings for larger applications.
 
 1.  Navigate to **App Packages** under **Develop** tab of the DataTorrent console.  In this example we will use **Apache Apex Malhar Twitter Demo** application package.  Import this package from *Develop > App Packages > Import* if it is not available.
 
