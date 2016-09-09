@@ -102,7 +102,7 @@ Examples
 Please look at the following java code for example usages of the
 operators mentioned above:
 
-https://github.com/apache/incubator-apex-malhar/blob/master/demos/pi/src/main/java/com/datatorrent/demos/pi/ApplicationAppData.java
-https://github.com/apache/incubator-apex-malhar/blob/master/demos/twitter/src/main/java/com/datatorrent/demos/twitter/TwitterTrendingHashtagsApplication.java
+* [ApplicationAppData.java](https://github.com/apache/incubator-apex-malhar/blob/master/demos/pi/src/main/java/com/datatorrent/demos/pi/ApplicationAppData.java)
+* [TwitterTrendingHashtagsApplication.java](https://github.com/apache/incubator-apex-malhar/blob/master/demos/twitter/src/main/java/com/datatorrent/demos/twitter/TwitterTrendingHashtagsApplication.java)
 
 
