@@ -176,7 +176,7 @@ under these directories:
 Now reformat HDFS with `hdfs namenode -format`
 and finally, restart all HDFS services.
 
-### What is Data Ingestion applicaiton?
+### What is Data Ingestion application?
 
 Data Ingestion application simplifies the collection, aggregation and movement of large amounts of data to and from Hadoop and is available for production use at no cost.
 

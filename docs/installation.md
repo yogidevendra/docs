@@ -115,7 +115,7 @@ Various options are available to customize the DataTorrent installation.  List o
     -V             Print DataTorrent version and exit.
 
 
-Some Hadoop distributions may rquire changes to default settings.  For example, when running Apache Hadoop, you may encounter that JAVA_HOME is not set for DTGateway user (defaults to dtadmin):
+Some Hadoop distributions may require changes to default settings.  For example, when running Apache Hadoop, you may encounter that JAVA_HOME is not set for DTGateway user (defaults to dtadmin):
 
     sudo -u dtadmin hadoop version
     Error: JAVA_HOME is not set and could not be found.

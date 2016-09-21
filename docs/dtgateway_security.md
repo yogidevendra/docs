@@ -382,8 +382,8 @@ accounts in Gateway. If organizations have configured other PAM modules,
 they can be used in Gateway as well.
 
 PAM is implemented in C language and has a C API. JPam is a Java PAM bridge
-that uses JNI to interace with PAM. It is available at
-[JPAM website](http://jpam.sourceforge.net/) and the wesite also has detailed documentation on how to install and set it up. JPam has a JAAS login module and hence can be used in Gateway via JAAS. Note that any other PAM implementation can be used as long as a JAAS login module is available.
+that uses JNI to interface with PAM. It is available at
+[JPAM website](http://jpam.sourceforge.net/) and the website also has detailed documentation on how to install and set it up. JPam has a JAAS login module and hence can be used in Gateway via JAAS. Note that any other PAM implementation can be used as long as a JAAS login module is available.
 
 To enable JPAM follow the JAAS configuration steps described above with the following specific details.
 

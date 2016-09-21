@@ -39,10 +39,10 @@ with the way CPU pipelining works. CPU pipelining breaks down the
 computation engine into different stages viz. instruction fetch,
 instruction decode, etc. so that each of them can perform their task on
 different instructions
-parallely. Similarly,
+in parallel. Similarly,
 Apache Apex APIs allow the user to break down their tasks into different
 stages so that all of the tasks can be executed on different tuples
-parallely.
+in parallel.
 
 ![](images/operator/image05.png)
 

@@ -142,7 +142,7 @@ run all of the unit tests.
 
 It is important to note that this particular test is actually a test of the entire
 application rather than a single class or a method within a class. It uses a class
-called `LocalMode` to essentially simulate a cluster. It is an extemely useful
+called `LocalMode` to essentially simulate a cluster. It is an extremely useful
 technique for testing your application without the need for a cluster. It can be used
 in more elaborate ways to test complex applications as discussed in the section
 entitled `Local Mode Testing` below.
@@ -627,7 +627,7 @@ The `jdbcIngest` application reads rows from a table in `MySQL`, creates Java ob
 Application configuration values are specified in 2 files: 
 `META_INF/properties.xml` and `src/site/conf/example.xml`. The former uses the in-memory
 database `HSQLDB` and is used by the unit test in JdbcInputAppTest; this test can be
-run, as described earlier, either in your IDE or using maven on the commentline.
+run, as described earlier, either in your IDE or using maven on the command line.
 The latter uses _MySql_ and is intended for use on a cluster. To run on a cluster you'll
 need a couple of preparatory steps:
 

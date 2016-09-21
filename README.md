@@ -38,7 +38,7 @@ Deployment is done from master branch of the repository by executing the followi
 mkdocs gh-deploy --clean
 ```
 
-This results in all the documentation under [docs](docs) being statically generatd into HTML files and deployed as top level in [gh-pages](https://github.com/DataTorrent/docs/tree/gh-pages) branch.  For more details on how this is done see [MkDocs - Deploying Github Pages](http://www.mkdocs.org/user-guide/deploying-your-docs/#github-pages).
+This results in all the documentation under [docs](docs) being statically generated into HTML files and deployed as top level in [gh-pages](https://github.com/DataTorrent/docs/tree/gh-pages) branch.  For more details on how this is done see [MkDocs - Deploying Github Pages](http://www.mkdocs.org/user-guide/deploying-your-docs/#github-pages).
 
 
 

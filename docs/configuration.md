@@ -184,7 +184,7 @@ There are pros and cons of each.
     restarted again in another container.
 2.  **CONTAINER_LOCAL**: All the operators of the ports on this
     stream are in the same process. Each denotes a separate thread, and
-    tuples are passed in mmemory via a connectionBuffer as the intra-process
+    tuples are passed in memory via a connectionBuffer as the intra-process
     communication mechanism.
     This mode has very high throughput and can easily do more than
     million tuples/sec. However, since there is no bufferserver, features that
@@ -343,7 +343,7 @@ Uptime
 -------------------
 
 Node recovery is a change in the execution plan caused by external
-events (node outage) or RM taking resources back (pre-emption). The
+events (node outage) or RM taking resources back (preemption). The
 platform enables node recovery in three modes, namely, at least once, at
 most once, and exactly once. SLA enforcement in terms of latency,
 uptime, etc. is done via runtime changes.

@@ -127,7 +127,7 @@ directories.
     any change.
 
     If 'Polling' mode is selected, then 'Polling interval' should be specified.
-    This is the time interval between sub-sequent scans for detecting
+    This is the time interval between subsequent scans for detecting
     new/modified files.  
 
     ![Screenshot from 2015-09-24 20:03:57.png](images/dtingest/image17.png)
