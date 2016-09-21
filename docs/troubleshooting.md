@@ -364,7 +364,7 @@ You have to make sure that the hadoop jars are not bundled with the application 
           <scope>provided</scope>
         </dependency>
 
-2. If your application has trasitive dependency on hadoop jars, make sure that hadoop jars are excluded from the transitive dependency and added back as application depedency with provided scope as mentioned above. Exclusions in pom.xml can be set as follows
+2. If your application has transitive dependency on hadoop jars, make sure that hadoop jars are excluded from the transitive dependency and added back as application dependency with provided scope as mentioned above. Exclusions in pom.xml can be set as follows
 
         <dependency>
           <groupId></groupId>
