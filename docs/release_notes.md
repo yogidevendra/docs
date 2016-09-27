@@ -1,6 +1,72 @@
 DataTorrent RTS Release Notes
 ========================================================================================================================
 
+Version: 3.5.0
+Release date: Sep 26, 2016
+------------------------------------------------------------------------------------------------------------------------
+
+### Summary
+DataTorrent RTS continues to deliver features that sets it apart in bringing operability in running an enterprise grade big data-in-motion platform. This particular release brought new features such as
+
+* Allowing users to analyze "stuck operator" by obtaining stats from the running JVM (i.e. GC stats and thread dump)
+* Ability to show/hide critical path in both logical and physical DAG
+
+### Apache Apex Malhar
+The other important part of going to production is a library of operators that is more than just functional. They need to be fault tolerant, partitionable, support idempotency, and dynanically scalable. The recent release of Apache Apex Malhar 3.5.0 provides new and updated operators and APIs to bring those enterprise features. 
+
+* Windowed Operator that supports the windowing semantics outlined by Apache Beam and Google Cloud DataFlow, including the concepts of event time windows, session windows, watermarks, allowed lateness, and triggering.
+* High level Java stream API now uses the aforementioned Windowed Operator to support stateful transformation with Apache Beam style windowing semantics.
+* Introduction of Spillable Data Structures that make use of Managed State.
+* Deduper Operator to process  whether a given record is a duplicate or not
+* Enricher Operator to join a stream with a lookup source and operate on any POJO object
+* HBase input operator. Improve HBasePOJOInputOperator with support for threaded read
+* File Record reader module. It is useful for reading from files "line by line" in parallel and emit each line as seperate * tuple.
+* JDBC Poll Input Operator
+
+For the full release note, please go to
+https://blogs.apache.org/apex/entry/apache_apex_malhar_3_5
+
+### Appendix
+
+#### Known Issues
+* [SPOI-9232] Dedup with manage state operator marking all impression as duplicate
+* [SPOI-9203]	"check for updates" option says 'no updated versions' and then displays updated packages
+* [SPOI-9183]	Nested operator properties should follow order specified in the ORB on dtAssemble UI
+* [SPOI-8827]	"Check for updates" option keeps loading the page when no updates are available
+
+#### Improvement
+* [SPOI-7343] - Ability to obtain a thread dump from a container
+* [SPOI-8191] - Operator properties should follow order specified in the ORB on dtAssemble UI
+* [SPOI-8352] - Warning message while restarting app should be changed
+* [SPOI-8450] - Dedup ports connected to console should not write to log
+* [SPOI-8722] - Logical DAG, Physical DAG - change "Show/Hide String Locality", "Show/Hide Critical Path" to checkbox.
+
+#### Story
+* [SPOI-6794] - HBase Input Operator
+* [SPOI-6795] - Creation of Concrete Cassandra Output
+* [SPOI-6932] - Module to read from HDFS Input record by record and emit it downstream
+* [SPOI-7948] - JDBC Input Operator
+
+#### Bug Fixes
+* [SPOI-7836] - Trend widget fails after dashboard save/reload with PiDemo app
+* [SPOI-7886] - Duplicate ports show up in the UI for POJO operators
+* [SPOI-8222] - Operator/module names under Operator Library, dtAssemble canvas and right side panel should be same
+* [SPOI-8552] - App Package cache throws uncaught exception when package is not found, resulting in http status 500
+* [SPOI-8721] - Column labeled buffer service size is showing bytes per second
+* [SPOI-9084] - Refresh tokens failing in some scenarios with a login failure message
+* [SPOI-9130] - dtConsole shows no applications on monitor tab
+* [SPOI-9131] - gateway REST and WebSocket APIs for cluster metrics fail to report stats
+
+#### Task
+* [SPOI-8411] - Deduper operator using Managed State
+* [SPOI-9004] - Deduper Documentation
+
+#### Sub-task
+* [SPOI-8389] - ORB defaults for FileSystem related operators
+* [SPOI-8390] - Added operator default values in Application.json for user visibility
+* [SPOI-8410] - Kafka Input Operator Unit test failed
+* [SPOI-8461] - AbstractKafkaInputOperator problems
+
 Version 3.4.0 
 ------------------------------------------------------------------------------------------------------------------------
 ### Summary
