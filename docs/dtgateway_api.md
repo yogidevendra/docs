@@ -2225,6 +2225,472 @@ Return:
 }
 ```
 
+### PUT /ws/v2/config/auth
+
+Function: Configure authentication. 
+The request specifies the type of authentication to setup such as password, kerberos, ldap etc and the configuration 
+parameters for the authentication. The web service sets up the appropriate configuration files for the authentication 
+as described in authentication section of [dtgateway_security](dtgateway_security) document. Gateway needs to be 
+restarted for the new authentication to take effect. This can be done by making the gateway restart web service request.
+
+payload:
+
+```json
+{
+    "type": "{authenticationType}",
+    "configuration":{ }
+}
+
+```
+
+Returns:
+
+```json
+{
+}
+```
+
+The web request **GET /ws/v2/config/auth** returns payload body that was sent in **PUT** request as the response verbatim. 
+
+#### Password
+
+Function: Configure Password authentication 
+
+```json
+{
+    "type": "password",
+    "configuration":{ }
+};
+
+```
+
+Returns:
+
+```json
+{
+}
+```
+
+The web request **GET /ws/v2/config/auth** returns payload body that was sent in **PUT** request as the response verbatim. 
+
+```json
+{
+    "type": "password",
+    "configuration":{ }
+}
+
+```
+
+#### Kerberos with no group mapping
+
+Function: Configure Kerberos authentication with no group mapping
+The configuration comprises of different properties as described in the [dtgateway_security](dtgateway_security) document. 
+Two of the properties are mandatory, they are "kerberosPrincipal" & "kerberosKeytab". A "groupSupport" property specifies 
+whether group mapping should be enabled. Group mapping allows Kerberos groups to be mapped to roles. It should be 
+specified as "false".
+
+```json
+{
+    "type":"kerberos",
+       "configuration":{  
+         "groupSupport":"false",
+         "kerberosPrincipal":"{kerberosPrincipal}",
+         "kerberosKeytab":"{Keytab}",
+         "tokenValidity":"{tokenValidity}",
+         "cookieDomain":"{cookieDomain}",
+         "cookiePath":"{cookiePath}",      
+         "signatureSecret":"{signatureSecret}"
+         }
+};
+
+```
+
+Returns:
+
+```json
+{
+}
+```
+
+The GET response will be same as the json sent in the request for **PUT** .
+
+#### Kerberos with group mapping
+
+Function: Configure Kerberos authentication with group mapping 
+The configuration comprises of different properties as described in the [dtgateway_security](dtgateway_security) document. 
+Two of these properties are mandatory, they are "kerberosPrincipal" & "kerberosKeytab". A "groupSupport" property 
+specifies whether group mapping should be enabled. Group mapping allows Kerberos groups to be mapped to roles. It should 
+be specified as "true". When group mapping is enabled an additional "groupMapping" configuration should be specified that 
+contains the mapping from kerberos groups to roles.
+
+```json
+
+{  
+   "type": "kerberos",
+   "configuration": {  
+        "groupSupport": "true",
+        "kerberosPrincipal": "{kerberosPrincipal}",
+        "kerberosKeytab": "{Keytab}",
+        "tokenValidity": "{Validity}",
+        "cookieDomain" : "{cookieDomain}",
+        "cookiePath": "{cookiePath}"
+        "signatureSecret": "{signatureSecret}"
+        }
+    "groupMapping": [
+        { 
+             "group": "users",
+             "roles": ["developers", "admins", "qa"] 
+        },
+        {  
+             "group": "ops",
+             "roles": ["operators"]
+        }
+     ]  
+};
+
+```
+
+Returns:
+
+```json
+{
+}
+```
+
+The GET response will be same as the json sent in the request for **PUT** .
+
+#### LDAP 
+
+Configure LDAP authentication. There are different configurations possible based on how the LDAP server is configured.
+
+##### Anonymous search allowed and no group mapping needed
+
+Function: Configure LDAP authentication with anonymous search available on LDAP server and no group mapping is needed
+The configuration comprises of different properties as described in the [dtgateway_security](dtgateway_security) document. 
+The "server" property is mandatory. Also, at least one of userBaseDn, authIdentity or userSearchFilter properties must be 
+specified. A "groupSupport" property specifies whether group mapping should be enabled. Group mapping allows LDAP groups
+to be mapped to roles. It should be specified as "false".
+
+```json
+
+{  "type": "ldap",
+   "configuration": {  
+       "groupSupport": "false",
+       "Server": "{Server}",
+       "Port": {port}" +
+       "userBaseDn": "{usserBaseDn}",
+       "userIdAttribute": "{userIdAttribute}"
+   }
+}
+
+```
+
+Returns:
+
+```json
+{
+}
+```
+
+The GET response will be same as the json sent in the request for **PUT** .
+
+##### Anonymous search not allowed and no group mapping needed
+
+Function: Configure LDAP authentication when anonymous search is not available on LDAP server and no group mapping is needed
+The configuration comprises of different properties as described in the [dtgateway_security](dtgateway_security) document. 
+The "server", "userBaseDn", "bindDn" & "bindPassword" properties are mandatory. A "groupSupport" property specifies 
+whether group mapping should be enabled. Group mapping allows LDAP groups to be mapped to roles. It should be specified 
+as "false".
+
+```json
+
+{  
+    "type": "ldap",
+    "configuration": {  
+        "groupSupport": "false",
+        "Server": "{server}",
+        "Port": {port},
+        "userBaseDn": "{userBaseDn}",
+        "userIdAttribute": "{userIdAttribute}",
+        "bindDn": "{bindDn}",
+        "bindPassword": "{bindPassword}", 
+        "userObjectClass": "{userObjectClass}"
+    }
+};
+   
+```
+
+Returns:
+
+```json
+{
+}
+```
+
+The GET response will be same as the json sent in the request for **PUT** .
+
+##### Anonymous search not allowed but group mapping needed
+
+Function: Configure LDAP authentication when anonymous search is not available on LDAP server but group mapping is needed
+The configuration comprises of different properties as described in the [dtgateway_security](dtgateway_security) document. 
+The "server", "userBaseDn", "bindDn" & "bindPassword" properties are mandatory. A "groupSupport" property specifies 
+whether group mapping should be enabled. Group mapping allows LDAP groups to be mapped to roles. It should be specified 
+as "true". When group mapping is enabled an additional "groupMapping" configuration should be specified that contains 
+the mapping from LDAP groups to roles.
+
+```json
+{ 
+    "type": "ldap",
+    "configuration": {  
+        "groupSupport": "true",
+        "Server": "{server}",
+        "Port": {port},
+        "userBaseDn": "{userBaseDn}",
+        "userIdAttribute": "{userIdAttribute}",
+        "bindDn": "{bindDn}",
+        "bindPassword": "{bindPassword}", 
+        "roleBaseDn": "{roleBaseDn}",
+        "userRdnAttribute":"{userRdnAttribute}", 
+        "roleNameAttribute": "{roleNameAttribute}", 
+        "roleObjectClass": "{roleObjectClass}", 
+        "userObjectClass": "{userObjectClass}"
+    },
+    "groupMapping": [ 
+        { 
+        	"group": "users",
+            "roles":["developers"] 
+        },
+        { 
+        	"group": "ops",
+        	"roles": ["operators"]
+        }
+    ]  
+};
+```
+
+Returns:
+
+```json
+{
+}
+```
+
+The GET response will be same as the json sent in the request for **PUT** .
+
+#### Active Directory 
+
+Configure Active Directory authentication. There are different configurations possible based on how the Active Directory 
+server is configured.
+
+### Anonymous search allowed and no group mapping needed
+
+Function: Configure Active Directory authentication with anonymous search available on Active Directory server and no group mapping is needed
+The configuration comprises of different properties as described in the [dtgateway_security](dtgateway_security) document. 
+The "server" property is mandatory. Also, at least one of userBaseDn, authIdentity or userSearchFilter properties must be 
+specified. A "groupSupport" property specifies whether group mapping should be enabled. Group mapping allows 
+Active Directory groups to be mapped to roles. It should be specified as "false".
+
+```json
+
+{  
+   "type": "ad",
+   "configuration": {  
+       "groupSupport ": "false",
+       "Server": "{server}",
+       "Port": {port},
+       "userSearchFilter": "{userSearchFilter}",
+       "userBaseDn": "{userBaseDn}",
+       "userIdAttribute": "{userIdAttribute}",
+       "userDomain" : "{userDomain}"    
+   }
+};
+
+```
+
+Returns:
+
+```json
+{
+}
+```
+
+The GET response will be same as the json sent in the request for **PUT** .
+
+##### Anonymous search not allowed and no group mapping needed
+
+Function: Configure Active Directory authentication when anonymous search is not available on Active Directory server and no group mapping is needed
+The configuration comprises of different properties as described in the [dtgateway_security](dtgateway_security) document. 
+The "server", "userBaseDn", "bindDn" & "bindPassword" properties are mandatory. A "groupSupport" property specifies 
+whether group mapping should be enabled. Group mapping allows LDAP groups to be mapped to roles. It should be specified 
+as "false".
+
+```json
+
+{  
+   "type": "ad",
+   "configuration": {  
+   "groupSupport": "false",
+        "Server": "{server}",
+        "Port": {port},
+        "userBaseDn": "{userBaseDn}",
+        "userIdAttribute": "{userIdAttribute}",
+        "bindDn": "{bindDn}",
+        "bindPassword": "{bindPassword}",
+        "userObjectClass": "{userObjectClass}"
+    }
+};
+   
+```
+
+Returns:
+
+```json
+{
+}
+```
+
+The GET response will be same as the json sent in the request for **PUT** .
+
+##### Anonymous search not allowed but group mapping needed
+
+Function: Configure Active Directory authentication when anonymous search is not available on Active Directory server but group mapping is needed
+The configuration comprises different properties as described in the [dtgateway_security](dtgateway_security) document. 
+The "server", "userBaseDn", "bindDn" & "bindPassword" properties are mandatory. A "groupSupport" property specifies 
+whether group mapping should be enabled. Group mapping allows LDAP groups to be mapped to roles. It should be specified 
+as "true". When group mapping is enabled an additional "groupMapping" configuration should be specified that contains 
+the mapping from Active Directory groups to roles.
+
+```json
+{ 
+    "type": "ad",
+    "configuration": {  
+        "groupSupport": "true",
+        "Server": "{Server}",
+        "Port": {port},
+        "userBaseDn": "{userBaseDn}",
+        "userIdAttribute": "{userIdAttribute}",
+        "bindDn": "{bindDn}",
+        "bindPassword": "{bindPassword}",
+        "roleBaseDn": "{roleBaseDn}",
+        "userRdnAttribute": "{userRdnAttribute}",
+        "roleNameAttribute": "roleNameAttribute",
+        "roleObjectClass": "roleObjectClass",
+        "userObjectClass": "{userObjectClass}",
+     },
+     "groupMapping": [ ]  
+};
+```
+
+Returns:
+
+```json
+{
+}
+```
+
+The GET response will be same as the json sent in the request for **PUT** .
+
+#### PAM
+
+Configure PAM or Pluggable Authentication Mechanism. PAM is the de-facto authentication available on Linux systems.
+
+##### PAM with no group mapping
+
+Function: Configure PAM authentication with no group mapping
+The configuration comprises of different properties as described in the [dtgateway_security](dtgateway_security) document. 
+In PAM, service name is mandatory & there is no configuration. A "groupSupport" property specifies whether group mapping 
+should be enabled. Group mapping allows PAM groups to be mapped to roles. It should be specified as "false".
+
+```json
+
+{  
+   "type":"pam",
+   "configuration":{  
+      "groupSupport":"false",
+      "serviceName":"{serviceName}"
+   }
+};
+
+```
+
+Returns:
+
+```json
+{
+}
+```
+
+The GET response will be same as the json sent in the request for **PUT** .
+
+##### PAM with group mapping
+
+Function: Configure PAM authentication with group mapping 
+The configuration comprises of different properties as described in the [dtgateway_security](dtgateway_security) document.
+In PAM, service name is mandatory & there is no configuration. Group mapping allows PAM groups to be mapped to roles. It 
+should be specified as "true". When group mapping is enabled an additional "groupMapping" configuration should be 
+specified that contains the mapping from PAM groups to roles.
+
+```json
+
+{  
+   "type":"pam",
+   "configuration":{  
+      "groupSupport":"true",
+      "serviceName":"{serviceName}"
+   },
+   
+   "groupMapping": [ 
+       { 
+          "group": "users",
+          "roles":["developers"] 
+       },
+       { 
+          "group": "ops",
+          "roles": ["operators"]
+       }
+   ]  
+};
+
+```
+
+Returns:
+
+```json
+{
+}
+```
+
+The GET response will be same as the json sent in the request for **PUT** .
+
+### PUT /ws/v2/config/groupMapping 
+
+Function: Specify group to role mapping
+Set or update mapping from groups of configured authentication mechanism to RTS roles.
+
+```json
+
+{
+   "groupMapping" : [
+        {
+           "group" : "users",
+           "role" : ["developers", "admins", "qa", "interns"]
+        },
+        {
+           "group": "ops",
+           "role" : ["operators"]
+        }
+   ]
+};
+```
+
+Returns:
+
+```json
+{
+}
+```
+
+The GET response will be same as the json sent in the request for **PUT** .
 
 Publisher-Subscriber WebSocket Protocol
 =======================================
@@ -2264,8 +2730,6 @@ For example: `ws://localhost:9090/pubsub`
 ### Number of Subscribers:
 
     {"type":"data", "topic":"{topic}.numSubscribers", "data":{data}}
-
-
 
 
 Auto publish topics
