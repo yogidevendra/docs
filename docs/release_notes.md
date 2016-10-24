@@ -12,7 +12,7 @@ DataTorrent RTS continues to deliver features that sets it apart in bringing ope
 * Ability to show/hide critical path in both logical and physical DAG
 
 ### Apache Apex Malhar
-The other important part of going to production is a library of operators that is more than just functional. They need to be fault tolerant, partitionable, support idempotency, and dynanically scalable. The recent release of Apache Apex Malhar 3.5.0 provides new and updated operators and APIs to bring those enterprise features. 
+The other important part of going to production is a library of operators that is more than just functional. They need to be fault tolerant, partitionable, support idempotency, and dynamically scalable. The recent release of Apache Apex Malhar 3.5.0 provides new and updated operators and APIs to bring those enterprise features. 
 
 * Windowed Operator that supports the windowing semantics outlined by Apache Beam and Google Cloud DataFlow, including the concepts of event time windows, session windows, watermarks, allowed lateness, and triggering.
 * High level Java stream API now uses the aforementioned Windowed Operator to support stateful transformation with Apache Beam style windowing semantics.
