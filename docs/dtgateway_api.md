@@ -1450,8 +1450,7 @@ Payload:
 
 ### DELETE /ws/v2/config/properties/{PROPERTY_NAME}
 
-Function: Deletes a property from dt-site.xml. This may have to be
-restricted to custom properties?
+Function: Deletes a property from dt-site.xml. 
 ### GET /ws/v2/config/hadoopExecutable
 
 Function: Returns the hadoop executable
