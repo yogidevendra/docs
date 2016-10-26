@@ -230,7 +230,7 @@ Install Java 7 from package manager of Linux Distribution and try running instal
 
 ### What happens if Hadoop is not installed?
 
-Installation will be successful, however Hadoop Configuration page in dtManage (e.g. http://localhost:9090) will expect hadoop binary (/usr/bin/hadoop) & DFS location.
+Installation will be successful, however Hadoop Configuration page in dtManage (e.g. http://localhost:9090) will expect Hadoop binary (/usr/bin/hadoop) & DFS location.
 
 ![HadoopConfiguration.png](images/troubleshooting/image02.png)
 
@@ -353,9 +353,9 @@ Default value for this attribute is 1024 MB. You may need to increase this value
 
 ### Hadoop dependencies conflicts
 
-You have to make sure that the hadoop jars are not bundled with the application package o/w they may conflict with the versions available in hadoop classpath. Here are some of the ways to exclude hadoop dependencies from the application package
+You have to make sure that the Hadoop jars are not bundled with the application package o/w they may conflict with the versions available in Hadoop classpath. Here are some of the ways to exclude Hadoop dependencies from the application package
 
-1. If your application is directly dependent on the hadoop jars, make sure that the scope of the dependency is `provided`. For eg if your application is dependent on hadoop-common, this is how you should add the dependency in pom.xml
+1. If your application is directly dependent on the Hadoop jars, make sure that the scope of the dependency is `provided`. For eg if your application is dependent on hadoop-common, this is how you should add the dependency in pom.xml
 
         <dependency>
           <groupId>org.apache.hadoop</groupId>
@@ -364,7 +364,7 @@ You have to make sure that the hadoop jars are not bundled with the application 
           <scope>provided</scope>
         </dependency>
 
-2. If your application has transitive dependency on hadoop jars, make sure that hadoop jars are excluded from the transitive dependency and added back as application dependency with provided scope as mentioned above. Exclusions in pom.xml can be set as follows
+2. If your application has transitive dependency on Hadoop jars, make sure that Hadoop jars are excluded from the transitive dependency and added back as application dependency with provided scope as mentioned above. Exclusions in pom.xml can be set as follows
 
         <dependency>
           <groupId></groupId>
@@ -421,7 +421,7 @@ Coming soon.
 
 ###  How to remote debug gateway service?
 
-Update hadoop OPTS variable by running,
+Update Hadoop OPTS variable by running,
 
     export HADOOP_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5432 $HADOOP_OPTS"
 
@@ -691,7 +691,7 @@ Additional information on tools related to both types of dumps is available
     *  How to enable stream-codec on multiple ports. (Join operator?? where both input-ports needs to receive same set of keys).
 
 *   pom dependency management, exclusions etc. eg: Malhar library and
-    contrib, Hive (includes hadoop dependencies, we need to explicitly
+    contrib, Hive (includes Hadoop dependencies, we need to explicitly
     exclude), Jersey(we work only with 1.9 version) etc
 
 *  All non-transient members of the operator object need to be
