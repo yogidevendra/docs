@@ -1,7 +1,17 @@
 Creating Applications
 =====================
 
-Get started quickly by following the [Beginner's Guide](/beginner) and create your first Apache Apex application today!
+Here are a few links to get you started:
+
+- [Beginner's Guide](/beginner) An introductory guide that shows you how to generate a new
+  ready-to-run Apex application using the maven archetype and a good deal of the application
+  landscape at an introductory level.
+
+- [Operator Development](/operator_development)
+
+- [Operator Library](/library_operators)
+
+- [Demo Videos](/demo_videos)
 
 
 
