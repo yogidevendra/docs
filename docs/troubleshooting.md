@@ -27,13 +27,13 @@ Licenses are available in 2 types : evaluation and production.
 
 Package contents for Community edition:
 
--   Apache Apex (incubating)
+-   Apache Apex
 -   DataTorrent Demo Applications
 -   DataTorrent dtManage
 
 Package contents for Enterprise edition:
 
--   Apache Apex (incubating)
+-   Apache Apex
 -   DataTorrent Demo Applications
 -   DataTorrent Operator Library
 -   DataTorrent Enterprise Security
@@ -143,7 +143,7 @@ machine. Following are prerequisites for DataTorrent RTS:
 
 -  Ubuntu 12.04 LTS + Apache Hadoop 2.2 (DataTorrent RTS 3.1 or earlier)
 -  Lubuntu 14.04 LTS + Apache Hadoop 2.7 (DataTorrent RTS 3.2 or later)
--  Apache Apex (incubating), Apache Apex-Malhar (incubating)
+-  Apache Apex, Apache Apex-Malhar
 -  DataTorrent Operator Library
 -  DataTorrent Enterprise Security
 -  DataTorrent dtManage
