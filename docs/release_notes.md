@@ -1,6 +1,43 @@
 DataTorrent RTS Release Notes
 ========================================================================================================================
 
+Version: 3.6.0
+Release date: Nov 9, 2016
+------------------------------------------------------------------------------------------------------------------------
+### Summary
+DataTorrent RTS releases AppHub, a repository of application templates for various Big Data use cases. The key of this release is that RTS now have an infrastructure to distribute application templates easily. Developers can reduce the time to develop Big Data applications using templates. There are five templates in this release with many more to come. 
+
+* HDFS Sync 
+* Amazon S3 to HDFS Sync
+* Kafka to HDFS Sync
+* HDFS to HDFS Line Copy
+* HDFS to Kafka Sync
+
+## Appendix
+
+### Improvement
+* [SPOI-9136] - Enforce DefaultOutputPort.emit() or Sink.put() thread affinity
+
+#### Task
+* [SPOI-9118] - Publish App Templates for Ingestion on AppHub
+* [SPOI-9419] - Update AppHub API to include the markdown content
+* [SPOI-9432] - Update AppHub back end to extract markdown from apa
+
+### Sub-task
+* [SPOI-3277] - Show app master logs on UI for applications that fail at launch when we upgrade to Hadoop 2.4 or above
+* [SPOI-9079] - Creation of example application for transform operator
+* [SPOI-9235] - Allow users to create new configurations from Application Configurations view
+* [SPOI-9240] - Create individual package view for AppHub artifacts
+* [SPOI-9464] - Rename all references of AppHub on console UI to AppHub
+* [SPOI-9574] - Rename title on AppHub list page
+* [SPOI-9612] - Upgrade AppHub server deployment
+
+### Bug Fixes
+* [SPOI-9140] - dtManage shows "Failed to parse" error when 'Monitor' tab is refreshed
+* [SPOI-9522] - DELETE call to /ws/v2/config/properties/{name} returns 500
+* [SPOI-9727] - DTINSTALL_SOURCE incorrectly assumes file name
+
+
 Version: 3.5.0
 Release date: Sep 26, 2016
 ------------------------------------------------------------------------------------------------------------------------
