@@ -2,7 +2,7 @@
 
 ## Summary
 
-Ingest and backup hadoop HDFS data as lines from one cluster to another in a fault tolerant way. This application reads lines from the configured source path and writes them to the destination file path. The source code is available at: [https://github.com/DataTorrent/examples/tree/master/tutorials/hdfs-line-copy](https://github.com/DataTorrent/examples/tree/master/tutorials/hdfs-line-copy).
+Ingest and backup hadoop HDFS data as lines from one cluster to another in a fault tolerant way. This application reads lines from the configured source path and writes them to the destination file path. The source code is available at: [https://github.com/DataTorrent/app-templates/tree/master/hdfs-line-copy](https://github.com/DataTorrent/app-templates/tree/master/hdfs-line-copy).
 
 Please send feedback or feature requests to: [feedback@datatorrent.com](mailto:feedback@datatorrent.com)
 

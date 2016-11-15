@@ -4,7 +4,7 @@
 
 This application reads lines from configured HDFS path and writes each line as a message in configured Apache Kafka topic.
 This document illustrates step by step guide to launch, configure, customize
-this application.The source code is available at: [https://github.com/DataTorrent/examples/tree/master/tutorials/hdfs-to-kafka-sync](https://github.com/DataTorrent/examples/tree/master/tutorials/hdfs-to-kafka-sync).
+this application.The source code is available at: [https://github.com/DataTorrent/app-templates/tree/master/hdfs-to-kafka-sync](https://github.com/DataTorrent/app-templates/tree/master/hdfs-to-kafka-sync).
 
 Please send feedback or feature requests to: [feedback@datatorrent.com](mailto:feedback@datatorrent.com)
 
