@@ -2043,6 +2043,7 @@ Payload:
 {
         "condition":"{condition in javascript}",
         "email":"{email}",
+	"description": "{description}",
         "timeThresholdMillis":"{time}"
 }
 ```
@@ -2063,6 +2064,7 @@ Return:
         "name": "{alertName}",
         "condition":"{condition in javascript}",
         "email":"{email}",
+	"description": "{description}",
         "timeThresholdMillis":"{time}",
         "alertStatus": {
             "isInAlert":{true/false}
@@ -2085,6 +2087,7 @@ Return:
     "name": "{alertName}",
     "condition":"{condition in javascript}",        
     "email":"{email}",
+    "description": "{description}",
     "timeThresholdMillis":"{time}",
     "alertStatus": {
         "isInAlert":{true/false}
