@@ -5,7 +5,6 @@ theme: readthedocs
 pages:
 - DataTorrent RTS: index.md
 - Demos:
-    - Videos: demo_videos.md
     - Running Apps: demos.md
 - Sandbox: sandbox.md
 - Development:
