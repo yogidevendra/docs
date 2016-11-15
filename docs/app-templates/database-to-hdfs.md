@@ -5,7 +5,7 @@
 Ingest records from a Database table to hadoop HDFS. This application reads messages from configured MySQL table and writes each record as a comma-separated line in HDFS files.
 
  The source code is available at:
-[https://github.com/DataTorrent/examples/tree/master/tutorials/database-to-hdfs](https://github.com/DataTorrent/examples/tree/master/tutorials/database-to-hdfs).
+[https://github.com/DataTorrent/app-templates/tree/master/database-to-hdfs](https://github.com/DataTorrent/app-templates/tree/master/database-to-hdfs).
 
 Please send feedback or feature requests to: [feedback@datatorrent.com](mailto:feedback@datatorrent.com)
 
