@@ -1,10 +1,10 @@
-# Database dump to HDFS application
+# Database dump to HDFS Sync application
 
 ## Summary
 
-Ingest records from a Database table to hadoop HDFS. This application reads messages from configured MySQL table and writes each record as a comma-separated line in HDFS files.
+Ingest records from a PostgreSQL Database table to hadoop HDFS. This application reads messages from configured PostgreSQL table and writes each record as a comma-separated line in HDFS files.
 
- The source code is available at:
+The source code is available at:
 [https://github.com/DataTorrent/app-templates/tree/master/database-to-hdfs](https://github.com/DataTorrent/app-templates/tree/master/database-to-hdfs).
 
 Please send feedback or feature requests to: [feedback@datatorrent.com](mailto:feedback@datatorrent.com)
@@ -20,18 +20,17 @@ This document has a step-by-step guide to configure, customize, and launch this 
 Search for Database to see all applications related to Database.
    ![AppHub search for Database](images/database-to-hdfs/apphub-search.png)
 
-    Click on import button for `Database dump to HDFS App`
+    Click on import button for `Database dump to HDFS Sync App`
 
-1. Notification is displayed on the top right corner after application package is successfully
-   imported.
+1. Notification is displayed on the top right corner after application package is successfully imported.
    ![App import Notification](images/database-to-hdfs/import-notification.png)
 
 1. Click on the link in the notification which navigates to the page for this application package.
    ![App details page](images/database-to-hdfs/app-details-page.png)
 
-    Detailed information about the application package like version, last modified time, and short description is available on this page. Click on launch button for `Database-to-HDFS` application.
+    Detailed information about the application package like version, last modified time, and short description is available on this page. Click on launch button for `Database-to-HDFS-Sync` application.
 
-1. <a name="launch-dialogue"></a>`Launch HDFS-line-copy` dialogue is displayed. One can configure the name of this instance of the application from this dialogue.
+1. <a name="launch-dialogue"></a>`Launch Database-to-HDFS-Sync` dialogue is displayed. One can configure the name of this instance of the application from this dialogue.
    ![Launch dialogue](images/database-to-hdfs/launch.png)
 
 1. Select `Use saved configuration` option to display a list of pre-saved configurations.
@@ -48,16 +47,15 @@ application. Change values as needed.
 
     <a name="property-editor"></a>
     For example, suppose we wish to process all rows from the table `test_event_table` in a
-    MySQL database named `testDev` accessible at localhost port 3306 with credentials
-    username=`root`, password=`mysql`, and we wish to write the output to the HDFS file
+    PostgreSQL database named `testdb` accessible at `database-node.com` port `5432` with credentials
+    username=`postgres`, password=`postgres`, and we wish to write the output to the HDFS file
     `/user/appuser/output/output.txt`. Properties should be set as follows:
 
-    |name|value|
+    |Name|Value|
     |---|---|
-    |dt.operator.JdbcPoller.prop.store.databaseDriver|com.mysql.jdbc.Driver|
-    |dt.operator.JdbcPoller.prop.store.databaseUrl|jdbc:mysql://localhost:3306/testDev|
-    |dt.operator.JdbcPoller.prop.store.password|mysql|
-    |dt.operator.JdbcPoller.prop.store.userName|root|
+    |dt.operator.JdbcPoller.prop.store.databaseUrl|jdbc:postgresql://database-node.com:5432/testdb|
+    |dt.operator.JdbcPoller.prop.store.password|postgres|
+    |dt.operator.JdbcPoller.prop.store.userName|postgres|
     |dt.operator.JdbcPoller.prop.tableName|test_event_table|
     |dt.operator.JdbcPoller.prop.whereCondition||
     |dt.operator.fileOutput.prop.filePath|/user/appuser/output|
@@ -79,8 +77,8 @@ its logs.
 1. Application instance details page shows key metrics for monitoring the application status.
    `logical` tab shows application DAG, StrAM events, operator status based on logical operators, stream status, and a chart with key metrics.
    ![Logical tab](images/database-to-hdfs/logical.png)
-1. Click on the `physical` tab to look at the status of physical instances of operators, containers etc.
    ![Physical tab](images/database-to-hdfs/physical.png)
+   1. Click on the `physical` tab to look at the status of physical instances of operators, containers etc.
 
 ## <a name="configuration_options">Configuration options</a>
 
@@ -89,31 +87,30 @@ End user must specify the values for these properties.
 
 |Property|Description|Type|Example|
 |---|---|---|---|
-|dt.operator.JdbcPoller.prop.store.databaseDriver|JDBC driver class. This has to be on CLASSPATH. MySQL driver is added as a dependency.|String|com.mysql.jdbc.Driver|
-|dt.operator.JdbcPoller.prop.store.databaseUrl|JDBC connection URL| String|jdbc:mysql://localhost: 3306/testDev|
-|dt.operator.JdbcPoller.prop.store.password|Password for Database credentials| String|mysql|
-|dt.operator.JdbcPoller.prop.store.userName|Username for Database credentials| String|root|
+|dt.operator.JdbcPoller.prop.store.databaseDriver|JDBC driver class. This has to be on CLASSPATH. PostgreSQL driver is added as a dependency.|String|org.postgresql.Driver|
+|dt.operator.JdbcPoller.prop.store.databaseUrl|JDBC connection URL| String|<p style="font-size:12px">jdbc:postgresql://database-node.com:5432/testdb|
+|dt.operator.JdbcPoller.prop.store.password|Password for Database credentials| String|postgres|
+|dt.operator.JdbcPoller.prop.store.userName|Username for Database credentials| String|postgres|
 |dt.operator.JdbcPoller.prop.tableName|Table name for input records|String|test_event_table|
 |dt.operator.JdbcPoller.prop.whereCondition|Where clause condition (if any) for input records. Keep blank to fetch all records.|String||
 |dt.operator.fileOutput.prop.filePath|Output path for HDFS|String|/user/appuser/output|
 |dt.operator.fileOutput.prop.outputFileName|Output file name |String|output.txt|
 
-
 ### Advanced properties
 There are pre-saved configurations based on the application environment. Recommended settings for [datatorrent sandbox edition](https://www.datatorrent.com/download/datatorrent-rts-sandbox-edition-download/) are in `sandbox-memory-conf.xml` and for a cluster environment in `cluster-memory-conf.xml` (the first 2 are integers and the rest are strings).
+The messages or records emitted are specified by the value of the `TUPLE_CLASS` attribute in the configuration file namely `PojoEvent` in this case.
 
 |Property|Description|Default for<br/> cluster<br/>-memory<br/>- conf.xml|Default for<br/>  sandbox<br/>-memory<br/> -conf.xml|
 |---|---|---|---|
 |<p style="font-size:12px">dt.operator.JdbcPoller.prop.partitionCount|Number of JDBC input partitions for parallel reading.|4|1|
 |<p style="font-size:12px">dt.operator.JdbcPoller.prop.batchSize|Batch size to read data from JDBC.|300|300|
-|<p style="font-size:12px">dt.operator.JdbcPoller.prop.key|Key column for the table. This will be used for partitoning of rows.|ACCOUNT_NO|ACCOUNT_NO|
-|<p style="font-size:12px">dt.operator.JdbcPoller.prop.columnsExpression|Key column for the table. This will be used for partitoning of rows.|ACCOUNT_NO, NAME, AMOUNT|ACCOUNT_NO, NAME, AMOUNT|
-|<p style="font-size:12px">dt.operator.JdbcPoller.port.outputPort.attr.TUPLE_CLASS|Fully qualified class name for the tuple class POJO(Plain old java objects) emitted by JDBC input|_See_ (1)|_See_ (1)|
+|<p style="font-size:12px">dt.operator.JdbcPoller.prop.key|Key column for the table. This will be used for partitoning of rows.|<p style="font-size:12px">ACCOUNT_NO|<p style="font-size:12px">ACCOUNT_NO|
+|<p style="font-size:12px">dt.operator.JdbcPoller.prop.columnsExpression|Key column for the table. This will be used for partitoning of rows.|<p style="font-size:12px">ACCOUNT_NO, NAME, AMOUNT|<p style="font-size:12px">ACCOUNT_NO, NAME, AMOUNT|
+|<p style="font-size:10px">dt.operator.JdbcPoller.port.outputPort.attr.TUPLE_CLASS|Fully qualified class name for the tuple class POJO(Plain old java objects) emitted by JDBC input|com.datatorrent.apps.PojoEvent|com.datatorrent.apps.PojoEvent|
 |<p style="font-size:12px">dt.operator.JdbcPoller.prop.pollInterval|Poll interval for scanning new records in milisec|1000|1000|
 |<p style="font-size:12px">dt.operator.formatter.prop.schema|Schema for CSV formatter|{"separator": "&#124;",<br/>"quoteChar": "\"",<br/>"lineDelimiter": "", "fields": [<br/>{<br/>"name": "accountNumber", <br/>"type": "Integer"<br/>},<br/> {<br/>"name": "name",<br/>"type": "String"<br/>},<br/>{<br/>"name": "amount",<br/>"type": "Integer"<br/>}<br/>]}|{"separator": "&#124;",<br/>"quoteChar": "\"",<br/>"lineDelimiter": "", "fields": [<br/>{<br/>"name": "accountNumber", <br/>"type": "Integer"<br/>},<br/> {<br/>"name": "name",<br/>"type": "String"<br/>},<br/>{<br/>"name": "amount",<br/>"type": "Integer"<br/>}<br/>]}|
-|dt.operator.formatter. port.in.attr.TUPLE_CLASS|Fully qualified class name for the tuple class POJO(Plain old java objects) input to CSV formatter|_See_ (1)|_See_ (1)|
+|dt.operator.formatter. port.in.attr.TUPLE_CLASS|Fully qualified class name for the tuple class POJO(Plain old java objects) input to CSV formatter|com.datatorrent.apps.PojoEvent|com.datatorrent.apps.PojoEvent|
 
-1. <b><tt>com.datatorrent.apps.PojoEvent</tt></b>
 
 You can override default values for advanced properties by specifying custom values for these properties in the step [specify custom property](#property-editor) step mentioned in [steps](#steps_to_launch) to launch an application.
 
@@ -134,7 +131,7 @@ You can override default values for advanced properties by specifying custom val
 1. Change directory to `examples/tutorials/database-to-hdfs`:
 
     ```
-    cd examples/tutorials/hdfs-line-copy
+    cd examples/tutorials/database-to-hdfs
     ```
 
 1. Import this maven project in your favorite IDE (e.g. eclipse).

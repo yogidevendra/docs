@@ -49,6 +49,9 @@ pages:
     - HDFS to HDFS Line Copy App: app-templates/hdfs-line-copy.md
     - HDFS to Kafka Sync App: app-templates/hdfs-to-kafka-sync.md
     - Database dump to HDFS App: app-templates/database-to-hdfs.md
+    - Database to Database Sync App: app-templates/database-to-database-sync.md
+    - Kafka to Database Sync App: app-templates/kafka-to-database-sync.md
+    - Kafka to HDFS Filter App: app-templates/kafka-to-hdfs-filter.md
 - Applications:
     - App Data Tracker: app_data_tracker.md
     - dtIngest: dtingest.md
