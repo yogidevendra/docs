@@ -31,6 +31,11 @@ For authorization, dtGateway provides built-in role-based access control. The ad
 
 For information on configuring security see [dtGateway security](dtgateway_security.md) guide.
 
+## System Alerts
+
+The DT Gateway System Alerts provides a way for users to monitor metrics in the Hadoop cluster and of running applications.  When an alert condition becomes true continuously within the specified time set for that alert, the Gateway sends an email to the email address or addresses associated with that alert.  The same is true for alerts condition changing to a false state. The alert conditions are written in JavaScript. Alerts are created via the **PUT /ws/v2/systemAlerts/alerts/{name}** documented in the [REST API](dtgateway_api.md).  For more detail documentation on System Alerts, please refer to [this document](dtgateway_systemalerts.md).
+
+
 ## Rest API
 
 Here is an example of using the curl command to access dtGateway’s REST API to get the details of a physical operator with ID=40 of application instance with ID=application_1442448722264_14891, assuming dtGateway is listening at localhost:9090
