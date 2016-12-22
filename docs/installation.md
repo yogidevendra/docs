@@ -25,7 +25,7 @@ Requirements
 * Java 7 or 8 (tested with Oracle Java 7, OpenJDK Java 7)
 * Hadoop (2.2.0 or above) cluster with YARN, HDFS configured, and hadoop executable available in PATH
 * Minimum of 8G RAM available on the Hadoop cluster
-* Google Chrome, Firefox, or Safari to access the DataTorrent Console UI
+* Google Chrome or Safari to access the DataTorrent Console UI
 * Permissions to create HDFS directory for DataTorrent user
 
 

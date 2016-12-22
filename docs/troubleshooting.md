@@ -68,7 +68,7 @@ DataTorrent RTS platform has following Hadoop cluster requirements:
 -   Java 7 or 8 as supported by Hadoop distribution
 -   Minimum of 8G RAM available on the Hadoop cluster
 -   Permissions to create HDFS directory for DataTorrent user
--   Google Chrome, Firefox, or Safari to access dtManage (DataTorrent UI
+-   Google Chrome or Safari to access dtManage (DataTorrent UI
     console)
 
 ###  Where can I start from after downloading DataTorrent RTS?

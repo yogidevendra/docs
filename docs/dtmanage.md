@@ -16,7 +16,7 @@ When you install DataTorrent RTS on your Hadoop cluster using the installer bina
 
 ### Browser Requirements
 
-The Console currently supports Chrome, Firefox, Safari, and IE (version 10 and up).
+The Console currently supports Chrome and Safari.
 
 ### Installation Wizard
 
