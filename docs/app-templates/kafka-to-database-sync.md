@@ -1,0 +1,166 @@
+# Kafka To Database Sync application
+
+## Summary
+
+Ingest string messages seperated by '|' from configured kafka topic and writes each message as a record in DataBase. This application uses PoJoEvent as an example schema, this can be customized to use custom schema based on specific needs.
+
+The source code is available at:
+[https://github.com/DataTorrent/app-templates/tree/master/kafka-to-database-sync](https://github.com/DataTorrent/app-templates/tree/master/kafka-to-database-sync).
+
+Please send feedback or feature requests to: [feedback@datatorrent.com](mailto:feedback@datatorrent.com)
+
+This document has a step-by-step guide to configure, customize, and launch this application.
+
+## <a name="steps_to_launch">Steps to launch application</a>
+
+1. Click on the AppHub tab from the top navigation bar.
+   ![AppHub link from top navigation bar](images/common/apphub_link.png)
+
+1. Page listing the applications available on AppHub is displayed.
+Search for Database to see all applications related to Database.
+   ![AppHub search for Database](images/kafka-to-database-sync/apphub-search.png)
+
+    Click on import button for `Kafka to Database Sync App`
+
+1. Notification is displayed on the top right corner after application package is successfully
+   imported.
+   ![App import Notification](images/kafka-to-database-sync/import-notification.png)
+
+1. Click on the link in the notification which navigates to the page for this application package.
+   ![App details page](images/kafka-to-database-sync/app-details-page.png)
+
+    Detailed information about the application package like version, last modified time, and short description is available on this page. Click on launch button for `Kafka-to-Database-Sync` application.
+
+1. <a name="launch-dialogue"></a>`Launch Kafka-to-Database-Sync` dialogue is displayed. One can configure the name of this instance of the application from this dialogue.
+   ![Launch dialogue](images/kafka-to-database-sync/launch.png)
+
+1. Select `Use saved configuration` option to display a list of pre-saved configurations.
+Please select `sandbox-memory-conf.xml` or `cluster-memory-conf.xml` depending on whether
+your environment is the DataTorrent sandbox, or other cluster.
+    ![Select saved configuration](images/kafka-to-database-sync/saved-conf.png)
+
+1. Select `Specify custom properties` option. Click on `add default properties` button.
+   ![Specify custom properties](images/kafka-to-database-sync/specify-custom.png)
+
+1. This expands a key-value editor pre-populated with mandatory properties for this
+application. Change values as needed.
+   ![Properties editor](images/kafka-to-database-sync/property-editor.png)
+
+    <a name="property-editor"></a>
+    For example, suppose we wish string messages seperated with '|' to the table `test_event_table` in a
+    PostgreSQL database named `testdb` accessible at `target-database.node.com` port `5432` with credentials
+    username=`postgres`, password=`postgres`. Properties should be set as follows:
+
+    |Name|Value|
+    |---|---|
+    |dt.operator.kafkaInput.prop.clusters|kafka-source.node.com:9092|
+    |dt.operator.kafkaInput.prop.topics|transactions|
+    |dt.operator.kafkaInput.prop.initialOffset|EARLIEST|
+    |dt.operator.JdbcOuput.prop.store.databaseDriver|org.postgresql.Driver|
+    |dt.operator.JdbcOuput.prop.store.databaseUrl|jdbc:postgresql://target-database.node .com:5432/testdb|
+    |dt.operator.JdbcOuput.prop.store.password|postgres|
+    |dt.operator.JdbcOuput.prop.store.userName|postgres|
+    |dt.operator.JdbcOuput.prop.tablename|test_event_output_table|
+
+    Details about configuration options are available in [Configuration options](#configuration_options) section.
+
+1. Click on the `Launch` button at the lower right corner of the dialog to launch the
+application.
+A notification is displayed on the top right corner after the application is launched successfully and includes the Application ID which can be used to monitor this instance and to find
+its logs.
+   ![Application launch notification](images/common/app_launch_notification.png)
+
+1. Click on the `Monitor` tab from the top navigation bar.
+   ![Monitor tab](images/common/monitor_link.png)
+
+1. A page listing all running applications is displayed. Search for the current instance based on name or application id or any other relevant field. Click on the application name or id to navigate to the details page.
+   ![Apps monitor listing](images/common/apps_monitor_listing.png)
+1. Application instance details page shows key metrics for monitoring the application status.
+   `logical` tab shows application DAG, StrAM events, operator status based on logical operators, stream status, and a chart with key metrics.
+   ![Logical tab](images/kafka-to-database-sync/logical.png)
+1. Click on the `physical` tab to look at the status of physical instances of operators, containers etc.
+   ![Physical tab](images/kafka-to-database-sync/physical.png)
+
+
+## <a name="configuration_options">Configuration options</a>
+### Prerequistes
+1. Kafka configured with version 0.9.
+2. `Meta-data` table is required for Jdbc Output operator for transactional data and application consistency.
+
+|Table Name|Column Names|
+|---|------|
+|dt_meta|<br/>dt_app_id (VARCHAR)<br/>dt_operator_id (INT) <br/>dt_window (BIGINT)|
+
+Query for `Meta-data` table creation:
+
+`CREATE TABLE dt_meta (dt_app_id varchar(100) NOT NULL,
+dt_operator_id int NOT NULL, dt_window bigint NOT NULL,
+CONSTRAINT dt_app_id UNIQUE (dt_app_id,dt_operator_id,dt_window));`
+
+### Mandatory properties
+End user must specify the values for these properties.
+
+|Property|Description|Type|Example|
+|---|---|---|---|
+|<p style="font-size:12px">dt.operator.kafkaInput.prop.clusters|List of Brokers for kafka input|String|node1.company.com:9098, node2.company.com:9098, node3.company.com:9098|
+|<p style="font-size:12px">dt.operator.kafkaInput.prop.topics|Kafka topics for input|String|transactions|
+|<p style="font-size:11px">dt.operator.kafkaInput.prop.initialOffset|Kafka input offset|String|<ul><li><p style="font-size:12px">EARLIEST</li><li><p style="font-size:12px">LATEST</li><li><p style="font-size:12px">APPLICATION_OR_EARLIEST</li><li><p style="font-size:12px">APPLICATION_OR_LATEST</li></ul>|
+|<p style="font-size:12px">dt.operator.JdbcOuput.prop.store.databaseDriver|JDBC driver class. This has to be on CLASSPATH. PostgreSQL driver is added as a dependency.|String|org.postgresql.Driver|
+|<p style="font-size:12px">dt.operator.JdbcOuput.prop.store.databaseUrl|JDBC connection URL| String|jdbc:postgresql://target-database.node.com:5432/testdb|
+|<p style="font-size:12px">dt.operator.JdbcOuput.prop.store.password|Password for Database credentials| String|postgres|
+|<p style="font-size:12px">dt.operator.JdbcOuput.prop.store.userName|Username for Database credentials| String|postgres|
+|<p style="font-size:12px">dt.operator.JdbcOuput.prop.tableName|Table name for output records|String|test_event_output_table|
+
+
+### Advanced properties
+There are pre-saved configurations based on the application environment. Recommended settings for [datatorrent sandbox edition](https://www.datatorrent.com/download/datatorrent-rts-sandbox-edition-download/) are in `sandbox-memory-conf.xml` and for a cluster environment in `cluster-memory-conf.xml` (the first 2 are integers and the rest are strings).
+The messages or records emitted are specified by the value of the `TUPLE_CLASS` attribute in the configuration file namely `PojoEvent` in this case.
+
+|Property|Description|Default for<br/> cluster<br/>-memory<br/>- conf.xml|Default for<br/>  sandbox<br/>-memory<br/> -conf.xml|
+|---|---|---|---|
+|<p style="font-size:12px">dt.operator.csvParser.port.out.attr.TUPLE_CLASS|Fully qualified class name for the tuple class POJO(Plain old java objects) emitted by JDBC input|com.datatorrent.apps.PojoEvent|com.datatorrent.apps.PojoEvent|
+|<p style="font-size:12px">dt.operator.JdbcOutput.port.input.attr.TUPLE_CLASS|Fully qualified class name for the tuple class POJO(Plain old java objects) emitted by Kafka input|com.datatorrent.apps.PojoEvent|com.datatorrent.apps.PojoEvent|
+|<p style="font-size:12px">dt.operator.csvParser.prop.schema|Schema for CSV parser|<p style="font-size:12px">{"separator": "&#124;",<br/>"quoteChar": "\"",<br/>"lineDelimiter": "", "fields": [<br/>{<br/>"name": "accountNumber", <br/>"type": "Integer"<br/>},<br/> {<br/>"name": "name",<br/>"type": "String"<br/>},<br/>{<br/>"name": "amount",<br/>"type": "Integer"<br/>}<br/>]}|<p style="font-size:12px">{"separator": "&#124;",<br/>"quoteChar": "\"",<br/>"lineDelimiter": "", "fields": [<br/>{<br/>"name": "accountNumber", <br/>"type": "Integer"<br/>},<br/> {<br/>"name": "name",<br/>"type": "String"<br/>},<br/>{<br/>"name": "amount",<br/>"type": "Integer"<br/>}<br/>]}|
+
+You can override default values for advanced properties by specifying custom values for these properties in the step [specify custom property](#property-editor) step mentioned in [steps](#steps_to_launch) to launch an application.
+
+## Steps to customize the application
+
+1. Make sure you have following utilities installed on your machine and available on `PATH` in environment variable:
+    - [Java](https://www.java.com/en/download/manual.jsp) : 1.7.x
+    - [maven](http://maven.apache.org/download.cgi) : 3.0 +
+    - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) : 1.7 +
+    - [Hadoop]( http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/) (Apache-2.2)+
+
+1.  Use following command to clone the examples repository:
+
+     ```
+     git clone git@github.com:DataTorrent/app-templates.git
+     ```
+
+1. Change directory to `examples/tutorials/kafka-to-database-sync`:
+
+    ```
+    cd examples/tutorials/kafka-to-database-sync
+    ```
+
+1. Import this maven project in your favorite IDE (e.g. eclipse).
+
+1. Change the source code as per your requirements. Some tips are given as commented blocks in the `Application.java` for this project.
+
+1. Make respective changes in the test case and `properties.xml` based on your environment.
+
+1. Compile this project using maven:
+
+    ```
+    mvn clean package
+    ```
+
+    This will generate the application package file with `.apa` extension in the `target` directory.
+
+1. Go to DataTorrent UI Management console on web browser. Click on the `Develop` tab from the top navigation bar.
+    ![Develop tab](images/common/develop_link.png)
+1. Click on `upload package` button and upload the generated `.apa` file.
+    ![Upload](images/common/upload.png)
+
+1. Application package page is shown with the listing of all packages. Click on the `Launch` button for the uploaded application package. Follow the [steps](#launch-dialogue) for launching an application.
