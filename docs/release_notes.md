@@ -326,7 +326,7 @@ DataTorrent RTS releases AppHub, a repository of application templates for vario
 * [SPOI-9727] - DTINSTALL_SOURCE incorrectly assumes file name
 
 
-Version 3.4.0 
+Version 3.5.0 
 ------------------------------------------------------------------------------------------------------------------------
 Release date: Sep 26, 2016
 
