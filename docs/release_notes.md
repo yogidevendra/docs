@@ -2,8 +2,10 @@ DataTorrent RTS Release Notes
 ========================================================================================================================
 
 Version: 3.7.0
-Release date: Dec 30, 2016
 ------------------------------------------------------------------------------------------------------------------------
+
+Release date: Dec 30, 2016
+
 ### Summary
 The new features on this release are functionalities that will ease debugging an application and administering application alerts in production. 
 
@@ -38,11 +40,11 @@ AppHub
 
 RTS 3.7.0 is based on Apache Apex Core 3.5.0 (released Dec 19, 2016) and Apache Apex Malhar 3.6.0 (released Dec 8, 2016).
 
-Apache Apex Core 3.5.0:
+### Apache Apex Core 3.5.0
 This release upgrades the Apache Hadoop YARN dependency from 2.2 to 2.6. The community determined that current users run on versions equal or higher than 2.6 and Apex can now take advantage of more recent capabilities of YARN. The release contains a number of important bug fixes and operability improvements. 
 Change log: https://github.com/apache/apex-core/blob/v3.5.0/CHANGELOG.md
 
-Apache Apex Malhar 3.6.0 
+### Apache Apex Malhar 3.6.0 
 The release adds first iteration of SQL support via Apache Calcite. Features include SELECT, INSERT, INNER JOIN with non-empty equi join condition, WHERE clause, SCALAR functions that are implemented in Calcite, custom scalar functions. Endpoint can be file, Kafka or internal streaming port for both input and output. CSV format is implemented for both input and output. See examples for usage of the new API.
 
 The windowed state management has been improved (WindowedOperator). There is now an option to use spillable data structures for the state storage. This enables the operator to store large states and perform efficient checkpointing.
@@ -286,8 +288,10 @@ Change log: https://github.com/apache/apex-malhar/blob/v3.6.0/CHANGELOG.md
 
 
 Version: 3.6.0
-Release date: Nov 9, 2016
 ------------------------------------------------------------------------------------------------------------------------
+
+Release date: Nov 9, 2016
+
 ### Summary
 DataTorrent RTS releases AppHub, a repository of application templates for various Big Data use cases. The key of this release is that RTS now have an infrastructure to distribute application templates easily. Developers can reduce the time to develop Big Data applications using templates. There are five templates in this release with many more to come. 
 
@@ -322,9 +326,9 @@ DataTorrent RTS releases AppHub, a repository of application templates for vario
 * [SPOI-9727] - DTINSTALL_SOURCE incorrectly assumes file name
 
 
-Version: 3.5.0
-Release date: Sep 26, 2016
+Version 3.4.0 
 ------------------------------------------------------------------------------------------------------------------------
+Release date: Sep 26, 2016
 
 ### Summary
 DataTorrent RTS continues to deliver features that sets it apart in bringing operability in running an enterprise grade big data-in-motion platform. This particular release brought new features such as
