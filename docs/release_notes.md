@@ -1,9 +1,297 @@
 DataTorrent RTS Release Notes
 ========================================================================================================================
 
-Version: 3.6.0
-Release date: Nov 9, 2016
+Version: 3.7.0
 ------------------------------------------------------------------------------------------------------------------------
+
+Release date: Dec 30, 2016
+
+### Summary
+The new features on this release are functionalities that will ease debugging an application and administering application alerts in production. 
+
+Operation related features for a Dev Ops role:  
+* Manage and see a history of previous alerts so that users can be aware of potential issues before they become critical. 
+* View operator ID(s) and name(s) in the dtManage-Physical-Container list table to quickly identify what operators are in each container. 
+* Filter matching tuple recordings by searching across tuple recording data.
+
+Debugging features:
+When trying to troubleshoot or debug a distributed system, these capabilities allow users to quickly identify problem areas and easily drill down into relevant details (i.e. logs). 
+* Notify users when log files have been removed
+* New Application Attempts section under Monitor. It is located along other views such as logical and physical
+* New Application Master logs in Application Overview section
+* New log button shortcut in Stram Events and Physical Operator section
+* Show dead container logs in Running applications. That is to show history of physical operator containers and logs in the physical operator view. For each previous incarnation, there are start time, end time, link to corresponding logs, root cause with error code, and recovery window id.
+* Show the same details for killed or finished application like running application view.
+* Show container history as default in Physical Operator view
+* New historic count field in Physical Operator view
+* Get thread dump from a container. It is useful to analyze issues such as "stuck operator", and obtain statistics from the running JVM. In production environments users often don't have direct access to the machines, thus making it available through the REST API will help. 
+* Option to auto tail container logs. When viewing a container log via the UI, there is an option to periodically poll for more data (i.e. "tail -f" effect).
+
+dtAssemble
+* New validate button so that user can validate DAG without having to save. 
+* Remove auto save function. Save will be initiated by user only.
+* Support custom JSON input for tuple schema creation. This is particularly useful when user needs to add a large number of fields. 
+
+dtDashboard
+* New gauge widget
+
+AppHub
+* Continued to refine application templates in AppHub (introduced in RTS 3.6.0).  
+
+RTS 3.7.0 is based on Apache Apex Core 3.5.0 (released Dec 19, 2016) and Apache Apex Malhar 3.6.0 (released Dec 8, 2016).
+
+### Apache Apex Core 3.5.0
+This release upgrades the Apache Hadoop YARN dependency from 2.2 to 2.6. The community determined that current users run on versions equal or higher than 2.6 and Apex can now take advantage of more recent capabilities of YARN. The release contains a number of important bug fixes and operability improvements. 
+Change log: https://github.com/apache/apex-core/blob/v3.5.0/CHANGELOG.md
+
+### Apache Apex Malhar 3.6.0 
+The release adds first iteration of SQL support via Apache Calcite. Features include SELECT, INSERT, INNER JOIN with non-empty equi join condition, WHERE clause, SCALAR functions that are implemented in Calcite, custom scalar functions. Endpoint can be file, Kafka or internal streaming port for both input and output. CSV format is implemented for both input and output. See examples for usage of the new API.
+
+The windowed state management has been improved (WindowedOperator). There is now an option to use spillable data structures for the state storage. This enables the operator to store large states and perform efficient checkpointing.
+
+There was also benchmarking on WindowedOperator with the spillable data structures. From the result, the community significantly improved how objects are serialized and reduced garbage collection considerably in the Managed State layer. Work is still in progress for purging state that is not needed any more and further improving the performance of Managed State that the spillable data structures depend on. More information about the windowing support can be found at http://apex.apache.org/docs/malhar/operators/windowedOperator/.
+
+This release also adds a new, alternative Cassandra output operator (non-transactional, upsert based) and support for fixed length file format to the enrichment operator. 
+Change log: https://github.com/apache/apex-malhar/blob/v3.6.0/CHANGELOG.md
+
+## Appendix
+
+### Known Issues
+* [SPOI-9921]	Delete widgets on default pane of physical operators needs to have warm colors
+* [SPOI-9923]	Custom panes' on operator monitoring page should have character limits for titles
+* [SPOI-9924]	Can not escape the "custom" pane name
+* [SPOI-9925]	Limit number of custom panes
+* [SPOI-9947]	JDBC Poll Input operator processes extra records when its container is killed
+* [SPOI-9948]	JDBC Poll Input operator does not process new records when they are inserted while the app is processing the existing records
+* [SPOI-9965]	Restarting the KILLED application with JDBC Poll Input operator plays the duplicate data
+* [SPOI-10046]	Deleting a property directly creates tuple schema with remaining properties
+* [SPOI-10049]	Limit the number of characters in role name 
+* [SPOI-10107]	Application service returns dag which is null
+* [SPOI-10151]	Add System Properties modal should validate the properties
+* [SPOI-10153]	Add System Properties "change" button should be warm in color
+* [SPOI-10154]	Rerun Install wizard allows extension of trial
+* [SPOI-10158]	Logical/Physical plan view does not retain metric selections in drop-down
+* [SPOI-10165]	Container logs, dt.log files produced by chklogs.py have HTML escapes
+* [SPOI-10202]	About API call gives out information without authentication.
+* [SPOI-10203]	User can set any non existent package name 
+* [SPOI-10208]	Container state for failed attempt of app is shown as RUNNING
+* [SPOI-10267]	If number of alerts are huge, gateway starts slowing down
+* [SPOI-10274]	Moving the mouse over the operator shows it as clickable but nothing happens
+* [SPOI-10275]	Alert contains an exception trace
+* [SPOI-10292]	Delay in cluster metrics when the authentication is enabled
+* [SPOI-10315]	"requires Apex version" information is missing for latest app packages on AppHub
+* [SPOI-10332]	Canceling delete user action throws TypeError in developer console
+* [SPOI-10333]	Configuration issue modal content goes out of modal and is not scrollable
+* [SPOI-10334]	App restart doesn't take to new page
+* [SPOI-10373]	FinishedTime/EndTime information is available only after application if killed/shutdown for CDH
+* [SPOI-10379]	Enable Reporting button should have cool colors
+* [SPOI-10385]	The app name field should not be editable at launch time
+* [SPOI-10389]	UI Console should not allow creation of config pkg with special characters
+* [SPOI-10396]	Application configuration should require save before launch
+* [SPOI-10398]	UI says "An error occurred while fetching data" immediately after launching apps (intermittent)
+* [SPOI-10399]	New permission do not reflect unless user logs out
+* [SPOI-10401]	Deleted user can do any operations
+* [SPOI-10406]	Application Configurations upload modal title should say "Application Configuration Upload"
+* [SPOI-10409]	Updating app packages using "check for updates" option from AppHub gives wrong notification
+* [SPOI-10410]	Deleting a property while creating tuple schema gives error in developer console
+
+### New Feature
+* [SPOI-7720]	DT Hub shows just one version of an application
+* [SPOI-10182]	dtAssemble - if there is unsaved change, keep launch button enabled which will pop up a dialog box asking save-and-launch when being clicked.
+* [SPOI-8879]	Support custom JSON input for tuple schema creation
+* [SPOI-9877]	Alerts History
+* [SPOI-9876]	Alerts Notification
+* [SPOI-9875]	Alerts Management
+* [SPOI-8570]	Ability to filter tuple recording
+* [SPOI-9525]	UI for dtDebug - Logs
+* [SPOI-8499]	Create diagnostic tool for analyzing RM and container logs
+* [SPOI-10364]	Update launch and configuration package views for simplified properties
+* [SPOI-9772]	App Launch properties
+* [SPOI-8764]	UI Console Configuration Packages support
+* [SPOI-8611]	Support gateway configuration changes in UI
+* [SPOI-10323]	Always show User profile even when license type is not enterprise
+
+### Improvement
+* [SPOI-9785]	send GA events instead of page views for apphub page events
+* [SPOI-10290]	Certification tool - RTS Installer Support for tool
+* [SPOI-10179]	dtAssemble should warn about the unsaved changes when navigating away
+* [SPOI-8989]	Show operator names under Physical -> Containers
+* [SPOI-10163]	dtDebug utilities README should have list of requirements  
+* [SPOI-9881]	appAttempt page - Containers table - "containerLogsUrl" column - change it from showing a hyperlink to "logs" button.
+* [SPOI-7343]	Ability to obtain a thread dump from a container
+* [SPOI-3553]	Option to auto-tail container logs
+* [SPOI-9133]	Gateway restart modal and button has soothing colors
+* [SPOI-9132]	Gateway restart UI button has soothing colors
+* [SPOI-9105]	Refactor security validation in console (consolidate resolve:{} from many places into one place)
+* [SPOI-9047]	Make Package Upload Message clickable
+* [SPOI-8766]	Make Physical DAG has the same metric selection (Top dropdown, Bottom dropdown) like Logical DAG does.
+* [SPOI-8645]	Logical DAG, Physical DAG - show spinner in panel instead of blank panel before graph has been rendered and displayed.
+* [SPOI-8644]	Do not show graph options(Show/Hide Stream Locality, Reset Position, Top dropdown, Bottom dropdown) until graph has been rendered and displayed.
+* [SPOI-7810]	dtManage: Number of failures for an operator should have 'number search' option instead of 'string search'
+* [SPOI-7277]	Ability to upload configuration file during app launch ( like -conf in dtcli )
+* [SPOI-9418]	ConfigPackages backend support
+* [SPOI-9400]	Change licensing for RTS to be managed/displayed in GB instead of MB
+* [SPOI-9086]	Add support for DIGEST enabled Hadoop web services environment
+* [SPOI-7963]	Show container stack trace in dtManage
+* [SPOI-10230]	containerLogsUrl shown in appattempt table can be pretty-printed
+
+#### Task
+* [SPOI-9291]	Calcite
+* [SPOI-8027]	TBD: Apex Java high level API - Aggregation Part 1
+* [SPOI-9769]	Tiles for apps on AppHub
+* [SPOI-7965]	Productize certification tool to size RTS
+* [SPOI-6350]	Gauge widget
+* [SPOI-7433]	Update all relevant docs with AppHub
+* [SPOI-9693]	Add Validate button in dtAssemble
+* [SPOI-9688]	Remove autosave from dtAssemble
+* [SPOI-9971]	Verify that alerts can only be sent by mail
+* [SPOI-9364]	dtDebug Logs backend feature
+* [SPOI-9695]	Launch application not using config package name
+* [SPOI-9413]	Permission changes for tenancy 
+* [SPOI-7966]	Provide user ability to configure security through dtManage UI (only password option)
+* [SPOI-8736]	dtManage should alert user when there's a potential Hadoop config issue
+* [SPOI-9575]	Create demo app
+* [SPOI-9021]	State management benchmark
+* [SPOI-8933]	Change Megh repository to ASL  
+* [SPOI-8865]	Operator Maturity Framework - Cassandra Output
+* [SPOI-8788]	Operator Maturity Framework - Enhancement of FS Output Operator
+* [SPOI-9966]	App-templates misc 
+* [SPOI-9774]	Update Database to HDFS app template 
+* [SPOI-9234]	AppHub - App Pipeline creation with continuous iteration
+* [SPOI-10063]	Create new apex core build based on master
+* [SPOI-9859]	Log retrieval tool
+* [SPOI-9043]	Requirements discussion on Batch Support - Definition of Batch, Scheduling of Batch DAG, State of Batch, Replay of Batch and Monitoring of Batch  
+* [SPOI-8990]	DAG Editor - unable to drag a connection stream from a port if having restriction DISABLE_APP_EDIT_STRUCTURE
+* [SPOI-9972]	Document DT Gateway System Alerts
+* [SPOI-9970]	Modify access to allow Admin (and ONLY admin) to set alerts
+* [SPOI-9653]	Plan and implement (1 item in v1)for Gateway Alerts
+* [SPOI-10261]	Show friendly message when user logs files have been removed.
+* [SPOI-9163]	Refactor configPackages to configurations
+* [SPOI-8223]	Troubleshooting improvements in dtManage
+* [SPOI-9382]	QA - Operator Maturity Framework - AbstractFileInputOperator
+* [SPOI-8885]	Operator Testing (Operator Maturity Framework)
+* [SPOI-9483]	Superuser role and oAuth cleanups
+* [SPOI-8996]	Add authentication configuration web services spc to gateway REST api doc
+
+### Bug Fixes
+* [SPOI-5852]	App Package page has a single word "ago" for modification time after importing pi demo
+* [SPOI-6651]	Launching App from UI ignores APPLICATION_NAME attribute defined in properties.xml file
+* [SPOI-7062]	dtHub UI - tags column - filter - searching from the beginning of a tag.
+* [SPOI-7652]	AppDataTracker does not show up under "Choose apps to visualize" in dashboard settings
+* [SPOI-8039]	UI says "An error occurred fetching data." after launching the application
+* [SPOI-8349]	User should not be able to delete the default apps in ingestion-solution package
+* [SPOI-8379]	Property editor for array of enum is not rendered correctly
+* [SPOI-8489]	Application_Name attribute from the config file is not honored.
+* [SPOI-8507]	Unable to launch an AppDataTracker application imported from dtHub
+* [SPOI-8516]	DataTorrent rpm version inconsistency
+* [SPOI-8522]	Unable to set roles while creating user in secure environment
+* [SPOI-8523]	Users can kill the app even if privileges get revoked in secure environment 
+* [SPOI-8531]	Multiple MachineData demos are available at dtHub
+* [SPOI-8534]	README.html for sandbox contains references to 'malhar-users'
+* [SPOI-8536]	DT RTS gateway log floods with WARN message
+* [SPOI-8542]	Installation: User home directory is not created by default
+* [SPOI-8566]	Tuple Recording Modal Fixes
+* [SPOI-8622]	Exception in retrieving app state in certification when application has not yet reached running state
+* [SPOI-8630]	"merge" configurations option for appPackages also creates new applications
+* [SPOI-8717]	Updating sandbox generates errors
+* [SPOI-8781]	Buffer server metrics not available for physical operator in Metrics Chart
+* [SPOI-8827]	"Check for updates" option keeps loading the page when no updates are available
+* [SPOI-8888]	Unable to see imported/uploaded/running applications on DT UI in SSL enable envornment 
+* [SPOI-8995]	Running through the unit tests in dtx creates a residual file
+* [SPOI-9007]	Kryo Exception while re-deploying the DimensionsComputationFlexibleSingleSchemaPOJO operator
+* [SPOI-9127]	Wrong notification provided by dtConsole when package upload is failed
+* [SPOI-9134]	Gateway restart modal has incorrect focus
+* [SPOI-9135]	Gateway restart modal should be horizontally and vertically aligned
+* [SPOI-9140]	dtConsole shows "Failed to parse" error when 'Monitor' tab is refreshed
+* [SPOI-9152]	Application package link is not working
+* [SPOI-9153]	Hyperlink not required on AppPackage tab
+* [SPOI-9161]	Recordings rest API gives wrong number of totalTuples
+* [SPOI-9199]	Error running application due to YARN API exception
+* [SPOI-9200]	dt-site.xml has a misguiding warning
+* [SPOI-9245]	*Set logging level* cannot delete the set logs
+* [SPOI-9431]	Disable tenant option in TenancyFilter
+* [SPOI-9496]	Use the AppPackageOwner field instead of logged in user, while working with configPackages.
+* [SPOI-9503]	AbstractFileInputOperator does not honor filePatternRegexp parameter
+* [SPOI-9580]	APEXMALHAR-2314 Improper functioning in partitioning of sequentialFileRead property of FSRecordReader
+* [SPOI-9658]	Apps are not filtered correctly using tags column on AppHub 
+* [SPOI-9660]	AppHub navigation tab is still seen as dtHub
+* [SPOI-9696]	Prevent Navigation in DAG Diagram When Dragging Image Around
+* [SPOI-9738]	DAG Diagram Doesn't Display Sometimes
+* [SPOI-9783]	Operators stay in PENDING_DEPLOY
+* [SPOI-9787]	Configuration package spelling error
+* [SPOI-9790]	Recording Tuple Dialog Display Bug
+* [SPOI-9791]	Fix log line format
+* [SPOI-9793]	Can not start gateway after installation
+* [SPOI-9794]	Can not start dtcli after installation 
+* [SPOI-9908]	Container StackTrace is not functioning
+* [SPOI-9914]	Container buttons should be contextual based on state
+* [SPOI-9916]	Kafka Input Operator (0.9) validation app is missing from QA/test-apps repository
+* [SPOI-9933]	Unable to run JDBC Poll app on latest SNAPSHOT build (3.7.0)
+* [SPOI-9934]	Notification History links, when clicked modal doesn't get closed
+* [SPOI-9939]	Links to log files should not be restricted to enterprise edition
+* [SPOI-9941]	Gateway password security errors
+* [SPOI-9974]	Unable to upload packages to the gateway
+* [SPOI-9977]	Unable to launch applications using apex CLI, gives ClassNotFoundException
+* [SPOI-10002]	Config Package Page Not Showing Saved Properties
+* [SPOI-10016]	Config package upload fails
+* [SPOI-10018]	Unnecessary check boxes present for applications under Develop tab
+* [SPOI-10020]	Tuple recording feature is not working
+* [SPOI-10036]	Last modified time for imported packages is always shown with additional 2 minutes.
+* [SPOI-10043]	User should not be allowed to save tupleSchema with blank values
+* [SPOI-10044]	Editing existing tuple schema gives TypeError
+* [SPOI-10046]	Deleting a property while creating tuple schema directly creates final schema with remaining properties
+* [SPOI-10047]	Tuple schema created using JSON input does not take latest JSON as input
+* [SPOI-10050]	Can not record samples
+* [SPOI-10051]	Delete roles modal should have warm colors
+* [SPOI-10052]	Restore roles modal should have warm colors
+* [SPOI-10054]	Launch application for configuration package not using local settings for application naming
+* [SPOI-10056]	Malhar-angular-table temporary fix for application packages and app properties lists
+* [SPOI-10065]	User is allowed to "Add System Property" with blank value
+* [SPOI-10068]	dtGateway script doesn't return correct status when gateway is down
+* [SPOI-10080]	Issues with containers table from UI console
+* [SPOI-10110]	AppPackage get info should not be used to show the configPackage apps
+* [SPOI-10143]	StramEvents API gives 500 error
+* [SPOI-10147]	"cluster/metrics" API gives 500 error
+* [SPOI-10148]	Add system properties has weird titles
+* [SPOI-10150]	Change system properties modal button should not be in cool colors
+* [SPOI-10152]	Disable appdatatracker modal buttons should be in warm color
+* [SPOI-10155]	AppDataTracker can not be enabled
+* [SPOI-10156]	Clicking on "ended apps" and "system apps" multiple times shows multiple shadows of "system apps"
+* [SPOI-10157]	Inspect port UI hangs
+* [SPOI-10159]	Can not upload application packages
+* [SPOI-10181]	killed applications - (1) "AM Logs" dropdown is empty. (2) AppMaster container does not have purple label in id column. 
+* [SPOI-10195]	Selected schema doesn't show the fields in the schema
+* [SPOI-10200]	Button for "Delete logging level" is misaligned
+* [SPOI-10209]	Link is missing for "originalTrackingUrl" field on currently running app attempt
+* [SPOI-10228]	Sorting by *host* in the Physical Plan -> Containers tab is not working
+* [SPOI-10229]	"attempts" tab for dtDebug is available in community edition
+* [SPOI-10233]	Application attempts API does not return startedTime and finishedTime for FAILED attempts
+* [SPOI-10235]	Kill Application Master container modal should have warm colors
+* [SPOI-10236]	Kill selected container title has unwanted text
+* [SPOI-10242]	Configuration Packages missing
+* [SPOI-10257]	An error is shown for a while while launching Application Configurations
+* [SPOI-10258]	Application package launch modal shows wrong "Use configuration file" option instead of "Use configuration package" 
+* [SPOI-10259]	Security configuration page on console has illegible content
+* [SPOI-10260]	Links in Alert configuration modal are broken
+* [SPOI-10277]	Stacktrace is not fully shown in alerts detail
+* [SPOI-10279]	Update app hub description.
+* [SPOI-10300]	ValidateApplication & PutApplication should have CheckViewPermission instead of checkModifyPermission
+* [SPOI-10343]	UI errors while displaying containers in Physical tab
+* [SPOI-10350]	Jackson jars are missing from the RTS after Hadoop upgrade to 2.6 causing API failures
+* [SPOI-10356]	Update Buttons Labels
+* [SPOI-10358]	Schemas in ConfigPackages
+* [SPOI-10359]	Schema in ConfigPackage Permission on 2 APIs should be reduced to view
+* [SPOI-10361]	Upload of configPackage failed
+* [SPOI-10381]	Unable to create configPackage from java application
+* [SPOI-10387]	Unable to launch application configurations from "Application Configuration details" page
+* [SPOI-10390]	Use Configuration Package Should be Enabled
+
+
+Version: 3.6.0
+------------------------------------------------------------------------------------------------------------------------
+
+Release date: Nov 9, 2016
+
 ### Summary
 DataTorrent RTS releases AppHub, a repository of application templates for various Big Data use cases. The key of this release is that RTS now have an infrastructure to distribute application templates easily. Developers can reduce the time to develop Big Data applications using templates. There are five templates in this release with many more to come. 
 
@@ -38,9 +326,9 @@ DataTorrent RTS releases AppHub, a repository of application templates for vario
 * [SPOI-9727] - DTINSTALL_SOURCE incorrectly assumes file name
 
 
-Version: 3.5.0
-Release date: Sep 26, 2016
+Version 3.5.0 
 ------------------------------------------------------------------------------------------------------------------------
+Release date: Sep 26, 2016
 
 ### Summary
 DataTorrent RTS continues to deliver features that sets it apart in bringing operability in running an enterprise grade big data-in-motion platform. This particular release brought new features such as
