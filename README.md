@@ -6,6 +6,12 @@ Documentation is written in [Markdown](https://guides.github.com/features/master
 
 ## Authoring
 
+Start by installing mkdocs using Python package manager, pip.  For additional installation questions see http://www.mkdocs.org/
+
+```bash
+pip install mkdocs
+```
+
 New pages can be added under [docs](docs) or related sub-category, and a reference to the new page must be added to the [mkdocs.yml](mkdocs.yml) file to make it available in the navigation.  Embedded images are typically added to images folder at the same level as the new page.
 
 When creating or editing pages, it can be useful to see the live results, and how the documents will appear when published.  Live preview feature is available by running the following command at the root of the repository:
@@ -26,10 +32,10 @@ Currently docs.datatorrent.com is hosted on Github Pages.  The deployment requir
 
 ## Deployment
 
-**NOTE** Fix to replace "Sorry, page not found" by "Searching..." text while search is running was added with https://github.com/mkdocs/mkdocs/pull/860.  This was already merged into master of mkdocs on March 4th, but latest available version is 0.15.3, which was built on Feb 8th.  Until this fix is available in the next official release following steps should be used to create a custom build of mkdocs:
+**NOTE** Please make sure to use mkdocs v0.16.0 or later by running `mkdocs --version`.  If you have an older version of mkdocs installed upgrade with:
 
 ```bash
-sudo pip install --upgrade git+https://github.com/mkdocs/mkdocs.git
+sudo pip install --upgrade mkdocs
 ```
 
 Deployment is done from master branch of the repository by executing the following command:
