@@ -10,12 +10,13 @@ Release date: Dec 30, 2016
 The new features on this release are functionalities that will ease debugging an application and administering application alerts in production. 
 
 Operation related features for a Dev Ops role:  
+
 * Manage and see a history of previous alerts so that users can be aware of potential issues before they become critical. 
 * View operator ID(s) and name(s) in the dtManage-Physical-Container list table to quickly identify what operators are in each container. 
 * Filter matching tuple recordings by searching across tuple recording data.
 
-Debugging features:
-When trying to troubleshoot or debug a distributed system, these capabilities allow users to quickly identify problem areas and easily drill down into relevant details (i.e. logs). 
+Debugging features: When trying to troubleshoot or debug a distributed system, these capabilities allow users to quickly identify problem areas and easily drill down into relevant details (i.e. logs). 
+
 * Notify users when log files have been removed
 * New Application Attempts section under Monitor. It is located along other views such as logical and physical
 * New Application Master logs in Application Overview section
@@ -28,14 +29,17 @@ When trying to troubleshoot or debug a distributed system, these capabilities al
 * Option to auto tail container logs. When viewing a container log via the UI, there is an option to periodically poll for more data (i.e. "tail -f" effect).
 
 dtAssemble
+
 * New validate button so that user can validate DAG without having to save. 
 * Remove auto save function. Save will be initiated by user only.
 * Support custom JSON input for tuple schema creation. This is particularly useful when user needs to add a large number of fields. 
 
 dtDashboard
+
 * New gauge widget
 
 AppHub
+
 * Continued to refine application templates in AppHub (introduced in RTS 3.6.0).  
 
 RTS 3.7.0 is based on Apache Apex Core 3.5.0 (released Dec 19, 2016) and Apache Apex Malhar 3.6.0 (released Dec 8, 2016).
@@ -54,9 +58,9 @@ There was also benchmarking on WindowedOperator with the spillable data structur
 This release also adds a new, alternative Cassandra output operator (non-transactional, upsert based) and support for fixed length file format to the enrichment operator. 
 Change log: https://github.com/apache/apex-malhar/blob/v3.6.0/CHANGELOG.md
 
-## Appendix
+### Appendix
 
-### Known Issues
+#### Known Issues
 * [SPOI-9921]	Delete widgets on default pane of physical operators needs to have warm colors
 * [SPOI-9923]	Custom panes' on operator monitoring page should have character limits for titles
 * [SPOI-9924]	Can not escape the "custom" pane name
@@ -95,7 +99,7 @@ Change log: https://github.com/apache/apex-malhar/blob/v3.6.0/CHANGELOG.md
 * [SPOI-10409]	Updating app packages using "check for updates" option from AppHub gives wrong notification
 * [SPOI-10410]	Deleting a property while creating tuple schema gives error in developer console
 
-### New Feature
+#### New Feature
 * [SPOI-7720]	DT Hub shows just one version of an application
 * [SPOI-10182]	dtAssemble - if there is unsaved change, keep launch button enabled which will pop up a dialog box asking save-and-launch when being clicked.
 * [SPOI-8879]	Support custom JSON input for tuple schema creation
@@ -111,7 +115,7 @@ Change log: https://github.com/apache/apex-malhar/blob/v3.6.0/CHANGELOG.md
 * [SPOI-8611]	Support gateway configuration changes in UI
 * [SPOI-10323]	Always show User profile even when license type is not enterprise
 
-### Improvement
+#### Improvement
 * [SPOI-9785]	send GA events instead of page views for apphub page events
 * [SPOI-10290]	Certification tool - RTS Installer Support for tool
 * [SPOI-10179]	dtAssemble should warn about the unsaved changes when navigating away
@@ -173,7 +177,7 @@ Change log: https://github.com/apache/apex-malhar/blob/v3.6.0/CHANGELOG.md
 * [SPOI-9483]	Superuser role and oAuth cleanups
 * [SPOI-8996]	Add authentication configuration web services spc to gateway REST api doc
 
-### Bug Fixes
+#### Bug Fixes
 * [SPOI-5852]	App Package page has a single word "ago" for modification time after importing pi demo
 * [SPOI-6651]	Launching App from UI ignores APPLICATION_NAME attribute defined in properties.xml file
 * [SPOI-7062]	dtHub UI - tags column - filter - searching from the beginning of a tag.
@@ -301,9 +305,9 @@ DataTorrent RTS releases AppHub, a repository of application templates for vario
 * HDFS to HDFS Line Copy
 * HDFS to Kafka Sync
 
-## Appendix
+### Appendix
 
-### Improvement
+#### Improvement
 * [SPOI-9136] - Enforce DefaultOutputPort.emit() or Sink.put() thread affinity
 
 #### Task
@@ -311,7 +315,7 @@ DataTorrent RTS releases AppHub, a repository of application templates for vario
 * [SPOI-9419] - Update AppHub API to include the markdown content
 * [SPOI-9432] - Update AppHub back end to extract markdown from apa
 
-### Sub-task
+#### Sub-task
 * [SPOI-3277] - Show app master logs on UI for applications that fail at launch when we upgrade to Hadoop 2.4 or above
 * [SPOI-9079] - Creation of example application for transform operator
 * [SPOI-9235] - Allow users to create new configurations from Application Configurations view
@@ -320,7 +324,7 @@ DataTorrent RTS releases AppHub, a repository of application templates for vario
 * [SPOI-9574] - Rename title on AppHub list page
 * [SPOI-9612] - Upgrade AppHub server deployment
 
-### Bug Fixes
+#### Bug Fixes
 * [SPOI-9140] - dtManage shows "Failed to parse" error when 'Monitor' tab is refreshed
 * [SPOI-9522] - DELETE call to /ws/v2/config/properties/{name} returns 500
 * [SPOI-9727] - DTINSTALL_SOURCE incorrectly assumes file name

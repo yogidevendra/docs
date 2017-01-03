@@ -67,6 +67,7 @@ pages:
     - Installation: installation.md
     - Configuration: configuration.md
     - Security: dtgateway_security.md
+    - System Alerts: dtgateway_systemalerts.md
     - Apex CLI: apexcli.md
     - Troubleshooting: troubleshooting.md
 - Release Notes: release_notes.md
