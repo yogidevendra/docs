@@ -1,22 +1,21 @@
 Running Demo Applications
 =================================
 
-DataTorrent RTS includes a number of demo applications and they are available for import from the **Development > App Packages** section of the DataTorrent management console.
+DataTorrent RTS includes a number of demo applications and they are available for import from the **AppHub** section of the DataTorrent management console.
 
 Importing Demo Applications
 --------------------------------------------------------------------------------
 
-1.  Navigate to **Develop > App Packages > Import** section of the DataTorrent console.
-2.  Select one of the available packages, such as *Apache Apex Malhar Pi Demo* and click *Import* button.
-3.  Imported packages and included applications will be listed under **Develop > App Packages** page.
-
+1.  Navigate to **AppHub** section of the DataTorrent console.
+2.  Select one of the available packages, such as *Pi Demo* and click *Import* button.
+3.  Imported application packages and included applications will be listed under **Develop > Application Packages** page.
 
 Launching Demo Applications
 --------------------------------------------------------------------------------
 
 Once imported, applications can be launched with a single click.  *Note*: Ensure Hadoop YARN and HDFS services are active and ready by checking for errors in the DataTorrent console before launching demo applications.
 
-1.  Navigate to **App Packages** under **Develop** tab of the DataTorrent console, and select one of the imported demo packages.  In this example we will use **PiDemo** application package.
+1.  Navigate to **Develop > Application Packages**, and select one of the imported demo packages.  In this example we will use **PiDemo** application package.
 
 2.  From the list of available Applications, locate PiDemo and click the launch button.
 
@@ -37,9 +36,9 @@ Configuring Launch Parameters
 
 Some applications may require additional configuration changes prior to launching.  Configuration changes can be made on the launch confirmation screen or manually applied to `~/.dt/dt-site.xml` configuration file.  These typically include adding Twitter API keys for twitter demo, or changing performance settings for larger applications.
 
-1.  Navigate to **App Packages** under **Develop** tab of the DataTorrent console.  In this example we will use **Apache Apex Malhar Twitter Demo** application package.  Import this package from *Develop > App Packages > Import* if it is not available.
+1.  Navigate to **AppHub** of the DataTorrent console.  In this example, we will use **Twitter Demo** application package. Click *Import* button. 
 
-2.  From the list of Applications, select TwitterDemo and press the corresponding launch button.
+2.  Navigate to **Develop > Application Packages**. From the list of Applications, select TwitterDemo and press the corresponding launch button.
 
 3.  Retrieve Twitter API access information by registering for <a href="https://dev.twitter.com/" target="\_blank">Twitter Developer</a> account, creating a new <a href="https://apps.twitter.com/app/new" target="\_blank">Twitter Application</a>, and navigating to Keys and Access Tokens tab.  Twitter Demo application requires the following to be specified by the user:
 
