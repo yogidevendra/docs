@@ -671,11 +671,9 @@ FileLineOutputOperator fileOutput = dag.addOperator("FileOutputOperator", new Fi
 dag.addStream("POJO's", jdbcInputOperator.outputPort, fileOutput.input).setLocality(Locality.CONTAINER_LOCAL);
 ```
 
-### Application &mdash; database to database
-[Coming soon]
+### AppHub
+[AppHub](https://www.datatorrent.com/apphub/) is a source of application templates. There are many more applications for various use cases to help jump start development effort. 
 
-### Application &mdash; file to database
-[Coming soon]
 
 ## Additional Resources
 

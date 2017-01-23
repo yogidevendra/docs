@@ -1,9 +1,9 @@
-KAFKA INPUT OPERATOR
+Kafka Input Operator
 =====================
 
-### Introduction: About Kafka Input Operator
+### Introduction
 
-This is an input operator that consumes data from Kafka messaging system for further processing in Apex. Kafka Input Operator is an fault-tolerant and scalable Malhar Operator.
+This is an input operator that consumes data from Kafka messaging system for further processing in Apex. Kafka Input Operator is a fault-tolerant and scalable Malhar Operator.
 
 ### Why is it needed ?
 

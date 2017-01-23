@@ -22,7 +22,7 @@ The Console currently supports Chrome and Safari.
 
 The first time you open the Console, after installing DataTorrent RTS on your cluster, it will take you to the Installation Wizard. This walks you through the initial configuration of your DataTorrent installation, by confirming the following:
 
-* Location of the hadoop executable
+* Location of the Hadoop executable
 * DFS location where all the DataTorrent files are stored
 * DataTorrent license
 * Summary and review of any remaining configuration items
@@ -32,7 +32,7 @@ The first time you open the Console, after installing DataTorrent RTS on your cl
 
 #### When Kerberos Security is Enabled
 
-When your hadoop cluster has security enabled with Kerberos, there will be four additional controls in the installation wizard: 
+When your Hadoop cluster has security enabled with Kerberos, there will be four additional controls in the installation wizard: 
 
 - **Kerberos Principal**: The Kerberos principal (e.g. primary/instance@REALM) to use on behalf of the management console.
 - **Kerberos Keytab**: The location (path) of the Kerberos keytab file to use on the gateway node's local file system.
@@ -78,10 +78,10 @@ Use the License Information page to view how much of your DataTorrent license ca
 
 The User Profile page displays information about the current user, including their username, the authentication scheme being used, and the roles that the current user has. In addition, users can perform the following actions:
 
-- change password 
-- change the default home page
-- change the theme of the console
-- restore the default options of the console
+- Change password 
+- Change the default home page
+- Change the theme of the console
+- Restore the default options of the console
 
 ![User Profile](images/dtmanage/console-profile.png)
 
@@ -89,13 +89,13 @@ The User Profile page displays information about the current user, including the
 
 Use this page to manage users and roles of your DataTorrent cluster:
 
-*   add users
-*   change users’ roles
-*   change users’ password
-*   delete users
-*   add roles
-*   edit role permissions
-*   delete roles
+*   Add users
+*   Change users’ roles
+*   Change users’ password
+*   Delete users
+*   Add roles
+*   Edit role permissions
+*   Delete roles
 
 ![User Management Screen](images/dtmanage/console-user-mgmt.png)
 
@@ -107,31 +107,21 @@ At any time, you can go back to the installation wizard from the Configuration T
 
 ## Develop Tab
 
-The development area of dtManage is mainly geared towards the creation, upload, configuration, and launch of DataTorrent applications. The development home can be viewed by clicking the “Develop” tab in the main navigation bar on the top of the screen. A prerequisite to using the development tools of the UI is an understanding of what Apex Application Packages are. For more information, see the [Application Packages Guide](https://www.datatorrent.com/docs/guides/ApplicationDeveloperGuide.html).
+The development area of dtManage is mainly geared towards the creation, upload, configuration, and launch of DataTorrent applications. The development home can be viewed by clicking the “Develop” tab in the main navigation bar on the top of the screen. A prerequisite to using the development tools of the UI is an understanding of what Apex Application Packages are. For more information, see the [Application Packages Guide](http://docs.datatorrent.com/application_packages/).
 
 ![Development Tab](images/dtmanage/console-dev-screen.png)
 
 ### Application Packages
 
-To access the application package listing, click on the "Apps" link from the Develop Tab index page. From here, you can perform several operators directly on application packages:
+To access the application package listing, click on the "Apps" link from the Develop Tab index page. From here, you can perform several operations directly on application packages:
 
 - Download the app package
 - Delete the app package
 - Create a new application in an application package via dtAssemble (requires enterprise license)
 - Launch applications in the app package
-- Import default packages (see below)
-
-![Application Packages](images/dtmanage/console-dev-apps.png)
+- Import from AppHub 
 
 > **Note:** If authentication is enabled, you may not be able to see others’ app packages, depending on your permissions.
-
-
-
-#### Importing Default Packages
-
-When you install the DataTorrent platform, a folder located in the installation directory called `demos/app-packages` will contain various default app packages that can be imported into HDFS for use. Just above the list of Application Packages, there should be a button that says **Import default packages**. Clicking this will take you to a page that shows the list of these demo app packages. Select one or more to import and click the **Import** button. This will upload the selected app package to HDFS.
-
-![](images/dtmanage/import-default-packages.png)
 
 ### Application Package Page
 
@@ -285,8 +275,4 @@ Another useful feature of the Console is the ability to view container logs of a
 Once you are viewing a log file in the console, there are few tricks to traversing it. You can scroll to the top to fetch earlier content, scroll to the bottom for later content, grep for strings in the selected range or over the entire log, and click the “eye” icon to the far left of every line to go to that location of the log:
 
 ![](images/dtmanage/console-log-viewing-adv.gif)
-
-There are numerous improvements in store for dtManage, and user feedback is highly valued in the planning, so please provide any that will help in your usage of the tool!
-
-~The DataTorrent UI Team
 
