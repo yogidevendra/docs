@@ -42,6 +42,7 @@ looking something like this:
 
 If the warning persists after several minutes, check that all required services
 are running as described in the _Service Management_ section below.
+Please go to [Troubleshooting](troubleshooting.md) for detailed instructions.
 
 Inside the DataTorrent RTS Sandbox console can be accessed by opening a browser and visiting <a href="http://localhost:9090/" target="\_blank">http://localhost:9090/</a>
 
