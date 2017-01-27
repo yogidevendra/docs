@@ -176,6 +176,16 @@ under these directories:
 Now reformat HDFS with `hdfs namenode -format`
 and finally, restart all HDFS services.
 
+If all services are running and the normal console still does not appear,
+please run following commands:
+```shell
+hdfs dfsadmin -safemode leave
+hdfs fsck -delete
+```
+If HDFS detects that some files are corrupted (perhaps due to an earlier improper shutdown)
+it will not exit the initial safemode automatically;
+the commands above exit safemode manually and delete corrupted files.
+
 ### What is Data Ingestion application?
 
 Data Ingestion application simplifies the collection, aggregation and movement of large amounts of data to and from Hadoop and is available for production use at no cost.
