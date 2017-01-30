@@ -373,10 +373,12 @@ public final transient DefaultInputPort<Double> input = new DefaultInputPort<Dou
 }
 ```
 
-A _stream_ is the set of links connecting a single port of an upstream operator to
-one or more input ports of downstream operators.
-We've already seen an example of a stream above, namely `randomData`.
-For a more detailed explanation of these concepts, please
+A _stream_ is the set of links connecting a single port of an upstream operator to one or
+more input ports of downstream operators. We've already seen an example of a stream above,
+namely `randomData`. If the upstream operator is not partitioned, tuples are delivered to
+the input ports of a stream in the same order in which they were written to the output
+port; this guarantee may change in the future. For a more detailed explanation of these
+concepts, please
 look [here](http://docs.datatorrent.com/operator_development/).
 
 ## Annotations
@@ -506,10 +508,9 @@ necessary, to ensure that the number of input streams at each unifier does not e
 this limit.
 
 ## Buffer Server
-The `Buffer Server` is a separate thread within a container which implements a tuple
-queue with a publish-subscribe model. It is present whenever the container hosts an
-operator with an output port connected to another operator outside the container; each
-such port has a separate queue.
+The `Buffer Server` is a separate service within a container which implements
+a publish-subscribe model. It is present whenever the container hosts an operator
+with an output port connected to another operator outside the container.
 
 The output port is the publisher and the connected input ports of downstream operators
 are the subscribers. It buffers tuples so that they can be replayed when a
@@ -517,8 +518,9 @@ downstream operator fails and is restarted. As described earlier, the memory all
 to a buffer server is user configurable via an attribute named `BUFFER_MEMORY_MB` and
 defaults to 512MB.
 
-The total memory required by a container that hosts many such operators may climb
-rapidly; reducing the value of this attribute is advisable in such cases.
+The total memory required by a container that hosts many such operators may climb rapidly;
+reducing the value of this attribute is advisable in such cases in a memory constrained
+environment.
 
 ## Allocating Operator Memory
 A container is a JVM process; the maximum memory each such container can consume is
