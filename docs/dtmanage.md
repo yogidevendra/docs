@@ -143,24 +143,26 @@ To launch an app in an App Package, click on the launch button to the far right 
 
 - **Specify a name for the running app**
   The console will pre-populate this field with an appropriate name, but you can specify your own name. Just be weary that it must be unique compared to the other applications running on your DataTorrent installation.
+- **Specify launch properties**
+  In addition to choosing a config file, you may also specify properties directly in the launch popup by selecting this option. Any required properties will automatically show up in this section and require input. Note that there are several helpful functions when specifying custom properties:
+  - *add* - App Packages can have custom properties applied at launch time to override existing properties.
+    - *add default properties* - App Packages can also have default properties. This function will add the default properties to the list, making it easy for you to override the defaults. This button can be found clicking on the *add* button's submenu.
+  If any properties were added, the option to save the properties as a Configuration Package is activated.
+- **Use configuration file**
+  App Package config files are xml files that contain `<properties>` that get interpreted and used for launching an application. To choose one, enable the check box and choose the config file you want to use for launch.
+- **Use configuration package**
+  App Packages with a separate associated Configuration Package can be selected here. The Configuration Package will launch with its own custom properties.
 - **Specify the [scheduler queue](https://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)**
   This input allows you to specify which queue you want the application to be launched under. The default behavior depends on your Hadoop installation, but typically will be `root.[USER_NAME]`.
-- **Use a config file when launching**
-  App Package config files are xml files that contain `<properties>` that get interpreted and used for launching an application. To choose one, enable the check box and choose the config file you want to use for launch.
-- **Specify custom properties**
-  In addition to choosing a config file, you may also specify properties directly in the launch popup by selecting this option. Note that there are three helpful functions when specifying custom properties:
-  - *add required properties* - App Packages can have required properties (for example, twitter API access keys for the twitter demo). This function adds a new property with the required property name to the form, making it easy to fill in.
-    - *add default properties* - App Packages can also have default properties. This function will add the default properties to the list, making it easy for you to override the defaults
-    - *save this configuration as…* - This function creates a new config file and saves it to the App Package, which can then be used later to launch the app with. That way, you can relaunch the app with the same properties without having to re-enter them.
 
 ![Launch app modal](images/dtmanage/console-launch-app.png)
 
 > **Note:** For more information about config files and custom properties, see the [Application Packages Guide](https://www.datatorrent.com/docs/guides/ApplicationDeveloperGuide.html)
 
 
-### Viewing an Application DAG
+### Viewing an Application
 
-All DataTorrent applications are made up of operators that connect together via streams to form a Directed Acyclic Graph (DAG). To see a visualization of this DAG, click on the application name in the list of applications.
+All DataTorrent applications are made up of operators that connect together via streams to form a Directed Acyclic Graph (DAG). To see a visualization of this DAG, click on the application name in the list of applications. In addition to the DAG, Package Properties and any Required Properties will be listed on this page.
 
 ![DAG View](images/dtmanage/console-dag-view.png)
 
@@ -181,7 +183,7 @@ The operations home page shows overall cluster statistics as well as a list of r
 
 ![Operations Home Page](images/dtmanage/console-monitor-home.png)
 
-The cluster statistics include some performance statistics and memory usage information. As for the application list, there are two options to take note of: **retrieve ended apps** and **include system apps**. The first option will include all ended applications that are still in the resource manager history. The second option will include system apps, which are apps like the App Data Tracker that are developed by DataTorrent and used to add functionality to your DataTorrent cluster.
+The cluster statistics include some performance statistics and memory usage information. As for the application list, there are two options to take note of: **ended apps** and **system apps**. The first option will include all ended applications that are still in the resource manager history. The second option will include system apps, which are apps like the App Data Tracker that are developed by DataTorrent and used to add functionality to your DataTorrent cluster.
 
 ### Instance Page
 
@@ -193,7 +195,7 @@ All sections and subsections of the instance page currently use a dashboard/widg
 
 ![widget controls](images/dtmanage/console-widget-ctrls.png)
 
-There are tool tips to help you understand how to work with dashboards and widgets. For most users, the default dashboard configurations (*logical*, *physical*, *physical-dag-view*, *metric-view*) will suffice. The following is a list of widgets available on an app instance page:
+There are tool tips to help you understand how to work with dashboards and widgets. For most users, the default dashboard configurations (*logical*, *physical*, *physical-dag-view*, *metric-view*, *attempts*) will suffice. The following is a list of widgets available on an app instance page:
 
 #### Application Overview Widget
 
@@ -217,7 +219,7 @@ Each application has a stream of notable events that can be viewed with the StrA
 
 ![Stram Events](images/dtmanage/console-events.png)
 
-Some events have additional information attached to it, which can be viewed by clicking the “details” button in the list:
+Some events have additional information attached to it, which can be viewed by clicking the "i" icon in the list:
 
 ![Event Detail Modal](images/dtmanage/console-events-modal.png)
 
@@ -271,6 +273,7 @@ There is a mechanism called tuple recording that can be used to easily look at t
 
 ![](images/dtmanage/console-record-tuples.gif)
 
+>**Pro tip:** Select multiple tuples by holding down the shift key.
 
 ### Viewing Logs
 
@@ -278,7 +281,7 @@ Another useful feature of the Console is the ability to view container logs of a
 
 ![](images/dtmanage/console-log-viewing.gif)
 
-Once you are viewing a log file in the console, there are few tricks to traversing it. You can scroll to the top to fetch earlier content, scroll to the bottom for later content, grep for strings in the selected range or over the entire log, and click the “eye” icon to the far left of every line to go to that location of the log:
+Once you are viewing a log file in the console, there are few tricks to traversing it. You can scroll to the top to fetch earlier content, scroll to the bottom for later content, "tail" the log to watch for real-time updates, grep for strings in the selected range or over the entire log, and click the “eye” icon to the far left of every line to go to that location of the log:
 
 ![](images/dtmanage/console-log-viewing-adv.gif)
 
