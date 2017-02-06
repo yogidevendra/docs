@@ -123,6 +123,12 @@ To access the application package listing, click on the "Apps" link from the Dev
 
 > **Note:** If authentication is enabled, you may not be able to see others’ app packages, depending on your permissions.
 
+#### AppHub
+
+The AppHub hosts a collection of applications that can be imported or downloaded (as .apa files). You can use the applications as they are, or use them as examples to develop your own. Imported AppHub packages will appear on your Application Packages page.
+
+![](images/dtmanage/console-apphub.png)
+
 ### Application Package Page
 
 Once you have uploaded or imported an App Package, clicking on the package name in the list will take you to the Application Package Page, where you can view all the package details.
