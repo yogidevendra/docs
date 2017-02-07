@@ -3,7 +3,7 @@ dtAssemble - Graphical Application Builder
 
 The dtAssemble Graphical Application  Builder is a UI tool that allows users to drag-and-drop operators onto a canvas and connect them together to build a DataTorrent application. 
 
-![](images/dtassemble/image03.png)
+![](images/dtassemble/image01.png)
 
 
 
@@ -12,7 +12,7 @@ The dtAssemble Graphical Application  Builder is a UI tool that allows users to 
 To get to the App Builder, you must perform the following steps (illustrated by GIF):
 
 
-![](images/dtassemble/image07.gif)
+![](images/dtassemble/image02.gif)
 
 
 
@@ -25,7 +25,7 @@ To get to the App Builder, you must perform the following steps (illustrated by 
 4.  Drag operators onto the canvas
   Use the search field of the Operator Library panel on the left to find the operators that were found in your app package, then click and drag them out onto the “Application Canvas.”
 5.  Configure the operators using the Operator Inspector
-  When the operator is selected, the right side of the screen will have the Operator Inspector, where you will see some meta information about the operator as well as the interface to set initial values for operator properties and attributes.
+  When the operator is selected, the bottom panel will have the Operator Inspector, where you will see some meta information about the operator as well as the interface to set initial values for operator properties and attributes.
 6.  Connect the operators’ ports to form streams between operators
   Select a port by clicking on it. Ports that are compatible with the selected port will pulse green. Click and drag out a stream from one port and connect it with a compatible port of another operator.
 
@@ -37,7 +37,7 @@ To get to the App Builder, you must perform the following steps (illustrated by 
 
 The Application Builder contains three main parts: the Operator Library Navigator, the Canvas, and the Inspector:
 
-![](images/dtassemble/image02.png)
+![](images/dtassemble/image03.png)
 
 
 
@@ -59,7 +59,7 @@ Once you have found an operator you would like to add to your application canvas
 
 ### Canvas
 
-![](images/dtassemble/image08.gif)
+![](images/dtassemble/image05.gif)
 
 The Application Canvas is the main area that you use to assemble applications with operators and streams. Specifically, you will be connecting output ports (shown as magenta) of some operators to input ports (shown as blue) of other operators. When you click on a port, other ports that are compatible with it will pulse green, indicating that a stream can connect the two. See the note on tuple types of ports in the Prepping Operators for the Application Builder&nbsp;section.
 
@@ -73,21 +73,21 @@ The Inspector is visible when an operator, a port, or a stream is selected on th
 
 #### Operator Inspector
 
-![](images/dtassemble/image06.png)
+![](images/dtassemble/image06.gif)
 
-When an operator is selected on the canvas, you will see the Operator Inspector on the right side. You will see the operator class name, the java package it is a part of, and a field with the name you have given to it. You will also be able to edit the initial values of the operator’s properties. 
+When an operator is selected on the canvas, you will see the Operator Inspector on the bottom panel. You will see the operator class name, the java package it is a part of, and a field with the name you have given to it. You will also be able to edit the initial values of the operator’s properties. 
 
 
 
 #### Port Inspector
 
+![](images/dtassemble/image07.png)
 
-
-When a port is selected, you will see the Port Inspector on the right side. Here you can see the name of the port, the tuple type that it emits (for an output port) or accepts (for an input port). 
+When a port is selected, you will see the Port Inspector on the bottom panel. Here you can see the name of the port, the tuple type that it emits (for an output port) or accepts (for an input port).
 
 #### Stream Inspector
 
-![](images/dtassemble/image05.png)
+![](images/dtassemble/image08.png)
 
 The stream inspector will appear when you have selected a stream in the canvas. You can use this to rename the stream or change the locality of the stream.
 
@@ -154,14 +154,15 @@ As an example, we will rebuild the basic Pi demo. Please note that this example 
 
 2.  Then, run maven install, which will create the App Package jar need to upload to your gateway.
 3.  Follow steps 2,3, and 4 of the Accessing the App Builder section above, but with the app package jar located in Malhar/demos/pi/target/pi-demo-{VERSION}.apa.
-5.  Add the Console Output&nbsp;operators.
-7.  Connect the integer_data port of the Random Event Generator to the input port of the Pi Calculate operator, and connect the output port of the Pi Calculate operator to the input port of the Console Output operator.
-9.  Click the “launch” button in the top left once it turns purple.
-11.  In the resulting modal, click “Launch”, then the “View it on the Dashboard” link in the subsequent notification box.
-13.  To see the output of the Console Output operator, navigate to the stdout log file viewer of the container where the operator is running.
+4.  Add the Console Output&nbsp;operators.
+5.  Connect the integer_data port of the Random Event Generator to the input port of the Pi Calculate operator, and connect the output port of the Pi Calculate operator to the input port of the Console Output operator.
+6.  Click the “save” button in the top right.
+7.  Click the “launch” button in the top right once it turns purple.
+8.  In the resulting modal, click “Launch”, then the “View it on the Dashboard” link in the subsequent notification box.
+9.  To see the output of the Console Output operator, navigate to the stdout log file viewer of the container where the operator is running.
 
 
 
 
 
-![](images/dtassemble/image00.gif)
+![](images/dtassemble/image09.gif)
