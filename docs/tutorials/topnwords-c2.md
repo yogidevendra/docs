@@ -166,11 +166,12 @@ To upload the top N words application package
 1. Log on to the DataTorrent Console using the default username and password
    (both are `dtadmin`).
 2. On the top navigation bar, click _Develop_.
-3. Under _App Packages_, click _upload a package_.  
+3. Click _Application Packages_.
+4. Under _Applications_, click the _upload package_ button.
   ![Upload](images/topnwords//image35.png "Upload")
-4. Navigate to the location of the `topNwordcount-1.0-SNAPSHOT.apa`
+5. Navigate to the location of the `topNwordcount-1.0-SNAPSHOT.apa`
    application package file is stored.
-5. Wait till the package is successfully uploaded.
+6. Wait till the package is successfully uploaded.
 
 Step VII: Launch the top N words application
 ---

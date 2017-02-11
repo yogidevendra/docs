@@ -88,7 +88,7 @@ value for `archetypeVersion` can be a more recent version if available):
     mvn -B archetype:generate ^
       -DarchetypeGroupId=org.apache.apex ^
       -DarchetypeArtifactId=apex-app-archetype ^
-      -DarchetypeVersion=3.3.0-incubating ^
+      -DarchetypeVersion=3.6.0-SNAPSHOT ^
       -DgroupId=com.example ^
       -Dpackage=com.example.myapexapp ^
       -DartifactId=myapexapp ^
@@ -98,11 +98,8 @@ value for `archetypeVersion` can be a more recent version if available):
 
 The caret (^) at the end of some lines indicates that a continuation line follows.
 
-This command file also exists in the DataTorrent _examples_ repository which you can check out with:
-
-    git clone https://github.com/DataTorrent/examples
-
-You will find the script under `examples\tutorials\topnwords\scripts\newapp.cmd`.
+This command will eventually become outdated, check the [apex-app-archetype README](https://github.com/apache/apex-core/blob/master/apex-app-archetype/README.md)
+for the latest version, which includes the most recent archetypeVersion.
 
 You can also, if you prefer, use an IDE to generate the project as described in
 [Creating a New Apache Apex Project with your IDE](configure_IDE.md).
