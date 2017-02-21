@@ -1,4 +1,3 @@
-Troubleshooting DataTorrent RTS
 ===============================
 
 ## Download
@@ -10,18 +9,10 @@ DataTorrent products are available for download from [https://www.datatorrent.co
 -  **Community Edition**:  It is a packaged version of Apache Apex and enables developers to quickly develop their big data streaming and batch projects.
 -  **Enterprise Edition**:  Designed for enterprise production deployment and includes security, advanced monitoring and troubleshooting, graphical application assembly, and application data visualization.
 -  **Sandbox Edition**:  Enterprise Edition and demo applications pre-installed and configured with a single-node Hadoop cluster running in a virtual machine.  Optimized for evaluation and training purposes.
--  **Data Ingestion Application**: It simplifies the collection, aggregation and movement of large amounts of data to and from Hadoop and is available for production use at no cost. It's available for download through dtHub, a feature inside DataTorrent product.
 
 ###  What is the difference between DataTorrent RTS editions?
 
 Please refer to [DataTorrent RTS editions overview](https://www.datatorrent.com/product/edition-overview/)
-
-###  Where can I find the Standard edition installer?
-
-You can use the download link for Enterprise edition as the package is
-same for both editions. But, you have to apply the license to enable the
-Standard edition. You can upgrade the license by using dtManage.
-Licenses are available in 2 types : evaluation and production.
 
 ###  What are DataTorrent RTS package contents of Community vs Enterprise edition?
 
@@ -185,18 +176,6 @@ hdfs fsck -delete
 If HDFS detects that some files are corrupted (perhaps due to an earlier improper shutdown)
 it will not exit the initial safemode automatically;
 the commands above exit safemode manually and delete corrupted files.
-
-### What is Data Ingestion application?
-
-Data Ingestion application simplifies the collection, aggregation and movement of large amounts of data to and from Hadoop and is available for production use at no cost.
-
-###  Where do I get Data Ingestion application?
-
-It's available for download through dtHub, a feature inside DataTorrent product.
-
-###  What are the prerequisites of Data Ingestion application?
-
-DataTorrent RTS 3.4.x and above.
 
 ###  How do I get specific DT version ?
 

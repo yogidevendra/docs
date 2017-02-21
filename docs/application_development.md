@@ -978,10 +978,10 @@ Hadoop.
 
 ### YARN
 
-[YARN](http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site)is
+[YARN](http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site) is
 the core library of Hadoop 2.2 that is tasked with resource management
 and works as a distributed application framework. In this section we
-will walk through Yarn's components. In Hadoop 2.2, the old jobTracker
+will walk through YARN's components. In Hadoop 2.2, the old jobTracker
 has been replaced by a combination of ResourceManager (RM) and
 ApplicationMaster (AM).
 
@@ -2827,7 +2827,7 @@ is not yet available.
 
 
 
-9: Dynamic Application Modifications
+Dynamic Application Modifications
 =================================================
 
 Dynamic application modifications are being worked on and most of

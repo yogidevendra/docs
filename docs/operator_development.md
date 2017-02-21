@@ -285,9 +285,7 @@ We have the following configuration parameters:
 Code
 ----
 
-The source code for the tutorial can be found here:
-
-[https://github.com/DataTorrent/examples/tree/master/tutorials/operatorTutorial](https://www.google.com/url?q=https://github.com/DataTorrent/examples/tree/master/tutorials/operatorTutorial&sa=D&usg=AFQjCNHAAgSpNprHJVvy9GSjdlD1uwU7jw)
+The source code for the tutorial can be found [here](https://github.com/DataTorrent/examples/tree/master/tutorials).
 
 
 Operator Reference <a name="operator_reference"></a>

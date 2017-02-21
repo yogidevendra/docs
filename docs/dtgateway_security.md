@@ -610,12 +610,12 @@ every time they launch an app or uploads an app package.
 The default for app and app package sharing is that the “operator” role
 has read-only permission.
 
-As of RTS 2.0.0, the Console does not yet support managing App
+The Console does not yet support managing App
 Permissions or App Package Permissions.  But one can manage App
 Permissions and App Package Permissions using the Gateway REST API with
 URI’s /ws/v2/apps/{appid}/permissions and
 /ws/v2/appPackages/{user}/{name}/permissions respectively.  Please refer
-to the [DT Gateway REST API document](https://www.datatorrent.com/docs/guides/DTGatewayAPISpecification.html) and [here](#AdministeringUsingCommandLine) for examples on how to use the REST API.
+to the [DT Gateway REST API document](http://docs.datatorrent.com/dtgateway_api/) and [here](#AdministeringUsingCommandLine) for examples on how to use the REST API.
 
 
 ## Viewing and Managing Auth in the Console
