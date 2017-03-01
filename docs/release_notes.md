@@ -1,6 +1,25 @@
 DataTorrent RTS Release Notes
 ========================================================================================================================
 
+Version: 3.7.1
+------------------------------------------------------------------------------------------------------------------------
+
+Release date: Feb 28, 2017
+
+### Summary
+This is primarily for users who install RTS in a Kerberized cluster and enable AppDataTracker. The issue was Gateway fails to recognize AppDataTracker application and it continuously relaunched. This release fixes the issue. 
+
+Other issues that are also fixed:
+* In 3.6.0, users have the option to override certain properties from the config file. This ability was missing in 3.7.0
+* Installation wizard does not allow user to proceed with secure Hadoop cluster configuration entries in dt-site.xml when the file resides in user home directory. 
+
+### Appendix
+
+#### Bug Fixes
+* [SPOI-10698] - Allow Custom Properties with Config XML file while launching an Application
+* [SPOI-10737] - AppDataTracker application relaunches continuously and fails in a kerberized cluster.
+* [SPOI-10932] - Installation Wizard does not allow to complete gateway configuration
+
 Version: 3.7.0
 ------------------------------------------------------------------------------------------------------------------------
 
