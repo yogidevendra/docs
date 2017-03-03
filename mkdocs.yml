@@ -10,6 +10,7 @@ pages:
 - Development:
     - Creating Applications: create.md
     - "Beginner's Guide": beginner.md
+    - Videos: demo_videos.md
     - Tutorials:
         - Top N Words:
             - Introduction: tutorials/topnwords.md
@@ -32,6 +33,7 @@ pages:
     - Configuration Packages: configuration_packages.md
     - Operators: operator_development.md
     - Library Operators:
+        - List of Operators: library_operators.md
         - Block Reader: operators/block_reader.md
         - Deduper: operators/deduper.md
         - Dimension Computation: operators/dimensions_computation.md
