@@ -7,14 +7,13 @@ Version: 3.7.1
 Release date: Feb 28, 2017
 
 ### Summary
-This is primarily for users who install RTS in a Kerberized cluster and enable AppDataTracker. The issue was Gateway fails to recognize AppDataTracker application and it continuously relaunched. This release fixes the issue. 
+This is primarily for users who install RTS in a Kerberized cluster as application fails to launch in 3.7.0. This release fixes the issue. 
 
 Other issues that are also fixed:
 
 * In 3.6.0, users have the option to override certain properties from the config file. This ability was missing in 3.7.0.
-* On a kerberized cluster, when the kerberos configuration parameters are
-  specified in the `dt-site.xml` file in the user's home directory, the
-  installation wizard does not allow the user to continue with the installation.
+* Gateway fails to recognize AppDataTracker application and it continuously relaunched.
+* On a kerberized cluster, when the kerberos configuration parameters are specified in the `dt-site.xml` file in the user's home directory, the installation wizard does not allow the user to continue with the installation.
 
 ### Appendix
 
@@ -22,6 +21,7 @@ Other issues that are also fixed:
 * [SPOI-10698] - Allow Custom Properties with Config XML file while launching an Application
 * [SPOI-10737] - AppDataTracker application relaunches continuously and fails in a kerberized cluster.
 * [SPOI-10932] - Installation Wizard does not allow to complete gateway configuration
+* [SPOI-10773] - Application fails to run in fully enabled kerberized mode (APEXCORE-616)
 
 Version: 3.7.0
 ------------------------------------------------------------------------------------------------------------------------
@@ -63,6 +63,7 @@ dtDashboard
 AppHub
 
 * Continued to refine application templates in AppHub (introduced in RTS 3.6.0).  
+
 
 RTS 3.7.0 is based on Apache Apex Core 3.5.0 (released Dec 19, 2016) and Apache Apex Malhar 3.6.0 (released Dec 8, 2016).
 
