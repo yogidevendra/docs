@@ -36,15 +36,18 @@ Step I: Create top N words using dtAssemble
   ![TopNWordCount](images/topnwords/image38.png "TopNWordCount")
 5. Click _create new application_ button.
   ![New Application](images/topnwords/image37.png "New Application")
-6. Type a name for your application, for example, _Top N words_, and click
+6. Type a name for your application, for example, _TopNWordsJson_, and click
    _Create_. The **Application Canvas** should open.
+  ![dtAssemble](images/topnwords/image40.png "dtAssemble")
+7. Click the breadcrumbs link to the Application page, in this case, _TopNWordsJson_.
 
 The existing application is a JAVA application. Applications that you create
-using dtAssemble are JSON applications. For each JSON application, there are
-three additional buttons that allow editing, deleting, and cloning operations.
-These operations are not supported for JAVA applications.
+using dtAssemble are JSON applications. For JSON applications, there is an
+extra _edit_ button on the application page which brings you to dtAssemble.
+The _edit_ option is not available for JAVA applications.
 
-![JSON Application](images/topnwords/image40.png "JSON Application")
+![JSON Application](images/topnwords/image40_1.png "JSON Application")
+> Click the _edit_ button to go back to dtAssemble.
 
 Step II: Drag operators to the application canvas
 ---
@@ -90,8 +93,8 @@ the _FileWordCount_ operator which has the largest number of connections:
   the file is still being read) and so it is connected to _ConsoleOutput_ as
   well as to _AppDataSnapshotMapServer_.
 
-_Note_: As you make changes, the top left corner displays _All
-changes saved to HDFS_. No explicit save step is needed.
+_Note_: As you make changes, you may wish to save your progress by clicking
+the _save_ button on the top right.
 
 After you connect all the operators, the canvas looks like this.
 Although presented differently, it is the same as the logical DAG for
@@ -184,18 +187,21 @@ properties of the operators.
    _Attributes_ section, and change the value to 200 except for _Operator
     4_ for which the value is 512.
 
-7. Click _launch_ in the top-left corner. _Note_: Before launching the
+7. Click _save_ in the top-right corner. You can click the _Activity_ tab in the
+   Inspector panel on the bottom to monitor the validation and save process.
+
+8. Click _launch_ in the top-right corner. _Note_: Before launching the
    application, shut down the IDE; if it is running at the time of a launch,
    the sandbox might hang due to resource exhaustion.
   ![launch](images/topnwords/image44.png "launch")
 
-8. On the launch application dialog window, type a name for your application.
+9. On the launch application dialog window, type a name for your application.
   ![Name](images/topnwords/image45.png "Name")
 
-9. (Optional) To configure the application using a configuration file, select
+10. (Optional) To configure the application using a configuration file, select
     _Use a config file_ checkbox. To specify individual properties, select
     _Specify custom properties_ checkbox.
-10.  Click _Launch_.
+11.  Click _Launch_.
 
 A transient pop-up at the top-right indicating that the launch was successful
 should appear.

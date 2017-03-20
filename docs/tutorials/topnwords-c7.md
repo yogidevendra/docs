@@ -274,8 +274,7 @@ application with this configuration file shows the following physical DAG:
 
 ![DAG Parallel Partition](images/topnwords/image53.png "DAG Parallel Partition")
 
-Notice that both operators have been replicated and the unifier added; we now have 15
-operators with a total of 4.8GB allocated to them.
+Notice that both operators have been replicated and the unifier added.
 
 ## Streaming Windows and Application Windows
 

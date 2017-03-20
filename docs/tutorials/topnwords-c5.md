@@ -8,6 +8,11 @@ monitored input directory; the application, as it stands, cannot handle
 simultaneous addition of files at a time into the input directory. This
 issue is discussed in more detail in the Appendix entitled _Further Explorations_.
 
+> Note: If you are have trouble with any of the following steps, or have not
+complete the preceding sections in this tutorial, you can import _Word Count Demo_
+from AppHub. The _Word Count Demo_ Application Package contains the
+TopNWordsWithQueries Application.
+
 Step I: Add files to the monitored directory
 ---
 To add the files to the monitored input directory
@@ -124,7 +129,8 @@ To configure a widget
   You can now enter a new title in the _Title_ box or configure the rest of the
   options in any suitable way.
 4.  Click _OK_.
-5.  To remove a widget, click the delete button in the top-right corner.
+5.  To remove a widget, click the delete (x) button in the top-right corner of
+  the widget.
 
 Perform additional tasks on dashboards
 ---
