@@ -68,6 +68,56 @@ This can be useful when Hadoop configuration has changed or some other factor of
 
 If enabled, your DataTorrent installation will send various pieces of information such as bug reporting and usage statistics back to our servers.
 
+### Security Configuration
+
+Use this page to configure the authentication method. You can set the authentication method to be "None" or "Password" as shown in the following screenshot.
+
+![Security Configuration Page](images/dtmanage/security-screen1.png)
+
+Data Torrent RTS does support other authentication methods but they have to be configured through configuration files as described [here](dtgateway_security/#authentication)
+
+### System Alerts
+
+Use this page to manage system alerts.
+
+![System Alerts page](images/dtmanage/system-alerts1.png)
+
+Click on the `+ create new alert` button to create an alert.
+
+![System Alerts page](images/dtmanage/system-alerts2.png)
+
+An alert consists of
+
+ * a condition (a JavaScript expression)
+ * a list of recipient email addresses
+ * a threshold value in milliseconds
+ * a message, and
+ * an enabled/disabled flag
+
+The gateway periodically (every 5 seconds) processes all enabled alerts by evaluating the condition. If the condition evaluates to `true`, the alert is said to be "in effect".
+If the condition evaluates to `false`, the alert is said to be "out" (or "out of effect"). If the alert stays "in effect" for the duration specified as the threshold value,
+then the alert is triggered and the gateway sends an "in effect" email message to all the recipient email addresses.
+
+If a triggered alert goes "out of effect" then the gateway immediately sends an "out of effect" email message to all the recipient email addresses.
+
+The alert condition is specified as a JavaScript expression which is evaluated in the context of something called `topics` which are described [here](dtgateway_systemalerts/#alerts-and-topics).
+
+The gateway also provides pre-defined alert "templates" that allow a user to create alerts for certain common conditions without having to write JavaScript expressions.
+
+![System Alerts page](images/dtmanage/system-alerts3.png)
+
+Click on the "Predefined Conditions" tab and select a template from the drop-down list. Depending on your selection, you will need to provide more values to be filled into the template.
+As an example, for the "Application Memory Usage" template you need to provide the Application Name and Memory values as shown below:
+
+![System Alerts page](images/dtmanage/system-alerts4.png)
+
+You can click on the "Javascript Code" tab to see the generated JavaScript expression that corresponds to your alert template selection and provided values as shown below:
+
+![System Alerts page](images/dtmanage/system-alerts5.png)
+
+You can generate a test email to validate your alert by checking the "Send Test Email" check-box and clicking on the blue "Test" button. The test email is sent regardless of the true or false result
+of the JavaScript condition, if the evaluation has no errors provided SMTP is configured as described in the Alerts section.
+
 ### License Information
 
 Use the License Information page to view how much of your DataTorrent license capacity your cluster is consuming as well as what capabilities your license permits. You can also upload new license files here.
