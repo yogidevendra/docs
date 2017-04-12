@@ -821,34 +821,73 @@ This command returns the information about the user “john”.
 
 This command removes the user “jane”.
 
+## Setting up SSL Keystore in Gateway
 
-## Enabling HTTPS in Gateway
+An SSL keystore is needed for your gateway to enable HTTPS in the gateway and to configure SMTP with password authentication. SMTP configuration is needed for the gateway to 
+send email alerts as described in [System Alerts](dtgateway_systemalerts.md). 
 
-HTTPS in the Gateway can be enabled by performing following two steps.
+Follow the steps below to set up the keystore.
 
-1.  Generate an SSL keystore if you don’t have one.  Instruction on how to generate an SSL keystore is here: [http://docs.oracle.com/cd/E19509-01/820-3503/ggfen/index.html](http://docs.oracle.com/cd/E19509-01/820-3503/ggfen/index.html)
+1. Generate an SSL keystore if you don’t have one.  Instruction on how to generate an SSL keystore is here: [http://docs.oracle.com/cd/E19509-01/820-3503/ggfen/index.html](http://docs.oracle.com/cd/E19509-01/820-3503/ggfen/index.html).
+Note down the keystore password and full path of the keystore that you need to provide in the next step.
 
-2.  Add a property to dt-site.xml configuration file, typically located under `/opt/datatorrent/current/conf` ( or `~/datatorrent/current/conf` for local install).
+2. Add two properties to `dt-site.xml` configuration file, typically located under `/opt/datatorrent/current/conf` (or `~/datatorrent/current/conf` for local install).
 
         <configuration>
         ...
           <property>
-                   <name>dt.gateway.sslKeystorePath</name>
-                   <value>{/path/to/keystore}</value>
+            <!-- this is the full path to the SSL keystore you created -->
+              <name>dt.gateway.sslKeystorePath</name>
+              <value>{/path/to/keystore}</value>
           </property>
           <property>
-                    <name>dt.gateway.sslKeystorePassword</name>
-                     <value>{keystore-password}</value>
-          </property>
-          <property>
-            <name>dt.attr.GATEWAY_USE_SSL</name>
-                  <value>true</value>
+            <!-- this is the keystore password -->
+              <name>dt.gateway.sslKeystorePassword</name>
+              <value>{keystore-password}</value>
           </property>
         ...
         </configuration>
 
-3.  Restart the Gateway by running
+3. Perform any additional steps required for "Enabling HTTPS" or "SMTP Password Encryption" use-case as described below.
+
+4. Restart the Gateway by running
 
         sudo service dtgateway restart
-		
-    ( when running Gateway in local mode use `dtgateway restart` command)
+
+    (when running Gateway in local mode use `dtgateway restart` command)
+
+### Enabling HTTPS in Gateway
+
+To enable HTTPS in the Gateway after setting up the keystore as described above, you have to add the following
+property to the `dt-site.xml` configuration file
+
+        <configuration>
+        ...
+          <property>
+            <name>dt.attr.GATEWAY_USE_SSL</name>
+            <value>true</value>
+          </property>
+        ...
+        </configuration>
+
+### Setting up a Key for SMTP Password Encryption
+
+Add another key to the keystore created above using the instructions mentioned in [http://docs.oracle.com/cd/E19509-01/820-3503/ggfen/index.html](http://docs.oracle.com/cd/E19509-01/820-3503/ggfen/index.html). For example:
+
+```
+keytool -genkey -alias smtpenc-alias -keyalg RSA -keypass <key password> -storepass <store password> -keystore gwkeystore.jks
+```
+
+Note down the alias you used for the key (smtpenc-alias in the above command). Remember to use the same key password and 
+store password as the ones you used in the previous command where you created the keystore.
+
+Add the following property to `dt-site.xml` to indicate the alias to be used for SMTP Password Encryption:
+
+        <configuration>
+        ...
+         <property>
+           <name>dt.gateway.ssl.alias.password.encryption</name>
+           <value>smtpenc-alias</value>
+         </property>
+        ...
+        </configuration>
