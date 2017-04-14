@@ -510,6 +510,11 @@ Return:
             "memoryMBAllocated": "{memoryMBAllocated}",
             "memoryMBFree": "{memoryMBFree}",
             "numOperators": "{numOperators}",
+            "operators:" {
+                "id1": "name1",
+                "id2": "name2",
+                "id3": "name3"
+            },
             "containerLogsUrl": "{containerLogsUrl}",
             "state": "{state}"
         }, …
@@ -532,6 +537,11 @@ Return:
     "memoryMBAllocated": "{memoryMBAllocated}",
     "memoryMBFree": "{memoryMBFree}",
     "numOperators": "{numOperators}",
+    "operators:" {
+        "id1": "name1",
+        "id2": "name2",
+        "id3": "name3"
+    },
     "containerLogsUrl": "{containerLogsUrl}",
     "state": "{state}"
 }
