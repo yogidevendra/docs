@@ -1,6 +1,275 @@
 DataTorrent RTS Release Notes
 ========================================================================================================================
 
+Version: 3.8.0
+------------------------------------------------------------------------------------------------------------------------
+
+Release date: Apr 18, 2017
+
+### Summary
+
+#### Application Templates (AppHub)
+Pre-built data ingestion templates speed time-to-production
+ 
+Deploy DataTorrent RTS application templates on a Hadoop distribution either on-premises or on the cloud. As part of this release, DataTorrent is providing AWS - EMR deployment script option for each available application template. As a result, development is simplified, enabling developers to more quickly and easily unlock value for customers. DataTorrent is focused on the goals of reducing complexity and removing dependency on Hadoop deployment, and this release represents progress in that direction.   
+
+#### Application Configurations
+Simplifying customized application launches
+ 
+Users can start with a single Application Package and create multiple Application Configurations to launch and run the applications on different environments (for instance, in test and development).  And, efficiencies can be realized across business units: one Application Package could have multiple configurations for multiple internal units.  Each Application Configuration introduces a safety feature, which ensures that only one instance of Application Configuration can run at a time.  The status whether Application Configuration is running or not, and controls to launch and stop the application instance are provided in the Application Configuration view.  This set of features improves management, adds safety, and increases transparency when managing and launching applications.
+
+### Debugging
+Improving log visualizations to speed up debugging
+ 
+#### StrAM Event Grouping
+The StrAM Events widget helps from development and operations perspectives to visualize notable events from the application launch and throughout its ongoing run.  With this release, StrAM events widgets now offers better readability by organizing these events into related groups.  For example, when multiple downstream operators are re-deployed due to a container failure. All events triggered by the system to restore normal function will be grouped under a single root event which caused the restarts.  With this improved readability, the user can quickly identify failure causes and then drill down into the logs for each event.
+
+#### Garbage Collection Widgets
+With this release, developers can more easily visualize garbage collection data trends—as opposed to sifting through logs. Three widgets are available for GC visualizations:
+
+* Garbage collection log chart by heap.  Visualizes when memory is allocated and deallocated 
+* Garbage collection log table.  List memory allocation and deallocation details
+* Garbage collection log chart by duration.  Visualizes how long it takes to deallocate memory 
+
+#### Log Tailing & Search
+Users can follow the logs as they are generated (tailing) with the RTS UI Console.  In this release, users can now also perform searches even when tailing to focus on specific events and exclude the noise.
+ 
+#### Alert Templates
+Simplifying and expanding alert functionality
+ 
+In 3.7.0, RTS introduced monitoring with alerts that a DevOps engineer could set up based on specific conditions. The 3.8.0 release continues to simplify and expand this functionality by adding:
+
+* Nine predefined system alert templates, including cluster and application memory usage, application status, and active container count, killed container alerts, etc.
+* Option to disable alerts without deleting them.
+* The ability to configure custom SMTP settings for sending alert emails, instead of relying on Gateway’s local node sendmail facility.
+ 
+#### Security
+ 
+Security enhancement in 3.8.0 applies to RTS deployment on secure Hadoop with Kerberos enabled. User's own Kerberos credentials can now be used directly by RTS to launch applications.  It is better from a security perspective.
+
+The previous model involved using a single system user with Kerberos credential (Hadoop impersonation)  to launch applications. That requires access to the system Kerberos credential in order to refresh tokens before they expire.  With user’s own Kerberos credential, that is no longer the case. 
+ 
+#### Licensing
+ 
+With the release of 3.8.0, DataTorrent is updating and simplifying its licensing policy.  What has changed?  
+
+Starting with 3.8, the Community Edition is no longer available. We are replacing the Community Edition with Free Edition.  Community Edition limited the features available to you, such as security.   Now with Free Edition you have access to all the features and tools of RTS up to a 128GB processing limit.
+
+Please refer to the DataTorrent website for additional details.
+
+#### Licensing FAQ
+ 
+_I have a Community Edition license. Is that edition still available?_  
+Starting with 3.8, the Community Edition is no longer available.   You can continue to use the Community Edition with RTS version 3.7.
+ 
+_How is license memory consumption calculated?_  
+License memory consumption is the sum of all running applications as can be seen in Configuration - License Information and Monitor.
+ 
+_What will happen when my memory consumption exceed my license limit?_  
+You’ll receive a warning, which is shown for 30 minutes before most RTS features will be disabled. All existing applications will continue to run. Should you need to upgrade, you can easily contact DataTorrent for a new license.
+ 
+_How will I know when my license is going to expire and what happens if the license expires?_  
+We provide warnings at 30 days and 7 days before expiration date.  When a license expires, most RTS features will be immediately disabled. All existing applications will continue to run. You can easily contact DataTorrent for a new license.  
+ 
+_What can I do once RTS is locked (either because my license memory has been exceeded or its expiration date has passed)?_  
+Users can view running applications and enter new license details to unlock RTS. The following capabilities are still accessible:
+* Configure - System Configuration is available except for App Data Tracker
+* Configure - License Information is available
+* Configure - Installation Wizard is available
+* Monitor - Application kill, inspect and shutdown are available
+* Monitor - Application Overview (shutdown and kill only) per application is available
+* Monitor - Containers (kill only)
+* AppHub (download only, no import)
+* Learn
+ 
+_Can I reduce the number of applications and return to compliance?_  
+Yes, you can do so if you have exceeded your memory capacity, assuming that your license has not expired
+
+_Can I reduce the memory usage of an application and bring it back to license compliance?_  
+Yes, assuming that your license has not expired.  Please note that you will have to restart the application.
+
+_I have an enterprise license for my production cluster. Can I use the Free Edition in a non- production cluster?_  
+Yes. It’s worth noting that only community support is available for the Free Edition. Please visit the DataTorrent User group for RTS-related questions: https://groups.google.com/forum/#!aboutgroup/dt-users
+ 
+For the Apache Apex mailing list and meetups information, please go to
+https://apex.apache.org/community.html#mailing-lists
+ 
+_Can I buy DataTorrent support for Free Edition?_  
+Unfortunately, no. DataTorrent support is sold as part of our Enterprise Edition. If you’re seeking support, you may consider upgrading.
+
+_Is Application Master Container memory consumption included in the calculation for processing capacity?_  
+Yes. Application Master Container consumes 1 GB by default and every application has its own Application Master. If application is not running, it does not run as well. It grows based on customer application build. Memory requirements increases along with the size of logical and physical DAG. Partitioners of an operator run in AppMaster.
+
+#### Additional Features of 3.8.0
+ 
+##### Multiple gateway support
+
+This allows simultaneous multiple gateway operations and increase fault tolerance due to management console failure. 
+
+When there are multiple gateways (usually for High Availability), different developers may access them at the same time, with different or same user accounts. These activities will often result in simultaneous modification of the same resource stored in HDFS, and invalidate cache entries on each client. For example: When developer A tries to save a configuration package and developer B has edited and saved the same package, developer A will get an error. Developer A would then have to manually merge the differences. This release introduces a new file-based locking mechanism with HTTP ETag header to handle that scenario.
+Known limitation: Alerts and visualization works correctly with single gateway only.
+
+##### Retain metric selections when returning to Monitor - Physical/Logical view
+Better user experience since RTS will keep what users have selected to view (e.g. metrics) as they go from one screen to another. 
+ 
+#### DataTorrent Apex Core fork
+RTS 3.8.0 is bundled with Apache Apex Core 3.5.0 plus forty feature and fixes that will be part of Apache Apex Core 3.6.0. Apex Core commits from Apr 3, 2017 will be included in RTS 3.9.0
+ 
+##### New Feature
+* [APEXCORE-579]     	Custom control tuple support
+* [APEXCORE-563]     	Have a pointer to container log filename and offset in StrAM events that deliver a container or operator failure event.
+
+##### Improvements
+* [APEXCORE-676]     	Show description for DefaultProperties only when user requests it
+* [APEXCORE-655]     	Support RELEASE as archetype version when creating a project
+* [APEXCORE-611]     	StrAM Event Log Levels
+* [APEXCORE-605]     	Suppress bootstrap compiler warning
+* [APEXCORE-592]     	Returning description field in defaultProperties during apex cli call get-app-package-info
+* [APEXCORE-572]     	Remove dependency on hadoop-common test.jar
+* [APEXCORE-570]     	Prevent upstream operators from getting too far ahead when downstream operators are slow
+* [APEXCORE-522]     	Promote singleton usage pattern for String2String, Long2String and other StringCodecs
+* [APEXCORE-426]     	Support work preserving AM recovery
+* [APEXCORE-294]     	Graceful application shutdown
+* [APEXCORE-143]     	Graceful shutdown of test applications
+
+##### Task
+* [APEXCORE-662]     	Raise StramEvent for heartbeat miss
+ 
+##### Dependency Upgrade
+* [APEXCORE-656]     	Upgrade org.apache.httpcomponents.httpclient
+
+##### Bug
+* [APEXCORE-674]     	DTConfiguration utility class ValueEntry access level was changed
+* [APEXCORE-663]     	Application restart not working.
+* [APEXCORE-648]     	Unnecessary byte array copy in DefaultStatefulStreamCodec.toDataStatePair()
+* [APEXCORE-645]     	StramLocalCluster does not wait for master thread termination
+* [APEXCORE-644]     	get-app-package-operators with parent option does not work
+* [APEXCORE-636]     	Ability to refresh tokens using user's own Kerberos credentials in a managed environment where the application is launched using an admin with impersonation
+* [APEXCORE-634]     	Apex Platform unable to set unifier attributes for modules in DAG
+* [APEXCORE-627]     	Unit test AtMostOnceTest intermittently fails
+* [APEXCORE-624]     	Shutdown does not work because of incorrect logic in the AppMaster
+* [APEXCORE-617]     	InputNodeTest intermittently fails with ConcurrentModificationException
+* [APEXCORE-616]     	Application fails to start Kerberised cluster
+* [APEXCORE-610]     	Avoid multiple getBytes() calls in Tuple.writeString
+* [APEXCORE-608]     	Streaming Containers use stale RPC proxy after connection is closed
+* [APEXCORE-598]     	Embedded mode execution does not use APPLICATION_PATH for checkpointing
+* [APEXCORE-597]     	BufferServer needs to shut down all created execution services
+* [APEXCORE-596]     	Committed method on operators not called when stream locality is THREAD_LOCAL
+* [APEXCORE-595]     	Master incorrectly updates committedWindowId when all partitions are terminated.
+* [APEXCORE-593]     	apex cli get-app-package-info could not retrieve properties defined in properties.xml
+* [APEXCORE-591]     	SubscribeRequestTuple has wrong buffer size when mask is zero
+* [APEXCORE-585]     	Latency should be calculated only after the first window has been complete
+* [APEXCORE-583]     	Buffer Server LogicalNode should not be reused by Subscribers
+* [APEXCORE-558]     	Do not use yellow color to display command strings in help output
+* [APEXCORE-504]     	Possible race condition in StreamingContainerAgent.getStreamCodec()
+* [APEXCORE-471]     	Requests for container allocation are not re-submitted
+
+#### DataTorrent RTS Bug Fixes
+
+* [SPOI-10021]	DTX Logical Operator page - BufferServerReadBytesPSMA and BufferServerWriteBytesPSMA to be removed
+* [SPOI-10107]	Application service returns DAG which is null
+* [SPOI-10118]	Upon launch of application, application details do not show up.
+* [SPOI-10153]	Add System Properties "change" button should be warm in color
+* [SPOI-10208]	Container state for failed attempt of app is shown as RUNNING
+* [SPOI-10266]	"host" information is not available in appattempts API call
+* [SPOI-10274]	Moving the mouse over the operator shows it as clickable but nothing happens
+* [SPOI-10331]	Delete user modal gives error when clicked outside the frame
+* [SPOI-10332]	Cancelling delete user action throws TypeError in developer console
+* [SPOI-10335]	Jersey throwing exceptions & excessive logging when WADL is enabled
+* [SPOI-10355]	Update Buttons and Text
+* [SPOI-10357]	Redirect User to Login Page
+* [SPOI-10363]	CheckPermission should not throw exception when auth is not enabled.
+* [SPOI-10416]	dtAssemble does not show connection between operators correctly
+* [SPOI-10421]	Fix oauth login
+* [SPOI-10438]	Hide Top Nav Menu Dropdown When Item is Clicked
+* [SPOI-10463]	Enhance Date/Time Picker for StrAM Events Date Range
+* [SPOI-10587]	Implement Date/Time Picker for Dashboard Widget
+* [SPOI-10588]	Change Button Label to Close During Launching
+* [SPOI-10862]	Multiple containers are labelled as AppMaster after dynamic partitioning
+* [SPOI-10866]	Time Range Selection Saved Settings Not Loaded Correctly
+* [SPOI-10894]	dtAssemble - Inspector contents not showing up consistently
+* [SPOI-10911]	determine AppMaster container by id that contains _000001 instead of by including 0 operators
+* [SPOI-10963]	appInstance page - fail to show "packagedDashboard" which is included in appPackage that appInstance is launched from
+* [SPOI-10970]	AppHub on gateway does not load in HTTPS
+* [SPOI-10996]	Subscribers/DataListeners may not be scheduled to execute even when they have data to process
+* [SPOI-10997]	BufferServer needs to shut down all created execution services
+* [SPOI-11000]	Upgrade org.apache.httpcomponents.httpclient
+* [SPOI-11024]	Alerts Icon Issue
+* [SPOI-11057]	Restart of the apps are failing
+* [SPOI-11108]	DAG View Javascript Error
+* [SPOI-11127]	Enhance "lastNbytes" to behave like "tail" command
+* [SPOI-11142]	Unable to launch app if another app with default APPLICATION_NAME is already running
+* [SPOI-11152]	Avoid usage of Apache Apex engine core class com.datatorrent.stram.client.DTConfiguration.ValueEntry
+* [SPOI-11163]	Cannot launch application from application details page
+* [SPOI-11164]	"Add default properties" option under "Specify launch properties" is missing
+* [SPOI-11168]	License API Does Not Return Latest State Information
+* [SPOI-11179]	Update Root Cause Failure to Use Newer Object Structure
+* [SPOI-11185]	Invalid license expiration message sent by Gateway
+* [SPOI-11186]	AppHub should be visible if license is invalid
+* [SPOI-11188]	App Packages search does not work for "format" column
+* [SPOI-11190]	Toggling "system apps" option does not show ended system apps
+* [SPOI-11192]	Search for "lifetime" column on Monitor screen does not work
+* [SPOI-11193]	Search for "memory" column on Monitor screen does not work
+* [SPOI-11194]	Search on "state" column on Monitor page is not alphabetical
+* [SPOI-11197]	Search on locality/source/sinks columns under Streams widget on logical tab does not work
+* [SPOI-11198]	Search for "allocated mem" and "free memory" under Containers widget does not work
+* [SPOI-11199]	"download file" option for empty container log files should be disabled
+* [SPOI-11200]	Search for "allocated mem" and "started time" under Containers widget  for app attempt does not work
+* [SPOI-11208]	DTgateway install screen messed up
+* [SPOI-11210]	On entering corrupt license file error message should be a proper one
+* [SPOI-11212]	Trailing and non trailing search should have same string
+* [SPOI-11213]	Unable to save SMTP configuration using gmail
+* [SPOI-11214]	Launching application with ï¿¼"Enable Garbage Collection" throws 404
+* [SPOI-11215]	ADMIN_NOT_CONFIGURED warning is only shown to Dev user instead of admin
+* [SPOI-11220]	Fresh RTS installation fails because of blank response from "/ws/v2/config" api call
+* [SPOI-11222]	StackTrace feature not available from physical tab containers widget
+* [SPOI-11223]	Show "Password change" warning for dtadmin only
+* [SPOI-11231]	AppHub fails to load previous package versions
+* [SPOI-11234]	Show all AppHub package versions option is missing in list view
+* [SPOI-11236]	Extend application-level gc.log API to take in new parameter "descendingOrder" (false/true)
+* [SPOI-11237]	Angular not resolving certain dtText-wrapped expressions in Console modals
+* [SPOI-11238]	AppHub Check for Updates Does Not Show In All Cases
+* [SPOI-11242]	"Upload package" option on Application Packages should not be available with invalid/no license
+* [SPOI-11265]	Invalid message displayed when no license is uploaded
+* [SPOI-11266]	Alert notification is delayed
+* [SPOI-11270]	System Alert history is empty after relogin
+* [SPOI-11271]	Developer user cannot create system alert
+* [SPOI-11281]	.class file generated by tuple schema manager is invalid
+* [SPOI-11291]	Creating clone of JSON application gives 500 Server Error
+* [SPOI-11303]	Creating clone of JSON application gives 500 Server Error (UI)
+* [SPOI-11304]	App package load errors after migrating from 3.7 to 3.8
+* [SPOI-11307]	Search for "lifetime" column on Monitor screen does not work
+* [SPOI-11318]	Copy To Clipboard option from Failure Message modal does not work
+* [SPOI-11323]	Upgrade from 3.7.0 evaluation edition to 3.8.0 retains old license
+* [SPOI-11325]	Selecting KILLED applications and then disabling ended apps, shows shutdown/kill options
+* [SPOI-11326]	Clean install of 3.8.0 comes with no license
+* [SPOI-11327]	StramEvents are grouped incorrectly
+* [SPOI-11366]	Copy to clipboard not working when viewing stram event stack trace
+* [SPOI-11367]	Wrong 'uptime' value in Application Overview
+* [SPOI-11368]	Log and info icons should be right aligned in stram events
+* [SPOI-11369]	Socket is unsubscribed by Console when critical path is not checked
+* [SPOI-11371]	"source package" column in Application Configurations table is not sortable
+* [SPOI-11372]	Unable to view gc.log on UI
+* [SPOI-11375]	Wrong stream locality is shown in Physical DAG widget
+* [SPOI-11377]	Incorrect GC stats for logical operators if they are connected by CONTAINER_LOCAL stream
+* [SPOI-11379]	Heap reduction percentage is negative for some GC events
+* [SPOI-11382]	UI hangs when trying to change settings for GC Log Chart widgets
+* [SPOI-11383]	Selecting a container in GC Log Chart widgets throws error in Developer console
+* [SPOI-11417]	Memory usage of App Data Tracker is not counted against license
+* [SPOI-11418]	Event grouping: UI should ignore groupId 0 & null
+* [SPOI-11421]	Unable to use Security Configuration feature with free license
+* [SPOI-11422]	Admin user should not be able to delete its own user account
+* [SPOI-11424]	Show tooltip for version string in application overview widget
+* [SPOI-7887]  	PUT /ws/v2/appPackages/{owner}/{packageName}/{packageVersion}/applications/{applicationName}[?errorIfExists={true/false}] should return error instead of success where there is error "Failed to load"
+* [SPOI-8248]  	Packaged dashboards do not reconnect with new app instances
+* [SPOI-8477]  	Upgrade License Opens in dtManage window, it should be in opened up in new window
+* [SPOI-8610]  	Disable editing operator properties which are of Object type
+* [SPOI-9375]  	Uptime values shown on UI are out of whack immediately after app is launched
+* [SPOI-9474]  	Failed to restart DT application in MapR secure cluster
+* [SPOI-9921]  	Delete widgets on default pane of physical operators needs to have warm colors
+* [SPOI-9945]  	Top navigation menu is wrapping into two lines
+
+
 Version: 3.7.1
 ------------------------------------------------------------------------------------------------------------------------
 
