@@ -192,9 +192,9 @@ Aside from various pieces of meta information (owner, DataTorrent version, requi
 To launch an app in an App Package, click on the launch button to the far right of the list. A dialog box will appear with several options: 
 
 - **Specify a name for the running app**
-  The console will pre-populate this field with an appropriate name, but you can specify your own name. Just be weary that it must be unique compared to the other applications running on your DataTorrent installation.
+  The console will pre-populate this field with an appropriate name, but you can specify your own name. Make sure it is unique among all the applications running in the Hadoop cluster of your DataTorrent installation.
 - **Specify launch properties**
-  In addition to choosing a config file, you may also specify properties directly in the launch popup by selecting this option. Any required properties will automatically show up in this section and require input. Note that there are several helpful functions when specifying custom properties:
+  In addition to choosing a config file, you may also directly specify properties in the launch pop-up by selecting this option. Any required properties will automatically show up in this section and require input. Note that there are several helpful functions when specifying custom properties:
   - *add* - App Packages can have custom properties applied at launch time to override existing properties.
     - *add default properties* - App Packages can also have default properties. This function will add the default properties to the list, making it easy for you to override the defaults. This button can be found clicking on the *add* button's submenu.
   If any properties were added, the option to save the properties as a Configuration Package is activated.
@@ -204,6 +204,8 @@ To launch an app in an App Package, click on the launch button to the far right 
   App Packages with a separate associated Configuration Package can be selected here. The Configuration Package will launch with its own custom properties.
 - **Specify the [scheduler queue](https://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)**
   This input allows you to specify which queue you want the application to be launched under. The default behavior depends on your Hadoop installation, but typically will be `root.[USER_NAME]`.
+- **Enable [Garbage Collection logging](http://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/index.html)**
+  Checking this box enables GC logging by including the `-Xloggc:<LOG_DIR>/gc.log -verbose:gc -XX:+PrintGCDateStamps` JVM options for all the containers of the application. This GC logging in turn enables garbage collection widgets described later.
 
 ![Launch app modal](images/dtmanage/console-launch-app.png)
 
@@ -316,6 +318,38 @@ Shows a list of the streams in the application. There are also links to the logi
 
 Shows various metrics of your application on a real-time line chart. Single-click a metric to toggle its visibility. Double-click a metric to toggle all other keys' visibility.
 
+#### Garbage Collection (GC) Chart by Heap
+
+This chart shows a container's heap memory in use in KB (kilo-bytes) against time. The chart is constructed by plotting and extrapolating in-use heap memory obtained from events in the GC log file of a container which requires GC logging to be enabled as described in [Launching apps](#launching-apps). The chart shown is for a single container that is selectable from the radio buttons shown at the top right corner of the widget. Each container in the radio buttons and the chart is color-coded with the same color. The containers included depend on the context of the widget:
+
+- all application containers in the application view
+- all the containers containing the physical partitions of a logical operator in the logical operator view
+- the single parent container of a physical operator in the physical operator view
+- the container itself in the selected container view
+
+![](images/dtmanage/gc-chart-by-heap.png)
+
+#### Garbage Collection (GC) Log Table
+
+This table shows the garbage collection (GC) events for a group of containers. This table too requires GC logging to be enabled as described in [Launching apps](#launching-apps). The containers included in the group depend on the context of the widget:
+
+- all application containers in the application view
+- all the containers containing the physical partitions of a logical operator in the logical operator view
+- the single parent container of a physical operator in the physical operator view
+- the container itself in the selected container view
+
+![](images/dtmanage/gc-log-table.png)
+
+#### Garbage Collection (GC) Chart by Duration
+
+This discrete bar chart shows GC event duration in seconds against time for a group of containers. Each bar is of fixed-width but the height denotes the duration of the corresponding GC event. This chart too requires GC logging to be enabled as described in [Launching apps](#launching-apps). One or more containers are selectable from the radio buttons shown at the top right corner of the widget. Each container in the radio buttons and the chart is color-coded with the same color. The containers included depend on the context of the widget:
+
+- all application containers in the application view
+- all the containers containing the physical partitions of a logical operator in the logical operator view
+- the single parent container of a physical operator in the physical operator view
+- the container itself in the selected container view
+
+![](images/dtmanage/gc-chart-by-duration.png)
 
 ### Recording and Viewing Sample Tuples
 
