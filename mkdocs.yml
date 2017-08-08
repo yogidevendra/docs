@@ -39,7 +39,7 @@ pages:
         - Block Reader: operators/block_reader.md
         - Deduper: operators/deduper.md
         - Dimension Computation: operators/dimensions_computation.md
-        - File Output: operators/file_output.md  
+        - File Output: operators/file_output.md
         - File Splitter: operators/file_splitter.md
         - HDHT: operators/hdht.md
         - Kafka Input: operators/kafkaInputOperator.md
@@ -47,6 +47,21 @@ pages:
     - App Data Framework: app_data_framework.md
     - REST API: dtgateway_api.md
 - App Templates:
+    - 0.10.0:
+        - Import and Launch App-template: app-templates/0.10.0/common/import-launch.md
+        - Customizing an app-template: app-templates/0.10.0/common/customize.md
+        - Database-to-database-sync: app-templates/0.10.0/database-to-database-sync.md
+        - HDFS-line-copy: app-templates/0.10.0/hdfs-line-copy.md
+        - HDFS-part-file-copy: app-templates/0.10.0/hdfs-part-file-copy.md
+        - HDFS-to-HDFS-filter-transform: app-templates/0.10.0/hdfs-to-hdfs-filter-transform.md
+        - Kafka-to-Cassandra-Filter-Transform: app-templates/0.10.0/kafka-to-cassandra-filter-transform.md
+        - Kafka-to-Database-sync: app-templates/0.10.0/kafka-to-database-sync.md
+        - Kafka-to-HDFS-Filter-Transform: app-templates/0.10.0/kafka-to-hdfs-filter-transform.md
+        - Kafka-to-Kafka-Filter-Transform: app-templates/0.10.0/kafka-to-kafka-filter-transform.md
+        - Kinesis-to-Redshift: app-templates/0.10.0/kinesis-to-redshift.md
+        - Kinesis-to-S3: app-templates/0.10.0/kinesis-to-s3.md
+        - S3-to-HDFS-sync: app-templates/0.10.0/s3-to-hdfs-sync.md
+        - S3-to-HDFS-Filter-Transform: app-templates/0.10.0/s3-to-redshift.md
     - Database dump to HDFS App: app-templates/database-to-hdfs.md
     - Database to Database Sync App: app-templates/database-to-database-sync.md
     - HDFS Sync App: app-templates/hdfs-sync.md
