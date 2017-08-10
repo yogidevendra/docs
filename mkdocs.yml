@@ -62,6 +62,7 @@ pages:
     - dtIngest: dtingest.md
 - Platform:
     - RTS: rts.md
+    - Application Configurations: application_configurations.md
     - dtManage: dtmanage.md
     - dtAssemble: dtassemble.md
     - dtDashboard: dtdashboard.md
