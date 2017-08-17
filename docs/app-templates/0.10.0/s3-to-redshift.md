@@ -15,10 +15,10 @@ This application template demonstrates continuous big data sync from a source to
     target="_blank">How to customize an app-template</a>
 
 -  <a
-    href="https://github.com/DataTorrent/moodI/tree/master/app-templates/database-to-database-sync"  class="docs" id="docs" ga-track="docs"
+    href="https://github.com/DataTorrent/moodI/tree/master/app-templates/s3-to-redshift"  class="docs" id="docs" ga-track="docs"
     target="_blank">README for the application</a>
 - <a
-   href="https://github.com/DataTorrent/moodI/tree/master/app-templates/database-to-database-sync"  class="github" id="github" ga-track="github" target="_blank">Source code</a>
+   href="https://github.com/DataTorrent/moodI/tree/master/app-templates/s3-to-redshift"  class="github" id="github" ga-track="github" target="_blank">Source code</a>
 
 - Please send feedback or feature requests to :
     <a href="mailto:feedback@datatorrent.com"  class="feedback" id="feedback" ga-track="feedback">feedback@datatorrent.com</a>
