@@ -16,10 +16,10 @@ It ingests files as blocks for backup on remote HDFS cluster.
     target="_blank">How to customize an app-template</a>
 
 -  <a
-    href="https://github.com/DataTorrent/moodI/tree/master/app-templates/hdfs-line-copy"  class="docs" id="docs" ga-track="docs"
+    href="https://github.com/DataTorrent/moodI/tree/master/app-templates/hdfs-part-file-copy"  class="docs" id="docs" ga-track="docs"
     target="_blank">README for the application</a>
 - <a
-   href="https://github.com/DataTorrent/moodI/tree/master/app-templates/hdfs-line-copy"  class="github" id="github" ga-track="github" target="_blank">Source code</a>
+   href="https://github.com/DataTorrent/moodI/tree/master/app-templates/hdfs-part-file-copy"  class="github" id="github" ga-track="github" target="_blank">Source code</a>
 
 - Please send feedback or feature requests to :
     <a href="mailto:feedback@datatorrent.com"  class="feedback" id="feedback" ga-track="feedback">feedback@datatorrent.com</a>
