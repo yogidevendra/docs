@@ -1,6 +1,261 @@
 DataTorrent RTS Release Notes
 ========================================================================================================================
 
+Version: 3.9
+------------------------------------------------------------------------------------------------------------------------
+
+Release date: Aug 23, 2017
+
+### Summary
+##### Application  Dashboards
+
+These dashboards help to deliver a complete application experience, showcasing the business-relevant metrics customers’ desire.
+ 
+DataTorrent’s Applications Dashboards are 1) easy to create from library of widgets 2) show business relevant, real-time analytics and 3) can be easily associated with one or more streaming application(s). Now customers can construct the specific view that THEY want to see in one place.
+ 
+##### Application Metrics and Visualization
+ 
+Customers can create real-time metrics that are relevant to the overall streaming analytics application, so that business-relevant metrics can be easily computed and visualized. 
+ 
+DataTorrent’s Application Metrics & Visualization capabilities enable customers to define not just operational metrics related to data processing, but now they can capture, store, and show the business relevant metrics too.  This is key to being able to show dashboards that are relevant to specific business problems (for ex: percentage of transactions where fraud occurs, fraud trends in real-time, or fraud breakdown by channels).
+
+ 
+##### DataTorrent AppFactory
+ 
+DataTorrent has evolved the AppHub, making it even easier for customers to solve problems and understand how real-time streaming analytics can make a difference for their business.  
+
+DataTorrent AppFactory is a centralized marketplace for streaming analytics applications that:
+Solve industry specific streaming analytics problems i.e. fraud prevention to prepare the data so that you can make quick/informed business decisions help customers deliver value quickly without requiring incremental DIY work
+ 
+The AppFactory is arranged both by vertical application and Application Suites making it very intuitive for the customer to identify what might be most relevant/critical for their business needs.
+ 
+Additionally, customers can see the Use Cases, Reference Architectures, and pre-built applications for download to get a full view of what’s possible in the DataTorrent AppFactory.
+ 
+At GA, DataTorrent AppFactory contains the following Application Suites:
+Omni-channel Payment Fraud Prevention Application Suite
+Continuous Big Data Cloud Sync Application Suite
+Continuous Big Data Archival Application Suite
+Continuous Big Data Preparation Application Suite
+Continuous Big Data Sync Application Suite
+ 
+AppFactory is a marketplace of big data streaming analytics use cases, reference architectures, and downloadable applications that help you to make a positive impact on your business as quickly as possible. You can search by industry or technology to quickly find what is most relevant to your needs.
+ 
+
+##### Omni-channel Payment Fraud Prevention Application Suite
+
+Prevent payment fraud in real-time on all transactions across all your channels.
+DataTorrent’s Omni-channel Payment Fraud Prevention Application delivers real-time, data-in-motion analytics built for 24/7/365 production with sub-second latency, self-healing, enterprise-grade reliability and a scale-out architecture built with a complete pipeline that includes real-time business and operational visualizations.
+
+
+
+##### Continuous Big Data Cloud Sync Application Suite
+
+Continuous Big Data sync of on-premise and cloud infrastructures for availability, compliance, and archival.
+Allows customers to create various data storages within and across on-premise and cloud which can be continuously synced, with no data loss.
+
+ 
+##### Continuous Big Data Archival Application Suite
+
+Continuous archival of Big Data for compliance and business continuity.
+Enables customers fast backup of large volumes of data with low latency, and dynamic scaling features. 
+ 
+
+##### Continuous Big Data Preparation Application Suite
+
+Streaming Big Data ingestion to prepare your data for insight and action.
+Renders your data “decision ready” as close as possible to the time of creation, serving the business with continuous, clean, consistent, enriched data in the desired business template.	
+
+ 
+##### Continuous Big Data Sync Application Suite
+
+Continuous delivery of Big Data to your Data Lake.
+Allows customers to create an Enterprise Data Lake which delivers continuous, clean, and consistent data while ensuring no data loss occurs during data movement. 
+
+### Additional product features that further increase a customer’s time to value include:
+
+##### Operator Library Improvements
+
+With every release, DataTorrent hardens the operators we ship with our applications and templates, continually adding to the Open Source community.
+
+With RTS 3.9, we’ve included the creation of an input operator for the latest version of Kafka so we now support Kafka 0.10.1.
+ 
+Schema Support for Applications
+This feature makes it easier to change the fields that are supported in your data.
+ 
+With DataTorrent’s Basic Schema Support for applications, it is easier to change the schema that are supported by the data.  Now users are able to associate fields to the data being processed by a DAG in order to associate this pipeline with a set of fields. When the fields are changed, the whole pipeline is updated accordingly.
+
+
+##### Licensing
+
+Every customer including eval and free edition users will need a new license file to use the RTS 3.9.0 product.
+
+In 3.9, we have updated our software licensing mechanism. Customers, including those using our Free license, will be required to obtain a new software license file from DataTorrent in order to use or upgrade to version 3.9.  Existing customers can visit Upgrade License to obtain a new license when ready.
+
+Customers who download our sandbox environment or request a free or evaluation license will automatically receive a 3.9-compatible license.
+
+
+##### Security
+
+Security hardening enhancements in 3.9.0 enable users to configure LDAP Security directly in the product. While available previously, the additional functionality in our User Interface now makes LDAP configuration even easier, saving customers time.
+
+
+##### Centralized Log Aggregation
+
+Troubleshooting just got easier with this feature that enables a centralized facility for log aggregation.
+ 
+DataTorrent RTS 3.9 Support for 3rd Party Log Aggregation makes it even easier for customers to troubleshoot while in production with indexing, search and correlation, and a centralized facility for log aggregation. You can now integrate Elasticsearch, Logstash, Kibana (ELK) or Splunk with RTS out of the box.  
+
+### Additional Features of RTS 3.9.0
+
+##### Apache Beam Support
+
+This feature is focused on making data processing easier, faster and less costly.
+Apache Beam Support, aka Google DataFlow is an open source, unified model and set of language-specific SDKs for defining and executing data processing workflows and also data ingestion and integration flows, supporting EIPs and DSLs. This dataflow pipeline simplifies the mechanics of large-scale batch and streaming processing.
+ 
+
+##### Basic Batch Processing Support
+This feature enables data to be read and processed in batch mode.
+DataTorrent’s Batch Processing Support allows customers to use their batch-oriented architectures in order to integrate with support for external scheduling (i.e. through cron, Oozie, etc.).
+
+
+### Deprecated Features of RTS 3.9.0
+
+This section lists features and capabilities that have been either removed or planned for removal in DataTorrent RTS.
+
+* Application Data Tracker (ADT):  This feature will no longer be supported after the RTS 3.9.0 release.   ADT is determined to be not sufficiently scalable and requires execution of a separate application that is not directly built into the RTS platform.  ADT is replaced with the new Application Metrics feature.  The new Application Metrics feature available in RTS 3.9.0 provides the required scalability, is easier for developers to use, and does not require execution of a separate application.  
+
+### Apex Features
+* [APEXCORE-594] Plugin support in Apex
+* [APEXCORE-579] Custom control tuple support
+* [APEXCORE-563] Have a pointer to container log filename and offset in StrAM events that deliver a container or operator failure event.
+* [APEXCORE-655] Support RELEASE as archetype version when creating a project
+* [APEXCORE-662] Raise StramEvent for heartbeat miss
+
+### Apex Bugs
+* [APEXCORE-674] DTConfiguration utility class ValueEntry access level was changed
+* [APEXCORE-663] Application restart not working.
+* [APEXCORE-648] Unnecessary byte array copy in DefaultStatefulStreamCodec.toDataStatePair()
+
+##### DataTorrent RTS Bug Fixes 
+### Bugs
+* [SPOI-8784] - Restarting application with originalAppId for long running app takes long time
+* [SPOI-9203] - AppHub "check for updates" option says 'no updated versions' and then displays updated packages
+* [SPOI-10409] - Updating app packages using "check for updates" option from AppHub gives wrong notification as undefined
+* [SPOI-10786] - Checkbox cannot be unchecked in the Widget Options screen
+* [SPOI-10989] - Gateway insists on using IP address for GATEWAY_CONNECT_ADDRESS
+* [SPOI-11143] - Launching PiDemoAppData with optional properties throws 500 Server Error
+* [SPOI-11235] - Stram Search Event Does Not Return Correct Result
+* [SPOI-11239] - Prevent Page Freeze in Monitor Application Page
+* [SPOI-11312] - Container log files contain "\t" characters instead of a tab
+* [SPOI-11322] - AppMaster node is mentioned as "N/A" in the Failure Message
+* [SPOI-11381] - Search for "heap reduction %" column in GC Log Table does not work correctly
+* [SPOI-11425] - When operator fails recursively, few StartOperator/StartContainer events are grouped incorrectly
+* [SPOI-11446] - Search for status column in "Logical Operators" widget does not work
+* [SPOI-11482] - dtDashboard should ask for "save changes" while moving away from unsaved dashboard
+* [SPOI-11485] - Cannot switch back to "Name-Value" once clicked on "JSON" on Application Configuration details page
+* [SPOI-11498] - After machine reboot, DTGateway fails to get the uploaded license.
+* [SPOI-11523] - physical DAG view has become unresponsive
+* [SPOI-11580] - Shows the empty long description when uploading the existing app template with different version
+* [SPOI-11622] - Fix semantic versioning for ALL Application Templates
+* [SPOI-11784] - Getting Javascript error when viewing application summary - "Unable to render dag due to TypeError: Cannot read property 'appInstance' of undefined"
+* [SPOI-11791] - Application Package upload fails with "Unexpected EOF reached" error
+* [SPOI-11793] - Too many CLOSE_WAIT entries in netstat output when running applications with dashboards
+* [SPOI-11805] - AppHub timestamps do not follow App Package timestamp standards
+* [SPOI-11809] - Issues with Bar-Charts on Dashboard
+* [SPOI-11851] - 'Reset Position' option for DAG on Application details page does not work
+* [SPOI-11858] - Incorrect metrics are reported for the application
+* [SPOI-11859] - Metrics are not updated in real-time for long running applications
+* [SPOI-11860] - 'dt.metrics.baseDir' should default to "DFS Root Directory/metrics" instead of hard coded "datatorrent/metrics"
+* [SPOI-11869] - Gateway throws FileNotFoundException for applications without any metrics data stores
+* [SPOI-11870] - Issues faced while demoing app template(s)
+* [SPOI-11884] - Logical and Physical Dag widgets shrink when clicking on the left and right border
+* [SPOI-11889] - DTX-SNAPSHOT build packages apex core jar from different versions.
+* [SPOI-11897] - Launching Database to Database Sync App gives SQL syntax error
+* [SPOI-11915] - No options are shown under 'Predefined Conditions' dropdown while creating new alert
+* [SPOI-11929] - Table widget should not have "Chart Axes" settings
+* [SPOI-11930] - Historical App Metrics data in table widget does not get refreshed even when "Load data continuously" option is enabled
+* [SPOI-11931] - Table widget issue in selecting check boxes for aggregates
+* [SPOI-11932] - Misalignment in "Time Range Selection" option in table widget
+* [SPOI-11933] - Time Range Selection option for Table widget returns less number of entries than that of requested
+* [SPOI-11934] - Unable to list widgets for "Snapshot :: App Stats" data source
+* [SPOI-11936] - Stram events doesn't scroll to bottom on page load
+* [SPOI-11939] - "Field to visualize" option in Trend widget does not show any options in dropdown
+* [SPOI-11959] - latency:AVG values are not displayed in table widget for Historical :: App Stats
+* [SPOI-11961] - Improvement: "failureCount" for 'Historical :: Operator Stats' should be SUM and not LAST
+* [SPOI-11962] - Mouseover text in stacked area chart does not change for historical data points
+* [SPOI-11968] - Application search from app details page does not work
+* [SPOI-11969] - All selected aggregate values for a metric are not displayed on dashboard
+* [SPOI-11973] - Chart legends are not shown if number of fields to visualize is more than 12
+* [SPOI-11974] - Gateway showing invalid license when server time changed
+* [SPOI-11981] - Invalid license due to HDFS not ready in Sandbox.
+* [SPOI-12025] - Historical data is not fetched for all the requested minute intervals
+* [SPOI-12032] - Required properties are missing
+* [SPOI-12046] - Gateway should exclude registering metrics datasource which are not enabled for metrics
+* [SPOI-12047] - Gateway throws exceptions while getting restarted after security configuration
+* [SPOI-12049] - App Metric Aggregation throws NPE when user code is called
+* [SPOI-12076] - Launching application throws FileNotFoundException in gateway log for 'datatorrent/apps/${appId}/permissions.json'
+* [SPOI-12079] - Too many NullPointerExceptions in dtgateway log when app connected to dashboard is killed
+* [SPOI-12080] - Too many NullPointerExceptions in dtgateway log when time range for historical data is set to 'All'
+* [SPOI-12081] - Table widget for historical data should resize to number of rows available for display
+* [SPOI-12082] - Grouping by root cause feature is not available
+* [SPOI-12086] - 'logicalOperatorName' column is blank for historical OperatorStats table widget
+* [SPOI-12089] - Time Format used for displaying and querying table widget data should be same
+* [SPOI-12091] - Widget data source selection not working with filtering
+* [SPOI-12092] - Obfuscate public key value in RTS jar
+* [SPOI-12100] - Specifying which metrics to write throws UnsupportedOperationException
+* [SPOI-12102] - Snapshot schema is not refreshing
+* [SPOI-12113] - Fix bullet chart
+* [SPOI-12115] - Opening hdfs-line-copy app on AppHub gives FileNotFoundException in logs
+* [SPOI-12116] - Retention policy for terminated apps does not work on 3.9.0
+* [SPOI-12117] - Data sources get sorted only after adding first widget
+* [SPOI-12124] - Gateway should not read the list datasources from metrics platform every sec
+* [SPOI-12125] - Too many warning messages in gateway log with IOException for changed Blocklist
+* [SPOI-12126] - Too many warning messages in gateway logs with InterruptedException while submitting Auto publish executor
+* [SPOI-12127] - Issues in HDFSStoreReader and Record Data structure
+* [SPOI-12129] - X-axis labels for Stacked Area chart are misaligned
+* [SPOI-12140] - App level metric processor delivers empty metrics for an operator
+* [SPOI-12141] - Clicking on physical operator details page for hdfs-line-copy app hangs UI
+* [SPOI-12152] - Long running apps with metric data give "Too many open files" exception in apex log
+* [SPOI-12153] - User should not be allowed to exit the modal when dashboard name is blank
+* [SPOI-12159] - 'create new dashboard' option on app details page overwrites existing dashboard with same name
+* [SPOI-12161] - Dashboards for restarted apps get stuck at original app data
+* [SPOI-12164] - Configuration issues modal text overflow
+* [SPOI-12167] - AppMaster fails with OutOfMemoryError for apps with metric data
+* [SPOI-12170] - RTS installation fails with NoClassDefFoundError for jackson libraries
+* [SPOI-12178] - ConcurrentModificationException in GroupingManager
+* [SPOI-12181] - Launching from app builder provides invalid notification
+* [SPOI-12186] - Properties for some of the operators are not displayed
+* [SPOI-12192] - Unavailable data sources are shown while adding widgets
+* [SPOI-12193] - Metrics platform does not honour "dt.write.metrics" property
+* [SPOI-12199] - Metrics lib writer should include jackson libraries are runtime dependencies
+* [SPOI-12216] - Clicking on logical operators link in breadcrumb does not show any list for searching
+* [SPOI-12217] - Clicking on module name in logical DAG gives 404
+* [SPOI-12219] - Make sure all dashboard widgets have the debug settings
+* [SPOI-12223] - Filtering on data sources should be done on app name and data source name only
+* [SPOI-12224] - Historical time range selection gives wrong number of records
+* [SPOI-12257] - Date time selection in Control widget has issues
+* [SPOI-12258] - ProductDataEnricher Operator gives “Unable to retrieve result ”
+* [SPOI-12260] - Application name is altered when control widget settings are applied to more than one applications
+* [SPOI-12261] - App Metrics should not expose "appUser" and "appName" keys as selectable dimensions for [HISTORICAL] data sources
+* [SPOI-12268] - When "time.from" and "time.to" are specified, "time.latestNumBuckets" should NOT be required.
+* [SPOI-12275] - Package Properties - value of a field (long list) is only partially visible.
+* [SPOI-12276] - Metrcis plugin throws IllegalStateException
+* [SPOI-12286] - Time range selection UI for Historical data is off
+* [SPOI-12287] - Querying with Historical time range does not return the data to widget
+* [SPOI-12290] - Geo circle widget does not honor custom fields for lon and lat
+* [SPOI-12293] - Historical time range selection settings are not preserved on refresh
+* [SPOI-12294] - Manually editing the value in Historical time range selection changes datetime format
+* [SPOI-12297] - Show all link in notification service causes page error
+* [SPOI-12302] - AppFactory - styling issues
+* [SPOI-12306] - Wrong sorting order for artifacts listing
+* [SPOI-12321] - Unable to view data on dashboards which after import on launch
+* [SPOI-12322] - X button to delete chosen application in Import Packaged Dashboard is hidden
+* [SPOI-12323] - Historical time range selection settings are not preserved
+* [SPOI-12332] - AppFactory - after importing appPackage, buttons should be refreshed automatically
+* [SPOI-12339] - Unable to retarget datasource in dashboard settings after adding widget
+
+
+
 Version: 3.8.1
 ------------------------------------------------------------------------------------------------------------------------
 
