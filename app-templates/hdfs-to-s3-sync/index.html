@@ -9,7 +9,7 @@
   
   <link rel="shortcut icon" href="../../favicon.ico">
   
-  <title>HDFS to HDFS Line Copy App - DataTorrent Documentation</title>
+  <title>HDFS to S3 Sync App - DataTorrent Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "HDFS to HDFS Line Copy App";
-    var mkdocs_page_input_path = "app-templates/hdfs-line-copy.md";
-    var mkdocs_page_url = "/app-templates/hdfs-line-copy/";
+    var mkdocs_page_name = "HDFS to S3 Sync App";
+    var mkdocs_page_input_path = "app-templates/hdfs-to-s3-sync.md";
+    var mkdocs_page_url = "/app-templates/hdfs-to-s3-sync/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -327,33 +327,35 @@
                     
     <a class="" href="../hdfs-sync/">HDFS Sync App</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">HDFS to HDFS Line Copy App</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#hdfs-to-hdfs-line-copy-application">HDFS to HDFS line copy application</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#summary">Summary</a></li>
-        
-            <li><a class="toctree-l4" href="#configuration-options">Configuration options</a></li>
-        
-            <li><a class="toctree-l4" href="#steps-to-customize-the-application">Steps to customize the application</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../hdfs-line-copy/">HDFS to HDFS Line Copy App</a>
                 </li>
                 <li class="">
                     
     <a class="" href="../hdfs-to-kafka-sync/">HDFS to Kafka Sync App</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../hdfs-to-s3-sync/">HDFS to S3 Sync App</a>
+    <a class="current" href="./">HDFS to S3 Sync App</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#hdfs-to-s3-sync-application">HDFS to S3 Sync Application</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#summary">Summary</a></li>
+        
+            <li><a class="toctree-l4" href="#quick-links">Quick links</a></li>
+        
+            <li><a class="toctree-l4" href="#required-properties">Required Properties</a></li>
+        
+            <li><a class="toctree-l4" href="#advanced-properties-optional">Advanced Properties (optional)</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
@@ -508,7 +510,7 @@
         
       
     
-    <li>HDFS to HDFS Line Copy App</li>
+    <li>HDFS to S3 Sync App</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -518,204 +520,114 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="hdfs-to-hdfs-line-copy-application">HDFS to HDFS line copy application</h1>
+                <h1 id="hdfs-to-s3-sync-application">HDFS to S3 Sync Application</h1>
 <h2 id="summary">Summary</h2>
-<p>Ingest and backup hadoop HDFS data as lines from one cluster to another in a fault tolerant way. This application reads lines from the configured source path and writes them to the destination file path. The source code is available at: <a href="https://github.com/DataTorrent/app-templates/tree/master/hdfs-line-copy">https://github.com/DataTorrent/app-templates/tree/master/hdfs-line-copy</a>.</p>
-<p>Please send feedback or feature requests to: <a href="mailto:feedback@datatorrent.com">feedback@datatorrent.com</a></p>
-<p>This document has a step-by-step guide to configure, customize, and launch this application.</p>
-<h2 id="steps-to-launch-application"><a name="steps_to_launch"></a>Steps to launch application</h2>
-<ol>
-<li>
-<p>Click on the AppHub tab from the top navigation bar.
-   <img alt="AppHub link from top navigation bar" src="../images/common/apphub_link.png" /></p>
-</li>
-<li>
-<p>Page listing the applications available on AppHub is displayed.
-Search for HDFS to see all applications related to HDFS.
-   <img alt="AppHub search for HDFS" src="../images/hdfs-line-copy/apphub-search.png" /></p>
-</li>
-</ol>
-<p>Click on import button for <code>HDFS to HDFS Line Copy App</code></p>
-<ol>
-<li>
-<p>Notification is displayed on the top right corner after application package is successfully
-   imported.
-   <img alt="App import Notification" src="../images/hdfs-line-copy/import-notification.png" /></p>
-</li>
-<li>
-<p>Click on the link in the notification which navigates to the page for this application package.
-   <img alt="App details page" src="../images/hdfs-line-copy/app-details-page.png" /></p>
-<p>Detailed information about the application package like version, last modified time, and short description is available on this page. Click on launch button for <code>HDFS line copy</code>
-   application.</p>
-</li>
-<li>
-<p><a name="launch-dialogue"></a><code>Launch HDFS-line-copy</code> dialogue is displayed. One can configure name of this instance of the application after from this dialogue.
-   <img alt="Launch dialogue" src="../images/hdfs-line-copy/launch.png" /></p>
-</li>
-<li>
-<p>Select <code>Use saved configuration</code> option. This displays list of pre-saved configurations.
-Please select <code>sandbox-memory-conf.xml</code> or <code>cluster-memory-conf.xml</code> depending on whether
-your environment is the DataTorrent sandbox, or other cluster.
-   <img alt="Select saved configuration" src="../images/hdfs-line-copy/saved-conf.png" /></p>
-</li>
-<li>
-<p>Select <code>Specify custom properties</code> option. Click on <code>add default properties</code> button.
-   <img alt="Specify custom properties" src="../images/hdfs-line-copy/specify-custom.png" /></p>
-</li>
-<li>
-<p>This expands a key-value editor pre-populated with mandatory properties for this application. Change values as needed.
-   <img alt="Properties editor" src="../images/hdfs-line-copy/property-editor.png" /></p>
-<p><a name="property-editor"></a>For example, suppose we wish to process lines from all the files in <code>/user/appuser/input</code> from <code>source-cluster</code> and send the output to <code>output.txt</code> in <code>/user/appuser/output</code> in the <code>destination-cluster</code>. Properties should be set as follows:</p>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>dt.operator.fileOutput.prop.filePath</td>
-<td>hdfs://destination-cluster/user/appuser/output</td>
-</tr>
-<tr>
-<td>dt.operator.fileOutput.prop.outputFileName</td>
-<td>output.txt</td>
-</tr>
-<tr>
-<td>dt.operator.recordReader.prop.files</td>
-<td>hdfs://source-cluster/user/appuser/input</td>
-</tr>
-</tbody>
-</table>
-<p>Details about configuration options are available in <a href="#configuration_options">Configuration options</a> section.</p>
-</li>
-<li>
-<p>Click on <code>Launch</code> button on bottom right corner to launch the application.
-Notification is displayed on the top right corner after application is launched successfully and includes the Application ID which can be used to monitor this instance and find its logs.
-   <img alt="Application launch notification" src="../images/common/app_launch_notification.png" /></p>
-</li>
-<li>
-<p>Click on the <code>Monitor</code> tab from the top navigation bar.
-   <img alt="Monitor tab" src="../images/common/monitor_link.png" /></p>
-</li>
-<li>
-<p>Page with listing of all running applications is displayed. Search for current application based on name or application id or any other relevant field. Click on the application name or id to navigate to application instance details page.
-   <img alt="Apps monitor listing" src="../images/common/apps_monitor_listing.png" /></p>
-</li>
-<li>
-<p>Application instance details page shows key metrics for monitoring the application status. The <code>logical</code> tab shows application DAG, Stram events, operator status based on logical operators, stream status, and a chart with key metrics.
-   <img alt="Logical tab" src="../images/hdfs-line-copy/logical.png" /></p>
-</li>
-<li>
-<p>Click on the <code>physical</code> tab to look at the status of physical instances of the operator, containers etc.
-   <img alt="Physical tab" src="../images/hdfs-line-copy/physical.png" /></p>
-</li>
-</ol>
-<h2 id="configuration-options"><a name="configuration_options">Configuration options</a></h2>
-<h3 id="mandatory-properties">Mandatory properties</h3>
-<p>End user must specify the values for these properties (all properties are strings).</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><p style="font-size:12px">dt.operator.recordReader.prop.files</td>
-<td>HDFS path for input file or directory</td>
-<td><ul><li>/user/appuser/input/directory1</li><li>/user/appuser/input/file2.log</li><li>hdfs://node1.corp1.com/user/user1/input</li></ul></td>
-</tr>
-<tr>
-<td><p style="font-size:12px">dt.operator.fileOutput.prop.outputFileName</td>
-<td>Name of the output file. This name will be appended with suffix for each part.</td>
-<td>output.txt</td>
-</tr>
-<tr>
-<td><p style="font-size:12px">dt.operator.fileOutput.prop.filePath</td>
-<td>HDFS path for the output directory. Generally, this refers to path on the hadoop cluster on which app is running.</td>
-<td>/user/appuser/output</td>
-</tr>
-</tbody>
-</table>
-<h3 id="advanced-properties">Advanced properties</h3>
-<p>There are pre-saved configurations based on the application environment. Recommended settings for <a href="https://www.datatorrent.com/download/datatorrent-rts-sandbox-edition-download/">datatorrent sandbox edition</a> are in <code>sandbox-memory-conf.xml</code> and for a cluster environment in <code>cluster-memory-conf.xml</code>.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Description</th>
-<th>Type</th>
-<th>Default for<br/> cluster<br/>-memory<br/>-conf.xml</th>
-<th>Default for<br/>sandbox<br/>-memory<br/>-conf.xml</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>dt.operator.recordReader.prop.minReaders</td>
-<td>Minimum number of BlockReader partitions for parallel reading.</td>
-<td>int</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>dt.operator.recordReader.prop.maxReaders</td>
-<td>Maximum number of BlockReader partitions for parallel reading.</td>
-<td>int</td>
-<td>16</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-<p>You can override default values for advanced properties by specifying custom values for these properties in the step <a href="#property-editor">specify custom property</a> step mentioned in <a href="#steps_to_launch">steps</a> to launch an application.</p>
-<h2 id="steps-to-customize-the-application">Steps to customize the application</h2>
-<ol>
-<li>
-<p>Make sure you have following utilities installed on your machine and available on <code>PATH</code> in environment variables</p>
+<p>This application demonstrates continuous big data sync from a source HDFS to destination S3. It read files from source HDFS and upload it into Amazon S3 using multipart upload feature.</p>
+<h2 id="quick-links">Quick links</h2>
 <ul>
-<li><a href="https://www.java.com/en/download/manual.jsp">Java</a> : 1.7.x</li>
-<li><a href="http://maven.apache.org/download.cgi">maven</a> : 3.0 +</li>
-<li><a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a> : 1.7 +</li>
-<li><a href="http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/">Hadoop</a> (Apache-2.2)+</li>
+<li>
+<p><a
+    href="../0.10.0/common/import-launch"  class="docs" id="docs" ga-track="docs"
+    target="_blank">How to import and launch an app-template</a></p>
+</li>
+<li>
+<p><a
+    href="../0.10.0/common/customize"  class="docs" id="docs" ga-track="docs"
+    target="_blank">How to customize an app-template</a></p>
+</li>
+<li>
+<p><a
+    href="https://github.com/DataTorrent/moodI/tree/master/app-templates/hdfs-to-s3-sync"  class="docs" id="docs" ga-track="docs"
+    target="_blank">README for the application</a></p>
+</li>
+<li>
+<p><a
+   href="https://github.com/DataTorrent/moodI/tree/master/app-templates/hdfs-to-s3-sync"  class="github" id="github" ga-track="github" target="_blank">Source code</a></p>
+</li>
+<li>
+<p>Please send feedback or feature requests to :
+    <a href="mailto:feedback@datatorrent.com"  class="feedback" id="feedback" ga-track="feedback">feedback@datatorrent.com</a></p>
+</li>
+<li>
+<p>Join our user discussion group at :
+    <a href="mailto:dt-users@googlegroups.com"  class="maillist" id="maillist" ga-track="maillist">dt-users@googlegroups.com</a></p>
+</li>
 </ul>
-</li>
-<li>
-<p>Use following command to clone the examples repository:</p>
-<p><code>git clone git@github.com:DataTorrent/app-templates.git</code></p>
-</li>
-<li>
-<p>Change directory to <code>examples/tutorials/hdfs-to-kafka-sync</code>:</p>
-<p><code>cd examples/tutorials/hdfs-line-copy</code></p>
-</li>
-<li>
-<p>Import this maven project in your favorite IDE (e.g. eclipse).</p>
-</li>
-<li>
-<p>Change the source code as per your requirements. Some tips are given as commented blocks in the <code>Application.java</code> for this project.</p>
-</li>
-<li>
-<p>Make respective changes in the test case and <code>properties.xml</code> based on your environment.</p>
-</li>
-<li>
-<p>Compile this project using maven:</p>
-<p><code>mvn clean package</code></p>
-<p>This will generate the application package with the <code>.apa</code> extension inside the <code>target</code> directory.</p>
-</li>
-<li>
-<p>Go to DataTorrent UI Management console on web browser. Click on the <code>Develop</code> tab from the top navigation bar.
-   <img alt="Develop tab" src="../images/common/develop_link.png" /></p>
-</li>
-<li>
-<p>Click on <code>upload package</code> button and upload the generated <code>.apa</code> file.
-   <img alt="Upload" src="../images/common/upload.png" /></p>
-</li>
-<li>
-<p>Application package page is shown with the listing of all packages. Click on the <code>Launch</code> button for the uploaded application package. Follow the <a href="#launch-dialogue">steps</a> for launching an application.</p>
-</li>
-</ol>
+<h2 id="required-properties">Required Properties</h2>
+<p>End user must specify the values for these properties.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Example</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aws Credentials Access Key Id</td>
+<td>String</td>
+<td>ACCESS_XXX_KEY_XX_ID</td>
+<td>AWS credentials access key id for S3</td>
+</tr>
+<tr>
+<td>Aws Credentials Secret Access Key</td>
+<td>String</td>
+<td>8your+own0+AWS0 secret1230+8key8goes0here</td>
+<td>AWS Secret access key for accessing S3 output.</td>
+</tr>
+<tr>
+<td>Input Directory Or File Path On HDFS</td>
+<td>String</td>
+<td><ul><li>/user/appuser/input /directory1</li><li>/user/appuser /input/file2.log</li><li>hdfs://node1.corp1 .com/user/user1 /input</li></ul></td>
+<td>HDFS path for input file or directory</td>
+</tr>
+<tr>
+<td>Output Directory Path On S3Storage</td>
+<td>String</td>
+<td>hdfs_to_s3</td>
+<td>Output directory for AWS S3</td>
+</tr>
+<tr>
+<td>S3Storage Bucket Name</td>
+<td>String</td>
+<td>com.example.app.s3</td>
+<td>Bucket name for AWS S3 output</td>
+</tr>
+</tbody>
+</table>
+<h2 id="advanced-properties-optional">Advanced Properties (optional)</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Default</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maximum Readers For Dynamic Partitioning</td>
+<td>16</td>
+<td>int</td>
+<td>Maximum no of partitions for Block Reader operator.</td>
+</tr>
+<tr>
+<td>Minimum Readers For Dynamic Partitioning</td>
+<td>2</td>
+<td>int</td>
+<td>Minimum no of partitions for Block Reader operator.</td>
+</tr>
+<tr>
+<td>Number Of Blocks Per Window</td>
+<td>1</td>
+<td>int</td>
+<td>File splitter will emit these many blocks per window for downstream operators.</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
@@ -723,10 +635,10 @@ Notification is displayed on the top right corner after application is launched 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../hdfs-to-kafka-sync/" class="btn btn-neutral float-right" title="HDFS to Kafka Sync App">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../kafka-to-database-sync/" class="btn btn-neutral float-right" title="Kafka to Database Sync App">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../hdfs-sync/" class="btn btn-neutral" title="HDFS Sync App"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../hdfs-to-kafka-sync/" class="btn btn-neutral" title="HDFS to Kafka Sync App"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -752,10 +664,10 @@ Notification is displayed on the top right corner after application is launched 
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../hdfs-sync/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../hdfs-to-kafka-sync/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../hdfs-to-kafka-sync/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../kafka-to-database-sync/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
