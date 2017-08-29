@@ -40,5 +40,5 @@ End user must specify the values for these properties.
 |--------|-------|----|-----|
 |Block Size For Hdfs Splitter| 1048576 (1MB)|long|No of bytes record reader operator would consider at a time for splitting records. Record reader might add latencies for higher block sizes. Suggested value is 1-10 MB|
 |Maximum Readers For Dynamic Partitioning| 1|int|Maximum no of partitions for Block Reader operator. |
-|Minimum Readers For Dynamic Partitioning| 1|int|Maximum no of partitions for Block Reader operator. |
+|Minimum Readers For Dynamic Partitioning| 1|int|Minimum no of partitions for Block Reader operator. |
 |Number Of Blocks Per Window| 1|int|File splitter will emit these many blocks per window for downstream operators. |

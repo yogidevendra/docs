@@ -2,7 +2,7 @@
 
 ## Summary
 Ingest filtered messages from kafka to hadoop HDFS for continuous ingestion to hadoop.
-The source code is available at: [https://github.com/DataTorrent/app-templates/tree/master/kafka-to-hdfs-sync.](https://github.com/DataTorrent/app-templates/tree/master/kafka-to-hdfs-filter)
+The source code is available at: [https://github.com/DataTorrent/app-templates/tree/master/kafka-to-hdfs-filter](https://github.com/DataTorrent/app-templates/tree/master/kafka-to-hdfs-filter)
 
 Please send feedback or feature requests to: [feedback@datatorrent.com](mailto:feedback@datatorrent.com)
 

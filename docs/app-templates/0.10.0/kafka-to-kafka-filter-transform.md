@@ -2,7 +2,7 @@
 
 ## Summary
 
-This application demonstrates continuous ingestion of streaming data source into the big data lake. Application uses Kafka as a streaming source and HDFS as big data lake destination. Depending on the context, data in kafka could be coming from logs of different events, sensor data, call details records, transactions etc.
+This application demonstrates continuous ingestion of streaming data source into the big data lake. Application uses Kafka as a streaming source and Kafka as big data lake destination. Depending on the context, data in kafka could be coming from logs of different events, sensor data, call details records, transactions etc.
 
 ## Quick links
 

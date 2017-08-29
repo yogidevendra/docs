@@ -34,7 +34,7 @@ End user must specify the values for these properties.
 |Cassandra Node Name|String|localhost| Host name for cassandra server
 |Filter Condition For Tuples|String|({$}.getPremium() >= 50000)| Quasi java expression
 |Key Space On Cassandra|String|testdb| Keyspace to be used for output
-|Table Name|String|test_input| Quasi java expression
+|Table Name|String|test_input| Name of the table on cassandra store
 |Json Parser Field Info|String|{"policyNumber":"LONG", "customerName":"STRING",  "premium":"LONG"}| JSON map with key indicating input field. Value indicating data [type](https://github.com/DataTorrent/moodI/blob/master/operators/library/src/main/java/com/datatorrent/lib/schemaAware/JsonParser.java#L25) for the field.|
 |Kafka Broker List|String|<ul><li>localhost:9092</li><li>node1.corp1.com:9092, node2.corp1.com:9092</li></ul>|Comma seperated list of kafka brokers|
 |Kafka Topic Name|String|transactions|Topic names on Kakfa|
